@@ -3,10 +3,7 @@
   "name": "Fairlance-frontend",
   "version": "0.0.1",
   "homepage": "http://www.fairlance.io",
-  "licenses": {
-    "type": "?",
-    "url": "?"
-  },
+  "license": "ISC",
   "bugs": "",
   "repository": {
     "type": "git",
@@ -19,6 +16,5 @@
     "gulp-concat": "^2.6.0",
     "gulp-uglify": "^1.4.1",
     "gulp-rename": "^1.2.2"
-
   }
 }
