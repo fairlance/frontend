@@ -30,8 +30,16 @@ html {
         border: 1px solid black;
         font-size: 20px;
         color: #828282;
-        line-height: 1;
+        line-height: 2;
         padding: 0 0 0 20px;
+        &.error {
+          border-color: #ff3300;
+          &:focus {
+            outline: none !important;
+            border:1px solid #ff3300;
+            box-shadow: 0 0 10px #ff3300;
+          }
+        }
       }
       button.btn {
         height: 50px;
