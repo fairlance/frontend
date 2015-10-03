@@ -33,7 +33,6 @@ gulp.task('concat-js', function () {
 gulp.task('watch', function () {
   gulp.watch('src/**/*.less', ['build-less']);
   gulp.watch('src/**/*.html', ['copy-html']);
-  gulp.watch('src/assets/images/**/*', ['copy-files']);
   gulp.watch('src/**/*.js', ['concat-js']);
 });
 
