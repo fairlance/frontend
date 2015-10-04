@@ -4,6 +4,7 @@ var watch = require('gulp-watch');
 var concat = require('gulp-concat');
 
 gulp.task('default', ['copy-html', 'build-less', 'copy-files', 'concat-js']);
+gulp.task('deploy', ['copy-html', 'build-less', 'copy-files', 'concat-js', 'prepare-deploy']);
 
 //1. Copy index.html from src to bin
 gulp.task('copy-html', function() {
@@ -22,6 +23,7 @@ gulp.task('build-less', function(){
     .pipe(less())
     .pipe(gulp.dest('bin/css/'));
 });
+
 //3. Concat js files
 gulp.task('concat-js', function () {
   gulp.src(['vendor/jquery/dist/jquery.min.js', 'src/**/*.js'])
@@ -29,11 +31,16 @@ gulp.task('concat-js', function () {
     .pipe(gulp.dest('bin/js/'));
 });
 
-//4. React to changes in files via watch
+//4. Concat js files
+gulp.task('prepare-deploy', function () {
+  gulp.src('appspec.yml')
+    .pipe(gulp.dest('bin/'));
+});
+
+//5. React to changes in files via watch
 gulp.task('watch', function () {
   gulp.watch('src/**/*.less', ['build-less']);
   gulp.watch('src/**/*.html', ['copy-html']);
-  gulp.watch('src/assets/images/**/*', ['copy-files']);
   gulp.watch('src/**/*.js', ['concat-js']);
 });
 
