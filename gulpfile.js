@@ -31,13 +31,13 @@ gulp.task('concat-js', function () {
     .pipe(gulp.dest('bin/js/'));
 });
 
-//4. Concat js files
+//4. Copy robots.txt
 gulp.task('prepare-deploy', function () {
-  gulp.src('appspec.yml')
+  gulp.src('robots.txt')
     .pipe(gulp.dest('bin/'));
 });
 
-//5. React to changes in files via watch
+//React to changes in files via watch
 gulp.task('watch', function () {
   gulp.watch('src/**/*.less', ['build-less']);
   gulp.watch('src/**/*.html', ['copy-html']);
