@@ -72,8 +72,26 @@ gulp.task('build-html', function () {
 
 // copies index.html in bin direcotry
 gulp.task('build-index', function() {
-  gulp.src('index.html')
+  gulp.src('src/index.html')
     .pipe(gulp.dest('bin/'));
+});
+
+// copies config.js in bin direcotry
+gulp.task('build-config', function() {
+  gulp.src('config.js')
+    .pipe(gulp.dest('bin/'));
+});
+
+// copies system.js in bin direcotry
+gulp.task('build-systemjs', function() {
+  gulp.src('jspm_packages/system.js')
+    .pipe(gulp.dest('bin/'));
+});
+
+// copies fonts in bin direcotry
+gulp.task('build-fonts', function() {
+  gulp.src('src/app/fonts/*')
+    .pipe(gulp.dest('bin/fonts'));
 });
 
 // copies changed css files to the output directory
@@ -91,7 +109,7 @@ gulp.task('build-css', function () {
 gulp.task('build',function(callback) {
   return runSequence(
     'clean',
-    ['build-system', 'build-html', 'build-index', 'build-css', 'bundle-aurelia'],
+    ['build-system', 'build-html', 'build-systemjs', 'build-index','build-config', 'build-fonts', 'build-css', 'bundle-aurelia'],
     callback
   );
 });
