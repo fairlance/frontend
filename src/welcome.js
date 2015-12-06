@@ -1,9 +1,9 @@
 //import {computedFrom} from 'aurelia-framework';
 
 export class Welcome {
-  heading = 'Welcome to the Aurelia Navigation App!';
-  firstName = 'John';
-  lastName = 'Doe';
+  heading = 'Welcome to the Fairlance frontend app!';
+  firstName = 'Stefan';
+  lastName = 'Sopic';
   previousValue = this.fullName;
 
   //Getters can't be directly observed, so they must be dirty checked.
