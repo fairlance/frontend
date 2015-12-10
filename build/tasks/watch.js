@@ -14,7 +14,7 @@ function reportChange(event) {
 gulp.task('watch', ['build'], function() {
   gulp.watch(paths.source, ['build-system', browserSync.reload]).on('change', reportChange);
   gulp.watch(paths.html, ['build-html', browserSync.reload]).on('change', reportChange);
-  gulp.watch(paths.css, ['build-css']).on('change', reportChange);
+  gulp.watch([paths.css, paths.sass], ['build-css']).on('change', reportChange);
   gulp.watch(paths.style, function() {
     return gulp.src(paths.style)
       .pipe(browserSync.stream());

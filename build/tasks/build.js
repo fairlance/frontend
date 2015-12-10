@@ -56,12 +56,6 @@ gulp.task('build-sass', function () {
     .pipe(gulp.dest('styles'));
 });
 
-//// all files in root of dist folder
-//gulp.task('build-dist', function() {
-//  gulp.src('src/app/**/*')
-//      .pipe(gulp.dest(paths.output));
-//});
-
 // this task calls the clean task (located
 // in ./clean.js), then runs the build-system
 // and build-html tasks in parallel

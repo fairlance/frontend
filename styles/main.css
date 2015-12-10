@@ -4,24 +4,24 @@ html {
   html body {
     background: url("../dist/assets/images/background.png") no-repeat;
     background-size: cover; }
-    html body .form {
+    html body form {
       width: 60%;
       margin: 0 auto; }
-      html body .form .logo {
+      html body form .logo {
         display: block;
         background: url("../dist/assets/images/LOGO.png") no-repeat;
         background-size: contain;
         width: 100%;
         height: 200px;
         margin: 10% auto 0; }
-      html body .form .sub-logo {
+      html body form .sub-logo {
         display: block;
         background: url("../dist/assets/images/sub-logo.png") no-repeat;
         background-size: contain;
         width: 80%;
         height: 50px;
         margin: 0 auto; }
-      html body .form input {
+      html body form input {
         width: 64%;
         height: 50px;
         margin: 0 10% 0 0;
@@ -30,13 +30,13 @@ html {
         color: #828282;
         line-height: 2;
         padding: 0 0 0 20px; }
-        html body .form input.error {
+        html body form input.error {
           border-color: #ff3300; }
-          html body .form input.error:focus {
+          html body form input.error:focus {
             outline: none !important;
             border: 1px solid #ff3300;
             box-shadow: 0 0 10px #ff3300; }
-      html body .form button.btn {
+      html body form button.btn {
         height: 50px;
         width: 25%;
         padding: 0;
