@@ -5,6 +5,7 @@ dependencies:
         - sudo npm install --global gulp
         - npm install --global jspm
         - sudo npm install
+        - sudo npm rebuild node-sass
         - jspm install -y
         - gulp build
         - gulp export
