@@ -8,3 +8,7 @@ dependencies:
         - jspm install -y
         - gulp build
         - gulp export
+test:
+    override:
+        - tar -czf export.tar.gz export
+        - sudo cp export.tar.gz $CIRCLE_ARTIFACTS
