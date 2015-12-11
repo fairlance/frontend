@@ -2,7 +2,7 @@ dependencies:
     override:
         - curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
         - sudo apt-get install --yes nodejs
-        - sudo npm install --global gulp
+        - npm install --global gulp
         - npm install --global jspm
         - sudo npm install
         - jspm install -y
