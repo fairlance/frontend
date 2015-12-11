@@ -1,0 +1,14 @@
+dependencies:
+  override:
+    - sudo apt-get install curl
+    - curl -sL https://deb.nodesource.com/setup_0.12 | sudo bash -
+    - sudo apt-get install -y nodejs
+    - sudo npm install -g gulp
+    - sudo npm install -g bower
+    - sudo npm install --no-bin-links
+    - bower install --allow-root
+    - gulp deploy
+test:
+  override:
+    - tar -czf bin.tar.gz bin
+    - sudo cp bin.tar.gz $CIRCLE_ARTIFACTS
