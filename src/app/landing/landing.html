@@ -3,7 +3,7 @@
         <form role="form" submit.delegate="submit()">
             <span class="logo"></span>
             <span class="sub-logo"></span>
-            <input type="text" id="ln" placeholder="I want to be on your mailing list_">
+            <input type="text" value.bind="email" name="email" class="${style}" placeholder="${placeholder}">
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
     </section>
