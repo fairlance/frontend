@@ -2,49 +2,61 @@ html {
   height: 100%;
   min-height: 100%; }
   html body {
-    background: url("../dist/assets/images/background.png") no-repeat;
-    background-size: cover; }
-    html body form {
-      width: 60%;
-      margin: 0 auto; }
-      html body form .logo {
-        display: block;
-        background: url("../dist/assets/images/LOGO.png") no-repeat;
-        background-size: contain;
+    background-color: #F05A23; }
+    html body .splash {
+      text-align: center;
+      margin: 10% 0 0 0;
+      box-sizing: border-box;
+      color: #000000; }
+      html body .splash .fa-spinner {
+        text-align: center;
+        display: inline-block;
+        font-size: 72px;
+        margin-top: 50px; }
+    html body .logo-container {
+      position: relative; }
+      html body .logo-container img {
+        width: 50%;
+        margin: 0 auto;
+        display: block; }
+      html body .logo-container h1 {
+        position: absolute;
+        text-align: center;
         width: 100%;
-        height: 200px;
-        margin: 10% auto 0; }
-      html body form .sub-logo {
-        display: block;
-        background: url("../dist/assets/images/sub-logo.png") no-repeat;
-        background-size: contain;
-        width: 80%;
-        height: 50px;
-        margin: 0 auto; }
-      html body form input {
-        width: 64%;
-        height: 50px;
-        margin: 0 10% 0 0;
-        border: 1px solid black;
-        font-size: 20px;
-        color: #828282;
-        line-height: 2;
-        padding: 0 0 0 20px; }
-        html body form input.error {
-          border-color: #ff3300; }
-          html body form input.error:focus {
-            outline: none !important;
-            border: 1px solid #ff3300;
-            box-shadow: 0 0 10px #ff3300; }
-      html body form button.btn {
-        height: 50px;
-        width: 25%;
-        padding: 0;
-        margin: -8px 0 0;
-        border-radius: 0;
-        font-size: 30px;
         text-transform: uppercase;
-        color: white;
-        line-height: 1;
-        background-color: #f05a23;
-        font-weight: 200; }
+        margin-top: 30%; }
+    html body form {
+      width: 100%;
+      padding: 10px 30px 0 30px; }
+      html body form input {
+        width: 65%;
+        margin-right: 3%;
+        height: 40px;
+        border: none; }
+      html body form button.btn {
+        background-color: #F8ED33;
+        width: 30%;
+        height: 40px;
+        border: none;
+        text-transform: uppercase;
+        border-radius: 0; }
+    html body section article.summary-box {
+      width: 100%;
+      padding: 10px 30px 0 30px; }
+      html body section article.summary-box h2 {
+        text-transform: uppercase;
+        font-size: 16px;
+        display: inline-block;
+        line-height: 0px;
+        padding-left: 20px; }
+    html body footer .social-icons {
+      margin: 20px auto;
+      width: 252px; }
+      html body footer .social-icons a {
+        background: url("../dist/assets/images/temp.png") no-repeat;
+        background-size: contain;
+        height: 40px;
+        width: 40px;
+        margin: 0 10px;
+        display: inline-block;
+        border-radius: 50%; }

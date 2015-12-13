@@ -29,7 +29,7 @@ export class Welcome {
         body: new FormData(document.querySelector('form'))
       })
       .then(function (response) {
-        response.json().then(function() {
+        response.json().then(function () {
           first.email = '';
           first.style = '';
           first.placeholder = 'Thank you!';
