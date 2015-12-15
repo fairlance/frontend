@@ -2,7 +2,9 @@ html {
   height: 100%;
   min-height: 100%;
   body {
-    background-color: #F05A23;
+    background: url("../dist/assets/images/Background.jpg") no-repeat fixed;
+    background-position-x: 100%;
+    background-size: cover;
     .splash {
       text-align: center;
       margin: 10% 0 0 0;

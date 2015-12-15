@@ -2,7 +2,9 @@ html {
   height: 100%;
   min-height: 100%; }
   html body {
-    background-color: #F05A23; }
+    background: url("../dist/assets/images/Background.jpg") no-repeat fixed;
+    background-position-x: 100%;
+    background-size: cover; }
     html body .splash {
       text-align: center;
       margin: 10% 0 0 0;
@@ -14,17 +16,20 @@ html {
         font-size: 72px;
         margin-top: 50px; }
     html body .logo-container {
-      position: relative; }
+      position: relative;
+      width: 50%;
+      margin: 0 auto; }
       html body .logo-container img {
-        width: 50%;
-        margin: 0 auto;
-        display: block; }
+        width: 100%; }
       html body .logo-container h1 {
         position: absolute;
         text-align: center;
         width: 100%;
         text-transform: uppercase;
-        margin-top: 30%; }
+        margin-top: 50%;
+        color: #ffffff;
+        font-size: 175%;
+        font-weight: 100; }
     html body form {
       width: 100%;
       padding: 10px 30px 0 30px; }
