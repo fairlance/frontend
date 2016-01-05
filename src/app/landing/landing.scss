@@ -22,6 +22,7 @@ form {
   input {
     width: 65%;
     margin-right: 3%;
+    padding-left: 10px;
     height: 40px;
     border: none;
   }
@@ -36,14 +37,23 @@ form {
 }
 section {
   article.summary-box {
-    width: 100%;
-    padding: 10px 30px 0 30px;
+    margin: 10px 30px 0 30px;
+    padding: 20px;
+    background: rgba(255,255,255,0.8);
     h2 {
       text-transform: uppercase;
       font-size: 16px;
       display: inline-block;
-      line-height: 0px;
-      padding-left: 20px;
+      line-height: 0;
+      margin: 0;
+      font-weight: bold;
+      letter-spacing: 2px;
+      .fa-circle {
+        font-size: 5px;
+        position: relative;
+        bottom: 4px;
+        padding-right: 5px;
+      }
     }
   }
 }
@@ -52,13 +62,30 @@ footer {
     margin: 20px auto;
     width: 252px;
     a {
-      background: url("../dist/assets/images/temp.png") no-repeat;
-      background-size: contain;
+      background-color: rgba(255,255,255,0.8);
       height: 40px;
       width: 40px;
-      margin: 0 10px;
+      margin: 0 15px;
       display: inline-block;
       border-radius: 50%;
+      position: relative;
+      &:before {
+        font-size: 30px;
+        position: absolute;
+        left: 10px;
+        top: 5px;
+        color: #f15b24;
+      }
+      &.fa-twitter {
+        &:before {
+          left: 8px;
+        }
+      }
+      &.fa-reddit-alien {
+        &:before {
+          left: 5px;
+        }
+      }
     }
   }
 }

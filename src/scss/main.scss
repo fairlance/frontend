@@ -1,7 +1,32 @@
+
+@font-face {
+  font-family: 'Flexo';
+  src: url('../dist/assets/fonts/flexo/regular/Flexo-Regular.eot');
+  src: local('☺'),
+  url('../dist/assets/fonts/flexo/regular/Flexo-Regular.woff') format('woff'),
+  url('../dist/assets/fonts/flexo/regular/Flexo-Regular.ttf') format('truetype'),
+  url('../dist/assets/fonts/flexo/regular/Flexo-Regular.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Flexo';
+  src: url('../dist/assets/fonts/flexo/bold/Flexo-Bold.eot');
+  src: local('☺'),
+  url('../dist/assets/fonts/flexo/bold/Flexo-Bold.woff') format('woff'),
+  url('../dist/assets/fonts/flexo/bold/Flexo-Bold.ttf') format('truetype'),
+  url('../dist/assets/fonts/flexo/bold/Flexo-Bold.svg') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+
+
 html {
   height: 100%;
   min-height: 100%;
   body {
+    font: normal normal normal 14px/1 Flexo;
     background: url("../dist/assets/images/Background.jpg") no-repeat fixed;
     background-position-x: 100%;
     background-size: cover;
@@ -10,11 +35,12 @@ html {
       margin: 10% 0 0 0;
       box-sizing: border-box;
       color: #000000;
-      .fa-spinner {
+      .fa-circle-o-notch {
         text-align: center;
         display: inline-block;
         font-size: 72px;
         margin-top: 50px;
+        color: #ffffff;
       }
     }
     @import "../app/landing/landing.scss";
