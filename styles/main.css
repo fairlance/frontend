@@ -51,35 +51,49 @@ html {
       width: 100%;
       padding: 10px 30px 0 30px; }
       html body form input {
-        width: 65%;
-        margin-right: 3%;
+        width: 68%;
+        margin-right: 2%;
         padding-left: 10px;
+        padding-top: 4px;
         height: 40px;
-        border: none; }
+        border: none;
+        float: left; }
       html body form button.btn {
         background-color: #F8ED33;
         width: 30%;
         height: 40px;
         border: none;
         text-transform: uppercase;
-        border-radius: 0; }
-    html body section article.summary-box {
-      margin: 10px 30px 0 30px;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.8); }
-      html body section article.summary-box h2 {
-        text-transform: uppercase;
-        font-size: 16px;
-        display: inline-block;
-        line-height: 0;
-        margin: 0;
-        font-weight: bold;
-        letter-spacing: 2px; }
-        html body section article.summary-box h2 .fa-circle {
-          font-size: 5px;
-          position: relative;
-          bottom: 4px;
-          padding-right: 5px; }
+        border-radius: 0;
+        float: left; }
+    html body section {
+      margin: 10px 30px 0 30px; }
+      html body section article.summary-box {
+        margin-bottom: 10px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.8); }
+        @media screen and (min-width: 600px) {
+          html body section article.summary-box {
+            width: 49%;
+            float: left;
+            margin-right: 1%;
+            height: 160px; }
+            html body section article.summary-box:nth-child(even) {
+              margin-right: 0;
+              margin-left: 1%; } }
+        html body section article.summary-box h2 {
+          text-transform: uppercase;
+          font-size: 16px;
+          display: inline-block;
+          line-height: 0;
+          margin: 0;
+          font-weight: bold;
+          letter-spacing: 2px; }
+          html body section article.summary-box h2 .fa-circle {
+            font-size: 5px;
+            position: relative;
+            bottom: 4px;
+            padding-right: 5px; }
     html body footer .social-icons {
       margin: 20px auto;
       width: 252px; }
