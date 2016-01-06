@@ -4,7 +4,7 @@ import 'fetch';
 
 @inject(HttpClient)
 export class Welcome {
-  placeholder = 'I want to be on your mailing list_';
+  placeholder = 'I want to subscribe_';
   email = '';
   style = '';
 
