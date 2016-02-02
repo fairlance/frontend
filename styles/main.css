@@ -119,29 +119,24 @@ html body {
           position: relative;
           bottom: 4px;
           padding-right: 5px; }
-  html body footer {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    margin-left: -126px; }
-    html body footer .social-icons {
-      margin: 20px auto;
-      width: 252px; }
-      html body footer .social-icons a {
-        background-color: rgba(255, 255, 255, 0.8);
-        height: 40px;
-        width: 40px;
-        margin: 0 20px;
-        display: inline-block;
-        border-radius: 50%;
-        position: relative; }
-        html body footer .social-icons a:before {
-          font-size: 24px;
-          position: absolute;
-          left: 12px;
-          top: 9px;
-          color: #f15b24; }
-        html body footer .social-icons a.fa-twitter:before {
-          left: 10px; }
-        html body footer .social-icons a.fa-reddit-alien:before {
-          left: 8px; }
+  html body footer .social-icons {
+    margin: 20px auto;
+    width: 252px; }
+    html body footer .social-icons a {
+      background-color: rgba(255, 255, 255, 0.8);
+      height: 40px;
+      width: 40px;
+      margin: 0 20px;
+      display: inline-block;
+      border-radius: 50%;
+      position: relative; }
+      html body footer .social-icons a:before {
+        font-size: 24px;
+        position: absolute;
+        left: 12px;
+        top: 9px;
+        color: #f15b24; }
+      html body footer .social-icons a.fa-twitter:before {
+        left: 10px; }
+      html body footer .social-icons a.fa-linkedin:before {
+        left: 10px; }
