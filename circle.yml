@@ -6,8 +6,8 @@ dependencies:
         - npm install --global jspm
         - npm install
         - jspm install -y
-        - gulp build
-        - gulp export
+        - ./node_modules/.bin/gulp build
+        - ./node_modules/.bin/gulp export
 test:
     override:
         - tar -czf export.tar.gz export
