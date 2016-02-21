@@ -7,13 +7,10 @@
     "jspm_packages/system.js",
     "jspm_packages/system-polyfills.js",
     "jspm_packages/system-csp-production.js",
+    "styles/main.css",
     "jspm_packages/npm/font-awesome@4.5.0/css/font-awesome.min.css",
     "jspm_packages/npm/font-awesome@4.5.0/fonts/*",
     "jspm_packages/github/github/fetch@0.10.1.js",
-    "jspm_packages/github/github/fetch@0.10.1/fetch.js",
-    "jspm_packages/github/systemjs/plugin-text@0.0.3.js",
-    "jspm_packages/github/systemjs/plugin-text@0.0.3/text.js",
-    "dist/assets/**/*",
-    "styles/**/*"
+    "jspm_packages/github/github/fetch@0.10.1/fetch.js"
   ]
 }
