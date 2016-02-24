@@ -6,6 +6,7 @@ dependencies:
         - npm install -g gulp
         - npm install -g jspm
         - jspm install -y
+        - npm rebuild node-sass
         - gulp build
         - gulp export
 test:
