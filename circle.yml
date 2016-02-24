@@ -2,7 +2,7 @@ machine:
   node:
     version: 5.1.0
 dependencies:
-    override:
+    post:
         - npm install -g gulp
         - npm install -g jspm
         - jspm install -y
