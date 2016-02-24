@@ -1,8 +1,8 @@
+machine:
+  node:
+    version: 5.1.0
 dependencies:
     override:
-        - curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
-        - sudo apt-get install --yes nodejs
-        - npm install
         - npm install -g gulp
         - npm install -g jspm
         - jspm install -y
