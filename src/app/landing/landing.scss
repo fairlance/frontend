@@ -43,6 +43,9 @@ form {
     text-transform: uppercase;
     border-radius: 0;
     float: left;
+    :hover {
+      background-color: #F8ED33;
+    }
   }
 }
 
