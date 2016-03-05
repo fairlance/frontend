@@ -3,7 +3,7 @@ import {HttpClient, json} from 'aurelia-fetch-client';
 import 'fetch';
 
 @inject(HttpClient)
-export class Welcome {
+export class Landing {
   placeholder = 'I want to subscribe_';
   email = '';
   style = '';

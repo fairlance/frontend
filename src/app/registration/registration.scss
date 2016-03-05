@@ -1,0 +1,22 @@
+.logo-container.registration {
+  max-width: 300px;
+}
+.form-container {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 50px;
+  width: 800px;
+  margin: 50px auto;
+  form {
+    input {
+      width: 330px;
+      padding: 10px;
+      margin: 10px 0;
+      &:nth-child(even) {
+        float: right;
+      }
+    }
+    button {
+
+    }
+  }
+}

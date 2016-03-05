@@ -1,0 +1,18 @@
+<template>
+    <div class="logo-container registration">
+        <img src="dist/assets/images/Logo-11.png" alt="fairlance - freelance done fair">
+    </div>
+    <section class="clearfix form-container">
+        <form role="form" submit.delegate="submit()" class="clearfix">
+            <input type="text"      value.bind="firstName"  name="email" class="${style}" placeholder="${firstNamePlaceholder}">
+            <input type="text"      value.bind="lastName"   name="email" class="${style}" placeholder="${lastNamePlaceholder}">
+            <input type="email"     value.bind="email"      name="email" class="${style}" placeholder="${emailPlaceholder}">
+            <input type="password"  value.bind="password"   name="email" class="${style}" placeholder="${passwordPlaceholder}">
+            <input type="password"  value.bind="repeatPassword"   name="email" class="${style}" placeholder="${repeatPasswordPlaceholder}">
+            <div class="button-container">
+                <button class="btn-default btn">Prepopulate with Linkedin</button>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </form>
+    </section>
+</template>
