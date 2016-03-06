@@ -1,6 +1,7 @@
 .logo-container.registration {
   max-width: 300px;
 }
+
 .form-container {
   background: rgba(255, 255, 255, 0.8);
   padding: 50px;
@@ -11,8 +12,29 @@
       width: 330px;
       padding: 10px;
       margin: 10px 0;
+      border: none;
       &:nth-child(even) {
         float: right;
+      }
+      &.error {
+        border: 1px solid #d50000;
+        &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+          color: #d50000;
+        }
+        &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+          color: #d50000;
+          opacity: 1;
+        }
+        &::-moz-placeholder { /* Mozilla Firefox 19+ */
+          color: #d50000;
+          opacity: 1;
+        }
+        &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+          color: #d50000;
+        }
+        &:placeholder-shown { /* Standard (https://drafts.csswg.org/selectors-4/#placeholder) */
+          color: #d50000;
+        }
       }
     }
     button {
