@@ -9,7 +9,7 @@ export class Login {
     http.configure(config => {
       config
         .useStandardConfiguration()
-        .withBaseUrl('http://192.168.0.12:3001/');
+        .withBaseUrl('http://local.fairlance.io:3001/');
     });
     this.http = http;
     this.setDefaultFields();
@@ -35,6 +35,7 @@ export class Login {
       })
       .then(function (response) {
         response.json().then(function () {
+          //todo redirect to user/user_id
           console.log('Success!');
         });
       })

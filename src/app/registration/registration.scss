@@ -12,12 +12,12 @@
       width: 330px;
       padding: 10px;
       margin: 10px 0;
-      border: none;
+      border: 1px solid #ffffff;
       &:nth-child(even) {
         float: right;
       }
       &.error {
-        border: 1px solid #d50000;
+        border-color: #d50000;
         &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
           color: #d50000;
         }
@@ -36,9 +36,6 @@
           color: #d50000;
         }
       }
-    }
-    button {
-
     }
   }
 }
