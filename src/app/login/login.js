@@ -1,17 +1,21 @@
 import {inject} from 'aurelia-framework';
+import {Router} from 'aurelia-router';
+import {User} from 'User';
 import {HttpClient, json} from 'aurelia-fetch-client';
 import 'fetch';
 
-@inject(HttpClient)
+@inject(HttpClient, Router, User)
 export class Login {
 
-  constructor(http) {
+  constructor(http, router, user) {
     http.configure(config => {
       config
         .useStandardConfiguration()
         .withBaseUrl('http://local.fairlance.io:3001/');
     });
     this.http = http;
+    this.router = router;
+    this.user = user;
     this.setDefaultFields();
   }
 
@@ -34,9 +38,9 @@ export class Login {
         body: json(first.getUser())
       })
       .then(function (response) {
-        response.json().then(function () {
-          //todo redirect to user/user_id
-          console.log('Success!');
+        response.json().then(function (data) {
+          first.user.currentUser = data;
+          first.router.navigate('profile/' + data.id);
         });
       })
       .catch(function (error) {
