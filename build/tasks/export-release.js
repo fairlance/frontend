@@ -32,6 +32,7 @@ gulp.task('export-copy', function() {
 // use after prepare-release
 gulp.task('export', function(callback) {
   return runSequence(
+    'lint',
     'bundle',
     'clean-export',
     'export-copy',
