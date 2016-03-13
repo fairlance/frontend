@@ -2,11 +2,18 @@
   max-width: 300px;
 }
 
+
+.registration_template{
+  background: url("../dist/assets/images/background.png") no-repeat fixed;
+  background-position-x: 60%;
+  height: 100%;
+}
 .form-container {
   background: rgba(255, 255, 255, 0.8);
   padding: 50px;
   width: 800px;
   margin: 50px auto;
+
   form {
     input {
       width: 330px;

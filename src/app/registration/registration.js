@@ -1,19 +1,17 @@
 import {inject} from 'aurelia-framework';
-import {Router} from 'aurelia-router';
 import {HttpClient, json} from 'aurelia-fetch-client';
 import 'fetch';
 
-@inject(HttpClient, Router)
+@inject(HttpClient)
 export class Registration {
 
-  constructor(http, router) {
+  constructor(http) {
     http.configure(config => {
       config
         .useStandardConfiguration()
         .withBaseUrl('http://local.fairlance.io:3001/freelancer/');
     });
     this.http = http;
-    this.router = router;
     this.setDefaultFields();
   }
 
@@ -45,12 +43,12 @@ export class Registration {
     var first = this;
     first.setDefaultFields();
     first.http.fetch('new', {
-        method: 'post',
+        method: 'put',
         body: json(first.createNewUser(first))
       })
       .then(function (response) {
         response.json().then(function () {
-          first.router.navigate('login');
+          console.log('Success');
         });
       })
       .catch(function (error) {
@@ -59,6 +57,7 @@ export class Registration {
             first[element + 'Placeholder'] = data[element];
             first[element + 'Style'] = 'error';
             first[element] = '';
+            console.log(element, data[element]);
           }
         });
       });

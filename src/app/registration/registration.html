@@ -1,18 +1,20 @@
 <template>
-    <div class="logo-container registration">
-        <img src="dist/assets/images/Logo-11.png" alt="fairlance - freelance done fair">
+    <div class="registration_template">
+        <div class="logo-container registration">
+            <img src="dist/assets/images/Logo-11.png" alt="fairlance - freelance done fair">
+        </div>
+        <section class="clearfix form-container">
+            <form role="form" submit.delegate="submit()" class="clearfix">
+                <input type="text" value.bind="FirstName" name="firstName" class="${FirstNameStyle}" placeholder="${FirstNamePlaceholder}">
+                <input type="text" value.bind="LastName" name="lastName" class="${LastNameStyle}" placeholder="${LastNamePlaceholder}">
+                <input type="text" value.bind="Email" name="email" class="${EmailStyle}" placeholder="${EmailPlaceholder}">
+                <input type="password" value.bind="Password" name="password" class="${PasswordStyle}" placeholder="${PasswordPlaceholder}">
+                <input type="password" value.bind="RepeatPassword" name="repeatPassword" placeholder="${RepeatPasswordPlaceholder}">
+                <div class="button-container">
+                    <button class="btn-default btn">Prepopulate with Linkedin</button>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </div>
+            </form>
+        </section>
     </div>
-    <section class="clearfix form-container">
-        <form role="form" submit.delegate="submit()" class="clearfix">
-            <input type="text" value.bind="FirstName" name="firstName" class="${FirstNameStyle}" placeholder="${FirstNamePlaceholder}">
-            <input type="text" value.bind="LastName" name="lastName" class="${LastNameStyle}" placeholder="${LastNamePlaceholder}">
-            <input type="text" value.bind="Email" name="email" class="${EmailStyle}" placeholder="${EmailPlaceholder}">
-            <input type="password" value.bind="Password" name="password" class="${PasswordStyle}" placeholder="${PasswordPlaceholder}">
-            <input type="password" value.bind="RepeatPassword" name="repeatPassword" placeholder="${RepeatPasswordPlaceholder}">
-            <div class="button-container">
-                <button class="btn-default btn">Prepopulate with Linkedin</button>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </div>
-        </form>
-    </section>
 </template>

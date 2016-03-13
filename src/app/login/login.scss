@@ -1,11 +1,16 @@
-.form-container.login {
-  margin: 0 auto;
-  form {
-    .button-container {
-      button {
-        float: right;
+
+.login-background {
+  background: url("../dist/assets/images/background.png") no-repeat fixed;
+  background-position-x: 100%;
+  height: 100%;
+  .form-container.login {
+    margin: 0 auto;
+    form {
+      .button-container {
+        button {
+          float: right;
+        }
       }
     }
   }
 }
-
