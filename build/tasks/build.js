@@ -22,7 +22,7 @@ gulp.task('build-system', function () {
     .pipe(changed(paths.output, {extension: '.js'}))
     .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(to5(assign({}, compilerOptions, {modules: 'system'})))
-    .pipe(sourcemaps.write({includeContent: true}))
+    .pipe(sourcemaps.write({includeContent: false, sourceRoot: '/src'}))
     .pipe(rename({dirname: ''}))
     .pipe(gulp.dest(paths.output));
 });
