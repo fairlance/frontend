@@ -8,10 +8,6 @@ export class Landing {
   email = '';
   style = '';
 
-  getUrl() {
-    var urlElements = window.location.href.split('/');
-    return urlElements[0] + '//' + urlElements[2].split(':')[0] + ':3000/';
-  }
 
   constructor(http) {
     http.configure(config => {
@@ -20,6 +16,11 @@ export class Landing {
         .withBaseUrl(this.getUrl());
     });
     this.http = http;
+  }
+
+  getUrl() {
+    var urlElements = window.location.href.split('/');
+    return urlElements[0] + '//' + urlElements[2].split(':')[0] + ':3000/';
   }
 
   submit() {
