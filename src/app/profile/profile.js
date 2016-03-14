@@ -1,30 +1,23 @@
 import {inject} from 'aurelia-framework';
-import {User} from 'User';
 import {HttpClient, json} from 'aurelia-fetch-client';
 import 'fetch';
 
-@inject(HttpClient, User)
+@inject(HttpClient)
 export class Profile {
-
-  constructor(http, user) {
-    http.configure(config => {
-      config
-        .useStandardConfiguration()
-        .withDefaults({
-          headers: {
-            'Authorization': 'Bearer ' + user.currentUser.token
-          }
-        })
-        .withBaseUrl('http://local.fairlance.io:3001/freelancer/');
-    });
-    this.user = user;
-    this.http = http;
-    this.populateProfile();
-  }
 
   getUserId() {
     var urlElements = window.location.href.split('/');
     return urlElements[urlElements.length - 1];
+  }
+
+  constructor(http) {
+    http.configure(config => {
+      config
+        .useStandardConfiguration()
+        .withBaseUrl('http://local.fairlance.io:3001/freelancer/');
+    });
+    this.http = http;
+    this.populateProfile();
   }
 
   readProfileData(data) {
