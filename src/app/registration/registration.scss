@@ -1,7 +1,5 @@
 .registration{
-  background: url("../dist/assets/images/background.png") no-repeat fixed;
-  background-position-x: 100%;
-  min-height: 100%;
+  @include background();
 
   .logo-container {
     max-width: 300px;

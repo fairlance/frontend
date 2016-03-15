@@ -1,13 +1,13 @@
 <template>
-    <div class ="landing-background">
+    <div class ="landing">
         <div class="logo-container">
             <img src="dist/assets/images/Logo-11.png" alt="fairlance - freelance done fair">
         </div>
-        <form role="form" submit.delegate="submit()" class="clearfix landing">
+        <form role="form" submit.delegate="submit()" class="clearfix">
             <input type="text" value.bind="email" name="email" class="${style}" placeholder="${placeholder}">
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
-        <section class="clearfix landing">
+        <section class="clearfix">
             <article class="summary-box">
                 <h2><i class="fa fa-circle"></i>Fairlance</h2>
                 is a new generation web platform for freelance work, which introduces the concept of Fair Trade into freelance community, ensuring effective and high quality service and professional satisfaction for both employers and employees.
@@ -25,12 +25,12 @@
                 is a self-evolving, user-friendly and reliable web platform, a booster of creative work and a business incubator.
             </article>
         </section>
+        <footer class="clearfix">
+            <div class="social-icons">
+                <a href="https://www.facebook.com/fairlance" target="_blank" class="fa fa-facebook"></a>
+                <a href="https://twitter.com/fairlance_io" target="_blank" class="fa fa-twitter"></a>
+                <a href="https://www.linkedin.com/groups/7039061" target="_blank" class="fa fa-linkedin"></a>
+            </div>
+        </footer>
     </div>
-    <footer class="clearfix">
-        <div class="social-icons">
-            <a href="https://www.facebook.com/fairlance" target="_blank" class="fa fa-facebook"></a>
-            <a href="https://twitter.com/fairlance_io" target="_blank" class="fa fa-twitter"></a>
-            <a href="https://www.linkedin.com/groups/7039061" target="_blank" class="fa fa-linkedin"></a>
-        </div>
-    </footer>
 </template>

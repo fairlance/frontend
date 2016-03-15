@@ -1,8 +1,6 @@
 .login {
-  background: url("../dist/assets/images/background.png") no-repeat fixed;
-  background-position-x: 100%;
-  height: 100%;
-  .form-container.login {
+  @include background();
+  .form-container {
     margin: 0 auto;
     form {
       .button-container {
