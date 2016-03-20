@@ -10,16 +10,17 @@ export class Profile {
     http.configure(config => {
       config
         .useStandardConfiguration()
-        .withDefaults({
-          headers: {
-            'Authorization': 'Bearer ' + user.currentUser.token
-          }
-        })
+        //.withDefaults({
+        //  headers: {
+        //    'Authorization': 'Bearer ' + user.currentUser.token
+        //  }
+        //})
         .withBaseUrl('http://local.fairlance.io:3001/freelancer/');
     });
     this.user = user;
     this.http = http;
-    this.populateProfile();
+    //this.populateProfile();
+    this.readProfileData();
   }
 
   getUserId() {
@@ -28,10 +29,35 @@ export class Profile {
   }
 
   readProfileData(data) {
-    console.log(data);
-    this.FullName = data.FirstName + ' ' + data.LastName;
-    this.Title = 'Frontend Developer';
-    this.StartDate = new Date(data.Created).toLocaleDateString();
+    //this.FullName = data.FirstName + ' ' + data.LastName;
+    //this.StartDate = new Date(data.Created).toLocaleDateString();
+    this.user = {
+      FullName: 'Stefan Sopic',
+      Title: 'Frontend Develope',
+      Joined: '20.01.2016.',
+      Rating: 4.5,
+      TimeZone: 'CET',
+      Online: true,
+      ProjectCount: 26,
+      HourlyRate: [25, 50],
+      Currency: '$',
+      Reviews: [
+        {
+          Title: 'Stefan is awesome',
+          Content: 'He is truly the most fucking amazing developer on this shitty planet',
+          Rating: 5,
+          Created: '25.01.2016',
+          ClientName: 'Tara Radovic'
+        },
+        {
+          Title: 'Stefan is average',
+          Content: 'He is truly the most fucking average developer on this shitty planet',
+          Rating: 4,
+          Created: '28.01.2016',
+          ClientName: 'Milos Krsmanovic'
+        }
+      ]
+    };
   }
 
   populateProfile() {
