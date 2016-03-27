@@ -87,16 +87,24 @@
         </div>
     </div>
     <dialog class="mdl-dialog">
-        <div class="mdl-dialog__content">
-            <p>
-                Allow this site to collect usage data to improve your experience?
-            </p>
-        </div>
-        <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
-            <button type="button" class="mdl-button">Agree</button>
-            <button type="button" class="mdl-button close">Disagree</button>
-        </div>
+        <form role="form" submit.delegate="addProject()">
+            <div class="mdl-dialog__content">
+                <div >
+                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="name">
+                        <label class="mdl-textfield__label" for="name">Project name:</label>
+                    </div>
+                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <textarea class="mdl-textfield__input" type="text" rows= "1" id="desc"></textarea>
+                        <label class="mdl-textfield__label" for="desc">Project description</label>
+                    </div>
+                </div>
+            </div>
+            <div class="mdl-dialog__actions ">
+                <button mdl="button" type="submit" class="mdl-button" >Submit</button>
+                <button mdl="button" type="button" class="mdl-button" click.trigger="hideModal()">Discard</button>
+            </div>
+        </form>
+
     </dialog>
 </template>
-
-

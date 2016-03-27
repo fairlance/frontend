@@ -7,14 +7,15 @@ import 'fetch';
 export class Profile {
 
   constructor(http, user) {
+
     http.configure(config => {
       config
         .useStandardConfiguration()
-        //.withDefaults({
-        //  headers: {
-        //    'Authorization': 'Bearer ' + user.currentUser.token
-        //  }
-        //})
+        .withDefaults({
+          headers: {
+            'Authorization': 'Bearer ' + user.getToken()
+          }
+        })
         .withBaseUrl('http://local.fairlance.io:3001/freelancer/');
     });
     this.user = user;
@@ -78,7 +79,7 @@ export class Profile {
         {
           "Id": 1,
           "Name": "Enklava",
-          "Description": "With this film I want to explore the essence of the Serbian/Albanian dispute, which resulted – fifteen years ago – in war, destruction and crimes. But I want to raise the following question: is coexistence still possible between these two communities in a reality marked by the presence of enclaves, isolated islands of Christian minority surrounded by a sea of Muslim majority?",
+          "Description": "With this film I want to explore the essence of the Serbian/Albanian ...",
           "Type": "cell-wide",
           "Width": "mdl-cell--3-col",
           "Video" : "https://www.youtube.com/embed/Dddfro-Vt9M",
@@ -115,11 +116,19 @@ export class Profile {
   }
 
   showModal() {
-    console.log('sadasdasd');
     var dialog = document.querySelector('dialog');
     if (! dialog.showModal) {
       dialogPolyfill.registerDialog(dialog);
     }
     dialog.showModal();
+  }
+
+  hideModal() {
+    var dialog = document.querySelector('dialog');
+    dialog.close();
+  }
+
+  addProject() {
+    console.log('add project');
   }
 }

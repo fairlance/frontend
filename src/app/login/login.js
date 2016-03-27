@@ -1,13 +1,14 @@
 import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 import {User} from 'User';
+import {Cookie} from 'Cookie';
 import {HttpClient, json} from 'aurelia-fetch-client';
 import 'fetch';
 
-@inject(HttpClient, Router, User)
+@inject(HttpClient, Router, User, Cookie)
 export class Login {
 
-  constructor(http, router, user) {
+  constructor(http, router, user, cookie) {
     http.configure(config => {
       config
         .useStandardConfiguration()
@@ -16,6 +17,7 @@ export class Login {
     this.http = http;
     this.router = router;
     this.user = user;
+    this.cookie = cookie;
     this.setDefaultFields();
   }
 
@@ -31,6 +33,15 @@ export class Login {
     }
   }
 
+  setCookie(data) {
+    console.log(this.cookie);
+    this.cookie.set('fairlance', data, {
+      expiry: 8, // in hours
+      secure: false // Either true or false
+    });
+
+  }
+
   submit() {
     var first = this;
     first.http.fetch('login', {
@@ -40,6 +51,7 @@ export class Login {
       .then(function (response) {
         response.json().then(function (data) {
           first.user.currentUser = data;
+          first.setCookie(data);
           first.router.navigate('profile/' + data.id);
         });
       })
