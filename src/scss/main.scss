@@ -65,6 +65,12 @@ html {
     .page-host {
       height: 100%;
     }
+    a {
+      text-decoration: none;
+      &:hover {
+        text-decoration: none;
+      }
+    }
     @import "partials/_mixins.scss";
     @import "partials/_form.scss";
     @import "../app/landing/landing.scss";

@@ -31,13 +31,12 @@ export class Profile {
   readProfileData(data) {
     //this.FullName = data.FirstName + ' ' + data.LastName;
     //this.StartDate = new Date(data.Created).toLocaleDateString();
-    this.user = {
+    this.freelancer = {
       FullName: 'Stefan Sopic',
-      Title: 'Frontend Develope',
+      Title: 'Frontend Developer',
       Joined: '20.01.2016.',
       Rating: 4.5,
       TimeZone: 'CET',
-      Online: true,
       ProjectCount: 26,
       HourlyRate: [25, 50],
       Currency: '$',
@@ -55,6 +54,44 @@ export class Profile {
           Rating: 4,
           Created: '28.01.2016',
           ClientName: 'Milos Krsmanovic'
+        }
+      ],
+      References: [
+        {
+          "Id": 1,
+          "Name": "fairlance.io",
+          "Description": "Freelance platform with fair trade approach fairlance!",
+          "Type": "cell-normal",
+          "Width": "mdl-cell--3-col",
+          "ImageSrc" : "dist/assets/images/background.png",
+          "ClientId": 1,
+          "Client": {
+            "Id": 1,
+            "Name": "Goran Radovanovic",
+            "Description": "Whip cracker",
+            "Jobs": null,
+            "Projects": null,
+            "Created": "2016-03-26T00:00:00Z"
+          },
+          "Created": "2016-03-26T00:00:00Z"
+        },
+        {
+          "Id": 1,
+          "Name": "Enklava",
+          "Description": "With this film I want to explore the essence of the Serbian/Albanian dispute, which resulted – fifteen years ago – in war, destruction and crimes. But I want to raise the following question: is coexistence still possible between these two communities in a reality marked by the presence of enclaves, isolated islands of Christian minority surrounded by a sea of Muslim majority?",
+          "Type": "cell-wide",
+          "Width": "mdl-cell--3-col",
+          "Video" : "https://www.youtube.com/embed/Dddfro-Vt9M",
+          "ClientId": 1,
+          "Client": {
+            "Id": 1,
+            "Name": "Goran Radovanovic",
+            "Description": "Whip cracker",
+            "Jobs": null,
+            "Projects": null,
+            "Created": "2016-03-26T00:00:00Z"
+          },
+          "Created": "2016-03-26T00:00:00Z"
         }
       ]
     };
@@ -75,5 +112,14 @@ export class Profile {
           console.log(data);
         });
       });
+  }
+
+  showModal() {
+    console.log('sadasdasd');
+    var dialog = document.querySelector('dialog');
+    if (! dialog.showModal) {
+      dialogPolyfill.registerDialog(dialog);
+    }
+    dialog.showModal();
   }
 }

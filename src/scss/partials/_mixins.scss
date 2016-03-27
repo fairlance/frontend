@@ -1,5 +1,6 @@
 @mixin background() {
-  background: url("../dist/assets/images/background.png") no-repeat fixed;
+  background: url("../dist/assets/images/background.png") no-repeat;
+  background-size: cover;
   background-position-x: 100%;
   height: 100%;
 }

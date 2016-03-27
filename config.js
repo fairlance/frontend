@@ -20,6 +20,7 @@ System.config({
     "aurelia-history-browser": "npm:aurelia-history-browser@1.0.0-beta.1.1.4",
     "aurelia-loader-default": "npm:aurelia-loader-default@1.0.0-beta.1.1.3",
     "aurelia-logging-console": "npm:aurelia-logging-console@1.0.0-beta.1.1.4",
+    "aurelia-mdl": "github:genadis/aurelia-mdl@0.1.2",
     "aurelia-pal-browser": "npm:aurelia-pal-browser@1.0.0-beta.1.1.4",
     "aurelia-polyfills": "npm:aurelia-polyfills@1.0.0-beta.1.0.6",
     "aurelia-router": "npm:aurelia-router@1.0.0-beta.1.1.3",
@@ -33,6 +34,9 @@ System.config({
     "fetch": "github:github/fetch@0.11.0",
     "font-awesome": "npm:font-awesome@4.5.0",
     "text": "github:systemjs/plugin-text@0.0.3",
+    "github:genadis/aurelia-mdl@0.1.2": {
+      "encapsulated-mdl": "github:genadis/encapsulated-mdl@2.1.1"
+    },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },

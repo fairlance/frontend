@@ -1,156 +1,102 @@
 <template>
     <div class="profile mdl-layout__container">
-        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
-            <div class="mdl-layout__drawer">
-                <span class="mdl-layout-title">${user.FullName}</span>
-                <div class="profile-picture">
+        <div mdl="layout" class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+            <div class="mdl-layout__drawer mdl-grid">
+                <div class="mdl-cell mdl-cell--12-col mdl-cell--top profile-picture">
+                    <span class="mdl-layout-title">${freelancer.FullName}</span>
                     <img src="dist/assets/images/profile.png">
-                    <ul class="mdl-list">
-                        <li class="mdl-list__item">
-                            <span class="mdl-list__item-primary-content">
+                    <div class="list-container">
+                        <ul class="">
+                            <li class="">
+                            <span class="">
                                 <i class="material-icons">star</i>
-                                ${user.Rating}
+                                <span>${freelancer.Rating}</span>
                             </span>
-                        </li>
-                        <li class="mdl-list__item">
-                            <span class="mdl-list__item-primary-content">
-                              Timezone ${user.TimeZone}
+                            </li>
+                            <li class="">
+                            <span class="">
+                              Timezone ${freelancer.TimeZone}
                             </span>
-                        </li>
-                        <li class="mdl-list__item">
-                            <span class="mdl-list__item-primary-content">
-                              Online: ${user.Online}
+                            </li>
+                            <li class="">
+                            <span class="">
+                              ${freelancer.ProjectCount} Jobs
                             </span>
-                        </li>
-                        <li class="mdl-list__item">
-                            <span class="mdl-list__item-primary-content">
-                              ${user.ProjectCount} Jobs
-                            </span>
-                        </li>
-                    </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="profile-details">
+                        <p class="profile-title">${freelancer.Title}</p>
+                        <ul class="">
+                            <li class="">
+                                Currently Available
+                            </li>
+                            <li class="">
+                                Hourly rate ${freelancer.HourlyRate[0]} - ${freelancer.HourlyRate[1]}
+                            </li>
+                            <li class="m">
+                                Joined ${freelancer.Joined}
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="profile-details">
-
+                <div class="mdl-cell mdl-cell--12-col mdl-cell--bottom review-section clearfix">
+                    <div class="review-header">
+                        Reviews (${freelancer.Reviews.length})
+                    </div>
+                    <p class="review-title">
+                        ${freelancer.Reviews[0].Title}
+                        <span class="review-date">
+                            ${freelancer.Reviews[0].Created}
+                        </span>
+                    </p>
+                    <p class="review-content">${freelancer.Reviews[0].Content}</p>
+                    <span class="review-signature">${freelancer.Reviews[0].ClientName}</span>
                 </div>
             </div>
             <main class="mdl-layout__content">
-                <div class="page-content"><!-- Your content goes here --></div>
+                <div class="page-content">
+                    <div class="mdl-grid">
+                        <div repeat.for="cell of freelancer.References" class="mdl-cell  ${cell.Width} ${cell.Type}">
+                            <div class="cell-wrapper">
+                                <div class="mdl-card mdl-shadow--2dp">
+                                    <figure class="mdl-card__media" >
+                                        <img if.bind="cell.ImageSrc" src.bind="cell.ImageSrc">
+                                        <iframe if.bind="cell.Video" src.bind="cell.Video" frameborder="0" allowfullscreen></iframe>
+                                    </figure>
+                                    <div class="mdl-card__title">
+                                        <h2 class="mdl-card__title-text">${cell.Name}</h2>
+                                    </div>
+                                    <div class="mdl-card__supporting-text">
+                                        ${cell.Description}
+                                    </div>
+                                    <div class="mdl-card__actions mdl-card--border">
+                                        <a mdl="button" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                            Read more
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button click.trigger="showModal()" mdl="button" type="button" class="mdl-button mdl-js-button show-modal mdl-button--fab">
+                            <i class="material-icons">add</i>
+                        </button>
+                    </div>
+                </div>
             </main>
         </div>
     </div>
+    <dialog class="mdl-dialog">
+        <div class="mdl-dialog__content">
+            <p>
+                Allow this site to collect usage data to improve your experience?
+            </p>
+        </div>
+        <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+            <button type="button" class="mdl-button">Agree</button>
+            <button type="button" class="mdl-button close">Disagree</button>
+        </div>
+    </dialog>
 </template>
-        <!--<section class="details clearfix">-->
-            <!--<div class="row-details first"></div>-->
-            <!--<div class="row-details profile-pic clearfix">-->
-                <!--<img src="dist/assets/images/profile.png">-->
-                <!--<div>-->
-                    <!--<p class="name">${user.FullName}</p>-->
-                    <!--<p>${user.Title}</p>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="row-details">-->
-                <!--<p>Member since:</p>-->
-                <!--<p>${user.Joined}</p>-->
-            <!--</div>-->
-        <!--</section>-->
-        <!--<section class="portfolio clearfix">-->
-            <!--<div class="col-lg-3">-->
-                <!--<div class="project">-->
-                    <!--<img src="dist/assets/images/__fb_icon.png">-->
-                    <!--<div class="project-content">-->
-                        <!--<p>This is brief desc of the project, everything else is pointless.</p>-->
-                        <!--<div class="social">-->
-                            <!--<span class="fa fa-heart"></span>-->
-                            <!--<span class="fa fa-comment">1</span>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="project">-->
-                    <!--<img src="dist/assets/images/__Ilustracija.png">-->
-                    <!--<div class="project-content">-->
-                        <!--<p>This is brief desc of the project, everything else is pointless.</p>-->
-                        <!--<div class="social">-->
-                            <!--<span class="fa fa-heart"></span>-->
-                            <!--<span class="fa fa-comment">1</span>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="project">-->
-                    <!--<img src="dist/assets/images/profile.png">-->
-                    <!--<div class="project-content">-->
-                        <!--<p>This is brief desc of the project, everything else is pointless.</p>-->
-                        <!--<div class="social">-->
-                            <!--<span class="fa fa-heart"></span>-->
-                            <!--<span class="fa fa-comment">1</span>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="col-lg-3">-->
-                <!--<div class="project">-->
-                    <!--<img src="dist/assets/images/__Logo_top.png">-->
-                    <!--<div class="project-content">-->
-                        <!--<p>This is brief desc of the project, everything else is pointless.</p>-->
-                        <!--<div class="social">-->
-                            <!--<span class="fa fa-heart"></span>-->
-                            <!--<span class="fa fa-comment">1</span>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="project">-->
-                    <!--<img src="dist/assets/images/background.png">-->
-                    <!--<div class="project-content">-->
-                        <!--<p>This is brief desc of the project, everything else is pointless.</p>-->
-                        <!--<div class="social">-->
-                            <!--<span class="fa fa-heart"></span>-->
-                            <!--<span class="fa fa-comment">1</span>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="col-lg-3">-->
-                <!--<div class="project">-->
-                    <!--<img src="dist/assets/images/Icon_Reddit.png">-->
-                    <!--<div class="project-content">-->
-                        <!--<p>This is brief desc of the project, everything else is pointless.</p>-->
-                        <!--<div class="social">-->
-                            <!--<span class="fa fa-heart"></span>-->
-                            <!--<span class="fa fa-comment">1</span>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="project">-->
-                    <!--<img src="dist/assets/images/Logo-11.png">-->
-                    <!--<div class="project-content">-->
-                        <!--<p>This is brief desc of the project, everything else is pointless.</p>-->
-                        <!--<div class="social">-->
-                            <!--<span class="fa fa-heart"></span>-->
-                            <!--<span class="fa fa-comment">1</span>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="col-lg-3">-->
-                <!--<div class="project">-->
-                    <!--<img src="dist/assets/images/__Logo_top.png">-->
-                    <!--<div class="project-content">-->
-                        <!--<p>This is brief desc of the project, everything else is pointless.</p>-->
-                        <!--<div class="social">-->
-                            <!--<span class="fa fa-heart"></span>-->
-                            <!--<span class="fa fa-comment">1</span>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="project">-->
-                    <!--<img src="dist/assets/images/background.png">-->
-                    <!--<div class="project-content">-->
-                        <!--<p>This is brief desc of the project, everything else is pointless.</p>-->
-                        <!--<div class="social">-->
-                            <!--<span class="fa fa-heart"></span>-->
-                            <!--<span class="fa fa-comment">1</span>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</section>-->
+
 
