@@ -122,5 +122,14 @@
         }
       }
     }
+
+  }
+
+}
+.mdl-dialog {
+  form {
+    textarea {
+      resize: none;
+    }
   }
 }
