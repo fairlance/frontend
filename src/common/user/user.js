@@ -5,15 +5,18 @@ import {Cookie} from 'Cookie';
 export class User {
 
   constructor (cookie) {
-    this.currentUser = null;
+    this.currentUser = {};
     this.cookie = cookie;
   }
 
-  getToken () {
-    if (!this.currentUser) {
+  getCurrentUser () {
+    if (!this.currentUser.length) {
+      if (this.cookie.get('fairlance')) {
+        return this.cookie.get('fairlance');
+      }
+      return {};
 
-      return this.cookie.get('fairlance').token;
     }
-    return this.currentUser.token;
+    return this.currentUser;
   }
 }

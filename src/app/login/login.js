@@ -34,7 +34,6 @@ export class Login {
   }
 
   setCookie(data) {
-    console.log(this.cookie);
     this.cookie.set('fairlance', data, {
       expiry: 8, // in hours
       secure: false // Either true or false

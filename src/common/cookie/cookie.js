@@ -28,7 +28,6 @@ export class Cookie {
 
     if (options.expires) {
       var date = Date.now();
-      console.log(date, options.expires);
       date = new Date(date);
 
       str += `; expires=${date.toString()}`;

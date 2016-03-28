@@ -1,32 +1,29 @@
 import {inject} from 'aurelia-framework';
+import {Router} from 'aurelia-router';
 import {User} from 'User';
 import {HttpClient, json} from 'aurelia-fetch-client';
 import 'fetch';
 
-@inject(HttpClient, User)
+@inject(HttpClient, Router, User)
 export class Profile {
 
-  constructor(http, user) {
+  constructor(http, router, user) {
 
     http.configure(config => {
       config
         .useStandardConfiguration()
         .withDefaults({
           headers: {
-            'Authorization': 'Bearer ' + user.getToken()
+            'Authorization': 'Bearer ' + user.getCurrentUser().token
           }
         })
         .withBaseUrl('http://local.fairlance.io:3001/freelancer/');
     });
     this.user = user;
+    this.router = router;
     this.http = http;
-    //this.populateProfile();
-    this.readProfileData();
-  }
-
-  getUserId() {
-    var urlElements = window.location.href.split('/');
-    return urlElements[urlElements.length - 1];
+    this.populateProfile();
+    //this.readProfileData();
   }
 
   readProfileData(data) {
@@ -100,7 +97,7 @@ export class Profile {
 
   populateProfile() {
     var first = this;
-    first.http.fetch(first.getUserId(), {
+    first.http.fetch(first.user.getCurrentUser().id, {
         method: 'get'
       })
       .then(function (response) {
@@ -110,7 +107,9 @@ export class Profile {
       })
       .catch(function (error) {
         error.json().then(function (data) {
-          console.log(data);
+          if (data.error === "Not logged in.") {
+            first.router.navigate('login');
+          }
         });
       });
   }
