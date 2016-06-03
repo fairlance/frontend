@@ -105,6 +105,7 @@
               margin-bottom: 20px;
               width: 100%;
               .mdl-card__media {
+                margin: 0;
                 img {
                   width: 100%;
                 }
@@ -126,6 +127,7 @@
   }
 
 }
+
 .mdl-dialog {
   form {
     textarea {

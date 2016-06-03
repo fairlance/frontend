@@ -14,7 +14,7 @@ export class Profile {
         .useStandardConfiguration()
         .withDefaults({
           headers: {
-            'Authorization': 'Bearer ' + user.getCurrentUser().token
+            'Authorization': 'Bearer ' + user.getCurrentUser().data.token
           }
         })
         .withBaseUrl('http://local.fairlance.io:3001/freelancer/');
@@ -23,81 +23,15 @@ export class Profile {
     this.router = router;
     this.http = http;
     this.populateProfile();
-    //this.readProfileData();
   }
 
   readProfileData(data) {
-    //this.FullName = data.FirstName + ' ' + data.LastName;
-    //this.StartDate = new Date(data.Created).toLocaleDateString();
-    this.freelancer = {
-      FullName: 'Stefan Sopic',
-      Title: 'Frontend Developer',
-      Joined: '20.01.2016.',
-      Rating: 4.5,
-      TimeZone: 'CET',
-      ProjectCount: 26,
-      HourlyRate: [25, 50],
-      Currency: '$',
-      Reviews: [
-        {
-          Title: 'Stefan is awesome',
-          Content: 'He is truly the most fucking amazing developer on this shitty planet',
-          Rating: 5,
-          Created: '25.01.2016',
-          ClientName: 'Tara Radovic'
-        },
-        {
-          Title: 'Stefan is average',
-          Content: 'He is truly the most fucking average developer on this shitty planet',
-          Rating: 4,
-          Created: '28.01.2016',
-          ClientName: 'Milos Krsmanovic'
-        }
-      ],
-      References: [
-        {
-          "Id": 1,
-          "Name": "fairlance.io",
-          "Description": "Freelance platform with fair trade approach fairlance!",
-          "Type": "cell-normal",
-          "Width": "mdl-cell--3-col",
-          "ImageSrc" : "dist/assets/images/background.png",
-          "ClientId": 1,
-          "Client": {
-            "Id": 1,
-            "Name": "Goran Radovanovic",
-            "Description": "Whip cracker",
-            "Jobs": null,
-            "Projects": null,
-            "Created": "2016-03-26T00:00:00Z"
-          },
-          "Created": "2016-03-26T00:00:00Z"
-        },
-        {
-          "Id": 1,
-          "Name": "Enklava",
-          "Description": "With this film I want to explore the essence of the Serbian/Albanian ...",
-          "Type": "cell-wide",
-          "Width": "mdl-cell--3-col",
-          "Video" : "https://www.youtube.com/embed/Dddfro-Vt9M",
-          "ClientId": 1,
-          "Client": {
-            "Id": 1,
-            "Name": "Goran Radovanovic",
-            "Description": "Whip cracker",
-            "Jobs": null,
-            "Projects": null,
-            "Created": "2016-03-26T00:00:00Z"
-          },
-          "Created": "2016-03-26T00:00:00Z"
-        }
-      ]
-    };
+    this.freelancer = data;
   }
 
   populateProfile() {
     var first = this;
-    first.http.fetch(first.user.getCurrentUser().id, {
+    first.http.fetch(first.user.getCurrentUser().data.id, {
         method: 'get'
       })
       .then(function (response) {
