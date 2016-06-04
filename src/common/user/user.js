@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-framework';
-import {Cookie} from 'Cookie';
+import {Cookie} from 'cookie';
 
 @inject(Cookie)
 export class User {

@@ -1,6 +1,6 @@
 import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
-import {User} from 'User';
+import {User} from 'user';
 import {HttpClient, json} from 'aurelia-fetch-client';
 import 'fetch';
 
