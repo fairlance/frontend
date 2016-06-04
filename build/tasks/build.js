@@ -21,8 +21,8 @@ gulp.task('build-system', function () {
     .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
     .pipe(changed(paths.output, {extension: '.js'}))
     .pipe(sourcemaps.init({loadMaps: true}))
-    .pipe(to5(assign({}, compilerOptions, {modules: 'system'})))
-    .pipe(sourcemaps.write({includeContent: false, sourceRoot: '/src'}))
+    .pipe(to5(assign({}, compilerOptions.system())))
+    .pipe(sourcemaps.write('.', {includeContent: false, sourceRoot: '/src'}))
     .pipe(rename({dirname: ''}))
     .pipe(gulp.dest(paths.output));
 });

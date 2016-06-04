@@ -3,9 +3,11 @@ var paths = require('../paths');
 var to5 = require('gulp-babel');
 var plumber = require('gulp-plumber');
 var webdriverUpdate = require('gulp-protractor').webdriver_update;
-var webdriverStandalone = require("gulp-protractor").webdriver_standalone;
+var webdriverStandalone = require('gulp-protractor').webdriver_standalone;
 var protractor = require('gulp-protractor').protractor;
 var del = require('del');
+var compilerOptions = require('../babel-options');
+var assign = Object.assign || require('object.assign');
 
 // for full documentation of gulp-protractor,
 // please check https://github.com/mllrsohn/gulp-protractor
@@ -22,7 +24,7 @@ gulp.task('clean-e2e', function() {
 gulp.task('build-e2e', ['clean-e2e'], function() {
   return gulp.src(paths.e2eSpecsSrc)
     .pipe(plumber())
-    .pipe(to5())
+    .pipe(to5(assign({}, compilerOptions.commonjs())))
     .pipe(gulp.dest(paths.e2eSpecsDist));
 });
 
