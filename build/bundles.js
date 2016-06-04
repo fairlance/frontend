@@ -26,11 +26,9 @@ module.exports = {
         'aurelia-templating-router',
         'aurelia-loader-default',
         'aurelia-history-browser',
+        'aurelia-mdl',
         'aurelia-logging-console',
-        'bootstrap',
-        'bootstrap/css/bootstrap.css!text',
-        'fetch',
-        'jquery'
+        'fetch'
       ],
       'options': {
         'inject': true,
