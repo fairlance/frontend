@@ -8,20 +8,20 @@
                     <div class="list-container">
                         <ul class="">
                             <li class="">
-                            <span class="">
-                                <i class="material-icons">star</i>
-                                <span>${freelancer.rating}</span>
-                            </span>
+                                <span class="">
+                                    <i class="material-icons">star</i>
+                                    <span>${freelancer.rating}</span>
+                                </span>
                             </li>
                             <li class="">
-                            <span class="">
-                              Timezone ${freelancer.timeZone}
-                            </span>
+                                <span class="">
+                                  Timezone ${freelancer.timeZone}
+                                </span>
                             </li>
                             <li class="">
-                            <span class="">
-                              ${freelancer.projects.length} Jobs
-                            </span>
+                                <span>
+                                  ${freelancer.projects ? freelancer.projects.length : 0} Jobs
+                                </span>
                             </li>
                         </ul>
                     </div>
@@ -32,37 +32,38 @@
                                 Currently Available
                             </li>
                             <li class="">
-                                Hourly rate ${freelancer.hourlyRate[0]} - ${freelancer.hourlyRate[1]}
+                                Hourly rate ${freelancer.hourlyRateFrom} - ${freelancer.hourlyRateTo}
                             </li>
                             <li class="m">
-                                Joined ${freelancer.created}
+                                Joined ${freelancer.createdAt}
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="mdl-cell mdl-cell--12-col mdl-cell--bottom review-section clearfix">
                     <div class="review-header">
-                        Reviews (${freelancer.data.reviews.length})
+                        Reviews (${freelancer.reviews.length})
                     </div>
                     <p class="review-title">
-                        ${freelancer.data.reviews[0].title}
+                        ${freelancer.reviews[0].title}
                         <span class="review-date">
-                            ${freelancer.data.reviews[0].created}
+                            ${freelancer.reviews[0].created}
                         </span>
                     </p>
-                    <p class="review-content">${freelancer.data.reviews[0].content}</p>
-                    <span class="review-signature">${freelancer.data.reviews[0].client.name}</span>
+                    <p class="review-content">${freelancer.reviews[0].content}</p>
+                    <span class="review-signature">${freelancer.reviews[0].client.name}</span>
                 </div>
             </div>
             <main class="mdl-layout__content">
                 <div class="page-content">
                     <div class="mdl-grid">
-                        <div repeat.for="cell of freelancer.data.references" class="mdl-cell mdl-cell--3-col">
+                        <div repeat.for="cell of freelancer.references" class="mdl-cell mdl-cell--3-col">
                             <div class="cell-wrapper">
                                 <div class="mdl-card mdl-shadow--2dp">
-                                    <figure class="mdl-card__media" >
+                                    <figure class="mdl-card__media">
                                         <img if.bind="cell.media.image" src.bind="cell.media.image">
-                                        <iframe if.bind="cell.media.video" src.bind="cell.media.video" frameborder="0" allowfullscreen></iframe>
+                                        <iframe if.bind="cell.media.video" src.bind="cell.media.video" frameborder="0"
+                                                allowfullscreen></iframe>
                                     </figure>
                                     <div class="mdl-card__title">
                                         <h2 class="mdl-card__title-text">${cell.title}</h2>
@@ -71,14 +72,16 @@
                                         ${cell.content}
                                     </div>
                                     <div class="mdl-card__actions mdl-card--border">
-                                        <a mdl="button" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                        <a mdl="button"
+                                           class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                                             Read more
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <button click.trigger="showModal()" mdl="button" type="button" class="mdl-button mdl-js-button show-modal mdl-button--fab">
+                        <button click.trigger="showModal()" mdl="button" type="button"
+                                class="mdl-button mdl-js-button show-modal mdl-button--fab">
                             <i class="material-icons">add</i>
                         </button>
                     </div>
@@ -89,7 +92,7 @@
     <dialog class="mdl-dialog">
         <form role="form" submit.delegate="addProject()">
             <div class="mdl-dialog__content">
-                <div >
+                <div>
                     <div mdl="textfield" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="text" id="name">
                         <label class="mdl-textfield__label" for="name">Project name:</label>
@@ -101,7 +104,7 @@
                 </div>
             </div>
             <div class="mdl-dialog__actions ">
-                <button mdl="button" type="submit" class="mdl-button" >Submit</button>
+                <button mdl="button" type="submit" class="mdl-button">Submit</button>
                 <button mdl="button" type="button" class="mdl-button" click.trigger="hideModal()">Discard</button>
             </div>
         </form>

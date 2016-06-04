@@ -26,7 +26,7 @@ export class Profile {
   }
 
   readProfileData(data) {
-    this.freelancer = data;
+    this.freelancer = data.data;
   }
 
   populateProfile() {
