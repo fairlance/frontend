@@ -19,8 +19,7 @@ module.exports = {
     "jspm_packages/github/systemjs/plugin-text@0.0.3.js",
     "jspm_packages/github/systemjs/plugin-text@0.0.3/text.js",
     "node_modules/material-design-lite/material.css",
-    "dist/assets/**/*.*",
-    "dist/*.js"
+    "dist/assets/**/*.*"
   ],
   // this section lists any jspm packages that have
   // unbundled resources that need to be exported.
@@ -33,7 +32,7 @@ module.exports = {
       'font-awesome', [
       '/css/font-awesome.min.css',
       '/fonts/*'
-    ]
+      ]
     ]
   ]
 };

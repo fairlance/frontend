@@ -71,6 +71,13 @@ html {
         text-decoration: none;
       }
     }
+    .clearfix:after {
+      clear: both;
+      content: ".";
+      display: block;
+      height: 0;
+      visibility: hidden;
+    }
     @import "partials/_mixins.scss";
     @import "partials/_form.scss";
     @import "../app/landing/landing.scss";
