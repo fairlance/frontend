@@ -17,7 +17,7 @@ export class Profile {
             'Authorization': 'Bearer ' + user.getCurrentUser().data.token
           }
         })
-        .withBaseUrl('http://local.fairlance.io:3001/freelancer/');
+        .withBaseUrl('http://37.120.113.172:3001/freelancer/');
     });
     this.user = user;
     this.router = router;
