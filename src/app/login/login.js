@@ -12,7 +12,7 @@ export class Login {
     http.configure(config => {
       config
         .useStandardConfiguration()
-        .withBaseUrl('http://www.fairlance.io:3001/');
+        .withBaseUrl('http://local.fairlance.io:3001/');
     });
     this.http = http;
     this.router = router;

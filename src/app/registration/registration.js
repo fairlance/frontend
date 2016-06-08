@@ -10,7 +10,7 @@ export class Registration {
     http.configure(config => {
       config
         .useStandardConfiguration()
-        .withBaseUrl('http://www.fairlance.io:3001/freelancer/');
+        .withBaseUrl('http://local.fairlance.io:3001/freelancer/');
     });
     this.http = http;
     this.router = router;
