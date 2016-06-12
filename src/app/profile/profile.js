@@ -13,6 +13,7 @@ export class Profile {
     this.router = router;
     this.http = http;
     this.auth = {'Authorization': 'Bearer ' + user.getCurrentUser().data.token};
+
     this.populateProfile();
   }
 
@@ -42,28 +43,42 @@ export class Profile {
   }
 
   showModal() {
-    var dialog = document.querySelector('dialog');
-    if (!dialog.showModal) {
-      dialogPolyfill.registerDialog(dialog);
+    this.dialog = document.querySelector('dialog');
+    if (!this.dialog.showModal) {
+      dialogPolyfill.registerDialog(this.dialog);
     }
-    dialog.showModal();
+    this.dialog.showModal();
   }
 
   hideModal() {
-    var dialog = document.querySelector('dialog');
-    dialog.close();
+    this.dialog.close();
   }
 
-  addProject() {
-    console.log('add project');
+  prepareReference() {
+    let reference = {
+      freelancerId: this.user.getCurrentUser().data.id,
+      title: this.referenceTitle,
+      content: this.referenceContent,
+      media: {
+        image: this.imageUrl,
+        video: this.videoUrl
+      }
+    };
+    console.log(reference);
+    return json(reference);
+  }
+
+  addReference() {
     var first = this;
     first.http
       .fetch('freelancer/' + first.user.getCurrentUser().data.id + '/reference', {
         method: 'post',
+        body: this.prepareReference(),
         headers: this.auth
       })
       .then(function () {
-        dialog.close();
+        first.dialog.close();
+        first.populateProfile();
       })
       .catch(function (error) {
         console.log(error)

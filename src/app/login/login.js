@@ -23,8 +23,8 @@ export class Login {
 
   getUser() {
     return {
-      'email' : this.Email,
-      'password' : this.Password
+      'email' : this.email,
+      'password' : this.password
     }
   }
 

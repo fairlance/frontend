@@ -90,16 +90,24 @@
         </div>
     </div>
     <dialog class="mdl-dialog">
-        <form role="form" submit.delegate="addProject()">
+        <form role="form" submit.delegate="addReference()">
             <div class="mdl-dialog__content">
                 <div>
                     <div mdl="textfield" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="name">
+                        <input class="mdl-textfield__input" type="text" id="name" value.bind="referenceTitle">
                         <label class="mdl-textfield__label" for="name">Project name:</label>
                     </div>
                     <div mdl="textfield" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <textarea class="mdl-textfield__input" type="text" id="desc" rows="6" maxrows="6"></textarea>
+                        <textarea class="mdl-textfield__input" type="text" id="desc" value.bind="referenceContent" rows="6" maxrows="6"></textarea>
                         <label class="mdl-textfield__label" for="desc">Project description</label>
+                    </div>
+                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="video" value.bind="videoUrl">
+                        <label class="mdl-textfield__label" for="video">Video link:</label>
+                    </div>
+                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="image" value.bind="imageUrl">
+                        <label class="mdl-textfield__label" for="image">Image link:</label>
                     </div>
                 </div>
             </div>
