@@ -80,7 +80,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button click.trigger="showModal()" mdl="button" type="button"
+                        <button click.delegate="showModal()" mdl="button" type="button"
                                 class="mdl-button mdl-js-button show-modal mdl-button--fab">
                             <i class="material-icons">add</i>
                         </button>
@@ -105,7 +105,7 @@
             </div>
             <div class="mdl-dialog__actions ">
                 <button mdl="button" type="submit" class="mdl-button">Submit</button>
-                <button mdl="button" type="button" class="mdl-button" click.trigger="hideModal()">Discard</button>
+                <button mdl="button" type="button" class="mdl-button" click.delegate="hideModal()">Discard</button>
             </div>
         </form>
 

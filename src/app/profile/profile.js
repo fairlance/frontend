@@ -9,19 +9,10 @@ export class Profile {
 
   constructor(http, router, user) {
 
-    http.configure(config => {
-      config
-        .useStandardConfiguration()
-        .withDefaults({
-          headers: {
-            'Authorization': 'Bearer ' + user.getCurrentUser().data.token
-          }
-        })
-        .withBaseUrl('http://local.fairlance.io:3001/freelancer/');
-    });
     this.user = user;
     this.router = router;
     this.http = http;
+    this.auth = {'Authorization': 'Bearer ' + user.getCurrentUser().data.token};
     this.populateProfile();
   }
 
@@ -30,9 +21,11 @@ export class Profile {
   }
 
   populateProfile() {
-    var first = this;
-    first.http.fetch(first.user.getCurrentUser().data.id, {
-        method: 'get'
+    let first = this;
+    first.http
+      .fetch('freelancer/' + first.user.getCurrentUser().data.id, {
+        method: 'get',
+        headers: this.auth
       })
       .then(function (response) {
         response.json().then(function (data) {
@@ -50,7 +43,7 @@ export class Profile {
 
   showModal() {
     var dialog = document.querySelector('dialog');
-    if (! dialog.showModal) {
+    if (!dialog.showModal) {
       dialogPolyfill.registerDialog(dialog);
     }
     dialog.showModal();
@@ -63,5 +56,17 @@ export class Profile {
 
   addProject() {
     console.log('add project');
+    var first = this;
+    first.http
+      .fetch('freelancer/' + first.user.getCurrentUser().data.id + '/reference', {
+        method: 'post',
+        headers: this.auth
+      })
+      .then(function () {
+        dialog.close();
+      })
+      .catch(function (error) {
+        console.log(error)
+      });
   }
 }

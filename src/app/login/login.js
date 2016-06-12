@@ -9,11 +9,6 @@ import 'fetch';
 export class Login {
 
   constructor(http, router, user, cookie) {
-    http.configure(config => {
-      config
-        .useStandardConfiguration()
-        .withBaseUrl('http://local.fairlance.io:3001/');
-    });
     this.http = http;
     this.router = router;
     this.user = user;
@@ -35,8 +30,8 @@ export class Login {
 
   setCookie(data) {
     this.cookie.set('fairlance', data, {
-      expiry: 8, // in hours
-      secure: false // Either true or false
+      expiry: 8,
+      secure: false
     });
 
   }
@@ -51,7 +46,7 @@ export class Login {
         response.json().then(function (data) {
           first.user.currentUser = data;
           first.setCookie(data);
-          first.router.navigate('profile/' + data.id);
+          first.router.navigate('profile/' + data.data.id);
         });
       })
       .catch(function (error) {

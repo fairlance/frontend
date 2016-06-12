@@ -1,16 +1,21 @@
+import {HttpClient} from 'aurelia-fetch-client';
+
 export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
-    .developmentLogging();
+    .developmentLogging()
+    .plugin('aurelia-mdl');
 
-  //Uncomment the line below to enable animation.
-  //aurelia.use.plugin('aurelia-animator-css');
-  //if the css animator is enabled, add swap-order="after" to all router-view elements
+  let container = aurelia.container;
 
-  //Anyone wanting to use HTMLImports to load views, will need to install the following plugin.
-  //aurelia.use.plugin('aurelia-html-import-template-loader')
+  let http = new HttpClient();
+  http.configure(config => {
+    config
+      .useStandardConfiguration()
+      .withBaseUrl('http://local.fairlance.io:3001/')
+  });
 
-  aurelia.use.plugin('aurelia-mdl');
+  container.registerInstance(HttpClient, http);
 
   aurelia.start().then(a => a.setRoot());
 }
