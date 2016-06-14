@@ -12,7 +12,7 @@ export function configure(aurelia) {
   http.configure(config => {
     config
       .useStandardConfiguration()
-      .withBaseUrl('http://local.fairlance.io:3001/')
+      .withBaseUrl('http://pi.fairlance.io:3001/')
   });
 
   container.registerInstance(HttpClient, http);
