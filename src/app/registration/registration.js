@@ -1,17 +1,12 @@
 import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
-import {HttpClient, json} from 'aurelia-fetch-client';
+import {json} from 'aurelia-fetch-client';
 import 'fetch';
 
-@inject(HttpClient, Router)
+@inject('AppHttpClient', Router)
 export class Registration {
 
   constructor(http, router) {
-    http.configure(config => {
-      config
-        .useStandardConfiguration()
-        .withBaseUrl('http://local.fairlance.io:3001/freelancer/');
-    });
     this.http = http;
     this.router = router;
     this.setDefaultFields();
@@ -44,7 +39,7 @@ export class Registration {
   submit() {
     var first = this;
     first.setDefaultFields();
-    first.http.fetch('new', {
+    first.http.fetch('freelancer/new', {
         method: 'post',
         body: json(first.createNewUser(first))
       })

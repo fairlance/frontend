@@ -1,10 +1,10 @@
 import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 import {User} from 'user';
-import {HttpClient, json} from 'aurelia-fetch-client';
+import {json} from 'aurelia-fetch-client';
 import 'fetch';
 
-@inject(HttpClient, Router, User)
+@inject('AppHttpClient', Router, User)
 export class Profile {
 
   constructor(http, router, user) {

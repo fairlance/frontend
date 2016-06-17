@@ -1,8 +1,8 @@
 import {inject} from 'aurelia-framework';
-import {HttpClient, json} from 'aurelia-fetch-client';
+import {json} from 'aurelia-fetch-client';
 import 'fetch';
 
-@inject(HttpClient)
+@inject('RegisterHttpClient')
 export class Landing {
   placeholder = 'I want to subscribe_';
   email = '';
@@ -10,17 +10,7 @@ export class Landing {
 
 
   constructor(http) {
-    http.configure(config => {
-      config
-        .useStandardConfiguration()
-        .withBaseUrl(this.getUrl());
-    });
     this.http = http;
-  }
-
-  getUrl() {
-    var urlElements = window.location.href.split('/');
-    return urlElements[0] + '//' + urlElements[2].split(':')[0] + ':3000/';
   }
 
   submit() {

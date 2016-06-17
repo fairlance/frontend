@@ -2,10 +2,10 @@ import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 import {User} from 'user';
 import {Cookie} from 'cookie';
-import {HttpClient, json} from 'aurelia-fetch-client';
+import {json} from 'aurelia-fetch-client';
 import 'fetch';
 
-@inject(HttpClient, Router, User, Cookie)
+@inject('AppHttpClient', Router, User, Cookie)
 export class Login {
 
   constructor(http, router, user, cookie) {

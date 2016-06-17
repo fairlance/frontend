@@ -7,15 +7,22 @@ export function configure(aurelia) {
     .plugin('aurelia-mdl');
 
   let container = aurelia.container;
+  let app = new HttpClient();
+  let register = new HttpClient();
 
-  let http = new HttpClient();
-  http.configure(config => {
+  app.configure(config => {
     config
       .useStandardConfiguration()
       .withBaseUrl('http://pi.fairlance.io:3001/')
   });
+  register.configure(config => {
+    config
+      .useStandardConfiguration()
+      .withBaseUrl('http://pi.fairlance.io:3000/')
+  });
 
-  container.registerInstance(HttpClient, http);
+  container.registerInstance('AppHttpClient', app);
+  container.registerInstance('RegisterHttpClient', register);
 
   aurelia.start().then(a => a.setRoot());
 }
