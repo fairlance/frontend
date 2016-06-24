@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="mdl-card__actions clearfix">
-                    <button mdl="button" type="submit" class="mdl-button mdl-button--raised mdl-button--accent" >
+                    <button mdl="button" type="submit" class="mdl-button mdl-button--raised mdl-button--accent" disabled.bind="(password === undefined) || (repeatPassword !== password)">
                         Submit
                     </button>
                 </div>
