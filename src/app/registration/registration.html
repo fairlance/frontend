@@ -9,6 +9,11 @@
                     Passwords must be the same
                 </div>
                 <div class="mdl-card__supporting-text">
+                    <select value.bind="clientType">
+                        <option disabled selected required>Please select</option>
+                        <option value="freelancer">Freelancer</option>
+                        <option value="client">Client</option>
+                    </select>
                     <div mdl="textfield" class="mdl-textfield mdl-js-textfield">
                         <input class="mdl-textfield__input" value.bind="firstName" type="text" id="firstName" pattern="^[a-z\.]{1,}$" required="required">
                         <label class="mdl-textfield__label" for="firstName">First Name</label>
@@ -34,7 +39,7 @@
                     </div>
                 </div>
                 <div class="mdl-card__actions clearfix">
-                    <button mdl="button" type="submit" class="mdl-button mdl-button--raised mdl-button--accent" disabled.bind="(password === undefined) || (repeatPassword !== password)">
+                    <button mdl="button" type="submit" class="mdl-button mdl-button--raised mdl-button--accent" >
                         Submit
                     </button>
                 </div>

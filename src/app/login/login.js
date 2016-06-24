@@ -50,9 +50,7 @@ export class Login {
         });
       })
       .catch(function (error) {
-        error.json().then(function (data) {
-          console.log(data);
-        });
+        alert(error);
       });
   }
 }

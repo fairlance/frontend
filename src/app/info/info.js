@@ -15,7 +15,7 @@ export class Info {
     this.screen = false;
 
     this.handleScrollEvent = e => {
-      first.screen = true;
+      setTimeout(() => {first.screen = true}, 300);
       document.removeEventListener('scroll', first.handleScrollEvent);
     };
   }

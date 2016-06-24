@@ -18,12 +18,13 @@ export class Registration {
       email: this.email,
       password: this.password
     };
+
     return json(user);
   };
 
   submit() {
     var first = this;
-    first.http.fetch('freelancer/new', {
+    first.http.fetch(first.clientType + '/new', {
         method: 'post',
         body: first.createUser()
       })
