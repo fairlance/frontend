@@ -32,9 +32,7 @@ export class Registration {
         first.router.navigate('login');
       })
       .catch(function (error) {
-        error.json().then(function (data) {
-
-        });
+        alert(error)
       });
   }
 }

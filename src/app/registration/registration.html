@@ -15,12 +15,12 @@
                         <option value="client">Client</option>
                     </select>
                     <div mdl="textfield" class="mdl-textfield mdl-js-textfield">
-                        <input class="mdl-textfield__input" value.bind="firstName" type="text" id="firstName" pattern="^[a-z\.]{1,}$" required="required">
+                        <input class="mdl-textfield__input" value.bind="firstName" type="text" id="firstName" pattern="[a-zA-Z0-9]+" required="required">
                         <label class="mdl-textfield__label" for="firstName">First Name</label>
                         <span class="mdl-textfield__error">This field is mandatory</span>
                     </div>
                     <div mdl="textfield" class="mdl-textfield mdl-js-textfield">
-                        <input class="mdl-textfield__input" value.bind="lastName" type="text" id="lastName" pattern="^[a-z\d\.]{1,}$" required="required">
+                        <input class="mdl-textfield__input" value.bind="lastName" type="text" id="lastName" pattern="[a-zA-Z0-9]+" required="required">
                         <label class="mdl-textfield__label" for="lastName">Last Name</label>
                         <span class="mdl-textfield__error">This field is mandatory</span>
                     </div>
