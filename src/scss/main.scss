@@ -90,12 +90,21 @@ html {
       height: 0;
       visibility: hidden;
     }
+    .mdl-components {
+      &__warning {
+        padding: 0 20px;
+        color: #d50000;
+        font-size: 12px;
+      }
+    }
+
     @import "partials/_mixins.scss";
     @import "partials/_form.scss";
     @import "../app/landing/landing.scss";
     @import "../app/registration/registration.scss";
     @import "../app/login/login.scss";
     @import "../app/profile/profile.scss";
+    @import "../app/info/info.scss";
   }
 }
 

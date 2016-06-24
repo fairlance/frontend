@@ -1,11 +1,11 @@
 .registration{
   @include background();
 
-  .logo-container {
-    max-width: 300px;
-    margin: 0 auto;
-    img{
-      width: 100%;
+  .mdl-card {
+    max-width: 600px;
+    margin: 40px auto;
+    button {
+      float: right;
     }
   }
 

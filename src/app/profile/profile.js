@@ -9,11 +9,15 @@ export class Profile {
 
   constructor(http, router, user) {
 
-    this.user = user;
+    this.userId = user.getCurrentUser().data.id;
     this.router = router;
     this.http = http;
-    this.auth = {'Authorization': 'Bearer ' + user.getCurrentUser().data.token};
+    this.auth = {'Authorization': 'Bearer ' + user.token};
 
+  }
+
+  activate(params){
+    this.profileId = parseInt(params.id);
     this.populateProfile();
   }
 
@@ -24,7 +28,7 @@ export class Profile {
   populateProfile() {
     let first = this;
     first.http
-      .fetch('freelancer/' + first.user.getCurrentUser().data.id, {
+      .fetch('freelancer/' + this.profileId, {
         method: 'get',
         headers: this.auth
       })
@@ -56,7 +60,7 @@ export class Profile {
 
   prepareReference() {
     let reference = {
-      freelancerId: this.user.getCurrentUser().data.id,
+      freelancerId: this.userId,
       title: this.referenceTitle,
       content: this.referenceContent,
       media: {
@@ -64,14 +68,13 @@ export class Profile {
         video: this.videoUrl
       }
     };
-    console.log(reference);
     return json(reference);
   }
 
   addReference() {
     var first = this;
     first.http
-      .fetch('freelancer/' + first.user.getCurrentUser().data.id + '/reference', {
+      .fetch('freelancer/' + first.userId + '/reference', {
         method: 'post',
         body: this.prepareReference(),
         headers: this.auth

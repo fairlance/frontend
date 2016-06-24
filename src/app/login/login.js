@@ -46,7 +46,7 @@ export class Login {
         response.json().then(function (data) {
           first.user.currentUser = data;
           first.setCookie(data);
-          first.router.navigate('profile/' + data.data.id);
+          first.router.navigateToRoute('profile', {id: data.data.id}, {replace: true});
         });
       })
       .catch(function (error) {

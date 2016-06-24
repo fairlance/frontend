@@ -4,11 +4,28 @@ import {json} from 'aurelia-fetch-client';
 import 'fetch';
 
 @inject('AppHttpClient', Router)
-export class Registration {
+export class Info {
+  scrollTop = 0;
+  scrollLeft = 0;
 
   constructor(http, router) {
+    let first = this;
     this.http = http;
     this.router = router;
+    this.screen = false;
+
+    this.handleScrollEvent = e => {
+      first.screen = true;
+      document.removeEventListener('scroll', first.handleScrollEvent);
+    };
+  }
+
+  attached() {
+    document.addEventListener('scroll', this.handleScrollEvent);
+  }
+
+  detached() {
+    document.removeEventListener('scroll', this.handleScrollEvent);
   }
 
   createUser = function () {
@@ -23,6 +40,7 @@ export class Registration {
 
   submit() {
     var first = this;
+    console.log(first.createUser());
     first.http.fetch('freelancer/new', {
         method: 'post',
         body: first.createUser()

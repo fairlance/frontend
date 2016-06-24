@@ -1,18 +1,42 @@
 <template>
     <div class="registration">
-        <div class="logo-container ">
-            <img src="dist/assets/images/Logo-11.png" alt="fairlance - freelance done fair">
-        </div>
-        <section class="clearfix form-container">
-            <form role="form" submit.delegate="submit()" class="clearfix">
-                <input type="text" value.bind="FirstName" name="firstName" class="${FirstNameStyle}" placeholder="${FirstNamePlaceholder}">
-                <input type="text" value.bind="LastName" name="lastName" class="${LastNameStyle}" placeholder="${LastNamePlaceholder}">
-                <input type="text" value.bind="Email" name="email" class="${EmailStyle}" placeholder="${EmailPlaceholder}">
-                <input type="password" value.bind="Password" name="password" class="${PasswordStyle}" placeholder="${PasswordPlaceholder}">
-                <input type="password" value.bind="RepeatPassword" name="repeatPassword" placeholder="${RepeatPasswordPlaceholder}">
-                <div class="button-container">
-                    <button class="btn-default btn">Prepopulate with Linkedin</button>
-                    <button type="submit" class="btn btn-default">Submit</button>
+        <section class="clearfix login-form mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Register Fairlance</h2>
+            </div>
+            <form role="form" submit.delegate="submit()">
+                <div class="mdl-components__warning" if.bind="repeatPassword !== password">
+                    Passwords must be the same
+                </div>
+                <div class="mdl-card__supporting-text">
+                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" value.bind="firstName" type="text" id="firstName" pattern="^[a-z\.]{1,}$" required="required">
+                        <label class="mdl-textfield__label" for="firstName">First Name</label>
+                        <span class="mdl-textfield__error">This field is mandatory</span>
+                    </div>
+                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" value.bind="lastName" type="text" id="lastName" pattern="^[a-z\d\.]{1,}$" required="required">
+                        <label class="mdl-textfield__label" for="lastName">Last Name</label>
+                        <span class="mdl-textfield__error">This field is mandatory</span>
+                    </div>
+                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" value.bind="email" type="email" id="email" required="required">
+                        <label class="mdl-textfield__label" for="email">Email</label>
+                        <span class="mdl-textfield__error">This is not a valid email</span>
+                    </div>
+                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" value.bind="password" type="password" id="password" required="required">
+                        <label class="mdl-textfield__label" for="password">Password</label>
+                    </div>
+                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" value.bind="repeatPassword" type="password" id="repeatPassword" required="required">
+                        <label class="mdl-textfield__label" for="repeatPassword">Repeat Password</label>
+                    </div>
+                </div>
+                <div class="mdl-card__actions clearfix">
+                    <button mdl="button" type="submit" class="mdl-button mdl-button--raised mdl-button--accent" disabled.bind="(password === undefined) || (repeatPassword !== password)">
+                        Submit
+                    </button>
                 </div>
             </form>
         </section>

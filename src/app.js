@@ -1,12 +1,13 @@
 export class App {
   configureRouter(config, router) {
-    config.title = 'Aurelia';
-    //todo add routing restrictions
+    config.title = 'Fairlance';
+
     config.map([
-      {route: ['', 'landing'], name: 'landing', moduleId: 'landing', title: 'Welcome to Fairlance'},
-      {route: ['registration', 'registration'], name: 'registration', moduleId: 'registration', title: 'Register fairlance account'},
-      {route: ['login', 'login'], name: 'login', moduleId: 'login', title: 'Login to Fairlance'},
-      {route: ['profile', 'profile'], name: 'profile', moduleId: 'profile', title: 'Your Fairlance profile'}
+      {route: ['', 'landing'], name: 'landing', moduleId: 'landing', title: 'Welcome'},
+      {route: ['registration', 'registration'], name: 'registration', moduleId: 'registration', title: 'Register'},
+      {route: ['info', 'info'], name: 'info', moduleId: 'info', title: 'Additional info'},
+      {route: ['login', 'login'], name: 'login', moduleId: 'login', title: 'Login'},
+      {route: ['profile/:id', 'profile/:id'], name: 'profile', moduleId: 'profile', title: 'Profile'}
     ]);
 
     this.router = router;
