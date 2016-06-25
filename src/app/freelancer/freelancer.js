@@ -5,12 +5,11 @@ import {json} from 'aurelia-fetch-client';
 import 'fetch';
 
 @inject('AppHttpClient', Router, User)
-export class Profile {
+export class Freelancer {
 
   constructor(http, router, user) {
 
     this.user = user.getCurrentUser().data;
-    this.userId = user.getCurrentUser().data.id;
     this.router = router;
     this.http = http;
     this.auth = {'Authorization': 'Bearer ' + user.token};
@@ -29,7 +28,7 @@ export class Profile {
   populateProfile() {
     let first = this;
     first.http
-      .fetch(first.user.type + '/' + this.profileId, {
+      .fetch('freelancer/' + this.profileId, {
         method: 'get',
         headers: this.auth
       })
@@ -73,7 +72,7 @@ export class Profile {
   }
 
   addReference() {
-    var first = this;
+    let first = this;
     first.http
       .fetch('freelancer/' + first.user.id + '/reference', {
         method: 'post',
