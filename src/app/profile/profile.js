@@ -9,6 +9,7 @@ export class Profile {
 
   constructor(http, router, user) {
 
+    this.user = user.getCurrentUser().data;
     this.userId = user.getCurrentUser().data.id;
     this.router = router;
     this.http = http;
@@ -28,7 +29,7 @@ export class Profile {
   populateProfile() {
     let first = this;
     first.http
-      .fetch('freelancer/' + this.profileId, {
+      .fetch(first.user.type + '/' + this.profileId, {
         method: 'get',
         headers: this.auth
       })
@@ -60,7 +61,7 @@ export class Profile {
 
   prepareReference() {
     let reference = {
-      freelancerId: this.userId,
+      freelancerId: this.user.id,
       title: this.referenceTitle,
       content: this.referenceContent,
       media: {
@@ -74,7 +75,7 @@ export class Profile {
   addReference() {
     var first = this;
     first.http
-      .fetch('freelancer/' + first.userId + '/reference', {
+      .fetch('freelancer/' + first.user.id + '/reference', {
         method: 'post',
         body: this.prepareReference(),
         headers: this.auth
