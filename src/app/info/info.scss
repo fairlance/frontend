@@ -7,6 +7,87 @@
   }
   .more-content {
     height: 100%;
-    overflow: hidden;
+    overflow: auto;
+    .mdl-layout-title {
+      background-color: #383032;
+      color: #ffffff;
+      height: 40px;
+    }
+    section {
+      .add-profile-pic {
+        background-color: #595959;
+        height: 180px;
+        text-align: center;
+        img {
+          height: 60px;
+          width: 60px;
+          margin: 60px auto 18px;
+          display: block;
+        }
+        p {
+          color: #ffffff;
+          font-size: 18px;
+        }
+      }
+      .mdl-textfield {
+        margin-top: -10px;
+        margin-bottom: -10px;
+      }
+      .add-reference {
+        background-color: #BEBEBE;
+        text-align: center;
+        padding-top: 60px;
+        p {
+          color: #585858;
+          font-size: 18px;
+        }
+        i {
+          color: #828282;
+          font-size: 100px;
+          line-height: 50px;
+        }
+      }
+      &.tags {
+        border: 5px solid #585858;
+        padding: 10px;
+        form {
+          margin-top: -10px;
+          margin-bottom: -10px;
+        }
+        span {
+          background-color: #DFDFDF;
+          text-align: center;
+          padding-top: 10px;
+          height: 35px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+      }
+      &.rows {
+        .row {
+          border-bottom: 1px solid #DFDFDF;
+          > span {
+            font-size: 14px;
+          }
+          > p.slider {
+            width: 70px;
+            display: inline-block;
+          }
+        }
+      }
+      &.submit {
+        background-color: #BEBEBE;
+        height: 120px;
+        button {
+          margin: auto;
+          font-size: 12px;
+          line-height: 40px;
+          height: 40px;
+          background-color: #828282;
+          color: #ffffff;
+        }
+      }
+    }
   }
 }
