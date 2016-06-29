@@ -5,7 +5,7 @@ import {json} from 'aurelia-fetch-client';
 import 'fetch';
 
 @inject('AppHttpClient', Router, User)
-export class Client {
+export class Jobs {
 
   constructor(http, router, user) {
 
@@ -28,7 +28,7 @@ export class Client {
   populateProfile() {
     let first = this;
     first.http
-      .fetch('client/' + this.profileId, {
+      .fetch('freelancer/' + this.profileId, {
         method: 'get',
         headers: this.auth
       })
@@ -58,26 +58,30 @@ export class Client {
     this.dialog.close();
   }
 
-  prepareJob() {
-    let job = {
-      clientId: this.user.id,
-      name: this.name,
-      description: this.description,
-      isActive: this.active
+  prepareReference() {
+    let reference = {
+      freelancerId: this.user.id,
+      title: this.referenceTitle,
+      content: this.referenceContent,
+      media: {
+        image: this.imageUrl,
+        video: this.videoUrl
+      }
     };
-    return json(job);
+    return json(reference);
   }
 
-  addJob() {
+  addReference() {
     let first = this;
     first.http
-      .fetch('job/new', {
+      .fetch('freelancer/' + first.user.id + '/reference', {
         method: 'post',
-        body: this.prepareJob(),
+        body: this.prepareReference(),
         headers: this.auth
       })
       .then(function () {
         first.dialog.close();
+        first.populateProfile();
       })
       .catch(function (error) {
         console.log(error)

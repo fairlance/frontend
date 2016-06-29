@@ -80,7 +80,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button click.delegate="showModal()" mdl="button" type="button" if.bind="userId === profileId"
+                        <button click.delegate="showModal()" mdl="button" type="button"
                                 class="mdl-button mdl-js-button show-modal mdl-button--fab">
                             <i class="material-icons">add</i>
                         </button>
@@ -90,24 +90,23 @@
         </div>
     </div>
     <dialog class="mdl-dialog">
-        <form role="form" submit.delegate="addReference()">
+        <form role="form" submit.delegate="addJob()">
             <div class="mdl-dialog__content">
                 <div>
                     <div mdl="textfield" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="name" value.bind="referenceTitle">
-                        <label class="mdl-textfield__label" for="name">Project name:</label>
+                        <input class="mdl-textfield__input" type="text" id="name" value.bind="name">
+                        <label class="mdl-textfield__label" for="name">Job name:</label>
                     </div>
                     <div mdl="textfield" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <textarea class="mdl-textfield__input" type="text" id="desc" value.bind="referenceContent" rows="6" maxrows="6"></textarea>
-                        <label class="mdl-textfield__label" for="desc">Project description</label>
+                        <textarea class="mdl-textfield__input" type="text" id="desc" value.bind="description" rows="6" maxrows="6"></textarea>
+                        <label class="mdl-textfield__label" for="desc">Job description</label>
                     </div>
-                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="video" value.bind="videoUrl">
-                        <label class="mdl-textfield__label" for="video">Video link:</label>
-                    </div>
-                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="image" value.bind="imageUrl">
-                        <label class="mdl-textfield__label" for="image">Image link:</label>
+                    <div class="row mdl-grid">
+                        <span class="mdl-cell mdl-cell--2-col">Active</span>
+                        <p class="slider mdl-cell mdl-cell--2-col">
+                            <input mdl="slider" class="mdl-slider mdl-js-slider" type="range" min="0" max="1"
+                                   value.bind="active">
+                        </p>
                     </div>
                 </div>
             </div>
