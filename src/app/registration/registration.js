@@ -29,7 +29,7 @@ export class Registration {
         body: first.createUser()
       })
       .then(function () {
-        first.router.navigate('info');
+        first.router.navigateToRoute('info', {type: first.clientType}, {replace: true});
       })
       .catch(function (error) {
         alert(error)

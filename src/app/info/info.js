@@ -30,6 +30,10 @@ export class Info {
     document.removeEventListener('scroll', this.handleScrollEvent);
   }
 
+  activate(params){
+    this.user.type = parseInt(params.type);
+  }
+
   addInfo = function () {
     var first = this;
     first.http.fetch(first.user.type + '/' + first.user.id, {
