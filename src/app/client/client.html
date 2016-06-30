@@ -80,7 +80,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button click.delegate="showModal()" mdl="button" type="button"
+                        <button click.delegate="showModal()" mdl="button" type="button" if.bind="user.id === profileId"
                                 class="mdl-button mdl-js-button show-modal mdl-button--fab">
                             <i class="material-icons">add</i>
                         </button>

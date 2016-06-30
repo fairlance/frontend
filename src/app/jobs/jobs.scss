@@ -1,0 +1,53 @@
+.filters {
+  form {
+    margin-top: 20px;
+    .row {
+      height: 40px;
+      padding-top: 5px;
+      span {
+        padding-top: 5px;
+      }
+    }
+  }
+}
+.jobs {
+  padding-top: 30px;
+  .job {
+    margin-bottom: 10px;
+    .mdl-card__title {
+      margin-right: 30px;
+      p {
+        padding-right: 16px;
+        font-size: 10px;
+        i {
+          position: relative;
+          top: 3px;
+          font-size: 13px;
+        }
+        span:last-child {
+          float: right;
+        }
+      }
+      .mdl-card__title-text {
+        font-size: 18px;
+      }
+    }
+    .mdl-card__actions {
+      p {
+        span {
+          font-size: 10px;
+          padding-right: 10px;
+        }
+        i {
+          top: 8px;
+          position: relative;
+          &:last-child {
+            float: right;
+          }
+        }
+      }
+    }
+
+
+  }
+}
