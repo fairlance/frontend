@@ -53,23 +53,18 @@ export class Info {
   };
 
   gatherInfo = function () {
-    let info;
     if (this.user.type !== 'freelancer') {
-      info = {
-        skills: this.skills,
-        timezone: this.timezone,
-        available: this.available,
-        rateFrom: this.rateFrom,
-        rateTo: this.rateTo
-      };
+      this.user.skills = this.skills;
+      this.user.timezone = this.timezone;
+      this.user.isAvailable = this.available;
+      this.user.hourlyRateFrom = this.rateFrom;
+      this.user.hourlyRateTo = this.rateTo;
     } else {
-      info = {
-        timezone: this.timezone,
-        payment: this.payment,
-        industry: this.industry
-      };
+      this.user.timezone = this.timezone;
+      this.user.payment = this.payment;
+      this.user.industry = this.industry;
     }
-    return json(info);
+    return json(this.user);
   };
 
 }
