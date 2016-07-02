@@ -1,14 +1,16 @@
 import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 import {json} from 'aurelia-fetch-client';
+import {User} from 'user';
 import 'fetch';
 
-@inject('AppHttpClient', Router)
+@inject('AppHttpClient', Router, User)
 export class Registration {
 
-  constructor(http, router) {
+  constructor(http, router, user) {
     this.http = http;
     this.router = router;
+    this.user = user;
   }
 
   createUser = function () {
@@ -28,8 +30,11 @@ export class Registration {
         method: 'post',
         body: first.createUser()
       })
-      .then(function () {
-        first.router.navigateToRoute('info', {type: first.clientType}, {replace: true});
+      .then(function (response) {
+        response.json().then(function(data) {
+          first.user.currentUser = data;
+          first.router.navigate('info');
+        });
       })
       .catch(function (error) {
         alert(error)

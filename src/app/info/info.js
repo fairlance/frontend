@@ -14,7 +14,8 @@ export class Info {
     let first = this;
     this.http = http;
     this.router = router;
-    this.user = user.getCurrentUser().data;
+    this.user = user.getCurrentUser().data.user;
+    this.user.type = user.getCurrentUser().data.type;
 
     this.handleScrollEvent = e => {
       setTimeout(() => {first.screen = true}, 300);
@@ -28,10 +29,6 @@ export class Info {
 
   detached() {
     document.removeEventListener('scroll', this.handleScrollEvent);
-  }
-
-  activate(params){
-    this.user.type = parseInt(params.type);
   }
 
   addInfo = function () {

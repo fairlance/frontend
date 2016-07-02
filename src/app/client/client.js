@@ -7,6 +7,8 @@ import 'fetch';
 @inject('AppHttpClient', Router, User)
 export class Client {
 
+  active = true;
+
   constructor(http, router, user) {
 
     this.user = user.getCurrentUser().data;
