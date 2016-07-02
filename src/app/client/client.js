@@ -74,7 +74,7 @@ export class Client {
     let first = this;
     first.http
       .fetch('job/new', {
-        method: 'post',
+        method: 'put',
         body: this.prepareJob(),
         headers: this.auth
       })

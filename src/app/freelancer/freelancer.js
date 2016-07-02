@@ -75,7 +75,7 @@ export class Freelancer {
     let first = this;
     first.http
       .fetch('freelancer/' + first.user.id + '/reference', {
-        method: 'post',
+        method: 'put',
         body: this.prepareReference(),
         headers: this.auth
       })

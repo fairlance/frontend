@@ -34,7 +34,7 @@ export class Info {
   addInfo = function () {
     var first = this;
     first.http.fetch(first.user.type + '/' + first.user.id, {
-        method: 'update',
+        method: 'post',
         body: first.gatherInfo()
       })
       .then(function () {

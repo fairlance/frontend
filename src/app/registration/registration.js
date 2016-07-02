@@ -27,7 +27,7 @@ export class Registration {
   submit() {
     var first = this;
     first.http.fetch(first.clientType + '/new', {
-        method: 'post',
+        method: 'put',
         body: first.createUser()
       })
       .then(function (response) {
