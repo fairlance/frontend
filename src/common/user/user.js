@@ -10,7 +10,7 @@ export class User {
   }
 
   getCurrentUser () {
-    if (!this.currentUser || !this.currentUser.length) {
+    if (!this.currentUser || !Object.keys(this.currentUser).length) {
       if (this.cookie.get('fairlance')) {
         return this.cookie.get('fairlance');
       }
