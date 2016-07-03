@@ -3,55 +3,52 @@
         <div mdl="layout" class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
             <div class="mdl-layout__drawer mdl-grid">
                 <div class="mdl-cell mdl-cell--12-col mdl-cell--top profile-picture">
-                    <span class="mdl-layout-title">${freelancer.firstName} ${freelancer.lastName} - Client</span>
+                    <span class="mdl-layout-title">${client.firstName} ${client.lastName} - Client</span>
                     <img src="dist/assets/images/profile.png">
                     <div class="list-container">
                         <ul class="">
                             <li class="">
                                 <span class="">
                                     <i class="material-icons">star</i>
-                                    <span>${freelancer.rating}</span>
+                                    <span>${client.rating}</span>
                                 </span>
                             </li>
                             <li class="">
                                 <span class="">
-                                  Timezone ${freelancer.timeZone}
+                                  Timezone ${client.timeZone}
                                 </span>
                             </li>
                             <li class="">
                                 <span>
-                                  ${freelancer.projects ? freelancer.projects.length : 0} Jobs
+                                  ${client.projects ? client.projects.length : 0} Jobs
                                 </span>
                             </li>
                         </ul>
                     </div>
                     <div class="profile-details">
-                        <p class="profile-title">${freelancer.title}</p>
+                        <p class="profile-title">${client.title}</p>
                         <ul class="">
                             <li class="">
                                 Currently Available
                             </li>
-                            <li class="">
-                                Hourly rate ${freelancer.hourlyRateFrom} - ${freelancer.hourlyRateTo}
-                            </li>
                             <li class="m">
-                                Joined ${freelancer.createdAt}
+                                Joined ${client.createdAt}
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="mdl-cell mdl-cell--12-col mdl-cell--bottom review-section clearfix">
                     <div class="review-header">
-                        Reviews (${freelancer.reviews.length})
+                        Reviews (${client.reviews.length})
                     </div>
                     <p class="review-title">
-                        ${freelancer.reviews[0].title}
+                        ${client.reviews[0].title}
                         <span class="review-date">
-                            ${freelancer.reviews[0].created}
+                            ${client.reviews[0].created}
                         </span>
                     </p>
-                    <p class="review-content">${freelancer.reviews[0].content}</p>
-                    <span class="review-signature">${freelancer.reviews[0].client.name}</span>
+                    <p class="review-content">${client.reviews[0].content}</p>
+                    <span class="review-signature">${client.reviews[0].client.name}</span>
                 </div>
             </div>
             <main class="mdl-layout__content">
