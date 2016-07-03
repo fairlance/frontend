@@ -57,7 +57,7 @@
             <main class="mdl-layout__content">
                 <div class="page-content">
                     <div class="mdl-grid">
-                        <div repeat.for="cell of freelancer.references" class="mdl-cell mdl-cell--3-col">
+                        <div repeat.for="cell of client.jobs" class="mdl-cell mdl-cell--3-col">
                             <div class="cell-wrapper">
                                 <div class="mdl-card mdl-shadow--2dp">
                                     <figure class="mdl-card__media">
@@ -66,10 +66,10 @@
                                                 allowfullscreen></iframe>
                                     </figure>
                                     <div class="mdl-card__title">
-                                        <h2 class="mdl-card__title-text">${cell.title}</h2>
+                                        <h2 class="mdl-card__title-text">${cell.name}</h2>
                                     </div>
                                     <div class="mdl-card__supporting-text">
-                                        ${cell.content}
+                                        ${cell.description}
                                     </div>
                                     <div class="mdl-card__actions mdl-card--border">
                                         <a mdl="button"

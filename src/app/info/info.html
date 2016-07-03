@@ -27,7 +27,7 @@
                             <label class="mdl-textfield__label" for="add_skill">Add skill_</label>
                         </div>
                     </form>
-                    <span repeat.for="skill of skills" class="mdl-cell mdl-cell--2-col">#${skill}</span>
+                    <span repeat.for="skill of skills" class="mdl-cell mdl-cell--2-col">#${skill.name}</span>
                 </section>
                 <section class="section--center mdl-grid rows">
                     <div class="row mdl-cell mdl-cell--4-col-phone">
@@ -48,8 +48,10 @@
                     <div class="row mdl-cell mdl-cell--8-col">
                         <span class="mdl-cell mdl-cell--1-col">Available</span>
                         <p class="slider">
-                            <input mdl="slider" class="mdl-slider mdl-js-slider" type="range" min="0" max="1"
-                                   value.bind="available">
+                            <label mdl="switch" class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="available">
+                                <input type="checkbox" id="available" class="mdl-switch__input"  checked.bind="available">
+                                <span class="mdl-switch__label"></span>
+                            </label>
                         </p>
                     </div>
                     <p class="row mdl-cell mdl-cell--4-col">

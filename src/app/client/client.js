@@ -24,7 +24,7 @@ export class Client {
   }
 
   readProfileData(data) {
-    this.freelancer = data.data;
+    this.client = data.data;
   }
 
   populateProfile() {
@@ -79,6 +79,7 @@ export class Client {
         headers: this.auth
       })
       .then(function () {
+        first.populateProfile();
         first.dialog.close();
       })
       .catch(function (error) {

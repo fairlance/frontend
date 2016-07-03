@@ -9,6 +9,7 @@ export class Info {
   scrollTop = 0;
   skills = [];
   screen = false;
+  available = true;
 
   constructor(http, router, user) {
     let first = this;
@@ -42,29 +43,32 @@ export class Info {
       })
       .catch(function (error) {
         error.json().then(function (data) {
-          alert(data);
+          console.log(data.error);
         });
       });
   };
 
   addSkill = function () {
-    this.skills.push(this.newSkill);
+    this.skills.push({
+      name: this.newSkill
+    });
     this.newSkill = '';
   };
 
   gatherInfo = function () {
-    if (this.user.type !== 'freelancer') {
-      this.user.skills = this.skills;
-      this.user.timezone = this.timezone;
-      this.user.isAvailable = this.available;
-      this.user.hourlyRateFrom = this.rateFrom;
-      this.user.hourlyRateTo = this.rateTo;
+    let user = {
+      timezone: this.timezone
+    };
+    if (this.user.type === 'freelancer') {
+      user.skills = this.skills;
+      user.isAvailable = this.available;
+      user.hourlyRateFrom = parseInt(this.rateFrom);
+      user.hourlyRateTo = parseInt(this.rateTo);
     } else {
-      this.user.timezone = this.timezone;
-      this.user.payment = this.payment;
-      this.user.industry = this.industry;
+      user.payment = this.payment;
+      user.industry = this.industry;
     }
-    return json(this.user);
+    return json(user);
   };
 
 }
