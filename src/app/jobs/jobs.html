@@ -49,84 +49,17 @@
             <main class="jobs mdl-layout__content">
                 <div class="page-content">
                     <div class="mdl-grid">
-                        <div class="job mdl-card mdl-shadow--2dp">
+                        <div repeat.for="job of jobs" class="job mdl-card mdl-shadow--2dp">
                             <div class="mdl-card__title mdl-grid">
                                 <p class="mdl-cell mdl-cell--6-col">
                                     <span>Gjorey Nadiq</span>
                                     <i class="material-icons">star</i>
                                     <span>4.9</span>
-                                    <span>11 NOV 2016 00:02AM</span>
+                                    <span>${job.createdAt}</span>
                                 </p>
-                                <h2 class="mdl-card__title-text mdl-cell mdl-cell--6-col">
-                                    $200-$450 Create Custom Typography
-                                </h2>
+                                <h2 class="mdl-card__title-text mdl-cell mdl-cell--6-col">${job.name}</h2>
                             </div>
-                            <div class="mdl-card__supporting-text">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Mauris sagittis pellentesque lacus eleifend lacinia...
-                            </div>
-                            <div class="mdl-card__actions mdl-card--border">
-                                <p>
-                                    <i class="material-icons">visibility</i>
-                                    <span>2 days left</span>
-                                    <span>17 proposals</span>
-                                    <span>3 files attached</span>
-                                    <i class="material-icons">flag</i>
-                                </p>
-                            </div>
-                            <div class="mdl-card__menu">
-                                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                                    <i class="material-icons">close</i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="job mdl-card mdl-shadow--2dp">
-                            <div class="mdl-card__title mdl-grid">
-                                <p class="mdl-cell mdl-cell--6-col">
-                                    <span>Gjorey Nadiq</span>
-                                    <i class="material-icons">star</i>
-                                    <span>4.9</span>
-                                    <span>11 NOV 2016 00:02AM</span>
-                                </p>
-                                <h2 class="mdl-card__title-text mdl-cell mdl-cell--6-col">
-                                    $200-$450 Create Custom Typography
-                                </h2>
-                            </div>
-                            <div class="mdl-card__supporting-text">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Mauris sagittis pellentesque lacus eleifend lacinia...
-                            </div>
-                            <div class="mdl-card__actions mdl-card--border">
-                                <p>
-                                    <i class="material-icons">visibility</i>
-                                    <span>2 days left</span>
-                                    <span>17 proposals</span>
-                                    <span>3 files attached</span>
-                                    <i class="material-icons">flag</i>
-                                </p>
-                            </div>
-                            <div class="mdl-card__menu">
-                                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                                    <i class="material-icons">close</i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="job mdl-card mdl-shadow--2dp">
-                            <div class="mdl-card__title mdl-grid">
-                                <p class="mdl-cell mdl-cell--6-col">
-                                    <span>Gjorey Nadiq</span>
-                                    <i class="material-icons">star</i>
-                                    <span>4.9</span>
-                                    <span>11 NOV 2016 00:02AM</span>
-                                </p>
-                                <h2 class="mdl-card__title-text mdl-cell mdl-cell--6-col">
-                                    $200-$450 Create Custom Typography
-                                </h2>
-                            </div>
-                            <div class="mdl-card__supporting-text">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Mauris sagittis pellentesque lacus eleifend lacinia...
-                            </div>
+                            <div class="mdl-card__supporting-text">${job.description}</div>
                             <div class="mdl-card__actions mdl-card--border">
                                 <p>
                                     <i class="material-icons">visibility</i>

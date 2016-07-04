@@ -16,22 +16,22 @@ export class Jobs {
     this.http = http;
     this.auth = {'Authorization': 'Bearer ' + user.token};
 
-  }
+    this.getJobs();
 
-  getFilters() {
-    return;
   }
 
   getJobs() {
     let first = this;
     first.http
-      .fetch('jobs/', {
+      .fetch('job/', {
         method: 'get',
-        body: this.getFilters(),
         headers: this.auth
       })
-      .then(function (data) {
-        first.jobs = data;
+      .then(function (response) {
+        response.json().then(function (data) {
+          first.jobs = data.data;
+          console.log(first.jobs);
+        });
       })
       .catch(function (error) {
         console.log(error)
