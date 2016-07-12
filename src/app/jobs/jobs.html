@@ -1,4 +1,5 @@
 <template>
+    <require from="./date-formatter"></require>
     <div class="mdl-layout__container">
         <div mdl="layout" class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
             <div class="filters mdl-layout__drawer mdl-grid">
@@ -52,10 +53,10 @@
                         <div repeat.for="job of jobs" class="job mdl-card mdl-shadow--2dp">
                             <div class="mdl-card__title mdl-grid">
                                 <p class="mdl-cell mdl-cell--6-col">
-                                    <span>Gjorey Nadiq</span>
+                                    <a route-href="route:client;  params.bind:{id:job.client.id}">${job.client.firstName} ${job.client.lastName}</a>
                                     <i class="material-icons">star</i>
-                                    <span>4.9</span>
-                                    <span>${job.createdAt}</span>
+                                    <span>${job.client.rating}</span>
+                                    <span>${job.createdAt | dateFormatter}</span>
                                 </p>
                                 <h2 class="mdl-card__title-text mdl-cell mdl-cell--6-col">${job.name}</h2>
                             </div>

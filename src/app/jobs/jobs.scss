@@ -16,9 +16,14 @@
     margin-bottom: 10px;
     .mdl-card__title {
       margin-right: 30px;
+      margin-left: 0;
       p {
         padding-right: 16px;
         font-size: 10px;
+        a {
+          color: #000000;
+          text-decoration: underline;
+        }
         i {
           position: relative;
           top: 3px;
