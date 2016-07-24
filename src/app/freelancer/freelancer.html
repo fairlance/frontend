@@ -1,6 +1,7 @@
 <template>
     <div class="profile mdl-layout__container">
         <div mdl="layout" class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+
             <div class="mdl-layout__drawer mdl-grid">
                 <div class="mdl-cell mdl-cell--12-col mdl-cell--top profile-picture">
                     <span class="mdl-layout-title">${freelancer.firstName} ${freelancer.lastName} - Freelancer</span>
@@ -87,6 +88,7 @@
                     </div>
                 </div>
             </main>
+
         </div>
     </div>
     <dialog class="mdl-dialog">
@@ -98,7 +100,8 @@
                         <label class="mdl-textfield__label" for="name">Project name:</label>
                     </div>
                     <div mdl="textfield" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <textarea class="mdl-textfield__input" type="text" id="desc" value.bind="referenceContent" rows="6" maxrows="6"></textarea>
+                        <textarea class="mdl-textfield__input" type="text" id="desc" value.bind="referenceContent"
+                                  rows="6" maxrows="6"></textarea>
                         <label class="mdl-textfield__label" for="desc">Project description</label>
                     </div>
                     <div mdl="textfield" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">

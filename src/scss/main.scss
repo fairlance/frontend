@@ -99,8 +99,14 @@ html {
       }
     }
 
+    //partials
     @import "partials/_mixins.scss";
     @import "partials/_form.scss";
+
+    //common
+    @import "../common/custom-elements/navigation/navigation.scss";
+
+    //pages
     @import "../app/landing/landing.scss";
     @import "../app/registration/registration.scss";
     @import "../app/login/login.scss";
