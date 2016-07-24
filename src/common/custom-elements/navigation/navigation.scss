@@ -1,3 +1,11 @@
+.mdl-layout {
+  .mdl-layout__drawer-button {
+    left: inherit;
+    right: 0;
+    color: #ffffff;
+  }
+
+}
 .main-menu {
   width: 100%;
   background-color: #383032;
@@ -11,3 +19,4 @@
     margin-left: 14px;
   }
 }
+
