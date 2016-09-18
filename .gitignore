@@ -8,3 +8,4 @@ bower_components
 dist
 build/reports
 styles
+conf.json

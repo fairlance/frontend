@@ -6,59 +6,84 @@
     <div class="mdl-layout__container">
         <div mdl="layout" class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
             <div class="filters mdl-layout__drawer mdl-grid">
-                <div class="mdl-cell mdl-cell--12-col mdl-cell--top profile-picture">
-                    <span class="mdl-layout-title">Set your filters here</span>
-                    <form>
-                        <div class="row mdl-grid mdl-grid--no-spacing">
-                            <span class="mdl-cell mdl-cell--2-col">Filter 1</span>
-                            <label mdl="switch" class="mdl-switch mdl-js-switch mdl-cell mdl-cell--2-col" for="switch-1">
-                                <input type="checkbox" id="switch-1" class="mdl-switch__input" checked>
-                                <span class="mdl-switch__label"></span>
-                            </label>
-                        </div>
-                        <div class="row mdl-grid mdl-grid--no-spacing">
-                            <span class="mdl-cell mdl-cell--2-col">Filter 2</span>
-                            <label mdl="switch" class="mdl-switch mdl-js-switch mdl-cell mdl-cell--2-col" for="switch-2">
-                                <input type="checkbox" id="switch-2" class="mdl-switch__input" >
-                                <span class="mdl-switch__label"></span>
-                            </label>
-                        </div>
-                        <div class="row mdl-grid mdl-grid--no-spacing">
-                            <span class="mdl-cell mdl-cell--2-col">Filter 3</span>
-                            <label mdl="switch" class="mdl-switch mdl-js-switch mdl-cell mdl-cell--2-col" for="switch-3">
-                                <input type="checkbox" id="switch-3" class="mdl-switch__input" checked>
-                                <span class="mdl-switch__label"></span>
-                            </label>
-                        </div>
-                        <div class="row mdl-grid mdl-grid--no-spacing">
-                            <span class="mdl-cell mdl-cell--2-col">Filter 4</span>
-                            <label mdl="switch" class="mdl-switch mdl-js-switch mdl-cell mdl-cell--2-col" for="switch-4">
-                                <input type="checkbox" id="switch-4" class="mdl-switch__input" checked>
-                                <span class="mdl-switch__label"></span>
-                            </label>
-                        </div>
-                        <div class="row mdl-grid mdl-grid--no-spacing">
-                            <span class="mdl-cell mdl-cell--2-col">Filter 5</span>
-                            <label mdl="switch" class="mdl-switch mdl-js-switch mdl-cell mdl-cell--2-col" for="switch-5">
-                                <input type="checkbox" id="switch-5" class="mdl-switch__input" >
-                                <span class="mdl-switch__label"></span>
-                            </label>
-                        </div>
-                        <div class="row">
-                            <button mdl="button" type="submit" class="mdl-button">Submit</button>
-                        </div>
-                    </form>
-                </div>
+                <h3>to be continued</h3>
             </div>
             <main class="jobs mdl-layout__content">
+                <div class="search-init clearfix" click.delegate="toggleSearch()" show.bind="!visibleSearch">
+                    <span>Search setup</span>
+                    <i class="material-icons">search</i>
+                </div>
+                <div class="search-dropdown clearfix" show.bind="visibleSearch">
+                    <p class="header">
+                        Search setup
+                        <i class="material-icons" click.delegate="toggleSearch()">close</i>
+                    </p>
+                    <section class="tags clearfix">
+                        <form class="" role="form">
+                            <div mdl="textfield" class="mdl-textfield mdl-js-textfield">
+                                <input class="mdl-textfield__input" type="text" id="add_tag" value.bind="newTag" autocomplete="off">
+                                <label class="mdl-textfield__label" for="add_tag">Add tag_</label>
+                                <ul mdl="menu" class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+                                    for="add_tag">
+                                    <li repeat.for="tag of visibleTags" class="mdl-menu__item"
+                                        click.delegate="addTag(tag)">${tag}
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </form>
+                        <span repeat.for="tag of selectedTags" class="tag">
+                            #${tag.name}
+                            <i class="material-icons" click.delegate="deleteTag($index)">close</i>
+                        </span>
+                    </section>
+                    <section class="budget clearfix">
+                        <span>BUDGET</span>
+                        <div mdl="textfield" class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" id="price_from" value.bind="priceFrom"
+                                   autocomplete="off">
+                            <label class="mdl-textfield__label" for="price_from">Price from</label>
+                        </div>
+                        <span>to</span>
+                        <div mdl="textfield" class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" id="price_to" value.bind="priceTo"
+                                   autocomplete="off">
+                            <label class="mdl-textfield__label" for="price_to">Price to</label>
+                        </div>
+                    </section>
+                    <section class="time-frame clearfix">
+                        <span>Starts:</span>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="flash1">
+                            <input checked class="mdl-radio__button" id="flash1" name="flash" type="radio"
+                                   value="on">
+                            <span class="mdl-radio__label">24h</span>
+                        </label>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="flash2">
+                            <input class="mdl-radio__button" id="flash2" name="flash" type="radio" value="off">
+                            <span class="mdl-radio__label">48h</span>
+                        </label>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="flash3">
+                            <input class="mdl-radio__button" id="flash3" name="flash" type="radio" value="auto">
+                            <span class="mdl-radio__label">3 days</span>
+                        </label>
+                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="flash4">
+                            <input class="mdl-radio__button" id="flash4" name="flash" type="radio" value="auto">
+                            <span class="mdl-radio__label">a week</span>
+                        </label>
+                    </section>
+                    <button mdl="button" class="mdl-button mdl-js-button mdl-js-ripple-effect" click.delegate="applyFilters()">
+                        Apply
+                    </button>
+                </div>
                 <div class="page-content">
                     <div class="mdl-grid">
                         <div repeat.for="job of jobs" class="job mdl-card mdl-shadow--2dp">
                             <div class="mdl-card__title mdl-grid">
                                 <p class="mdl-cell mdl-cell--6-col">
-                                    <a route-href="route:client;  params.bind:{id:job.client.id}">${job.client.firstName} ${job.client.lastName}</a>
+                                    <a route-href="route:client;  params.bind:{id:job['client.id']}">${job['client.firstName']}
+                                        ${job['client.lastName']}</a>
                                     <i class="material-icons">star</i>
-                                    <span>${job.client.rating}</span>
+                                    <span>${job['client.rating']}</span>
                                     <span>${job.createdAt | dateFormatter}</span>
                                 </p>
                                 <h2 class="mdl-card__title-text mdl-cell mdl-cell--6-col">${job.name}</h2>

@@ -12,6 +12,105 @@
 }
 .jobs {
   padding-top: 50px;
+  .search-init {
+    background-color: #E4E4E4;
+    width: 100%;
+    padding: 10px;
+    span {
+      float: left;
+    }
+    i {
+      float: right;
+      line-height: 12px;
+    }
+  }
+  .search-dropdown {
+    width: 100%;
+    height: 300px;
+    background-color: #828282;
+    .header {
+      color: #fff;
+      text-transform: uppercase;
+      margin: 5px 10px;
+      font-size: 16px;
+      border-bottom: 1px solid #fff;
+      i {
+        float: right;
+        cursor: pointer;
+      }
+
+    }
+    .tags {
+      margin: 5px 10px;
+      height: 120px;
+      form {
+        float: left;
+        width: 40%;
+        margin-right: 10px;
+        > div {
+          margin-bottom: -15px;
+          input {
+            border-color: #fff;
+            color: #fff;
+          }
+          label {
+            color: #fff;
+          }
+        }
+
+      }
+      .tag {
+        float: left;
+        font-size: 16px;
+        padding: 10px;
+        margin: 10px 10px 10px 0;
+        background-color: #DFDFDF;
+        i {
+          font-size: 16px;
+          display: block;
+          float: right;
+          margin-left: 16px;
+          color: #828282;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .budget {
+      margin: 5px 10px;
+      color: #fff;
+      font-size: 16px;
+      > span {
+        float: left;
+
+      }
+      > div {
+        float: left;
+        width: 75px;
+        color: #fff;
+        margin-top: -25px;
+        margin-right: 10px;
+        margin-left: 10px;
+      }
+    }
+
+    .time-frame {
+      color: #fff;
+      margin: 5px 10px;
+      font-size: 16px;
+      > span {
+        margin-right: 5px;
+      }
+    }
+
+    button {
+      float: right;
+      margin-top: 10px;
+      margin-right: 10px;
+      background-color: #E4E4E4;
+    }
+  }
+
   .job {
     margin-bottom: 10px;
     .mdl-card__title {
@@ -55,4 +154,6 @@
 
 
   }
+
+
 }
