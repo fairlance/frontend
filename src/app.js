@@ -9,6 +9,7 @@ export class App {
       {route: ['jobs', 'jobs'], name: 'jobs', moduleId: 'jobs', title: 'Jobs'},
       {route: ['login', 'login'], name: 'login', moduleId: 'login', title: 'Login'},
       {route: ['client/:id', 'client/:id'], name: 'client', moduleId: 'client', title: 'Client'},
+      {route: ['job/:id', 'job/:id'], name: 'job', moduleId: 'job', title: 'Job details'},
       {route: ['freelancer/:id', 'freelancer/:id'], name: 'freelancer', moduleId: 'freelancer', title: 'Freelancer'}
     ]);
 

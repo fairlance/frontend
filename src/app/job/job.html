@@ -1,0 +1,58 @@
+<template>
+    <require from="navigation.html"></require>
+    <require from="job-apply.html"></require>
+
+    <navigation user.bind="user"></navigation>
+    <div class="job-apply">
+        <a route-href="route.bind: client;  params.bind:{id:client.id}">
+            ${client.name}
+        </a>
+        <span class="rating">
+            <i class="material-icons">star</i>
+            ${client.rating}
+        </span>
+        <button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect au-target" mdl="button">
+            Apply
+        </button>
+    </div>
+    <div class="mdl-layout__container">
+        <div mdl="layout" class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+            <main class="job mdl-layout__content">
+                <div class="heading clearfix">
+                    <h2>Create Custom Typography</h2>
+                    <span class="date">
+                        11 NOV 2016
+                        <i class="material-icons">flag</i>
+                    </span>
+
+                    <div class="info">
+                        <span class="budget">$ 200-$ 450</span>
+                        <span class="time">2 Days Left</span>
+                        <span class="proposals">17 Proposals</span>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>Summary</h3>
+                    <p>We are looking for a creative profesional to design custom typography for our website header.</p>
+                    <h3>Details</h3>
+                    <p>Fusce sit amet odio convallis, tristique nulla et, sagittis purus. Duis a fermentum elit. Fusce
+                        magna mi, sagittis in ante at, imperdiet cursus justo. Vivamus elementum vitae nulla vitae
+                        consectetur.
+                        Tristique nulla et, sagittis purus. Duis a fermentum elit. Fusce magna mi, sagittis in ante at,
+                        imperdiet cursus justo. Vivamus elementum vitae nulla vitae consectetur.
+                        Vivamus elementum vitae nulla vitae consectetur.
+                    </p>
+                    <h3>Links</h3>
+                    <p>
+                        <a>www.uscesitamet.odio</a>
+                        <a>www.uscesitamet.odio</a>
+                        <a>www.uscesitamet.odio</a>
+                    </p>
+                    <h3>Attachments</h3>
+                    <p>To be done</p>
+
+                </div>
+            </main>
+        </div>
+    </div>
+</template>

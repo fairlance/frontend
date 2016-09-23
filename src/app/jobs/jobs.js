@@ -12,6 +12,13 @@ export class Jobs {
   allTags = [];
   visibleTags = [];
   visibleSearch = false;
+  period;
+  periodOptions = [
+    {value: 1, name: '24h'},
+    {value: 2, name: '48h'},
+    {value: 3, name: '3 days'},
+    {value: 7, name: 'a week'}
+  ];
   priceFrom;
   priceTo;
 
@@ -68,7 +75,7 @@ export class Jobs {
 
   applyFilters() {
     let first = this;
-    first.filters = '?period=1';
+    first.filters = '?period=' + this.period.value;
     if (first.selectedTags.length) {
       first.selectedTags.forEach(function (tag) {
         first.filters += '&tags=' + tag.name;
@@ -93,7 +100,6 @@ export class Jobs {
       })
       .then(function (response) {
         response.json().then(function (data) {
-          console.log(data);
           first.allTags = data.tags;
           first.visibleTags = first.allTags.slice(0, 5);
         });
@@ -112,7 +118,6 @@ export class Jobs {
       })
       .then(function (response) {
         response.json().then(function (data) {
-          console.log(data);
           first.jobs = data.items;
         });
       })

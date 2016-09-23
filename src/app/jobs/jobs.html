@@ -53,22 +53,9 @@
                     </section>
                     <section class="time-frame clearfix">
                         <span>Starts:</span>
-                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="flash1">
-                            <input checked class="mdl-radio__button" id="flash1" name="flash" type="radio"
-                                   value="on">
-                            <span class="mdl-radio__label">24h</span>
-                        </label>
-                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="flash2">
-                            <input class="mdl-radio__button" id="flash2" name="flash" type="radio" value="off">
-                            <span class="mdl-radio__label">48h</span>
-                        </label>
-                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="flash3">
-                            <input class="mdl-radio__button" id="flash3" name="flash" type="radio" value="auto">
-                            <span class="mdl-radio__label">3 days</span>
-                        </label>
-                        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="flash4">
-                            <input class="mdl-radio__button" id="flash4" name="flash" type="radio" value="auto">
-                            <span class="mdl-radio__label">a week</span>
+                        <label repeat.for="period of periodOptions" mdl="radio" class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radio + ${period.value}">
+                            <input checked class="mdl-radio__button" id="radio + ${period.value}" name="flash" type="radio" model.bind="period" checked.bind="$parent.period">
+                            <span class="mdl-radio__label">${period.name}</span>
                         </label>
                     </section>
                     <button mdl="button" class="mdl-button mdl-js-button mdl-js-ripple-effect" click.delegate="applyFilters()">
@@ -86,7 +73,7 @@
                                     <span>${job['client.rating']}</span>
                                     <span>${job.createdAt | dateFormatter}</span>
                                 </p>
-                                <h2 class="mdl-card__title-text mdl-cell mdl-cell--6-col">${job.name}</h2>
+                                <h2 class="mdl-card__title-text mdl-cell mdl-cell--6-col"><a route-href="route:job; params.bind:{id:job.id}">${job.name}</a></h2>
                             </div>
                             <div class="mdl-card__supporting-text">${job.description}</div>
                             <div class="mdl-card__actions mdl-card--border">
