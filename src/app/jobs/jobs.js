@@ -34,7 +34,6 @@ export class Jobs {
 
     this.getJobs();
     this.getAllTags();
-
     this.typeAhead = e => this.filterTags();
 
   }
@@ -100,7 +99,7 @@ export class Jobs {
       })
       .then(function (response) {
         response.json().then(function (data) {
-          first.allTags = data.tags;
+          first.allTags = data.data.tags;
           first.visibleTags = first.allTags.slice(0, 5);
         });
       })
@@ -118,7 +117,7 @@ export class Jobs {
       })
       .then(function (response) {
         response.json().then(function (data) {
-          first.jobs = data.items;
+          first.jobs = data.data.items;
         });
       })
       .catch(function (error) {
