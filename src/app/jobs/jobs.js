@@ -12,13 +12,13 @@ export class Jobs {
   allTags = [];
   visibleTags = [];
   visibleSearch = false;
-  period;
   periodOptions = [
     {value: 1, name: '24h'},
     {value: 2, name: '48h'},
     {value: 3, name: '3 days'},
     {value: 7, name: 'a week'}
   ];
+  period = this.periodOptions[3];
   priceFrom;
   priceTo;
 
