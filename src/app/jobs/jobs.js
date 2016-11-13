@@ -93,7 +93,7 @@ export class Jobs {
   getAllTags() {
     let first = this;
     first.search
-      .fetch('jobs/tags', {
+      .fetch('job/tags', {
         method: 'get',
         headers: this.auth
       })
@@ -111,7 +111,7 @@ export class Jobs {
   getJobs() {
     let first = this;
     first.search
-      .fetch('jobs' + this.filters, {
+      .fetch('job' + this.filters, {
         method: 'get',
         headers: this.auth
       })
