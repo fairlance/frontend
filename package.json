@@ -1,7 +1,12 @@
 {
-  "name": "aurelia-skeleton-navigation-webpack",
-  "version": "1.1.1",
-  "description": "A starter kit for building a standard navigation-style app with Aurelia and webpack.",
+  "author": "Stefan Sopic",
+  "name": "Fairlance-frontend",
+  "version": "0.0.2",
+  "homepage": "http://www.fairlance.io",
+  "bugs": {
+    "url": "https://github.com/fairlance/frontend/issues"
+  },
+  "license": "CC0-1.0",
   "main": "dist/main.js",
   "scripts": {
     "pretest": "del-cli \"test/coverage\"",
@@ -40,7 +45,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/aurelia/skeleton-navigation.git"
+    "url": "http://github.com/fairlance/frontend.git"
   },
   "keywords": [
     "aurelia",
@@ -48,8 +53,6 @@
     "navigation",
     "webpack"
   ],
-  "license": "CC0-1.0",
-  "author": "Rob Eisenberg <rob@bluespire.com> (http://robeisenberg.com/)",
   "contributors": [
     {
       "name": "Arjen de Blok"
@@ -58,10 +61,6 @@
       "name": "Bazyli Brzóska <bazyli.brzoska@gmail.com> (https://invent.life)"
     }
   ],
-  "bugs": {
-    "url": "https://github.com/aurelia/skeleton-navigation/issues"
-  },
-  "homepage": "https://github.com/aurelia/skeleton-navigation#readme",
   "aurelia": {
     "build": {
       "resources": []

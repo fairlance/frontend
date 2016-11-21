@@ -1,0 +1,127 @@
+<template>
+    <require from="navigation.html"></require>
+
+    <navigation user.bind="user"></navigation>
+    <div class="profile mdl-layout__container">
+        <div mdl="layout" class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+
+            <div class="mdl-layout__drawer mdl-grid">
+                <div class="mdl-cell mdl-cell--12-col mdl-cell--top profile-picture">
+                    <span class="mdl-layout-title">${freelancer.firstName} ${freelancer.lastName} - Freelancer</span>
+                    <img src="dist/assets/images/profile.png">
+                    <div class="list-container">
+                        <ul class="">
+                            <li class="">
+                                <span class="">
+                                    <i class="material-icons">star</i>
+                                    <span>${freelancer.rating}</span>
+                                </span>
+                            </li>
+                            <li class="">
+                                <span class="">
+                                  Timezone ${freelancer.timeZone}
+                                </span>
+                            </li>
+                            <li class="">
+                                <span>
+                                  ${freelancer.projects ? freelancer.projects.length : 0} Jobs
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="profile-details">
+                        <p class="profile-title">${freelancer.title}</p>
+                        <ul class="">
+                            <li class="">
+                                Currently Available
+                            </li>
+                            <li class="">
+                                Hourly rate ${freelancer.hourlyRateFrom} - ${freelancer.hourlyRateTo}
+                            </li>
+                            <li class="m">
+                                Joined ${freelancer.createdAt}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--12-col mdl-cell--bottom review-section clearfix">
+                    <div class="review-header">
+                        Reviews (${freelancer.reviews.length})
+                    </div>
+                    <p class="review-title">
+                        ${freelancer.reviews[0].title}
+                        <span class="review-date">
+                            ${freelancer.reviews[0].created}
+                        </span>
+                    </p>
+                    <p class="review-content">${freelancer.reviews[0].content}</p>
+                    <span class="review-signature">${freelancer.reviews[0].client.name}</span>
+                </div>
+            </div>
+            <main class="mdl-layout__content">
+                <div class="page-content">
+                    <div class="mdl-grid">
+                        <div repeat.for="cell of freelancer.references" class="mdl-cell mdl-cell--3-col">
+                            <div class="cell-wrapper">
+                                <div class="mdl-card mdl-shadow--2dp">
+                                    <figure class="mdl-card__media">
+                                        <img if.bind="cell.media.image" src.bind="cell.media.image">
+                                        <iframe if.bind="cell.media.video" src.bind="cell.media.video" frameborder="0"
+                                                allowfullscreen></iframe>
+                                    </figure>
+                                    <div class="mdl-card__title">
+                                        <h2 class="mdl-card__title-text">${cell.title}</h2>
+                                    </div>
+                                    <div class="mdl-card__supporting-text">
+                                        ${cell.content}
+                                    </div>
+                                    <div class="mdl-card__actions mdl-card--border">
+                                        <a mdl="button"
+                                           class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                            Read more
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button click.delegate="showModal()" mdl="button" type="button" if.bind="user.id === profileId"
+                                class="mdl-button mdl-js-button show-modal mdl-button--fab">
+                            <i class="material-icons">add</i>
+                        </button>
+                    </div>
+                </div>
+            </main>
+
+        </div>
+    </div>
+    <dialog class="mdl-dialog">
+        <form role="form" submit.delegate="addReference()">
+            <div class="mdl-dialog__content">
+                <div>
+                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="name" value.bind="referenceTitle">
+                        <label class="mdl-textfield__label" for="name">Project name:</label>
+                    </div>
+                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <textarea class="mdl-textfield__input" type="text" id="desc" value.bind="referenceContent"
+                                  rows="6" maxrows="6"></textarea>
+                        <label class="mdl-textfield__label" for="desc">Project description</label>
+                    </div>
+                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="video" value.bind="videoUrl">
+                        <label class="mdl-textfield__label" for="video">Video link:</label>
+                    </div>
+                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="image" value.bind="imageUrl">
+                        <label class="mdl-textfield__label" for="image">Image link:</label>
+                    </div>
+                </div>
+            </div>
+            <div class="mdl-dialog__actions ">
+                <button mdl="button" type="submit" class="mdl-button">Submit</button>
+                <button mdl="button" type="button" class="mdl-button" click.delegate="hideModal()">Discard</button>
+            </div>
+        </form>
+
+    </dialog>
+</template>

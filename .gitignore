@@ -1,0 +1,11 @@
+export
+node_modules
+jspm_packages
+bin
+bower_components
+.idea
+.DS_STORE
+dist
+build/reports
+styles
+conf.json

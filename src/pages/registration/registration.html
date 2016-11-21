@@ -1,0 +1,49 @@
+<template>
+    <div class="registration">
+        <section class="clearfix login-form mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Register Fairlance</h2>
+            </div>
+            <form role="form" submit.delegate="submit()">
+                <div class="mdl-components__warning" if.bind="repeatPassword !== password">
+                    Passwords must be the same
+                </div>
+                <div class="mdl-card__supporting-text">
+                    <select value.bind="clientType">
+                        <option disabled selected>Please select</option>
+                        <option value="freelancer">Freelancer</option>
+                        <option value="client">Client</option>
+                    </select>
+                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" value.bind="firstName" type="text" id="firstName" pattern="[a-zA-Z0-9]+" required="required">
+                        <label class="mdl-textfield__label" for="firstName">First Name</label>
+                        <span class="mdl-textfield__error">This field is mandatory</span>
+                    </div>
+                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" value.bind="lastName" type="text" id="lastName" pattern="[a-zA-Z0-9]+" required="required">
+                        <label class="mdl-textfield__label" for="lastName">Last Name</label>
+                        <span class="mdl-textfield__error">This field is mandatory</span>
+                    </div>
+                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" value.bind="email" type="email" id="email" required="required">
+                        <label class="mdl-textfield__label" for="email">Email</label>
+                        <span class="mdl-textfield__error">This is not a valid email</span>
+                    </div>
+                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" value.bind="password" type="password" id="password" required="required">
+                        <label class="mdl-textfield__label" for="password">Password</label>
+                    </div>
+                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" value.bind="repeatPassword" type="password" id="repeatPassword" required="required">
+                        <label class="mdl-textfield__label" for="repeatPassword">Repeat Password</label>
+                    </div>
+                </div>
+                <div class="mdl-card__actions clearfix">
+                    <button mdl="button" type="submit" class="mdl-button mdl-button--raised mdl-button--accent" disabled.bind="(password === undefined) || (repeatPassword !== password)">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </section>
+    </div>
+</template>

@@ -1,0 +1,99 @@
+<template>
+    <require from="./date-formatter"></require>
+    <require from="navigation.html"></require>
+
+    <navigation user.bind="user"></navigation>
+    <div class="mdl-layout__container">
+        <div mdl="layout" class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+            <div class="filters mdl-layout__drawer mdl-grid">
+                <h3>to be continued</h3>
+            </div>
+            <main class="jobs mdl-layout__content">
+                <div class="search-init clearfix" click.delegate="toggleSearch()" show.bind="!visibleSearch">
+                    <span>Search setup</span>
+                    <i class="material-icons">search</i>
+                </div>
+                <div class="search-dropdown clearfix" show.bind="visibleSearch">
+                    <p class="header">
+                        Search setup
+                        <i class="material-icons" click.delegate="toggleSearch()">close</i>
+                    </p>
+                    <section class="tags clearfix">
+                        <form class="" role="form">
+                            <div mdl="textfield" class="mdl-textfield mdl-js-textfield">
+                                <input class="mdl-textfield__input" type="text" id="add_tag" value.bind="newTag" autocomplete="off">
+                                <label class="mdl-textfield__label" for="add_tag">Add tag_</label>
+                                <ul mdl="menu" class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+                                    for="add_tag">
+                                    <li repeat.for="tag of visibleTags" class="mdl-menu__item"
+                                        click.delegate="addTag(tag)">${tag}
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </form>
+                        <span repeat.for="tag of selectedTags" class="tag">
+                            #${tag.name}
+                            <i class="material-icons" click.delegate="deleteTag($index)">close</i>
+                        </span>
+                    </section>
+                    <section class="budget clearfix">
+                        <span>BUDGET</span>
+                        <div mdl="textfield" class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" id="price_from" value.bind="priceFrom"
+                                   autocomplete="off">
+                            <label class="mdl-textfield__label" for="price_from">Price from</label>
+                        </div>
+                        <span>to</span>
+                        <div mdl="textfield" class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" type="text" id="price_to" value.bind="priceTo"
+                                   autocomplete="off">
+                            <label class="mdl-textfield__label" for="price_to">Price to</label>
+                        </div>
+                    </section>
+                    <section class="time-frame clearfix">
+                        <span>Starts:</span>
+                        <label repeat.for="period of periodOptions" mdl="radio" class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radio + ${period.value}">
+                            <input checked class="mdl-radio__button" id="radio + ${period.value}" name="flash" type="radio" model.bind="period" checked.bind="$parent.period">
+                            <span class="mdl-radio__label">${period.name}</span>
+                        </label>
+                    </section>
+                    <button mdl="button" class="mdl-button mdl-js-button mdl-js-ripple-effect" click.delegate="applyFilters()">
+                        Apply
+                    </button>
+                </div>
+                <div class="page-content">
+                    <div class="mdl-grid">
+                        <div repeat.for="job of jobs" class="job mdl-card mdl-shadow--2dp">
+                            <div class="mdl-card__title mdl-grid">
+                                <p class="mdl-cell mdl-cell--6-col">
+                                    <a route-href="route:client;  params.bind:{id:job['client.id']}">${job['client.firstName']}
+                                        ${job['client.lastName']}</a>
+                                    <i class="material-icons">star</i>
+                                    <span>${job['client.rating']}</span>
+                                    <span>${job.createdAt | dateFormatter}</span>
+                                </p>
+                                <h2 class="mdl-card__title-text mdl-cell mdl-cell--6-col"><a route-href="route:job; params.bind:{id:job.id}">${job.name}</a></h2>
+                            </div>
+                            <div class="mdl-card__supporting-text">${job.description}</div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <p>
+                                    <i class="material-icons">visibility</i>
+                                    <span>2 days left</span>
+                                    <span>17 proposals</span>
+                                    <span>3 files attached</span>
+                                    <i class="material-icons">flag</i>
+                                </p>
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                                    <i class="material-icons">close</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</template>

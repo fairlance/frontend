@@ -1,0 +1,24 @@
+<template>
+    <div class="login ">
+        <div class="clearfix login-form mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Login to Fairlance</h2>
+            </div>
+            <form role="form" submit.delegate="submit()" action="#">
+                <div class="mdl-card__supporting-text">
+                    <div class="mdl-textfield ">
+                        <input class="mdl-textfield__input" type="text" id="login-email" value.bind="email" name="email" placeholder="Email">
+                    </div>
+                    <div class="mdl-textfield">
+                        <input class="mdl-textfield__input" type="password" id="login-password" value.bind="password" name="password" placeholder="Password">
+                    </div>
+                </div>
+                <div class="mdl-card__actions clearfix">
+                    <button type="submit" class="mdl-button mdl-button--raised mdl-button--accent">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</template>

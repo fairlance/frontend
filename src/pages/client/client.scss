@@ -1,0 +1,138 @@
+.profile {
+  background-color: #ffffff;
+  .mdl-layout {
+    .mdl-layout__drawer {
+      width: 320px;
+      padding: 0 20px;
+      -webkit-transform: translateX(-320px);
+      transform: translateX(-320px);
+      @media screen and (min-width: 1025px) {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+      }
+      &.is-visible {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+      }
+      .profile-picture {
+        margin-top: 25px;
+        .mdl-layout-title {
+          background-color: #383032;
+          color: #ffffff;
+          margin-left: -28px;
+          margin-right: -28px;
+          margin-top: -25px;
+          text-align: center;
+          padding: 15px;
+        }
+        img {
+          width: 150px;
+          border-radius: 75px;
+          float: left;
+          margin-top: 10px;
+          margin-bottom: 20px;
+        }
+        .list-container {
+          display: inline-block;
+          ul {
+            padding-left: 20px;
+            padding-top: 20px;
+            li {
+              list-style-type: none;
+              &:first-child {
+                font-weight: bold;
+              }
+              > span {
+                position: relative;
+                i {
+                  bottom: 0;
+                  position: absolute;
+                  font-size: 20px;
+                }
+                span {
+                  padding-left: 25px;
+                }
+              }
+            }
+          }
+        }
+        .profile-details {
+          margin-top: 10px;
+          clear: both;
+          .profile-title {
+            font-size: 18px;
+          }
+          ul {
+            padding-left: 0;
+            li {
+              list-style-type: none;
+            }
+          }
+        }
+      }
+
+      .review-section {
+        height: 220px;
+        .review-header {
+          margin-left: -28px;
+          margin-right: -28px;
+          padding: 10px 10px 10px 20px;
+          background-color: #383032;
+          color: #ffffff;
+        }
+        .review-title {
+          font-weight: bold;
+          margin-top: 10px;
+          .review-date {
+            float: right;
+          }
+        }
+        .review-signature {
+          float: right;
+        }
+      }
+    }
+    .mdl-layout__content {
+      margin-left: 320px;
+      @media screen and (max-width: 1024px) {
+        margin-left: 0;
+      }
+      .page-content {
+        position: relative;
+        margin-top: 50px;
+        .mdl-grid {
+          .mdl-cell {
+            .mdl-card {
+              margin-bottom: 20px;
+              width: 100%;
+              .mdl-card__media {
+                margin: 0;
+                img {
+                  width: 100%;
+                }
+                iframe {
+                  width: 100%;
+                }
+              }
+            }
+          }
+        }
+        .show-modal {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+        }
+      }
+    }
+
+  }
+
+}
+
+.mdl-dialog {
+  form {
+    textarea {
+      resize: none;
+    }
+  }
+}
