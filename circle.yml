@@ -1,15 +1,12 @@
 machine:
   node:
-    version: 5.1.0
+    version: 6.9.0
 dependencies:
     post:
-        - npm install -g gulp
-        - npm install -g jspm
-        - jspm install -y
+        - sudo npm install
         - npm rebuild node-sass
-        - gulp build
-        - gulp export
+        - npm run build:prod
 test:
     override:
-        - tar -czf export.tar.gz export
+        - tar -czf export.tar.gz dist
         - sudo cp export.tar.gz $CIRCLE_ARTIFACTS

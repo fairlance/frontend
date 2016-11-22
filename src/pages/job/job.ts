@@ -1,21 +1,36 @@
 import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
-import {User} from 'user';
 import {json} from 'aurelia-fetch-client';
+import {User} from "../../services/user/user";
 import 'fetch';
+
+interface IPeriod {
+  value: number,
+  name: string
+}
+
+interface IReference {
+  selected: boolean,
+  id: string
+}
 
 @inject('AppHttpClient', 'SearchHttpClient', Router, User)
 export class Job {
-
-  details = {client: {id: 0}};
-  references = [];
-  application = false;
-  periodOptions = [
+  private router: Router;
+  private user: any;
+  private app: any;
+  private search: any;
+  private auth: Object;
+  private details = {client: {id: 0}};
+  private references: Array<string> = [];
+  private application: boolean = false;
+  private periodOptions: Array<IPeriod> = [
     {value: 1, name: '24h'},
     {value: 2, name: '48h'},
     {value: 7, name: 'a week'}
   ];
-  period = this.periodOptions[3];
+  private period: IPeriod = this.periodOptions[3];
+  private jobId: number;
 
   constructor(app, search, router, user) {
 
@@ -26,61 +41,48 @@ export class Job {
     this.auth = {'Authorization': 'Bearer ' + user.token};
   }
 
-  activate(params){
+  activate(params) {
     this.jobId = parseInt(params.id);
     this.getJob();
     this.getFreelancer();
   }
 
-  selectReference(reference) {
-    if(!reference.selected) {
+  private selectReference(reference: IReference): void {
+    if (!reference.selected) {
       this.references.push(reference.id);
       reference.selected = true;
     }
   }
 
-  getFreelancer() {
+  async getFreelancer(): Promise<void> {
     let first = this;
-    first.app
-      .fetch('freelancer/' + first.user.id, {
+    try {
+      const response = await first.app.fetch('freelancer/' + first.user.id, {
         method: 'get',
         headers: first.auth
-      })
-      .then(function (response) {
-        response.json().then(function (data) {
-          console.log(data);
-          first.user.data = data.data;
-        });
-      })
-      .catch(function (error) {
-        error.json().then(function (data) {
-          if (data.error === "Not logged in.") {
-            first.router.navigate('login');
-          }
-        });
       });
+      let data = await response.json();
+      first.user.data = data.data;
+    } catch (error) {
+      let data = await error.json();
+      if (data.error === "Not logged in.") {
+        first.router.navigate('login');
+      }
+    }
   }
 
-  getJob() {
+  async getJob(): Promise<void> {
     let first = this;
-    first.app
-      .fetch('job/' + first.jobId, {
-        method: 'get',
-        headers: this.auth
-      })
-      .then(function (response) {
-        response.json().then(function (data) {
-          first.details = data.data;
-        });
-      })
-      .catch(function (error) {
-        console.log(error)
-      });
+    const response = await first.app.fetch('job/' + first.jobId, {
+      method: 'get',
+      headers: this.auth
+    });
+    let data = await response.json();
+    first.details = data.data;
   }
 
-  showApplication() {
+  private showApplication(): void {
     this.application = true;
-
   }
 
 }

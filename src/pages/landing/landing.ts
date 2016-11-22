@@ -4,34 +4,31 @@ import 'fetch';
 
 @inject('RegisterHttpClient')
 export class Landing {
-  placeholder = 'I want to subscribe_';
-  email = '';
-  style = '';
-
+  private placeholder: string = 'I want to subscribe_';
+  private email: string = '';
+  private style: string = '';
+  private http: any;
 
   constructor(http) {
     this.http = http;
   }
 
-  submit() {
+  async submit(): Promise<void> {
     var first = this;
-    first.http.fetch('register', {
+    const response = await first.http.fetch('register', {
         method: 'post',
-        body: new FormData(document.querySelector('form'))
-      })
-      .then(function (response) {
-        response.json().then(function () {
-          first.email = '';
-          first.style = '';
-          first.placeholder = 'Thank you!';
-        });
-      })
-      .catch(function (error) {
-        error.json().then(function (data) {
-          first.style = 'error';
-          first.email = '';
-          first.placeholder = data.error;
-        });
+        body: new FormData(<HTMLFormElement>document.querySelector('form'))
       });
+    try {
+      await response.json();
+      first.email = '';
+      first.style = '';
+      first.placeholder = 'Thank you!';
+    } catch(data) {
+      first.style = 'error';
+      first.email = '';
+      first.placeholder = data.error;
+    }
   }
+
 }

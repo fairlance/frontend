@@ -1,15 +1,37 @@
 import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
-import {User} from 'user';
 import {json} from 'aurelia-fetch-client';
 import 'fetch';
+import {User} from "../../services/user/user";
+
+interface IUser {
+  id?: string,
+  type?: string,
+  skills?: Array<string>,
+  isAvailable?: boolean,
+  hourlyRateFrom?: number,
+  hourlyRateTo?: number,
+  payment?: string,
+  industry?: string,
+  timezone?: string
+}
 
 @inject('AppHttpClient', Router, User)
 export class Info {
-  scrollTop = 0;
-  skills = [];
-  screen = false;
-  available = true;
+  private router: Router;
+  private user: IUser;
+  private http: any;
+  private scrollTop: number = 0;
+  private skills = [];
+  private screen: boolean = false;
+  private available: boolean = true;
+  private handleScrollEvent: any;
+  private newSkill: string;
+  private timezone: string;
+  private rateFrom: string;
+  private rateTo: string;
+  private payment: string;
+  private industry: string;
 
   constructor(http, router, user) {
     let first = this;
@@ -19,7 +41,9 @@ export class Info {
     this.user.type = user.getCurrentUser().data.type;
 
     this.handleScrollEvent = e => {
-      setTimeout(() => {first.screen = true}, 300);
+      setTimeout(() => {
+        first.screen = true
+      }, 300);
       document.removeEventListener('scroll', first.handleScrollEvent);
     };
   }
@@ -32,31 +56,25 @@ export class Info {
     document.removeEventListener('scroll', this.handleScrollEvent);
   }
 
-  addInfo = function () {
+  async addInfo(): Promise<void> {
     var first = this;
-    first.http.fetch(first.user.type + '/' + first.user.id, {
-        method: 'post',
-        body: first.gatherInfo()
-      })
-      .then(function () {
-        first.router.navigate('login');
-      })
-      .catch(function (error) {
-        error.json().then(function (data) {
-          console.log(data.error);
-        });
-      });
+    const response = await first.http.fetch(first.user.type + '/' + first.user.id, {
+      method: 'post',
+      body: first.gatherInfo()
+    });
+    await response.json();
+    first.router.navigate('login');
   };
 
-  addSkill = function () {
+  private addSkill(): void {
     this.skills.push({
       name: this.newSkill
     });
     this.newSkill = '';
   };
 
-  gatherInfo = function () {
-    let user = {
+  private gatherInfo(): Object {
+    let user: IUser = {
       timezone: this.timezone
     };
     if (this.user.type === 'freelancer') {

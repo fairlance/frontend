@@ -1,26 +1,44 @@
 import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
-import {User} from 'user';
 import {json} from 'aurelia-fetch-client';
+import {User} from "../../services/user/user";
 import 'fetch';
+
+interface IPeriod {
+  value: number,
+  name: string
+}
+
+interface ITag {
+  name: string
+}
 
 @inject('AppHttpClient', 'SearchHttpClient', Router, User, Element)
 export class Jobs {
-  jobs = [];
-  filters = '';
-  selectedTags = [];
-  allTags = [];
-  visibleTags = [];
-  visibleSearch = false;
-  periodOptions = [
+  private jobs = [];
+  private filters = '';
+  private router: Router;
+  private user: any;
+  private app: any;
+  private search: any;
+  private element: Element;
+  private auth: Object;
+  private selectedTags: Array<ITag> = [];
+  private allTags: Array<ITag> = [];
+  private visibleTags: Array<ITag> = [];
+  private visibleSearch: boolean = false;
+  private periodOptions: Array<IPeriod> = [
     {value: 1, name: '24h'},
     {value: 2, name: '48h'},
     {value: 3, name: '3 days'},
     {value: 7, name: 'a week'}
   ];
-  period = this.periodOptions[3];
-  priceFrom;
-  priceTo;
+  private period: IPeriod = this.periodOptions[3];
+  private priceFrom: number;
+  private priceTo: number;
+  private typeAhead: any;
+  private tagInput: Element;
+  private newTag: string;
 
 
   constructor(app, search, router, user, element) {
@@ -40,7 +58,6 @@ export class Jobs {
 
   attached() {
     this.tagInput = this.element.querySelector('#add_tag');
-
     this.tagInput.addEventListener('keyup', this.typeAhead);
   }
 
@@ -48,7 +65,7 @@ export class Jobs {
     this.tagInput.removeEventListener('keyup', this.typeAhead);
   }
 
-  addTag(name) {
+  private addTag(name: string): void {
     if (this.selectedTags.length < 5) {
       this.selectedTags.push({
         name: name
@@ -57,22 +74,22 @@ export class Jobs {
     }
   };
 
-  filterTags() {
+  private filterTags(): void {
     let first = this;
-    this.visibleTags = first.allTags.filter(function (value) {
+    this.visibleTags = first.allTags.filter(function (value: ITag) {
       return value.includes(first.newTag);
     }).slice(0, 5);
   };
 
-  deleteTag(index) {
+  private deleteTag(index): void {
     this.selectedTags.splice(index, 1);
   };
 
-  toggleSearch() {
+  private toggleSearch(): void {
     this.visibleSearch = !this.visibleSearch;
   };
 
-  applyFilters() {
+  private applyFilters(): void {
     let first = this;
     first.filters = '?period=' + this.period.value;
     if (first.selectedTags.length) {
@@ -90,38 +107,24 @@ export class Jobs {
     this.toggleSearch();
   }
 
-  getAllTags() {
+  async getAllTags(): Promise<void> {
     let first = this;
-    first.search
-      .fetch('job/tags', {
-        method: 'get',
-        headers: this.auth
-      })
-      .then(function (response) {
-        response.json().then(function (data) {
-          first.allTags = data.data.tags;
-          first.visibleTags = first.allTags.slice(0, 5);
-        });
-      })
-      .catch(function (error) {
-        console.log(error)
-      });
+    const response = await first.search.fetch('job/tags', {
+      method: 'get',
+      headers: this.auth
+    });
+    let data = await response.json();
+    first.allTags = data.data.tags;
+    first.visibleTags = first.allTags.slice(0, 5);
   }
 
-  getJobs() {
+  async getJobs(): Promise<void>  {
     let first = this;
-    first.search
-      .fetch('job' + this.filters, {
-        method: 'get',
-        headers: this.auth
-      })
-      .then(function (response) {
-        response.json().then(function (data) {
-          first.jobs = data.data.items;
-        });
-      })
-      .catch(function (error) {
-        console.log(error)
-      });
+    const response = await first.search.fetch('job' + this.filters, {
+      method: 'get',
+      headers: this.auth
+    });
+    let data = await response.json();
+    first.jobs = data.data.items;
   }
 }
