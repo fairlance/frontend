@@ -1,52 +1,53 @@
 import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
-import {User} from 'user';
 import {json} from 'aurelia-fetch-client';
+import {User} from "../../services/user/user";
 import 'fetch';
 
 @inject('AppHttpClient', Router, User)
 export class Freelancer {
+  private router: Router;
+  private user: any;
+  private http: any;
+  private auth: Object;
+  private profileId: number;
+  private freelancer;
+  private dialog: any;
 
   constructor(http, router, user) {
-
     this.user = user.getCurrentUser().data;
     this.router = router;
     this.http = http;
     this.auth = {'Authorization': 'Bearer ' + user.token};
-
   }
 
-  activate(params){
+  activate(params) {
     this.profileId = parseInt(params.id);
     this.populateProfile();
   }
 
-  readProfileData(data) {
+  private readProfileData(data: any): void {
     this.freelancer = data.data;
   }
 
-  populateProfile() {
+  async populateProfile(): Promise<void> {
     let first = this;
-    first.http
-      .fetch('freelancer/' + this.profileId, {
+    try {
+      const response = await first.http.fetch('freelancer/' + this.profileId, {
         method: 'get',
         headers: this.auth
-      })
-      .then(function (response) {
-        response.json().then(function (data) {
-          first.readProfileData(data);
-        });
-      })
-      .catch(function (error) {
-        error.json().then(function (data) {
-          if (data.error === "Not logged in.") {
-            first.router.navigate('login');
-          }
-        });
       });
+      let data = await response.json();
+      first.readProfileData(data);
+    } catch (error) {
+      let data = await error.json();
+      if (data.error === "Not logged in.") {
+        first.router.navigate('login');
+      }
+    }
   }
 
-  showModal() {
+  private showModal() {
     this.dialog = document.querySelector('dialog');
     if (!this.dialog.showModal) {
       dialogPolyfill.registerDialog(this.dialog);
@@ -54,11 +55,11 @@ export class Freelancer {
     this.dialog.showModal();
   }
 
-  hideModal() {
+  private hideModal() {
     this.dialog.close();
   }
 
-  prepareReference() {
+  private prepareReference() {
     let reference = {
       freelancerId: this.user.id,
       title: this.referenceTitle,
