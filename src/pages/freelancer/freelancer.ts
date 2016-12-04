@@ -13,6 +13,10 @@ export class Freelancer {
   private profileId: number;
   private freelancer;
   private dialog: any;
+  private referenceTitle: string;
+  private referenceContent: string;
+  private imageUrl: string;
+  private videoUrl: string;
 
   constructor(http, router, user) {
     this.user = user.getCurrentUser().data;
@@ -47,7 +51,7 @@ export class Freelancer {
     }
   }
 
-  private showModal() {
+  private showModal(): void {
     this.dialog = document.querySelector('dialog');
     if (!this.dialog.showModal) {
       dialogPolyfill.registerDialog(this.dialog);
@@ -55,11 +59,11 @@ export class Freelancer {
     this.dialog.showModal();
   }
 
-  private hideModal() {
+  private hideModal(): void {
     this.dialog.close();
   }
 
-  private prepareReference() {
+  private prepareReference(): Object {
     let reference = {
       freelancerId: this.user.id,
       title: this.referenceTitle,
@@ -72,20 +76,14 @@ export class Freelancer {
     return json(reference);
   }
 
-  addReference() {
+  async addReference(): Promise<void> {
     let first = this;
-    first.http
-      .fetch('freelancer/' + first.user.id + '/reference', {
-        method: 'put',
-        body: this.prepareReference(),
-        headers: this.auth
-      })
-      .then(function () {
-        first.dialog.close();
-        first.populateProfile();
-      })
-      .catch(function (error) {
-        console.log(error)
-      });
+    const response = await first.http.fetch('freelancer/' + first.user.id + '/reference', {
+      method: 'put',
+      body: this.prepareReference(),
+      headers: this.auth
+    });
+    first.dialog.close();
+    first.populateProfile();
   }
 }

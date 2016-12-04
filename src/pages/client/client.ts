@@ -1,54 +1,56 @@
 import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
-import {User} from 'user';
 import {json} from 'aurelia-fetch-client';
+import {User} from "../../services/user/user";
 import 'fetch';
 
 @inject('AppHttpClient', Router, User)
 export class Client {
-
-  active = true;
+  private active: boolean = true;
+  private user: any;
+  private router: Router;
+  private http: any;
+  private auth: Object;
+  private profileId: number;
+  private client: Object;
+  private dialog: any;
+  private name: string;
+  private description: string;
 
   constructor(http, router, user) {
-
     this.user = user.getCurrentUser().data;
     this.router = router;
     this.http = http;
     this.auth = {'Authorization': 'Bearer ' + user.token};
-
   }
 
-  activate(params){
+  activate(params): void {
     this.profileId = parseInt(params.id);
     this.populateProfile();
   }
 
-  readProfileData(data) {
+  private readProfileData(data): void {
     this.client = data.data;
   }
 
-  populateProfile() {
+  async populateProfile(): Promise<void> {
     let first = this;
-    first.http
-      .fetch('client/' + this.profileId, {
+    try {
+      const response = await first.http.fetch('client/' + this.profileId, {
         method: 'get',
         headers: this.auth
-      })
-      .then(function (response) {
-        response.json().then(function (data) {
-          first.readProfileData(data);
-        });
-      })
-      .catch(function (error) {
-        error.json().then(function (data) {
-          if (data.error === "Not logged in.") {
-            first.router.navigate('login');
-          }
-        });
       });
+      let data = await response.json();
+      first.readProfileData(data);
+    } catch (error) {
+      let data = await error.json();
+      if (data.error === "Not logged in.") {
+        first.router.navigate('login');
+      }
+    }
   }
 
-  showModal() {
+  private showModal(): void {
     this.dialog = document.querySelector('dialog');
     if (!this.dialog.showModal) {
       dialogPolyfill.registerDialog(this.dialog);
@@ -56,12 +58,12 @@ export class Client {
     this.dialog.showModal();
   }
 
-  hideModal() {
+  private hideModal(): void {
     this.dialog.close();
   }
 
-  prepareJob() {
-    let job = {
+  private prepareJob(): Object {
+    let job: Object = {
       clientId: this.user.id,
       name: this.name,
       description: this.description,
@@ -70,20 +72,14 @@ export class Client {
     return json(job);
   }
 
-  addJob() {
+  async addJob(): Promise<void> {
     let first = this;
-    first.http
-      .fetch('job/new', {
-        method: 'put',
-        body: this.prepareJob(),
-        headers: this.auth
-      })
-      .then(function () {
-        first.populateProfile();
-        first.dialog.close();
-      })
-      .catch(function (error) {
-        console.log(error)
-      });
+    const response = await first.http.fetch('job/new', {
+      method: 'put',
+      body: this.prepareJob(),
+      headers: this.auth
+    });
+    first.populateProfile();
+    first.dialog.close();
   }
 }
