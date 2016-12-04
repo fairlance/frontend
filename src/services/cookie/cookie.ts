@@ -1,9 +1,17 @@
+interface IOptions {
+  secure?: boolean,
+  domain?: string,
+  path?: string,
+  expires?: number,
+  expiry?: number
+}
+
 export class Cookie {
 
   /**
    * Set a cookie
    */
-  set(name, value, options = {}) {
+  public set(name: string, value: any, options: IOptions = {}) {
     let str = `${this.encode(name)}=${this.encode(value)}`;
 
     if (value == null) {
@@ -27,8 +35,7 @@ export class Cookie {
     }
 
     if (options.expires) {
-      var date = Date.now();
-      date = new Date(date);
+      let date: number = Date.now();
 
       str += `; expires=${date.toString()}`;
     }
@@ -40,7 +47,7 @@ export class Cookie {
     document.cookie = str;
   }
 
-  encode(value) {
+  private encode(value: Object): string | null {
     try {
       return JSON.stringify(value);
     } catch (e) {
@@ -48,7 +55,7 @@ export class Cookie {
     }
   }
 
-  decode(value) {
+  private decode(value: string): any {
     try {
       return JSON.parse(value);
     } catch (e) {
@@ -56,20 +63,20 @@ export class Cookie {
     }
   }
 
-  all() {
+  public all() {
     return this.parse(document.cookie);
   }
 
-  parse(str) {
-    var obj = {};
-    var pairs = str.split(/ *; */);
-    var pair;
+  private parse(str): Object {
+    let obj: Object = {};
+    let pairs: Array<string> = str.split(/ *; */);
+    let pair: Array<string>;
 
-    if ('' == pairs[0]) {
+    if ('' === pairs[0]) {
       return obj;
     }
 
-    for (let i = 0; i < pairs.length; ++i) {
+    for (let i: number = 0; i < pairs.length; ++i) {
       pair = pairs[i].split('=');
       obj[this.decode(pair[0])] = this.decode(pair[1]);
     }
@@ -77,7 +84,7 @@ export class Cookie {
     return obj;
   }
 
-  get(name) {
+  public get(name) {
     let cookies = this.all();
 
     if (cookies && cookies[name]) {

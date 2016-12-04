@@ -1,8 +1,7 @@
 ﻿import {Aurelia} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
-import '../styles/styles.css';
-import 'font-awesome/css/font-awesome.css';
-import 'bootstrap/dist/css/bootstrap.css';
+import 'font-awesome/scss/font-awesome.scss';
+//import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap';
 import * as Bluebird from 'bluebird';
 

@@ -41,7 +41,7 @@
     "server:dev:hmr": "npm run server:dev -- --hot",
     "server:prod": "http-server dist --cors",
     "webpack": "cross-env TS_NODE_PROJECT=tsconfig.tsnode.json TS_NODE_FAST=true ./node_modules/.bin/webpack",
-    "webpack-dev-server": "cross-env TS_NODE_PROJECT=tsconfig.tsnode.json TS_NODE_FAST=true ./node_modules/.bin/webpack-dev-server"
+    "webpack-dev-server": "cross-env TS_NODE_PROJECT=tsconfig.tsnode.json TS_NODE_FAST=true ./node_modules/.bin/webpack-dev-server --host 0.0.0.0"
   },
   "repository": {
     "type": "git",

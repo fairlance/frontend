@@ -1,7 +1,6 @@
 import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 import {json} from 'aurelia-fetch-client';
-import 'fetch';
 import {User} from "../../services/user/user";
 import {Cookie} from "../../services/cookie/cookie";
 

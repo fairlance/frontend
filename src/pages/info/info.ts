@@ -1,13 +1,15 @@
 import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 import {json} from 'aurelia-fetch-client';
-import 'fetch';
 import {User} from "../../services/user/user";
 
+interface ISkills {
+  name: string
+}
 interface IUser {
   id?: string,
   type?: string,
-  skills?: Array<string>,
+  skills?: Array<ISkills>,
   isAvailable?: boolean,
   hourlyRateFrom?: number,
   hourlyRateTo?: number,
@@ -22,11 +24,11 @@ export class Info {
   private user: IUser;
   private http: any;
   private scrollTop: number = 0;
-  private skills = [];
+  private skills: Array<ISkills> = [];
   private screen: boolean = false;
   private available: boolean = true;
   private handleScrollEvent: any;
-  private newSkill: string;
+  private newSkill: string = '';
   private timezone: string;
   private rateFrom: string;
   private rateTo: string;

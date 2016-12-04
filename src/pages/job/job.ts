@@ -2,7 +2,6 @@ import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 import {json} from 'aurelia-fetch-client';
 import {User} from "../../services/user/user";
-import 'fetch';
 
 interface IPeriod {
   value: number,

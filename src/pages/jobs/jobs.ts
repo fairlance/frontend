@@ -2,7 +2,6 @@ import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 import {json} from 'aurelia-fetch-client';
 import {User} from "../../services/user/user";
-import 'fetch';
 
 interface IPeriod {
   value: number,
@@ -37,7 +36,7 @@ export class Jobs {
   private priceFrom: number;
   private priceTo: number;
   private typeAhead: any;
-  private tagInput: Element;
+  private tagInput: any;
   private newTag: string;
 
 
@@ -76,7 +75,7 @@ export class Jobs {
 
   private filterTags(): void {
     let first = this;
-    this.visibleTags = first.allTags.filter(function (value: ITag) {
+    this.visibleTags = first.allTags.filter(function (value: any) {
       return value.includes(first.newTag);
     }).slice(0, 5);
   };

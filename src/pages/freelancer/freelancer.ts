@@ -2,7 +2,6 @@ import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 import {json} from 'aurelia-fetch-client';
 import {User} from "../../services/user/user";
-import 'fetch';
 
 @inject('AppHttpClient', Router, User)
 export class Freelancer {
@@ -54,7 +53,7 @@ export class Freelancer {
   private showModal(): void {
     this.dialog = document.querySelector('dialog');
     if (!this.dialog.showModal) {
-      dialogPolyfill.registerDialog(this.dialog);
+      //dialogPolyfill.registerDialog(this.dialog);
     }
     this.dialog.showModal();
   }

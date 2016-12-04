@@ -180,7 +180,7 @@ div.au-stagger {
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: local('Material Icons'), local('MaterialIcons-Regular'), url('../dist/assets/fonts/material/material-fonts.woff2') format('woff2');
+  src: local('Material Icons'), local('MaterialIcons-Regular'), url('../../assets/fonts/material/material-fonts.woff2') format('woff2');
 }
 
 .material-icons {
@@ -201,22 +201,22 @@ div.au-stagger {
 
 @font-face {
   font-family: 'Flexo';
-  src: url('../dist/assets/fonts/flexo/regular/Flexo-Regular.eot');
+  src: url('../../assets/fonts/flexo/regular/Flexo-Regular.eot');
   src: local('☺'),
-  url('../dist/assets/fonts/flexo/regular/Flexo-Regular.woff') format('woff'),
-  url('../dist/assets/fonts/flexo/regular/Flexo-Regular.ttf') format('truetype'),
-  url('../dist/assets/fonts/flexo/regular/Flexo-Regular.svg') format('svg');
+  url('../../assets/fonts/flexo/regular/Flexo-Regular.woff') format('woff'),
+  url('../../assets/fonts/flexo/regular/Flexo-Regular.ttf') format('truetype'),
+  url('../../assets/fonts/flexo/regular/Flexo-Regular.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Flexo';
-  src: url('../dist/assets/fonts/flexo/bold/Flexo-Bold.eot');
+  src: url('../../assets/fonts/flexo/bold/Flexo-Bold.eot');
   src: local('☺'),
-  url('../dist/assets/fonts/flexo/bold/Flexo-Bold.woff') format('woff'),
-  url('../dist/assets/fonts/flexo/bold/Flexo-Bold.ttf') format('truetype'),
-  url('../dist/assets/fonts/flexo/bold/Flexo-Bold.svg') format('svg');
+  url('../../assets/fonts/flexo/bold/Flexo-Bold.woff') format('woff'),
+  url('../../assets/fonts/flexo/bold/Flexo-Bold.ttf') format('truetype'),
+  url('../../assets/fonts/flexo/bold/Flexo-Bold.svg') format('svg');
   font-weight: bold;
   font-style: normal;
 }
@@ -276,7 +276,6 @@ html {
         font-size: 12px;
       }
     }
-
   }
 }
 

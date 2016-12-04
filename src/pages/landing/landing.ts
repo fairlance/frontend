@@ -1,6 +1,5 @@
 import {inject} from 'aurelia-framework';
 import {json} from 'aurelia-fetch-client';
-import 'fetch';
 
 @inject('RegisterHttpClient')
 export class Landing {
