@@ -47,25 +47,6 @@
     "type": "git",
     "url": "http://github.com/fairlance/frontend.git"
   },
-  "keywords": [
-    "aurelia",
-    "skeleton",
-    "navigation",
-    "webpack"
-  ],
-  "contributors": [
-    {
-      "name": "Arjen de Blok"
-    },
-    {
-      "name": "Bazyli Brzóska <bazyli.brzoska@gmail.com> (https://invent.life)"
-    }
-  ],
-  "aurelia": {
-    "build": {
-      "resources": []
-    }
-  },
   "dependencies": {
     "aurelia-bootstrapper-webpack": "^1.0.0",
     "aurelia-event-aggregator": "^1.0.0",
