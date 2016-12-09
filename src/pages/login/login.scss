@@ -1,19 +1,4 @@
 .login {
-  min-height: 100%;
   padding-top: 50px;
 
-  .login-form {
-    margin: 0 auto;
-    width: 512px;
-    .mdl-card__title {
-      color: #fff;
-      height: 250px;
-      background: url('../../assets/images/background.png') center / cover;
-    }
-    form {
-      button {
-        float: right;
-      }
-    }
-  }
 }

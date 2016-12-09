@@ -1,24 +1,31 @@
 <template>
     <div class="login ">
-        <div class="clearfix login-form mdl-card mdl-shadow--2dp">
-            <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">Login to Fairlance</h2>
+        <div class="col-xs-12">
+            <div class="well">
+                <form id="loginForm" role="form" submit.delegate="submit()" action="#">
+                    <div class="form-group">
+                        <label for="login-email" class="control-label">Username</label>
+                        <input type="text" class="form-control" id="login-email" value.bind="email" name="email"
+                               placeholder="example@gmail.com">
+                        <span class="help-block"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password" class="control-label">Password</label>
+                        <input type="password" class="form-control" id="login-password" value.bind="password"
+                               name="password">
+                        <span class="help-block"></span>
+                    </div>
+                    <div id="loginErrorMsg" class="alert alert-error hide">Wrong username og password</div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="remember" id="remember"> Remember login
+                        </label>
+                        <p class="help-block">(if this is a private computer)</p>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block">Login</button>
+                    <a href="/forgot/" class="btn btn-default btn-block">Help to login</a>
+                </form>
             </div>
-            <form role="form" submit.delegate="submit()" action="#">
-                <div class="mdl-card__supporting-text">
-                    <div class="mdl-textfield ">
-                        <input class="mdl-textfield__input" type="text" id="login-email" value.bind="email" name="email" placeholder="Email">
-                    </div>
-                    <div class="mdl-textfield">
-                        <input class="mdl-textfield__input" type="password" id="login-password" value.bind="password" name="password" placeholder="Password">
-                    </div>
-                </div>
-                <div class="mdl-card__actions clearfix">
-                    <button type="submit" class="mdl-button mdl-button--raised mdl-button--accent">
-                        Submit
-                    </button>
-                </div>
-            </form>
         </div>
     </div>
 </template>

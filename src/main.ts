@@ -1,8 +1,7 @@
 ﻿import {Aurelia} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
 import 'font-awesome/scss/font-awesome.scss';
-//import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap';
+import 'bootstrap-sass/assets/stylesheets/_bootstrap.scss';
 import * as Bluebird from 'bluebird';
 
 declare let appBaseUrl: any;
