@@ -14,7 +14,8 @@ export class App {
       {route: ['login', 'login'], name: 'login', moduleId: 'pages/login/login', title: 'Login'},
       {route: ['client/:id', 'client/:id'], name: 'client', moduleId: 'pages/client/client', title: 'Client'},
       {route: ['job/:id', 'job/:id'], name: 'job', moduleId: 'pages/job/job', title: 'Job details'},
-      {route: ['freelancer/:id', 'freelancer/:id'], name: 'freelancer', moduleId: 'pages/freelancer/freelancer', title: 'Freelancer'}
+      {route: ['freelancer/:id', 'freelancer/:id'], name: 'freelancer', moduleId: 'pages/freelancer/freelancer', title: 'Freelancer'},
+      {route: ['project/:id', 'project/:id'], name: 'project', moduleId: 'pages/project/project', title: 'Project page'}
     ]);
 
     this.router = router;

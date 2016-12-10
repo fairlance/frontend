@@ -1,0 +1,105 @@
+/* adjust body when menu is open */
+
+body.slide-active {
+  overflow-x: hidden;
+}
+
+#page-content {
+  position: relative;
+  padding-top: 70px;
+  left: 0;
+  border-left: 1px solid;
+  &.slide-active {
+    padding-top: 20px;
+  }
+}
+
+/* put toggle bars on the left :: not using button */
+
+#slide-nav .navbar-toggle {
+  cursor: pointer;
+  position: relative;
+  line-height: 0;
+  float: left;
+  margin: 0;
+  width: 30px;
+  height: 40px;
+  padding: 10px 0 0 0;
+  border: 0;
+  background: transparent;
+  > .icon-bar {
+    width: 100%;
+    display: block;
+    height: 3px;
+    margin: 5px 0 0 0;
+  }
+  &.slide-active .icon-bar {
+    background: orange;
+  }
+}
+
+
+.navbar-header, .navbar.navbar-fixed-top.slide-active {
+  position: relative;
+  margin-bottom: 0;
+}
+#slide-nav {
+  .container {
+    margin: 0;
+    padding: 0 !important;
+  }
+  .navbar-header {
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  .navbar.slide-active {
+    position: absolute;
+    width: 80%;
+    top: -1px;
+    z-index: 1000;
+  }
+  #slidemenu {
+    left: -100%;
+    width: 80%;
+    min-width: 0;
+    position: absolute;
+    padding-left: 0;
+    z-index: 2;
+    top: 51px;
+    margin: 0;
+    .panel-body {
+      .chat {
+        margin: 0;
+        padding: 0;
+        li {
+          margin-bottom: 10px;
+          padding-bottom: 5px;
+          border-bottom: 1px dotted #B3A9A9;
+          .chat-body {
+            p {
+              margin: 0;
+              color: #777777;
+            }
+          }
+          &.left {
+            .chat-body {
+              margin-left: 60px;
+            }
+          }
+          &.right {
+            .chat-body {
+              margin-right: 60px;
+            }
+          }
+        }
+      }
+    }
+    .panel-footer {
+      position: fixed;
+      bottom: 0;
+      width: 80%;
+    }
+  }
+  border-top: 0;
+
+}

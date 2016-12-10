@@ -25,7 +25,6 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  top: 50px;
   bottom: 0;
   overflow-x: hidden;
   overflow-y: auto;
@@ -254,6 +253,10 @@ html {
     }
     .page-host {
       height: 100%;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
     }
     a {
       text-decoration: none;
