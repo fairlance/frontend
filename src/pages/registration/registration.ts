@@ -12,7 +12,7 @@ export class Registration {
   private lastName: string;
   private email: string;
   private password: string;
-  private clientType: string;
+  private clientType: string = 'freelancer';
 
   constructor(http, router, user) {
     this.http = http;

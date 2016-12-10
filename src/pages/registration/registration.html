@@ -1,49 +1,53 @@
 <template>
     <div class="registration">
-        <section class="clearfix login-form mdl-card mdl-shadow--2dp">
-            <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">Register Fairlance</h2>
+        <div class="col-xs-12">
+            <div class="well">
+                <form submit.delegate="submit()" id="fileForm" role="form">
+                    <fieldset>
+                        <legend class="text-center">Register Fairlance</legend>
+
+                        <div class="form-group">
+                            <label for="firstName"><span class="req">* </span> First name: </label>
+                            <input class="form-control" type="text" id="firstName" value.bind="firstName" required/>
+                            <div id="errFirst"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastName"><span class="req">* </span> Last name: </label>
+                            <input class="form-control" value.bind="lastName" type="text" id="lastName" placeholder="hyphen or single quote OK" required/>
+                            <div id="errLast"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email"><span class="req">* </span> Email: <small>This will be your login user name</small></label>
+                            <input class="form-control" type="email" name="email" id="email" value.bind="email" placeholder="someone@mail.com" required/>
+                            <div id="errEmail"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label ><span class="req">* </span> Password: </label>
+                            <input required name="password" type="password" value.bind="password" class="form-control inputpass" minlength="4" id="pass1"/> </p>
+
+                            <label ><span class="req">* </span> Password Confirm: </label>
+                            <input required name="password" type="password" value.bind="repeatPassword" class="form-control inputpass" minlength="4" placeholder="Enter again to validate" id="pass2" />
+                            <span id="confirmMessage" class="confirmMessage"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="checkbox" required name="terms" id="field_terms">  
+                            <label>I agree with the <a href="">terms and conditions</a> for Registration.</label>
+                            <span class="req">* </span>
+                        </div>
+
+                        <div class="form-group">
+                            <input class="btn btn-success" type="submit" name="submit_reg" value="Register" disabled.bind="(password === undefined) || (repeatPassword !== password)">
+                        </div>
+                        <h5>You will receive an email to complete the registration and validation process. </h5>
+                        <h5>Be sure to check your spam folders. </h5>
+                    </fieldset>
+                </form>
             </div>
-            <form role="form" submit.delegate="submit()">
-                <div class="mdl-components__warning" if.bind="repeatPassword !== password">
-                    Passwords must be the same
-                </div>
-                <div class="mdl-card__supporting-text">
-                    <select value.bind="clientType">
-                        <option disabled selected>Please select</option>
-                        <option value="freelancer">Freelancer</option>
-                        <option value="client">Client</option>
-                    </select>
-                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield">
-                        <input class="mdl-textfield__input" value.bind="firstName" type="text" id="firstName" pattern="[a-zA-Z0-9]+" required="required">
-                        <label class="mdl-textfield__label" for="firstName">First Name</label>
-                        <span class="mdl-textfield__error">This field is mandatory</span>
-                    </div>
-                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield">
-                        <input class="mdl-textfield__input" value.bind="lastName" type="text" id="lastName" pattern="[a-zA-Z0-9]+" required="required">
-                        <label class="mdl-textfield__label" for="lastName">Last Name</label>
-                        <span class="mdl-textfield__error">This field is mandatory</span>
-                    </div>
-                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield">
-                        <input class="mdl-textfield__input" value.bind="email" type="email" id="email" required="required">
-                        <label class="mdl-textfield__label" for="email">Email</label>
-                        <span class="mdl-textfield__error">This is not a valid email</span>
-                    </div>
-                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield">
-                        <input class="mdl-textfield__input" value.bind="password" type="password" id="password" required="required">
-                        <label class="mdl-textfield__label" for="password">Password</label>
-                    </div>
-                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield">
-                        <input class="mdl-textfield__input" value.bind="repeatPassword" type="password" id="repeatPassword" required="required">
-                        <label class="mdl-textfield__label" for="repeatPassword">Repeat Password</label>
-                    </div>
-                </div>
-                <div class="mdl-card__actions clearfix">
-                    <button mdl="button" type="submit" class="mdl-button mdl-button--raised mdl-button--accent" disabled.bind="(password === undefined) || (repeatPassword !== password)">
-                        Submit
-                    </button>
-                </div>
-            </form>
-        </section>
+        </div>
     </div>
+
 </template>

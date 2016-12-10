@@ -8,7 +8,7 @@ export class App {
     config.title = 'Fairlance';
     config.map([
       {route: ['', 'landing'], name: 'landing', moduleId: 'pages/landing/landing', title: 'Welcome'},
-      {route: ['registration', 'registration'], name: 'pages/registration/registration', moduleId: 'registration', title: 'Register'},
+      {route: ['registration', 'registration'], moduleId: 'pages/registration/registration', name: 'registration', title: 'Register'},
       {route: ['info', 'info'], name: 'info', moduleId: 'pages/info/info', title: 'Additional info'},
       {route: ['jobs', 'jobs'], name: 'jobs', moduleId: 'pages/jobs/jobs', title: 'Jobs'},
       {route: ['login', 'login'], name: 'login', moduleId: 'pages/login/login', title: 'Login'},

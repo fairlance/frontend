@@ -1,13 +1,1 @@
-@import "../../assets/styles/partials/mixins";
-.registration{
-  @include background();
 
-  .mdl-card {
-    max-width: 600px;
-    margin: 40px auto;
-    button {
-      float: right;
-    }
-  }
-
-}
