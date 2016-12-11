@@ -3,8 +3,6 @@ machine:
     version: 6.9.0
 dependencies:
     post:
-        - sudo npm install
-        - npm rebuild node-sass
         - npm run build:prod
 test:
     override:
