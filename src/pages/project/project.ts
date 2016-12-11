@@ -3,6 +3,8 @@ import {Router} from 'aurelia-router';
 import {json} from 'aurelia-fetch-client';
 import {User} from "../../services/user/user";
 
+declare let wsBaseUrl: string;
+
 @inject('AppHttpClient', Router, User, Element)
 export class Project {
   private router: Router;
@@ -12,7 +14,7 @@ export class Project {
   private element: Element;
   private projectId: number;
   private message: string;
-  private wsUri: string = 'ws://pi.fairlance.io:3005/';
+  private wsUri: string = wsBaseUrl;
   private websocket: any;
   private messages: Array<any> = [];
 

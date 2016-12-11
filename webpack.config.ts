@@ -112,7 +112,7 @@ let config = generateConfig(
   ]),
 
   ENV === 'production' ?
-    uglify({debug: false, mangle: { except: ['cb', '__webpack_require__'] }}) : {}
+    uglify({debug: false, mangle: { except: ['cb', '__webpack_require__', 'appBaseUrl', 'searchBaseUrl', 'registerBaseUrl', 'wsBaseUrl'] }}) : {}
 );
 
 module.exports = stripMetadata(config);
