@@ -17,7 +17,7 @@ export class Project {
   private wsUri: string = wsBaseUrl;
   private websocket: any;
   private messages: Array<any> = [];
-
+  private slideMenu: any;
 
   constructor(http, router, user, element) {
     this.user = user.getCurrentUser().data;
@@ -25,7 +25,6 @@ export class Project {
     this.http = http;
     this.element = element;
     this.auth = {'Authorization': 'Bearer ' + user.token};
-
   }
 
   activate(params) {
@@ -58,10 +57,10 @@ export class Project {
     this.writeToScreen('DISCONNECTED');
   }
 
-  private onMessage(evt) {
+  async onMessage(evt) {
     let first = this;
     let messageArray: Array<any> = JSON.parse(evt.data);
-    messageArray.forEach(function (message) {
+    await messageArray.forEach(function (message) {
       if (first.user.id === message.id) {
         message.side = 'right';
         message.avatar = 'http://placehold.it/50/FA6F57/fff&text=ME'
@@ -71,6 +70,7 @@ export class Project {
       }
       first.messages.push(message);
     });
+    this.scrollBottom();
   }
 
   private onError(evt) {
@@ -91,6 +91,11 @@ export class Project {
     pre.side = 'left';
     pre.avatar = 'http://placehold.it/50/4286f4/fff&text=SYS';
     this.messages.push(pre);
+  }
+
+  private scrollBottom() {
+    this.slideMenu = document.getElementById('slidemenu');
+    this.slideMenu.scrollTop = this.slideMenu.scrollHeight;
   }
 
   private toggleMenu() {
@@ -115,8 +120,8 @@ export class Project {
     $(this).toggleClass('slide-active', !selected);
     $('#slidemenu').toggleClass('slide-active');
 
-
     $('#page-content, .navbar, body, .navbar-header').toggleClass('slide-active');
 
+    this.scrollBottom();
   }
 }
