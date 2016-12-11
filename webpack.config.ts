@@ -101,7 +101,7 @@ let config = generateConfig(
   fontAndImages(),
   globalBluebird(),
   globalJquery(),
-  generateIndexHtml({minify: ENV === 'production'}),
+  generateIndexHtml({minify: false}),
 
   ...(ENV === 'production' || ENV === 'development' ? [
     commonChunksOptimize({appChunkName: 'app', firstChunk: 'aurelia-bootstrap'}),
