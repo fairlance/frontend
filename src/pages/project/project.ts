@@ -23,17 +23,17 @@ export class Project {
     this.http = http;
     this.element = element;
     this.auth = {'Authorization': 'Bearer ' + user.token};
-    this.openConnection();
+
   }
 
   activate(params) {
     this.projectId = params.id;
-    console.log(params);
+    this.openConnection();
   }
 
   private openConnection() {
     let first = this;
-    this.websocket = new WebSocket(this.wsUri + this.projectId + '/ws?token=' + this.user.token);
+    this.websocket = new WebSocket(this.wsUri + first.projectId + '/ws?token=' + first.user.token);
     this.websocket.onopen = function () {
       first.onOpen()
     };
