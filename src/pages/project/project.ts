@@ -59,15 +59,18 @@ export class Project {
   }
 
   private onMessage(evt) {
-    let message: any = JSON.parse(evt.data);
-    if (this.user.id === message.id) {
-      message.side = 'right';
-      message.avatar = 'http://placehold.it/50/FA6F57/fff&text=ME'
-    } else {
-      message.side = 'left';
-      message.avatar = 'http://placehold.it/50/55C1E7/fff&text=U'
-    }
-    this.messages.push(message);
+    let first = this;
+    let messageArray: Array<any> = JSON.parse(evt.data);
+    messageArray.forEach(function (message) {
+      if (first.user.id === message.id) {
+        message.side = 'right';
+        message.avatar = 'http://placehold.it/50/FA6F57/fff&text=ME'
+      } else {
+        message.side = 'left';
+        message.avatar = 'http://placehold.it/50/55C1E7/fff&text=U'
+      }
+      first.messages.push(message);
+    });
   }
 
   private onError(evt) {
