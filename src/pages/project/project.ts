@@ -12,7 +12,7 @@ export class Project {
   private element: Element;
   private projectId: number;
   private message: string;
-  private wsUri: string = 'ws://local.fairlance.io:3005/';
+  private wsUri: string = 'ws://pi.fairlance.io:3005/';
   private websocket: any;
   private messages: Array<any> = [];
 
