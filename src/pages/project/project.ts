@@ -63,10 +63,10 @@ export class Project {
     await messageArray.forEach(function (message) {
       if (first.user.id === message.id) {
         message.side = 'right';
-        message.avatar = 'http://placehold.it/50/FA6F57/fff&text=ME'
+        message.avatar = 'src/assets/images/me.png'
       } else {
         message.side = 'left';
-        message.avatar = 'http://placehold.it/50/55C1E7/fff&text=U'
+        message.avatar = 'src/assets/images/u.png'
       }
       first.messages.push(message);
     });
@@ -89,7 +89,7 @@ export class Project {
     pre.text = message;
     pre.username = 'System';
     pre.side = 'left';
-    pre.avatar = 'http://placehold.it/50/4286f4/fff&text=SYS';
+    pre.avatar = 'src/assets/images/sys.png';
     this.messages.push(pre);
   }
 

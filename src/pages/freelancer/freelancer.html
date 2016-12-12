@@ -2,10 +2,66 @@
     <require from="../../components/navigation/navigation.html"></require>
 
     <navigation user.bind="user"></navigation>
-    <div class="profile mdl-layout__container">
-        <div mdl="layout" class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+    <div class="profile container">
+        <div class="row">
+            <div class="col-sm-12">
 
-            <div class="mdl-layout__drawer mdl-grid">
+                <div class="card hovercard">
+                    <div class="cardheader">
+
+                    </div>
+                    <div class="avatar">
+                        <img alt="" src="../../assets/images/profile.png">
+                    </div>
+                    <div class="info">
+                        <div class="title">
+                            <a target="_blank" href="">${freelancer.firstName} ${freelancer.lastName}</a>
+                        </div>
+                        <div class="desc">${freelancer.title}</div>
+                        <div class="desc">Timezone ${freelancer.timeZone}</div>
+                        <div class="desc">${freelancer.projects ? freelancer.projects.length : 0} Jobs</div>
+                        <div class="desc">Hourly rate ${freelancer.hourlyRateFrom} - ${freelancer.hourlyRateTo}</div>
+                        <div class="desc">Joined ${freelancer.createdAt}</div>
+                    </div>
+                    <div class="card-comments">
+                        <div class="review-header">
+                            Reviews (${freelancer.reviews.length})
+                        </div>
+                        <p class="review-title">
+                            ${freelancer.reviews[0].title}
+                            <span class="review-date">
+                            ${freelancer.reviews[0].created}
+                        </span>
+                        </p>
+                        <p class="review-content">${freelancer.reviews[0].content}</p>
+                        <span class="review-signature">${freelancer.reviews[0].client.name}</span>
+                    </div>
+                    <div class="bottom">
+                        <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a class="btn btn-danger btn-sm" rel="publisher"
+                           href="">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                        <a class="btn btn-primary btn-sm" rel="publisher"
+                           href="">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a class="btn btn-warning btn-sm" rel="publisher" href="">
+                            <i class="fa fa-behance"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="profile ">
+        <div mdl="layout" class="  ">
+
+            <div class=" ">
                 <div class="mdl-cell mdl-cell--12-col mdl-cell--top profile-picture">
                     <span class="mdl-layout-title">${freelancer.firstName} ${freelancer.lastName} - Freelancer</span>
                     <img src="../../assets/images/profile.png">
@@ -44,7 +100,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="mdl-cell mdl-cell--12-col mdl-cell--bottom review-section clearfix">
+                <div class="review-section ">
                     <div class="review-header">
                         Reviews (${freelancer.reviews.length})
                     </div>
