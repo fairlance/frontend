@@ -48,20 +48,20 @@
     "url": "http://github.com/fairlance/frontend.git"
   },
   "dependencies": {
-    "aurelia-bootstrapper-webpack": "^1.0.0",
+    "aurelia-bootstrapper-webpack": "1.0.0",
     "aurelia-event-aggregator": "^1.0.0",
     "aurelia-fetch-client": "^1.0.1",
     "aurelia-framework": "^1.0.7",
     "aurelia-history-browser": "^1.0.0",
     "aurelia-loader-webpack": "^1.0.3",
     "aurelia-logging-console": "^1.0.0",
-    "aurelia-pal-browser": "^1.0.0",
+    "aurelia-pal-browser": "1.0.0",
     "aurelia-polyfills": "^1.1.1",
     "aurelia-route-recognizer": "^1.1.0",
     "aurelia-router": "^1.0.7",
-    "aurelia-templating-binding": "^1.0.0",
-    "aurelia-templating-resources": "^1.1.1",
-    "aurelia-templating-router": "^1.0.0",
+    "aurelia-templating-binding": "1.1.0",
+    "aurelia-templating-resources": "1.1.1",
+    "aurelia-templating-router": "1.0.0",
     "bluebird": "^3.4.6",
     "bootstrap-sass": "^3.3.7",
     "font-awesome": "^4.7.0",
@@ -109,10 +109,10 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.8.0",
     "protractor": "^4.0.11",
-    "ts-node": "^1.7.0",
+    "ts-node": "^1.7.2",
     "typescript": "^2.1",
     "wait-on": "^2.0.1",
     "webpack": "2.1.0-beta.27",
-    "webpack-dev-server": "2.1.0-beta.11"
+    "webpack-dev-server": "2.1.0-beta.12"
   }
 }
