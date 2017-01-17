@@ -7,12 +7,12 @@ body {
 
 #page-content {
   position: relative;
-  padding-top: 70px;
+  padding-top: 100px;
   left: 0;
   height: 100%;
   overflow: scroll;
   &.slide-active {
-    padding-top: 20px;
+    padding-top: 0px;
     overflow: hidden;
   }
 }
@@ -24,7 +24,7 @@ body {
   position: absolute;
   padding-left: 0;
   z-index: 2;
-  top: 51px;
+  top: 100px;
   margin: 0;
   height: 100%;
   overflow: scroll;
@@ -124,8 +124,10 @@ body {
 .navbar-header, .navbar.navbar-fixed-top.slide-active {
   position: relative;
   margin-bottom: 0;
+
 }
 #slide-nav {
+  margin-top: 50px;
   .container {
     margin: 0;
     padding: 0 !important;

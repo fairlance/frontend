@@ -1,0 +1,179 @@
+<template>
+    <require from="../../components/navigation/navigation.html"></require>
+
+    <navigation user.bind="user"></navigation>
+    <div class="projects-list col-xs-12">
+        <h2 class="text-center">Projects</h2>
+        <table class="table table-striped table-hover">
+            <tbody><tr class="unread" id="mail_msg_1">
+                <td class=""><div class="icheckbox_minimal" style="position: relative;"><input class="iCheck" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></td>
+                <td class=""><div class="star"><i class="fa fa-star-o icon-xs icon-accent"></i></div></td>
+                <td class="open-view">John Smith</td>
+                <td class="open-view"><span class="label label-primary">Family</span>&nbsp;<span class="msgtext">Hello, hope you having a great day ahead.</span></td>
+                <td class="open-view"><span class="msg_time">19:34</span></td>
+            </tr>
+            <tr class="unread" id="mail_msg_2">
+                <td class=""><div class="icheckbox_minimal" style="position: relative;"><input class="iCheck" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></td>
+                <td class=""><div class="star"><i class="fa fa-star-o icon-xs icon-accent"></i></div></td>
+                <td class="open-view">Laura Willson</td>
+                <td class="open-view"><span class="msgtext">Your product seems amazingly smart and elegant to use.</span></td>
+                <td class="open-view"><span class="msg_time">21:54</span></td>
+            </tr>
+            <tr class="unread" id="mail_msg_3">
+                <td class=""><div class="icheckbox_minimal" style="position: relative;"><input class="iCheck" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></td>
+                <td class=""><div class="star"><i class="fa fa-star icon-xs icon-accent"></i></div></td>
+                <td class="open-view">Jane D.</td>
+                <td class="open-view"><span class="msgtext">We play, dance and love. Share love all around you.</span></td>
+                <td class="open-view"><span class="msg_time">22:28</span></td>
+            </tr>
+            <tr id="mail_msg_4">
+                <td class=""><div class="icheckbox_minimal" style="position: relative;"><input class="iCheck" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></td>
+                <td class=""><div class="star"><i class="fa fa-star-o icon-xs icon-accent"></i></div></td>
+                <td class="open-view">John Smith</td>
+                <td class="open-view"><span class="msgtext">Hello, hope you having a great day ahead.</span></td>
+                <td class="open-view"><span class="msg_time">Yesterday</span></td>
+            </tr>
+            <tr id="mail_msg_5">
+                <td class=""><div class="icheckbox_minimal" style="position: relative;"><input class="iCheck" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></td>
+                <td class=""><div class="star"><i class="fa fa-star icon-xs icon-accent"></i></div></td>
+                <td class="open-view">Laura Willson</td>
+                <td class="open-view"><span class="msgtext">Your product seems amazingly smart and elegant to use.</span></td>
+                <td class="open-view"><span class="msg_time">Yesterday</span></td>
+            </tr>
+            <tr id="mail_msg_6">
+                <td class=""><div class="icheckbox_minimal" style="position: relative;"><input class="iCheck" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></td>
+                <td class=""><div class="star"><i class="fa fa-star-o icon-xs icon-accent"></i></div></td>
+                <td class="open-view">Jane D.</td>
+                <td class="open-view"><span class="label label-info">Work</span>&nbsp;<span class="msgtext">We play, dance and love. Share love all around you.</span></td>
+                <td class="open-view"><span class="msg_time">28 Feb</span></td>
+            </tr>
+            <tr class="unread">
+                <td class=""><div class="icheckbox_minimal" style="position: relative;"><input class="iCheck" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></td>
+                <td class=""><div class="star"><i class="fa fa-star icon-xs icon-accent"></i></div></td>
+                <td class="open-view">John Smith</td>
+                <td class="open-view"><span class="label label-info">Work</span>&nbsp;<span class="msgtext">Hello, hope you having a great day ahead.</span></td>
+                <td class="open-view"><span class="msg_time">25 Feb</span></td>
+            </tr>
+            <tr id="mail_msg_8">
+                <td class=""><div class="icheckbox_minimal" style="position: relative;"><input class="iCheck" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></td>
+                <td class=""><div class="star"><i class="fa fa-star icon-xs icon-accent"></i></div></td>
+                <td class="open-view">Laura Willson</td>
+                <td class="open-view"><span class="msgtext">Your product seems amazingly smart and elegant to use.</span></td>
+                <td class="open-view"><span class="msg_time">25 Feb</span></td>
+            </tr>
+            <tr id="mail_msg_9">
+                <td class=""><div class="icheckbox_minimal" style="position: relative;"><input class="iCheck" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></td>
+                <td class=""><div class="star"><i class="fa fa-star-o icon-xs icon-accent"></i></div></td>
+                <td class="open-view">Jane D.</td>
+                <td class="open-view"><span class="msgtext">We play, dance and love. Share love all around you.</span></td>
+                <td class="open-view"><span class="msg_time">25 Feb</span></td>
+            </tr>
+            <tr id="mail_msg_10">
+                <td class=""><div class="icheckbox_minimal" style="position: relative;"><input class="iCheck" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></td>
+                <td class=""><div class="star"><i class="fa fa-star-o icon-xs icon-accent"></i></div></td>
+                <td class="open-view">John Smith</td>
+                <td class="open-view"><span class="label label-success">IMP</span>&nbsp;<span class="msgtext">Hello, hope you having a great day ahead.</span></td>
+                <td class="open-view"><span class="msg_time">25 Feb</span></td>
+            </tr>
+            <tr class="unread">
+                <td class=""><div class="icheckbox_minimal" style="position: relative;"><input class="iCheck" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></td>
+                <td class=""><div class="star"><i class="fa fa-star icon-xs icon-accent"></i></div></td>
+                <td class="open-view">Laura Willson</td>
+                <td class="open-view"><span class="msgtext">Your product seems amazingly smart and elegant to use.</span></td>
+                <td class="open-view"><span class="msg_time">21 Feb</span></td>
+            </tr>
+            <tr id="mail_msg_12">
+                <td class=""><div class="icheckbox_minimal" style="position: relative;"><input class="iCheck" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></td>
+                <td class=""><div class="star"><i class="fa fa-star icon-xs icon-accent"></i></div></td>
+                <td class="open-view">Jane D.</td>
+                <td class="open-view"><span class="msgtext">We play, dance and love. Share love all around you.</span></td>
+                <td class="open-view"><span class="msg_time">21 Feb</span></td>
+            </tr>
+            <tr id="mail_msg_13">
+                <td class=""><div class="icheckbox_minimal" style="position: relative;"><input class="iCheck" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></td>
+                <td class=""><div class="star"><i class="fa fa-star-o icon-xs icon-accent"></i></div></td>
+                <td class="open-view">John Smith</td>
+                <td class="open-view"><span class="label label-success">IMP</span>&nbsp;<span class="msgtext">Hello, hope you having a great day ahead.</span></td>
+                <td class="open-view"><span class="msg_time">21 Feb</span></td>
+            </tr>
+            <tr id="mail_msg_14">
+                <td class=""><div class="icheckbox_minimal" style="position: relative;"><input class="iCheck" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></td>
+                <td class=""><div class="star"><i class="fa fa-star-o icon-xs icon-accent"></i></div></td>
+                <td class="open-view">Laura Willson</td>
+                <td class="open-view"><span class="msgtext">Your product seems amazingly smart and elegant to use.</span></td>
+                <td class="open-view"><span class="msg_time">21 Feb</span></td>
+            </tr>
+            <tr id="mail_msg_15">
+                <td class=""><div class="icheckbox_minimal" style="position: relative;"><input class="iCheck" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></td>
+                <td class=""><div class="star"><i class="fa fa-star icon-xs icon-accent"></i></div></td>
+                <td class="open-view">Jane D.</td>
+                <td class="open-view"><span class="msgtext">We play, dance and love. Share love all around you.</span></td>
+                <td class="open-view"><span class="msg_time">21 Feb</span></td>
+            </tr>
+            <tr class="unread">
+                <td class=""><div class="icheckbox_minimal" style="position: relative;"><input class="iCheck" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></td>
+                <td class=""><div class="star"><i class="fa fa-star-o icon-xs icon-accent"></i></div></td>
+                <td class="open-view">John Smith</td>
+                <td class="open-view"><span class="label label-info">Work</span>&nbsp;<span class="msgtext">Hello, hope you having a great day ahead.</span></td>
+                <td class="open-view"><span class="msg_time">17 Feb</span></td>
+            </tr>
+            <tr id="mail_msg_17">
+                <td class=""><div class="icheckbox_minimal" style="position: relative;"><input class="iCheck" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></td>
+                <td class=""><div class="star"><i class="fa fa-star icon-xs icon-accent"></i></div></td>
+                <td class="open-view">Laura Willson</td>
+                <td class="open-view"><span class="msgtext">Your product seems amazingly smart and elegant to use.</span></td>
+                <td class="open-view"><span class="msg_time">17 Feb</span></td>
+            </tr>
+            <tr id="mail_msg_18">
+                <td class=""><div class="icheckbox_minimal" style="position: relative;"><input class="iCheck" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></td>
+                <td class=""><div class="star"><i class="fa fa-star-o icon-xs icon-accent"></i></div></td>
+                <td class="open-view">Jane D.</td>
+                <td class="open-view"><span class="msgtext">We play, dance and love. Share love all around you.</span></td>
+                <td class="open-view"><span class="msg_time">17 Feb</span></td>
+            </tr>
+            <tr id="mail_msg_19">
+                <td class=""><div class="icheckbox_minimal" style="position: relative;"><input class="iCheck" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></td>
+                <td class=""><div class="star"><i class="fa fa-star-o icon-xs icon-accent"></i></div></td>
+                <td class="open-view">John Smith</td>
+                <td class="open-view"><span class="label label-danger">Urgent</span>&nbsp;<span class="msgtext">Hello, hope you having a great day ahead.</span></td>
+                <td class="open-view"><span class="msg_time">17 Feb</span></td>
+            </tr>
+            <tr id="mail_msg_20">
+                <td class=""><div class="icheckbox_minimal" style="position: relative;"><input class="iCheck" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></td>
+                <td class=""><div class="star"><i class="fa fa-star icon-xs icon-accent"></i></div></td>
+                <td class="open-view">Laura Willson</td>
+                <td class="open-view"><span class="msgtext">Your product seems amazingly smart and elegant to use.</span></td>
+                <td class="open-view"><span class="msg_time">17 Feb</span></td>
+            </tr>
+            <tr class="unread">
+                <td class=""><div class="icheckbox_minimal" style="position: relative;"><input class="iCheck" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></td>
+                <td class=""><div class="star"><i class="fa fa-star-o icon-xs icon-accent"></i></div></td>
+                <td class="open-view">Jane D.</td>
+                <td class="open-view"><span class="msgtext">We play, dance and love. Share love all around you.</span></td>
+                <td class="open-view"><span class="msg_time">16 Feb</span></td>
+            </tr>
+            <tr id="mail_msg_22">
+                <td class=""><div class="icheckbox_minimal" style="position: relative;"><input class="iCheck" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></td>
+                <td class=""><div class="star"><i class="fa fa-star-o icon-xs icon-accent"></i></div></td>
+                <td class="open-view">John Smith</td>
+                <td class="open-view"><span class="label label-primary">Family</span>&nbsp;<span class="msgtext">Hello, hope you having a great day ahead.</span></td>
+                <td class="open-view"><span class="msg_time">16 Feb</span></td>
+            </tr>
+            <tr id="mail_msg_23">
+                <td class=""><div class="icheckbox_minimal" style="position: relative;"><input class="iCheck" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></td>
+                <td class=""><div class="star"><i class="fa fa-star icon-xs icon-accent"></i></div></td>
+                <td class="open-view">Laura Willson</td>
+                <td class="open-view"><span class="msgtext">Your product seems amazingly smart and elegant to use.</span></td>
+                <td class="open-view"><span class="msg_time">16 Feb</span></td>
+            </tr>
+            <tr id="mail_msg_24">
+                <td class=""><div class="icheckbox_minimal" style="position: relative;"><input class="iCheck" type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></td>
+                <td class=""><div class="star"><i class="fa fa-star-o icon-xs icon-accent"></i></div></td>
+                <td class="open-view">Jane D.</td>
+                <td class="open-view"><span class="msgtext">We play, dance and love. Share love all around you.</span></td>
+                <td class="open-view"><span class="msg_time">16 Feb</span></td>
+            </tr>
+            </tbody></table>
+    </div>
+
+</template>
