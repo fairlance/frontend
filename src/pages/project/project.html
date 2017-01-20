@@ -20,7 +20,9 @@
     <div id="slidemenu">
         <div class="panel-body">
             <ul class="chat">
-                <message repeat.for="msg of messages" content="${msg.text}" username="${msg.username}" side="${msg.side}" avatar="${msg.avatar}"></message>
+                <message repeat.for="i of messages.length" content="${messages[i].text}"
+                         username="${messages[i].username}" side="${messages[i].side}"
+                         avatar="${messages[i].avatar}"></message>
             </ul>
         </div>
         <div class="panel-footer">
@@ -41,27 +43,8 @@
     <div id="page-content">
 
         <div class="container">
-            <h1 class="no-margin-top">Bootstrap starter template</h1>
-            <p class="lead">Use this document as a way to quickly start any new project. All you get is this text and a
-                mostly barebones HTML document.</p>
-            <p class="lead">Use this document as a way to quickly start any new project. All you get is this text and a
-                mostly barebones HTML document.</p>
-            <p class="lead">Use this document as a way to quickly start any new project. All you get is this text and a
-                mostly barebones HTML document.</p>
-            <p class="lead">Use this document as a way to quickly start any new project. All you get is this text and a
-                mostly barebones HTML document.</p>
-            <p class="lead">Use this document as a way to quickly start any new project. All you get is this text and a
-                mostly barebones HTML document.</p>
-            <p class="lead">Use this document as a way to quickly start any new project. All you get is this text and a
-                mostly barebones HTML document.</p>
-            <p class="lead">Use this document as a way to quickly start any new project. All you get is this text and a
-                mostly barebones HTML document.</p>
-            <p class="lead">Use this document as a way to quickly start any new project. All you get is this text and a
-                mostly barebones HTML document.</p>
-            <p class="lead">Use this document as a way to quickly start any new project. All you get is this text and a
-                mostly barebones HTML document.</p>
-            <p class="lead">Use this document as a way to quickly start any new project. All you get is this text and a
-                mostly barebones HTML document.</p>
+            <h1 class="no-margin-top">${project.name}</h1>
+            <p class="lead">${project.description}</p>
         </div>
         <!-- /.container -->
 

@@ -23,6 +23,10 @@ export class Projects {
     this.getProjects();
   }
 
+  private goToProject(id: string) {
+    this.router.navigateToRoute('project', {id: id}, {replace: true});
+  }
+
   async getProjects(): Promise<void>  {
     let first = this;
     const response = await first.app.fetch('project', {

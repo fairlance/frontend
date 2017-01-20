@@ -9,7 +9,8 @@ declare let wsBaseUrl: string;
 export class Project {
   private router: Router;
   private user: any;
-  private http: any;
+  private app: any;
+  private project: any;
   private auth: Object;
   private element: Element;
   private projectId: number;
@@ -19,10 +20,10 @@ export class Project {
   private messages: Array<any> = [];
   private slideMenu: any;
 
-  constructor(http, router, user, element) {
+  constructor(app, router, user, element) {
     this.user = user.getCurrentUser().data;
     this.router = router;
-    this.http = http;
+    this.app = app;
     this.element = element;
     this.auth = {'Authorization': 'Bearer ' + user.token};
   }
@@ -30,6 +31,18 @@ export class Project {
   activate(params) {
     this.projectId = params.id;
     this.openConnection();
+    this.getProject();
+  }
+
+  async getProject(): Promise<void>  {
+    let first = this;
+    const response = await first.app.fetch('project/' + first.projectId, {
+      method: 'get',
+      headers: this.auth
+    });
+    let data = await response.json();
+    first.project = data.data;
+    console.log(first.project);
   }
 
   private openConnection() {
