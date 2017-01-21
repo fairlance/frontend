@@ -42,7 +42,6 @@ export class Project {
     });
     let data = await response.json();
     first.project = data.data;
-    console.log(first.project);
   }
 
   private openConnection() {

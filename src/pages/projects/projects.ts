@@ -35,6 +35,5 @@ export class Projects {
     });
     let data = await response.json();
     first.projects = data.data;
-    console.log(first.projects);
   }
 }
