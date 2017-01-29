@@ -1,16 +1,17 @@
 <template bindable="user">
     <div class="main-menu">
-        <a route-href="route.bind: user.type;  params.bind:{id:user.id}">
-            <i class="material-icons">account_circle</i>
+        <a route-href="route:projects">
+            Projects
         </a>
         <a route-href="route:jobs">
-            <i class="material-icons">home</i>
+            Jobs
         </a>
-        <a>
-            <i class="material-icons">announcement</i>
+        <a route-href="route.bind: user.type;  params.bind:{id:user.id}">
+            Profile
         </a>
-        <a route-href="route:projects">
-            <i class="material-icons">message</i>
+        <a >
+            Messages
         </a>
+        <i class="material-icons">more_vert</i>
     </div>
 </template>

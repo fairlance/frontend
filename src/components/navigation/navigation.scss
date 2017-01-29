@@ -8,15 +8,27 @@
 }
 .main-menu {
   width: 100%;
-  background-color: #383032;
+  background-color: #EC7253;
   margin: 0;
   height: 50px;
   position: fixed;
   z-index: 2;
-  i {
+  padding: 16px 14px 0;
+  a {
     color: #ffffff;
-    margin-top: 14px;
-    margin-left: 14px;
+    font-size: 15px;
+    line-height: 19px;
+    font-weight: 500;
+    padding-right: 14px;
+    &:hover {
+      color: #FFDB97;
+    }
+  }
+  i {
+    position: absolute;
+    right: 5px;
+    color: #ffffff;
+    top: 14px;
   }
 }
 
