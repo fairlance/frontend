@@ -42,38 +42,35 @@ body {
     .chat {
       padding: 0;
       margin: 0 0 100px;
-      li {
-        margin-bottom: 10px;
-        padding-bottom: 5px;
-        border-bottom: 1px dotted #B3A9A9;
+      .message {
         &.right {
-          .chat-img {
-            margin-right: 5px;
-          }
-        }
-        .chat-body {
-          .header {
-            margin-bottom: 5px;
-            .text-muted {
-              span {
-                top: 2px;
-              }
+          p {
+            .content {
+              background-color: #D9EDF7;
+              float: right;
             }
           }
-          p {
-            margin: 0;
-            color: #777777;
+          .date {
+            text-align: right;
+            margin-top: 0;
           }
         }
-        &.left {
-          .chat-body {
-            margin-left: 60px;
+        p {
+          .content {
+            background-color: #DFF0D8;
+            border: 0.5px solid #D6EAC5;
+            border-radius: 2px;
+            font-size: 9px;
+            line-height: 11px;
+            color: #000000;
+            padding: 10px;
           }
         }
-        &.right {
-          .chat-body {
-            margin-right: 60px;
-          }
+        .date {
+          font-size: 8px;
+          line-height: 10px;
+          color: #BFBFBF;
+          margin-top: 18px;
         }
       }
     }

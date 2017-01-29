@@ -1,19 +1,10 @@
 <template bindable="content,username,side,avatar">
-    <li class="right clearfix">
-        <span class.bind="'chat-img pull-' + side">
-            <img src.bind="avatar" alt="User Avatar"
-                 class="img-circle"/>
-        </span>
-        <div class="chat-body clearfix">
-            <div class="header">
-                <small class=" text-muted">
-                    <span class="glyphicon glyphicon-time"></span> 13 mins ago
-                </small>
-                <strong class="pull-right primary-font">${username}</strong>
-            </div>
-            <p>
+    <div class="message" class.bind="side">
+        <p class="clearfix">
+            <span class="content">
                 ${content}
-            </p>
-        </div>
-    </li>
+            </span>
+        </p>
+        <p class="date">8:56:14 AM</p>
+    </div>
 </template>

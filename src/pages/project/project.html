@@ -19,11 +19,11 @@
 
     <div id="slidemenu">
         <div class="panel-body">
-            <ul class="chat">
+            <div class="chat">
                 <message repeat.for="i of messages.length" content="${messages[i].text}"
                          username="${messages[i].username}" side="${messages[i].side}"
                          avatar="${messages[i].avatar}"></message>
-            </ul>
+            </div>
         </div>
         <div class="panel-footer">
             <div class="input-group">

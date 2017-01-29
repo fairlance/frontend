@@ -73,12 +73,10 @@ export class Project {
     let first = this;
     let messageArray: Array<any> = JSON.parse(evt.data);
     await messageArray.forEach(function (message) {
-      if (first.user.id === message.id) {
+      if (first.user.id === message.userId) {
         message.side = 'right';
-        message.avatar = 'src/assets/images/me.png'
       } else {
         message.side = 'left';
-        message.avatar = 'src/assets/images/u.png'
       }
       first.messages.push(message);
     });
@@ -101,7 +99,6 @@ export class Project {
     pre.text = message;
     pre.username = 'System';
     pre.side = 'left';
-    pre.avatar = 'src/assets/images/sys.png';
     this.messages.push(pre);
   }
 
