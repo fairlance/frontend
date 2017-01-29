@@ -2,4 +2,119 @@
   margin-top: 50px;
   overflow: scroll;
   height: 100%;
+  select {
+    border-color: #6D849D;
+    width: 127px;
+    height: 32px;
+    margin: 4px auto 0;
+    background-color: #ffffff;
+  }
+  section {
+    margin: 0;
+    &.working {
+      h3 {
+        border-bottom-color: #50E3C3;
+      }
+      ul {
+        li {
+          .name {
+            i {
+              color: #50E3C3;
+            }
+          }
+        }
+      }
+    }
+    &.pending {
+      h3 {
+        border-bottom-color: #9FC8FD;
+      }
+      ul {
+        li {
+          .name {
+            i {
+              color: #9FC8FD;
+            }
+          }
+        }
+      }
+    }
+    &.archived {
+      h3 {
+        border-bottom-color: #9FC8FD;
+      }
+      ul {
+        li {
+          .name {
+            i {
+              color: #9FC8FD;
+            }
+          }
+        }
+      }
+    }
+    &.canceled {
+      h3 {
+        border-bottom-color: #9FC8FD;
+      }
+      ul {
+        li {
+          .name {
+            i {
+              color: #9FC8FD;
+            }
+          }
+        }
+      }
+    }
+    h3 {
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 17px;
+      color: #6D849D;
+      border-bottom: 1px solid #FFE361;
+      padding: 0 15px;
+      margin-bottom: 0;
+    }
+    ul {
+      margin: 0;
+      li {
+        padding: 10px 0;
+        min-height: 60px;
+        position: relative;
+        .date {
+          font-size: 12px;
+          font-weight: 300;
+          line-height: 15px;
+          color: #6D849D;
+          position: absolute;
+          top: 13px;
+        }
+        .name {
+          font-size: 15px;
+          line-height: 19px;
+          color: #6D849D;
+          padding-left: 100px;
+          position: relative;
+          display: inline-block;
+
+          i {
+            color: #FFE361;
+            position: absolute;
+            left: 70px;
+            top: -3px;
+          }
+        }
+        a {
+          display: block;
+          text-decoration: underline;
+          font-size: 14px;
+          font-weight: 200;
+          line-height: 17px;
+          color: #8CBFFA;
+          margin-left: 100px;
+        }
+      }
+    }
+  }
 }
