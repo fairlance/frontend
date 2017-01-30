@@ -125,6 +125,5 @@ export class Jobs {
     });
     let data = await response.json();
     first.jobs = data.data.items;
-    console.log(first.jobs);
   }
 }

@@ -18,7 +18,7 @@ export class Projects {
     this.router = router;
     this.app = app;
     this.search = search;
-    this.auth = {'Authorization': 'Bearer ' + user.token};
+    this.auth = {'Authorization': 'Bearer ' + this.user.token};
 
     this.getProjects();
   }
