@@ -12,9 +12,9 @@
         <section repeat.for="item of projectList | limitTo:projectList.length " class="${item.id}" if.bind="(selectFilter === '' || item.id === selectFilter)">
             <h3 class="row">${item.status}</h3>
             <ul>
-                <li repeat.for="project of item.list" click.delegate="goToProject(project.id)">
+                <li repeat.for="project of item.list" >
                     <span class="date">${project.dueDate | dateFormatter}</span>
-                    <span class="name"><i class="material-icons">fiber_manual_record</i>${project.name}</span>
+                    <span class="name" click.delegate="goToProject(project.id)"><i class="material-icons">fiber_manual_record</i>${project.name}</span>
                     <a route-href="route:client;  params.bind:{id:project.client.id}">${project.client.firstName} ${project.client.lastName}</a>
                 </li>
             </ul>
