@@ -1,76 +1,23 @@
 <template>
+    <require from="../../resources/value-converters/date-formatter/date-formatter"></require>
     <require from="../../components/navigation/navigation.html"></require>
+    <require from="../../resources/value-converters/limitTo/limitTo"></require>
 
     <navigation user.bind="user"></navigation>
     <div class="projects-list col-xs-12">
-        <select class="form-control">
-            <option>All</option>
-            <option>Working</option>
-            <option>Finalizing Terms</option>
-            <option>Pending</option>
-            <option>Archived</option>
-            <option>Canceled</option>
+        <select class="form-control" value.bind="selectFilter">
+            <option value="">All</option>
+            <option repeat.for="status of statusList" value="${status.id}">${status.name}</option>
         </select>
-        <section class="finalizing">
-            <h3 class="row">Finalizing Terms (2)</h3>
+        <section repeat.for="item of projectList | limitTo:projectList.length " class="${item.id}" if.bind="(selectFilter === '' || item.id === selectFilter)">
+            <h3 class="row">${item.status}</h3>
             <ul>
-                <li>
-                    <span class="date">15 Feb</span>
-                    <span class="name"><i class="material-icons">fiber_manual_record</i>Write Advertising Copy with these new word i'm adding</span>
-                    <a>Fred Robinson</a>
-                </li>
-                <li>
-                    <span class="date">15 Feb</span>
-                    <span class="name"><i class="material-icons">fiber_manual_record</i>Write Advertising Copy</span>
-                    <a>Fred Robinson</a>
+                <li repeat.for="project of item.list" click.delegate="goToProject(project.id)">
+                    <span class="date">${project.dueDate | dateFormatter}</span>
+                    <span class="name"><i class="material-icons">fiber_manual_record</i>${project.name}</span>
+                    <a route-href="route:client;  params.bind:{id:project.client.id}">${project.client.firstName} ${project.client.lastName}</a>
                 </li>
             </ul>
         </section>
-        <section class="working">
-            <h3 class="row">Finalizing Terms (2)</h3>
-            <ul>
-                <li>
-                    <span class="date">15 Feb</span>
-                    <span class="name"><i class="material-icons">fiber_manual_record</i>Write Advertising Copy</span>
-                    <a>Fred Robinson</a>
-                </li>
-                <li>
-                    <span class="date">15 Feb</span>
-                    <span class="name"><i class="material-icons">fiber_manual_record</i>Write Advertising Copy</span>
-                    <a>Fred Robinson</a>
-                </li>
-            </ul>
-        </section>
-        <section class="pending">
-            <h3 class="row">Finalizing Terms (2)</h3>
-            <ul>
-                <li>
-                    <span class="date">15 Feb</span>
-                    <span class="name"><i class="material-icons">fiber_manual_record</i>Write Advertising Copy</span>
-                    <a>Fred Robinson</a>
-                </li>
-                <li>
-                    <span class="date">15 Feb</span>
-                    <span class="name"><i class="material-icons">fiber_manual_record</i>Write Advertising Copy</span>
-                    <a>Fred Robinson</a>
-                </li>
-            </ul>
-        </section>
-        <table class="table table-striped table-hover">
-            <tbody>
-                <tr repeat.for="project of projects" class="unread tr" id="mail_msg_1" click.delegate="goToProject(project.id)">
-                    <td class="">
-                        <div class="star">
-                            <i class="fa fa-star-o icon-xs icon-accent"></i>
-                        </div>
-                    </td>
-                    <td class="open-view">${project.client.firstName} ${project.client.lastName}</td>
-                    <td class="open-view">
-                        <span class="label label-primary">${project.name}</span>&nbsp;
-                        <span class="msgtext">${project.description}</span></td>
-                    <td class="open-view"><span class="msg_time">19:34</span></td>
-                </tr>
-            </tbody>
-        </table>
     </div>
 </template>
