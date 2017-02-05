@@ -3,181 +3,109 @@
 
     <navigation user.bind="user"></navigation>
     <div class="profile container">
-        <div class="row">
-            <div class="col-sm-12">
-
-                <div class="card hovercard">
-                    <div class="cardheader">
-
-                    </div>
-                    <div class="avatar">
-                        <img alt="" src="../../assets/images/profile.png">
-                    </div>
-                    <div class="info">
-                        <div class="title">
-                            <a target="_blank" href="">${freelancer.firstName} ${freelancer.lastName}</a>
-                        </div>
-                        <div class="desc">${freelancer.title}</div>
-                        <div class="desc">Timezone ${freelancer.timeZone}</div>
-                        <div class="desc">${freelancer.projects ? freelancer.projects.length : 0} Jobs</div>
-                        <div class="desc">Hourly rate ${freelancer.hourlyRateFrom} - ${freelancer.hourlyRateTo}</div>
-                        <div class="desc">Joined ${freelancer.createdAt}</div>
-                    </div>
-                    <div class="card-comments">
-                        <div class="review-header">
-                            Reviews (${freelancer.reviews.length})
-                        </div>
-                        <p class="review-title">
-                            ${freelancer.reviews[0].title}
-                            <span class="review-date">
-                            ${freelancer.reviews[0].created}
-                        </span>
-                        </p>
-                        <p class="review-content">${freelancer.reviews[0].content}</p>
-                        <span class="review-signature">${freelancer.reviews[0].client.name}</span>
-                    </div>
-                    <div class="bottom">
-                        <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
-                            <i class="fa fa-twitter"></i>
-                        </a>
-                        <a class="btn btn-danger btn-sm" rel="publisher"
-                           href="">
-                            <i class="fa fa-google-plus"></i>
-                        </a>
-                        <a class="btn btn-primary btn-sm" rel="publisher"
-                           href="">
-                            <i class="fa fa-facebook"></i>
-                        </a>
-                        <a class="btn btn-warning btn-sm" rel="publisher" href="">
-                            <i class="fa fa-behance"></i>
-                        </a>
-                    </div>
-                </div>
-
+        <div class="profile-header clearfix row">
+            <div class="container">
+                <img src="../../assets/images/profile.png">
+                <section>
+                    <h3>Isabelle Hoffman</h3>
+                    <p class="available"><i class="material-icons">fiber_manual_record</i>Available</p>
+                    <p class="rate">Rate (h) : <span>$ 25-45</span></p>
+                    <p>Timezone <span>CET</span></p>
+                </section>
             </div>
-
         </div>
-    </div>
-    <div class="profile ">
-        <div mdl="layout" class="  ">
-
-            <div class=" ">
-                <div class="mdl-cell mdl-cell--12-col mdl-cell--top profile-picture">
-                    <span class="mdl-layout-title">${freelancer.firstName} ${freelancer.lastName} - Freelancer</span>
-                    <img src="../../assets/images/profile.png">
-                    <div class="list-container">
-                        <ul class="">
-                            <li class="">
-                                <span class="">
-                                    <i class="material-icons">star</i>
-                                    <span>${freelancer.rating}</span>
-                                </span>
-                            </li>
-                            <li class="">
-                                <span class="">
-                                  Timezone ${freelancer.timeZone}
-                                </span>
-                            </li>
-                            <li class="">
-                                <span>
-                                  ${freelancer.projects ? freelancer.projects.length : 0} Jobs
-                                </span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="profile-details">
-                        <p class="profile-title">${freelancer.title}</p>
-                        <ul class="">
-                            <li class="">
-                                Currently Available
-                            </li>
-                            <li class="">
-                                Hourly rate ${freelancer.hourlyRateFrom} - ${freelancer.hourlyRateTo}
-                            </li>
-                            <li class="m">
-                                Joined ${freelancer.createdAt}
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="review-section ">
-                    <div class="review-header">
-                        Reviews (${freelancer.reviews.length})
-                    </div>
-                    <p class="review-title">
-                        ${freelancer.reviews[0].title}
-                        <span class="review-date">
-                            ${freelancer.reviews[0].created}
-                        </span>
-                    </p>
-                    <p class="review-content">${freelancer.reviews[0].content}</p>
-                    <span class="review-signature">${freelancer.reviews[0].client.name}</span>
-                </div>
-            </div>
-            <main class="mdl-layout__content">
-                <div class="page-content">
-                    <div class="mdl-grid">
-                        <div repeat.for="cell of freelancer.references" class="mdl-cell mdl-cell--3-col">
-                            <div class="cell-wrapper">
-                                <div class="mdl-card mdl-shadow--2dp">
-                                    <figure class="mdl-card__media">
-                                        <img if.bind="cell.media.image" src.bind="cell.media.image">
-                                        <iframe if.bind="cell.media.video" src.bind="cell.media.video" frameborder="0"
-                                                allowfullscreen></iframe>
-                                    </figure>
-                                    <div class="mdl-card__title">
-                                        <h2 class="mdl-card__title-text">${cell.title}</h2>
-                                    </div>
-                                    <div class="mdl-card__supporting-text">
-                                        ${cell.content}
-                                    </div>
-                                    <div class="mdl-card__actions mdl-card--border">
-                                        <a mdl="button"
-                                           class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                                            Read more
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <button click.delegate="showModal()" mdl="button" type="button" if.bind="user.id === profileId"
-                                class="mdl-button mdl-js-button show-modal mdl-button--fab">
-                            <i class="material-icons">add</i>
-                        </button>
-                    </div>
-                </div>
-            </main>
-
+        <div class="numbers">
+            <span>
+                4.7 <i class="material-icons">star</i>
+            </span>
+            <span>
+                134 <a>Projects</a>
+            </span>
+            <span>
+                134 <a>Reviews</a>
+            </span>
         </div>
-    </div>
-    <dialog class="mdl-dialog">
-        <form role="form" submit.delegate="addReference()">
-            <div class="mdl-dialog__content">
-                <div>
-                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="name" value.bind="referenceTitle">
-                        <label class="mdl-textfield__label" for="name">Project name:</label>
+        <ul class="">
+            <li>
+                <a>About</a>
+            </li>
+            <li>
+                <a>Portfolio (6)</a>
+            </li>
+            <li>
+                <a>Reviews (112)</a>
+            </li>
+        </ul>
+        <section class="about">
+            <h3>About Isabelle</h3>
+            <p>
+                It’s that time again when people start thinking about their New Years Resolutions. Usually they involve, losing weight, quitting smoking, and joining a gym, just to mention a few.
+            </p>
+        </section>
+        <section class="portfolio">
+            <h3>Portfolio (6)</h3>
+            <div class="row">
+                <section class="col-xs-6">
+                    <img src="../../assets/images/cover.png">
+                    <div class="review-desc">
+                        <div>
+                            <h4>Landscapes of Iceland</h4>
+                        </div>
                     </div>
-                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <textarea class="mdl-textfield__input" type="text" id="desc" value.bind="referenceContent"
-                                  rows="6" maxrows="6"></textarea>
-                        <label class="mdl-textfield__label" for="desc">Project description</label>
+                </section>
+                <section class="col-xs-6">
+                    <img src="../../assets/images/cover.png">
+                    <div class="review-desc">
+                        <div>
+                            <h4>Landscapes of Iceland</h4>
+                        </div>
                     </div>
-                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="video" value.bind="videoUrl">
-                        <label class="mdl-textfield__label" for="video">Video link:</label>
+                </section>
+                <section class="col-xs-6">
+                    <img src="../../assets/images/cover.png">
+                    <div class="review-desc">
+                        <div>
+                            <h4>Landscapes of Iceland</h4>
+                        </div>
                     </div>
-                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="image" value.bind="imageUrl">
-                        <label class="mdl-textfield__label" for="image">Image link:</label>
+                </section>
+                <section class="col-xs-6">
+                    <img src="../../assets/images/cover.png">
+                    <div class="review-desc">
+                        <div>
+                            <h4>Landscapes of Iceland</h4>
+                        </div>
                     </div>
-                </div>
+                </section>
             </div>
-            <div class="mdl-dialog__actions ">
-                <button mdl="button" type="submit" class="mdl-button">Submit</button>
-                <button mdl="button" type="button" class="mdl-button" click.delegate="hideModal()">Discard</button>
-            </div>
-        </form>
+        </section>
+        <section class="reviews">
+            <h3>
+                Reviews (112) <span>4.7 <i class="material-icons">star</i></span>
+            </h3>
+            <section>
+                <h3>
+                    Ora Montgomery
+                    <span class="rating">4.7 <i class="material-icons">star</i></span>
+                    <span class="date">01/28/2017</span>
+                </h3>
+                <p>
+                    It’s that time again when people start thinking about their New Years Resolutions. Usually they involve, losing weight, quitting smoking, and joining a gym, just to mention a few.
+                </p>
+            </section>
+            <section>
+                <h3>
+                    Ivan Davis
+                    <span class="rating">5.0 <i class="material-icons">star</i></span>
+                    <span class="date">01/28/2017</span>
+                </h3>
+                <p>
+                    It’s that time again when people start thinking about their New Years Resolutions. Usually they involve, losing weight, quitting smoking, and joining a gym, just to mention a few.
+                </p>
+            </section>
+        </section>
+        <button class="add-reference"><i class="fa fa-plus" aria-hidden="true"></i></button>
+        <a></a>
 
-    </dialog>
+    </div>
 </template>
