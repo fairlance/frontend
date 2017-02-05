@@ -25,7 +25,7 @@ export class Project {
     this.router = router;
     this.app = app;
     this.element = element;
-    this.auth = {'Authorization': 'Bearer ' + user.token};
+    this.auth = {'Authorization': 'Bearer ' + this.user.token};
   }
 
   activate(params) {
