@@ -41,12 +41,19 @@ export class Projects {
 
   async getProjects(): Promise<void> {
     let first = this;
-    const response = await first.app.fetch('project', {
-      method: 'get',
-      headers: this.auth
-    });
-    let data = await response.json();
-    first.projects = data.data;
+    try {
+      const response = await first.app.fetch('project', {
+        method: 'get',
+        headers: this.auth
+      });
+      let data = await response.json();
+      first.projects = data.data;
+    } catch (error) {
+      let data = await error.json();
+      if (data.error === "Not logged in.") {
+        first.router.navigate('login');
+      }
+    }
     first.statusList.forEach(function (status: any) {
       first.projectList.push({
         'list': first.projects.filter(item => item.status === status.id),

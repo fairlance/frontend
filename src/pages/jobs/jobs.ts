@@ -47,7 +47,7 @@ export class Jobs {
     this.app = app;
     this.search = search;
     this.element = element;
-    this.auth = {'Authorization': 'Bearer ' + user.token};
+    this.auth = {'Authorization': 'Bearer ' + this.user.token};
 
     this.getJobs();
     this.getAllTags();

@@ -20,7 +20,7 @@ export class Client {
     this.user = user.getCurrentUser().data;
     this.router = router;
     this.http = http;
-    this.auth = {'Authorization': 'Bearer ' + user.token};
+    this.auth = {'Authorization': 'Bearer ' + this.user.token};
   }
 
   activate(params): void {
