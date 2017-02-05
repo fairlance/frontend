@@ -4,6 +4,7 @@ import {json, HttpClient} from 'aurelia-fetch-client';
 import {User} from "../../services/user/user";
 
 declare let wsBaseUrl: string;
+declare let uploadBaseUrl: string;
 
 @inject('AppHttpClient', 'UploadHttpClient', Router, User, Element)
 export class Project {
@@ -21,6 +22,7 @@ export class Project {
   private messages: Array<any> = [];
   private slideMenu: any;
   private files: any;
+  private uploadUrl: string = uploadBaseUrl;
 
   constructor(app, upload, router, user, element) {
     this.user = user.getCurrentUser().data;
@@ -113,9 +115,9 @@ export class Project {
   private async uploadFile() {
     let first = this;
     let form = new FormData();
-    form.append('file', this.files);
+    form.append('uploadfile', this.files[0]);
     try {
-      const response = await first.upload.fetch('upload/', {
+      const response = await first.upload.fetch('upload', {
         method: 'post',
         headers: first.auth,
         body: form

@@ -45,6 +45,12 @@
         <div class="container">
             <h1 class="no-margin-top">${project.name}</h1>
             <p class="lead">${project.description}</p>
+            <p class="image-upload" if.bind="files.length">
+                <img  src="${uploadUrl}/file/${files[0].name}">
+                <span>${files[0].name}</span>
+            </p>
+
+
 
             <div class="row function-buttons">
                 <label class="btn btn-default btn-file">

@@ -23,6 +23,13 @@ body {
     height: 50px;
     padding: 10px;
   }
+  .image-upload {
+    img {
+      height: 50px;
+      width: 50px;
+      float: left;
+    }
+  }
 }
 
 #slidemenu {
