@@ -60,7 +60,7 @@
         <div class="page-content">
             <div repeat.for="job of jobs" class="job">
                 <p class="job-header">
-                    <a route-href="route:client;  params.bind:{id:job['client.id']}">Stefan Sopic ${job['client.firstName']} ${job['client.lastName']}</a>
+                    <a route-href="route:client;  params.bind:{id:job['client.id']}">${job['client.firstName']} ${job['client.lastName']}</a>
                     <span>
                         ${job['client.rating']}
                         <i class="material-icons">star</i>
@@ -68,10 +68,12 @@
                     <span class="date">${job.createdAt | dateFormatter}</span>
                 </p>
                 <h2 class="">
-                    <a route-href="route:job; params.bind:{id:job.id}"><strong>400-700$</strong> ${job.name}</a>
+                    <a route-href="route:job; params.bind:{id:job.id}">
+                        <strong>${job.price}$</strong> ${job.name}
+                    </a>
                 </h2>
                 <p class="job-description">
-                    ${job.summary} stefan je veliki gospodin koji mora da kuca jebeni dugacak text jer ga mrzi da ga pejstuje sa lorem
+                    ${job.summary}
                     <a route-href="route:job; params.bind:{id:job.id}">Read more</a>
                 </p>
                 <p class="job-footer clearfix">

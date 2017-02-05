@@ -1,63 +1,123 @@
 <template>
-    <require from="navigation.html"></require>
+    <require from="../../components/navigation/navigation.html"></require>
 
     <navigation user.bind="user"></navigation>
-    <div class="profile mdl-layout__container">
-        <div mdl="layout" class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
-            <div class="mdl-layout__drawer mdl-grid">
+    <div class="profile container">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="card hovercard">
+                    <div class="cardheader">
+
+                    </div>
+                    <div class="avatar">
+                        <img alt="" src="../../assets/images/profile.png">
+                    </div>
+                    <div class="info">
+                        <div class="title">
+                            <a target="_blank" href="">${clent.firstName} ${clent.lastName}</a>
+                        </div>
+                        <div class="desc">${clent.title}</div>
+                        <div class="desc">Timezone ${clent.timeZone}</div>
+                        <div class="desc">${clent.projects ? clent.projects.length : 0} Jobs</div>
+                        <div class="desc">Hourly rate ${clent.hourlyRateFrom} - ${clent.hourlyRateTo}</div>
+                        <div class="desc">Joined ${clent.createdAt}</div>
+                    </div>
+                    <div class="card-comments">
+                        <div class="review-header">
+                            Reviews (${clent.reviews.length})
+                        </div>
+                        <p class="review-title">
+                            ${clent.reviews[0].title}
+                            <span class="review-date">
+                            ${clent.reviews[0].created}
+                        </span>
+                        </p>
+                        <p class="review-content">${clent.reviews[0].content}</p>
+                        <span class="review-signature">${clent.reviews[0].client.name}</span>
+                    </div>
+                    <div class="bottom">
+                        <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a class="btn btn-danger btn-sm" rel="publisher"
+                           href="">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                        <a class="btn btn-primary btn-sm" rel="publisher"
+                           href="">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a class="btn btn-warning btn-sm" rel="publisher" href="">
+                            <i class="fa fa-behance"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="profile ">
+        <div mdl="layout" class="  ">
+
+            <div class=" ">
                 <div class="mdl-cell mdl-cell--12-col mdl-cell--top profile-picture">
-                    <span class="mdl-layout-title">${client.firstName} ${client.lastName} - Client</span>
+                    <span class="mdl-layout-title">${clent.firstName} ${clent.lastName} - clent</span>
                     <img src="../../assets/images/profile.png">
                     <div class="list-container">
                         <ul class="">
                             <li class="">
                                 <span class="">
                                     <i class="material-icons">star</i>
-                                    <span>${client.rating}</span>
+                                    <span>${clent.rating}</span>
                                 </span>
                             </li>
                             <li class="">
                                 <span class="">
-                                  Timezone ${client.timeZone}
+                                  Timezone ${clent.timeZone}
                                 </span>
                             </li>
                             <li class="">
                                 <span>
-                                  ${client.projects ? client.projects.length : 0} Jobs
+                                  ${clent.projects ? clent.projects.length : 0} Jobs
                                 </span>
                             </li>
                         </ul>
                     </div>
                     <div class="profile-details">
-                        <p class="profile-title">${client.title}</p>
+                        <p class="profile-title">${clent.title}</p>
                         <ul class="">
                             <li class="">
                                 Currently Available
                             </li>
+                            <li class="">
+                                Hourly rate ${clent.hourlyRateFrom} - ${clent.hourlyRateTo}
+                            </li>
                             <li class="m">
-                                Joined ${client.createdAt}
+                                Joined ${clent.createdAt}
                             </li>
                         </ul>
                     </div>
                 </div>
-                <div class="mdl-cell mdl-cell--12-col mdl-cell--bottom review-section clearfix">
+                <div class="review-section ">
                     <div class="review-header">
-                        Reviews (${client.reviews.length})
+                        Reviews (${clent.reviews.length})
                     </div>
                     <p class="review-title">
-                        ${client.reviews[0].title}
+                        ${clent.reviews[0].title}
                         <span class="review-date">
-                            ${client.reviews[0].created}
+                            ${clent.reviews[0].created}
                         </span>
                     </p>
-                    <p class="review-content">${client.reviews[0].content}</p>
-                    <span class="review-signature">${client.reviews[0].client.name}</span>
+                    <p class="review-content">${clent.reviews[0].content}</p>
+                    <span class="review-signature">${clent.reviews[0].client.name}</span>
                 </div>
             </div>
             <main class="mdl-layout__content">
                 <div class="page-content">
                     <div class="mdl-grid">
-                        <div repeat.for="cell of client.jobs" class="mdl-cell mdl-cell--3-col">
+                        <div repeat.for="cell of clent.references" class="mdl-cell mdl-cell--3-col">
                             <div class="cell-wrapper">
                                 <div class="mdl-card mdl-shadow--2dp">
                                     <figure class="mdl-card__media">
@@ -66,10 +126,10 @@
                                                 allowfullscreen></iframe>
                                     </figure>
                                     <div class="mdl-card__title">
-                                        <h2 class="mdl-card__title-text">${cell.name}</h2>
+                                        <h2 class="mdl-card__title-text">${cell.title}</h2>
                                     </div>
                                     <div class="mdl-card__supporting-text">
-                                        ${cell.description}
+                                        ${cell.content}
                                     </div>
                                     <div class="mdl-card__actions mdl-card--border">
                                         <a mdl="button"
@@ -87,6 +147,7 @@
                     </div>
                 </div>
             </main>
+
         </div>
     </div>
     <dialog class="mdl-dialog">

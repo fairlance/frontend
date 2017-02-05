@@ -1,15 +1,16 @@
 import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
-import {json} from 'aurelia-fetch-client';
+import {json, HttpClient} from 'aurelia-fetch-client';
 import {User} from "../../services/user/user";
 
 declare let wsBaseUrl: string;
 
-@inject('AppHttpClient', Router, User, Element)
+@inject('AppHttpClient', 'UploadHttpClient', Router, User, Element)
 export class Project {
   private router: Router;
   private user: any;
-  private app: any;
+  private app: HttpClient;
+  private upload: HttpClient;
   private project: any;
   private auth: Object;
   private element: Element;
@@ -19,11 +20,13 @@ export class Project {
   private websocket: any;
   private messages: Array<any> = [];
   private slideMenu: any;
+  private files: any;
 
-  constructor(app, router, user, element) {
+  constructor(app, upload, router, user, element) {
     this.user = user.getCurrentUser().data;
     this.router = router;
     this.app = app;
+    this.upload = upload;
     this.element = element;
     this.auth = {'Authorization': 'Bearer ' + this.user.token};
   }
@@ -105,6 +108,23 @@ export class Project {
   private scrollBottom() {
     this.slideMenu = document.getElementById('slidemenu');
     this.slideMenu.scrollTop = this.slideMenu.scrollHeight;
+  }
+
+  private async uploadFile() {
+    let first = this;
+    let form = new FormData();
+    form.append('file', this.files);
+    try {
+      const response = await first.upload.fetch('upload/', {
+        method: 'post',
+        headers: first.auth,
+        body: form
+      });
+      let data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   private toggleMenu() {
