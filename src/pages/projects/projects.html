@@ -9,8 +9,8 @@
             <option value="">All</option>
             <option repeat.for="status of statusList" value="${status.id}">${status.name}</option>
         </select>
-        <section repeat.for="item of projectList | limitTo:projectList.length " class="${item.id}" if.bind="(selectFilter === '' || item.id === selectFilter)">
-            <h3 class="row">${item.status}</h3>
+        <section repeat.for="item of projectList | limitTo:projectList.length " class="${item.id}" if.bind="((selectFilter === '' || item.id === selectFilter) && item.list.length)">
+            <h3 class="row">${item.status} (${item.list.length})</h3>
             <ul>
                 <li repeat.for="project of item.list" >
                     <span class="date">${project.dueDate | dateFormatter}</span>

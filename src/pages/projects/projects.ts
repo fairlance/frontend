@@ -47,7 +47,6 @@ export class Projects {
     });
     let data = await response.json();
     first.projects = data.data;
-    // first.statusList = first.projects.map(item => item.status).filter((value, index, self) => self.indexOf(value) === index);
     first.statusList.forEach(function (status: any) {
       first.projectList.push({
         'list': first.projects.filter(item => item.status === status.id),
@@ -55,6 +54,5 @@ export class Projects {
         'id': status.id
       });
     });
-    console.log(first.projectList);
   }
 }
