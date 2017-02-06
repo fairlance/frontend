@@ -29,10 +29,6 @@ export class Freelancer {
     this.populateProfile();
   }
 
-  private readProfileData(data: any): void {
-    this.freelancer = data.data;
-  }
-
   async populateProfile(): Promise<void> {
     let first = this;
     try {
@@ -41,7 +37,8 @@ export class Freelancer {
         headers: this.auth
       });
       let data = await response.json();
-      first.readProfileData(data);
+      this.freelancer = data.data;
+      console.log(this.freelancer, location);
     } catch (error) {
       let data = await error.json();
       if (data.error === "Not logged in.") {

@@ -81,6 +81,9 @@
   > section {
     margin: 0;
     h3 {
+      a {
+        color: inherit;
+      }
       font-size: 18px;
       font-weight: bold;
     }

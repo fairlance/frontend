@@ -1,4 +1,5 @@
 <template>
+    <require from="../../resources/value-converters/date-formatter/date-formatter"></require>
     <require from="../../components/navigation/navigation.html"></require>
 
     <navigation user.bind="user"></navigation>
@@ -7,10 +8,10 @@
             <div class="container">
                 <img src="../../assets/images/profile.png">
                 <section>
-                    <h3>Isabelle Hoffman</h3>
+                    <h3>${freelancer.firstName} ${freelancer.lastName}</h3>
                     <p class="available"><i class="material-icons">fiber_manual_record</i>Available</p>
-                    <p class="rate">Rate (h) : <span>$ 25-45</span></p>
-                    <p>Timezone <span>CET</span></p>
+                    <p class="rate">Rate (h) : <span>$ ${freelancer.hourlyRateFrom}-${freelancer.hourlyRateTo}</span></p>
+                    <p>Timezone <span>${freelancer.timezone}</span></p>
                 </section>
             </div>
         </div>
@@ -19,61 +20,37 @@
                 4.7 <i class="material-icons">star</i>
             </span>
             <span>
-                134 <a>Projects</a>
+                ${freelancer.projects.length} <a>Projects</a>
             </span>
             <span>
-                134 <a>Reviews</a>
+                ${freelancer.reviews.length} <a>Reviews</a>
             </span>
         </div>
         <ul class="">
             <li>
-                <a>About</a>
+                <a href="#about">About</a>
             </li>
             <li>
-                <a>Portfolio (6)</a>
+                <a href="#portfolio">Portfolio (${freelancer.projects.length})</a>
             </li>
             <li>
-                <a>Reviews (112)</a>
+                <a href="#reviews">Reviews (${freelancer.reviews.length})</a>
             </li>
         </ul>
         <section class="about">
-            <h3>About Isabelle</h3>
+            <h3><a name="about">About ${freelancer.firstName}</a></h3>
             <p>
                 It’s that time again when people start thinking about their New Years Resolutions. Usually they involve, losing weight, quitting smoking, and joining a gym, just to mention a few.
             </p>
         </section>
         <section class="portfolio">
-            <h3>Portfolio (6)</h3>
+            <h3><a name="portfolio">Portfolio (${freelancer.projects.length})</a></h3>
             <div class="row">
-                <section class="col-xs-6">
+                <section class="col-xs-6" repeat.for="project of freelancer.projects">
                     <img src="../../assets/images/cover.png">
                     <div class="review-desc">
                         <div>
-                            <h4>Landscapes of Iceland</h4>
-                        </div>
-                    </div>
-                </section>
-                <section class="col-xs-6">
-                    <img src="../../assets/images/cover.png">
-                    <div class="review-desc">
-                        <div>
-                            <h4>Landscapes of Iceland</h4>
-                        </div>
-                    </div>
-                </section>
-                <section class="col-xs-6">
-                    <img src="../../assets/images/cover.png">
-                    <div class="review-desc">
-                        <div>
-                            <h4>Landscapes of Iceland</h4>
-                        </div>
-                    </div>
-                </section>
-                <section class="col-xs-6">
-                    <img src="../../assets/images/cover.png">
-                    <div class="review-desc">
-                        <div>
-                            <h4>Landscapes of Iceland</h4>
+                            <h4>${project.name}</h4>
                         </div>
                     </div>
                 </section>
@@ -81,31 +58,19 @@
         </section>
         <section class="reviews">
             <h3>
-                Reviews (112) <span>4.7 <i class="material-icons">star</i></span>
+                <a name="reviews">Reviews</a> (${freelancer.reviews.length}) <span>4.7 <i class="material-icons">star</i></span>
             </h3>
-            <section>
+            <section repeat.for="review of freelancer.reviews">
                 <h3>
                     Ora Montgomery
-                    <span class="rating">4.7 <i class="material-icons">star</i></span>
-                    <span class="date">01/28/2017</span>
+                    <span class="rating">${review.rating} <i class="material-icons">star</i></span>
+                    <span class="date">${review.createdAt | dateFormatter}</span>
                 </h3>
                 <p>
-                    It’s that time again when people start thinking about their New Years Resolutions. Usually they involve, losing weight, quitting smoking, and joining a gym, just to mention a few.
-                </p>
-            </section>
-            <section>
-                <h3>
-                    Ivan Davis
-                    <span class="rating">5.0 <i class="material-icons">star</i></span>
-                    <span class="date">01/28/2017</span>
-                </h3>
-                <p>
-                    It’s that time again when people start thinking about their New Years Resolutions. Usually they involve, losing weight, quitting smoking, and joining a gym, just to mention a few.
+                    ${review.content}
                 </p>
             </section>
         </section>
         <button class="add-reference"><i class="fa fa-plus" aria-hidden="true"></i></button>
-        <a></a>
-
     </div>
 </template>
