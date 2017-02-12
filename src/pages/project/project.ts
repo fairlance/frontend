@@ -23,6 +23,9 @@ export class Project {
   private slideMenu: any;
   private files: any;
   private uploadUrl: string = uploadBaseUrl;
+  private showProposal: boolean = false;
+  private showContract: boolean = false;
+  private showFiles: boolean = false;
 
   constructor(app, upload, router, user, element) {
     this.user = user.getCurrentUser().data;
@@ -47,6 +50,7 @@ export class Project {
     });
     let data = await response.json();
     first.project = data.data;
+    console.log(first.project);
   }
 
   private openConnection() {
@@ -154,5 +158,9 @@ export class Project {
     $('#page-content, .navbar, body, .navbar-header').toggleClass('slide-active');
 
     this.scrollBottom();
+  }
+
+  private toggleSection(section: string) {
+    this[section] = !this[section];
   }
 }

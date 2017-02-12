@@ -1,21 +1,10 @@
 <template>
     <require from="../../resources/custom-elements/message/message.html"></require>
+    <require from="../../resources/value-converters/project-status/project-status"></require>
+    <require from="../../resources/value-converters/date-formatter/date-formatter"></require>
     <require from="../../components/navigation/navigation.html"></require>
 
     <navigation user.bind="user"></navigation>
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="slide-nav">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-toggle" click.delegate="toggleMenu()">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-                <a class="navbar-brand" href="#">Project name</a>
-            </div>
-        </div>
-    </div>
 
     <div id="slidemenu">
         <div class="panel-body">
@@ -30,11 +19,11 @@
                 <form submit.delegate="doSend(message)" autocomplete="off">
                     <input id="btn-input" type="text" value.bind="message" class="form-control input-sm"
                            placeholder="Type your message here..."/>
-                    <span class="input-group-btn">
-                            <button class="btn btn-warning btn-sm" id="btn-chat">
-                                Send
-                            </button>
-                        </span>
+                    <div class="input-group-btn">
+                        <button class="btn btn-warning btn-sm" id="btn-chat">
+                            Send
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -43,16 +32,51 @@
     <div id="page-content">
 
         <div class="container">
-            <h1 class="no-margin-top">${project.name}</h1>
-            <p class="lead">${project.description}</p>
-            <p class="image-upload" if.bind="files.length">
-                <img  src="${uploadUrl}/file/${files[0].name}">
-                <span>${files[0].name}</span>
-            </p>
-
-
-
+            <h1 class="">
+                <i class="material-icons">fiber_manual_record</i>
+                ${project.name}
+            </h1>
+            <a class="client-name" route-href="route:client; params.bind:{id:project.client.id}">${project.client.firstName} ${project.client.lastName}</a>
+            <section class="project-header">
+                <h1>
+                    ${project.status | projectStatus}
+                    <i class="material-icons">chevron_left</i>
+                </h1>
+                <p>Deadline: ${project.dueDate | dateFormatter}</p>
+            </section>
+            <section class="section">
+                <a click.delegate="toggleSection('showProposal')">
+                    <i class="material-icons">chevron_right</i>
+                    Brief/Proposal
+                </a>
+                <article if.bind="showProposal">
+                    ${project.description}
+                </article>
+            </section>
+            <section class="section">
+                <a click.delegate="toggleSection('showContract')">
+                    <i class="material-icons">chevron_right</i>
+                    Contract
+                </a>
+                <article if.bind="showContract">
+                    genauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzi
+                    genauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzi
+                </article>
+            </section>
+            <section class="section">
+                <a click.delegate="toggleSection('showFiles')">
+                    <i class="material-icons">chevron_right</i>
+                    Files
+                </a>
+                <article if.bind="showFiles">
+                    <p class="image-upload" if.bind="files.length">
+                        <img src="${uploadUrl}/file/${files[0].name}">
+                        <span>${files[0].name}</span>
+                    </p>
+                </article>
+            </section>
             <div class="row function-buttons">
+                <button click.delegate="toggleMenu()">Toggle</button>
                 <label class="btn btn-default btn-file">
                     Upload file <input type="file" class="hidden" change.delegate="uploadFile()" files.bind="files">
                 </label>

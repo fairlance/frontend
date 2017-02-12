@@ -7,13 +7,75 @@ body {
 
 #page-content {
   position: relative;
-  padding-top: 100px;
+  padding: 50px 0;
   left: 0;
   height: 100%;
+  color: #6D849D;
   overflow: scroll;
   &.slide-active {
-    padding-top: 0px;
+    padding-top: 50px;
     overflow: hidden;
+  }
+  h1 {
+    font-size: 20px;
+    margin-bottom: 5px;
+    i {
+      color: #50E3C3;
+      font-size: 20px;
+      position: relative;
+      top: 3px;
+    }
+  }
+  .project-header {
+    height: 130px;
+    margin-top: 10px;
+    h1 {
+      height: 36px;
+      background-color: #50E3C3;
+      border-radius: 3px;
+      font-size: 20px;
+      width: 200px;
+      position: relative;
+      top: 30px;
+      color: #fff;
+      padding-left: 15px;
+      line-height: 36px;
+      margin: 0 auto;
+      i {
+        color: #fff;
+      }
+    }
+    p {
+      position: relative;
+      top: 40px;
+      text-align: center;
+      color: #6D849D;
+    }
+  }
+  .section {
+    margin: 0;
+    > a {
+      color: #6D849D;
+      font-size: 15px;
+      height: 60px;
+      line-height: 60px;
+      i {
+        position: relative;
+        top: 3px;
+        font-size: 14px;
+
+      }
+    }
+    > article {
+      padding-left: 20px;
+      font-size: 12px;
+
+    }
+  }
+  .client-name {
+    margin-left: 25px;
+    text-decoration: underline;
+    font-size: 16px;
   }
   .function-buttons {
     position: fixed;
@@ -39,7 +101,7 @@ body {
   position: absolute;
   padding-left: 0;
   z-index: 2;
-  top: 100px;
+  top: 50px;
   margin: 0;
   height: 100%;
   overflow: scroll;
