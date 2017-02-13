@@ -1,100 +1,71 @@
 <template>
-    <require from="navigation.html"></require>
-    <require from="date-formatter"></require>
+    <require from="../../resources/value-converters/date-formatter/date-formatter"></require>
+    <require from="../../components/navigation/navigation.html"></require>
 
     <navigation user.bind="user"></navigation>
-    <div class="job-apply" if.bind="!application">
-        <a route-href="route:client;  params.bind:{id:details.client.id}">
-            ${details.client.firstName} ${details.client.lastName}
-        </a>
-        <span class="rating">
-            <i class="material-icons">star</i>
-            ${details.client.rating}
-        </span>
-        <button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect au-target" mdl="button"
-                click.delegate="showApplication()">
-            Apply
-        </button>
-    </div>
-    <div class="mdl-layout__container">
-        <div mdl="layout" class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
-            <main class="job mdl-layout__content">
-                <div class="job-details" if.bind="!application">
-                    <div class="heading clearfix">
-                        <h2>${details.name}</h2>
-                        <span class="date">
-                        ${details.createdAt | dateFormatter}
-                        <i class="material-icons">flag</i>
-                    </span>
-                        <div class="info">
-                            <span class="budget">$ 200-$ 450</span>
-                            <span class="time">2 Days Left</span>
-                            <span class="proposals">17 Proposals</span>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <h3>Summary</h3>
-                        <p>${details.summary}</p>
-                        <h3>Details</h3>
-                        <p>${details.details}
-                        </p>
-                        <h3>Links</h3>
-                        <p if.bind="details.links.length">
-                            <a repeat.for="link of details.links">${link.link}</a>
-                        </p>
-                        <h3>Attachments</h3>
-                        <p>To be done</p>
-
-                    </div>
-                </div>
-                <div class="job-application" if.bind="application">
-                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield">
-                        <textarea class="mdl-textfield__input" type="text" rows="9" id="description"
-                                  value.bind="description"></textarea>
-                        <label class="mdl-textfield__label" for="description">Text lines...</label>
-                    </div>
-                    <div class="work-samples dropdown">
-                        <span>Work samples</span>
-                        <div class="mdl-layout-spacer"></div>
-                        <button id="accbtn" mdl="button" class="mdl-js-ripple-effect mdl-button--icon">
-                            <i class="material-icons">add_circle_outline</i>
-                        </button>
-                        <ul mdl="menu" class="mdl-menu--bottom-right mdl-js-ripple-effect" for="accbtn">
-                            <li class="mdl-menu__item" repeat.for="reference of user.data.references">
-                                <a click.delegate="selectReference(reference)">
-                                    <i class="material-icons" if.bind="reference.selected">check</i>${reference.title}
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield">
-                        <input class="mdl-textfield__input" value.bind="budget" type="text" id="lastName"
-                               pattern="[0-9]+" required="required">
-                        <label class="mdl-textfield__label" for="lastName">Budget etimate</label>
-                        <span class="mdl-textfield__error">Must be a number</span>
-                    </div>
-                    <section class="time-frame clearfix">
-                        <span>Delivery estimate:</span>
-                        <label repeat.for="period of periodOptions" mdl="radio"
-                               class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="radio + ${period.value}">
-                            <input checked class="mdl-radio__button" id="radio + ${period.value}" name="flash"
-                                   type="radio" model.bind="period" checked.bind="$parent.period">
-                            <span class="mdl-radio__label">${period.name}</span>
-                        </label>
-                    </section>
-                    <p>
-                        <button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect au-target"
-                                mdl="button" click.delegate="preview()">
-                            Preview
-                        </button>
-                        <button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect au-target"
-                                mdl="button" click.delegate="discard()">
-                            Discard
-                        </button>
-                    </p>
-
-                </div>
-            </main>
+    <div class="job-details container">
+        <div class="client">
+            <a>Todd Yates</a>
+            <span class="">
+                <span>4.7</span>
+                <i class="material-icons">star</i>
+            </span>
         </div>
+        <h1>
+            <strong>400-700$</strong> Write Advertising Copy
+        </h1>
+        <div class="about-job">
+            <span>17 Proposals</span>
+            <span>2 Days Left</span>
+            <span class="date">21 Jan 2017</span>
+        </div>
+        <section>
+            <h3>Brief Summary</h3>
+            <article>From ads that dance or sing to MTV-like commercials, online advertisers are now using a new type of technology called “rich media” to attract consumers.</article>
+        </section>
+        <section>
+            <h3>Full Brief</h3>
+            <article>
+                <p>Sing to MTV-like commercials, online advertisers are now using a new type of technology called “rich media” to attract consumers.</p>
+                <p>U.S. Internet advertising revenue will have reached about $12 billion last year, up $3 billion from 2004. Of this, advertisers spent about $1 billion on rich media, up from $800 million in 2003, according to the Interactive Advertising Bureau.</p>
+                <p>So what exactly is rich media? By definition, it is an online advertising technique that combines graphics with audio technologies, giving Internet users an interactive experience. And with more than half of American households connected online and using high-speed connections like broadband and DSL, it means a potentially lucrative way for online advertisers to get consumers’ attention.</p>
+            </article>
+        </section>
+        <section>
+            <h3><a name="portfolio">Attachments (2)</a></h3>
+            <div class="row image-container">
+                <a class="col-xs-6" >
+                    <img src="../../assets/images/cover.png">
+                    <label>Somerandomimage.jpg</label>
+                </a>
+                <a class="col-xs-6" >
+                    <img src="../../assets/images/cover.png">
+                    <label>Somerandomimage.jpg</label>
+                </a>
+            </div>
+        </section>
+        <section>
+            <h3>Examples on Web</h3>
+            <div class="link">
+                <a>https://www.behance.net/Flotation_device</a>
+                <p>
+                    <strong>Note about the link: </strong>
+                    That dance or sing to MTV-like commercials, online advertisers are now using a new type of technology called “rich media” to attract consumers.
+                </p>
+            </div>
+            <div class="link">
+                <a>https://www.behance.net/Flotation_device</a>
+                <p>
+                    <strong>Note about the link: </strong>
+                    That dance or sing to MTV-like commercials, online advertisers are now using a new type of technology called “rich media” to attract consumers.
+                </p>
+            </div>
+        </section>
+        <form class="apply-button row">
+            <button>Apply Now</button>
+            <a><i class="material-icons">visibility</i> Watch Project</a>
+            <div class="background"></div>
+        </form>
     </div>
+
 </template>
