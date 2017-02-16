@@ -1,23 +1,24 @@
 <template>
     <require from="../../resources/value-converters/date-formatter/date-formatter"></require>
+    <require from="../../resources/value-converters/days-left/days-left"></require>
     <require from="../../components/navigation/navigation.html"></require>
 
     <navigation user.bind="user"></navigation>
     <div class="job-details container">
         <div class="client">
-            <a>Todd Yates</a>
+            <a route-href="route:client;  params.bind:{id:details.client.id}">${details.client.firstName} ${details.client.lastName}</a>
             <span class="">
-                <span>4.7</span>
+                <span>${details.client.rating}</span>
                 <i class="material-icons">star</i>
             </span>
         </div>
         <h1>
-            <strong>400-700$</strong> Write Advertising Copy
+            <strong>${details.price}$</strong> ${details.name}
         </h1>
         <div class="about-job">
-            <span>17 Proposals</span>
-            <span>2 Days Left</span>
-            <span class="date">21 Jan 2017</span>
+            <span>${details.jobApplications.length} Proposals</span>
+            <span>${"1/4/2017" | daysLeft} Days Left</span>
+            <span class="date">${details.createdAt | dateFormatter}</span>
         </div>
         <section>
             <h3>Brief Summary</h3>
@@ -26,9 +27,7 @@
         <section>
             <h3>Full Brief</h3>
             <article>
-                <p>Sing to MTV-like commercials, online advertisers are now using a new type of technology called “rich media” to attract consumers.</p>
-                <p>U.S. Internet advertising revenue will have reached about $12 billion last year, up $3 billion from 2004. Of this, advertisers spent about $1 billion on rich media, up from $800 million in 2003, according to the Interactive Advertising Bureau.</p>
-                <p>So what exactly is rich media? By definition, it is an online advertising technique that combines graphics with audio technologies, giving Internet users an interactive experience. And with more than half of American households connected online and using high-speed connections like broadband and DSL, it means a potentially lucrative way for online advertisers to get consumers’ attention.</p>
+                ${details.summary}
             </article>
         </section>
         <section>

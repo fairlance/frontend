@@ -237,16 +237,10 @@ html {
     position: relative;
     height: 100%;
     .splash {
-      text-align: center;
-      margin: 10% 0 0 0;
-      box-sizing: border-box;
-      color: #000000;
-      .fa-circle-o-notch {
-        text-align: center;
-        display: inline-block;
-        font-size: 72px;
-        margin-top: 50px;
-        color: #ffffff;
+      height: 100%;
+      margin-top: 150px;
+      img {
+        margin: 0 auto;
       }
     }
     .page-host {

@@ -78,6 +78,7 @@ export class Job {
     });
     let data = await response.json();
     first.details = data.data;
+    console.log(this.details);
   }
 
   private showApplication(): void {

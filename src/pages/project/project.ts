@@ -36,10 +36,10 @@ export class Project {
     this.auth = {'Authorization': 'Bearer ' + this.user.token};
   }
 
-  activate(params) {
+  async activate(params) {
     this.projectId = params.id;
+    await this.getProject();
     this.openConnection();
-    this.getProject();
   }
 
   async getProject(): Promise<void>  {
