@@ -96,19 +96,6 @@
       bottom: 0;
       left: 0;
     }
-    button {
-      z-index: 1;
-      height: 32px;
-      background-color: #5BC0DE;
-      border: 1px solid #46B8DA;
-      border-radius: 3px;
-      font-size: 18px;
-      text-align: center;
-      line-height: 23px;
-      color: #FFFFFF;
-      padding: 0 30px;
-      position: relative;
-    }
     a {
       z-index: 1;
       position: relative;
@@ -117,6 +104,18 @@
       font-weight: 200;
       line-height: 15px;
       color: #6D849D;
+      &.button {
+        display: inline-block;
+        height: 32px;
+        background-color: #5BC0DE;
+        border: 1px solid #46B8DA;
+        border-radius: 3px;
+        font-size: 18px;
+        text-align: center;
+        line-height: 32px;
+        color: #FFFFFF;
+        padding: 0 30px;
+      }
       i {
         position: relative;
         top: 5px;
