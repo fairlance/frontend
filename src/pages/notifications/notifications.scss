@@ -1,0 +1,59 @@
+.notifications {
+  margin-top: 50px;
+  height: 100%;
+  overflow-y: auto;
+  padding-bottom: 140px;
+  .message {
+    &.read {
+      a {
+        font-weight: bold;
+        h2 {
+          font-weight: bold;
+          .date {
+            color: #0084ff;
+            font-weight: normal;
+          }
+        }
+        p {
+          color: #000;
+        }
+      }
+    }
+    a {
+      font-weight: normal;
+      height: 64px;
+      display: block;
+      padding: 7px 0;
+      &:hover {
+        background-color: rgba(0, 0, 0, .05);
+      }
+      img {
+        width: 50px;
+        border-radius: 50%;
+        float: left;
+        margin-right: 10px;
+      }
+      h2 {
+        font-size: 15px;
+        width: 100%;
+        color: #000;
+        margin: 10px 0 0;
+        line-height: 15px;
+        .date {
+          font-size: 13px;
+          color: rgba(0, 0, 0, .40);
+          float: right;
+        }
+      }
+      p {
+        color: rgba(0, 0, 0, .40);
+        font-size: 13px;
+        line-height: 13px;
+        height: 13px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-top: 5px;
+      }
+    }
+  }
+}

@@ -12,8 +12,9 @@
         <a route-href="route:applications" if.bind="user.type === 'client'">
             Applications
         </a>
-        <a>
+        <a class="fairlance-badge" route-href="route:notifications">
             Notifications
+            <span if.bind="counter.length">${counter}</span>
         </a>
         <i class="material-icons">more_vert</i>
     </div>

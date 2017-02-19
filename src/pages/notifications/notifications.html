@@ -1,0 +1,20 @@
+<template>
+    <require from="../../components/navigation/navigation"></require>
+    <require from="../../resources/value-converters/date-formatter/date-formatter"></require>
+
+    <navigation user.bind="user"></navigation>
+    <div class="notifications container">
+        <div repeat.for="message of messages" class="message" class.bind="message.read ? 'read' : ''">
+            <a class="clearfix" route-href="route:project; params.bind:{id:message.project}">
+                <img src="../../assets/images/profile.png">
+                <h2 class="">
+                    <span>${message.sender}</span>
+                    <span class="date">${message.date | dateFormatter}</span>
+                </h2>
+                <p class="job-description">
+                    ${message.content}
+                </p>
+            </a>
+        </div>
+    </div>
+</template>

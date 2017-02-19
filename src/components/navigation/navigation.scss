@@ -20,9 +20,45 @@
     line-height: 19px;
     font-weight: 500;
     padding-right: 14px;
+    position: relative;
     &:hover {
       color: #FFDB97;
     }
+  }
+  .fairlance-badge {
+    >span {
+      right: 0;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -webkit-justify-content: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-align-content: center;
+      -ms-flex-line-pack: center;
+      align-content: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      position: absolute;
+      top: -11px;
+      font-family: "Roboto","Helvetica","Arial",sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #8CBFFA;
+      color: #fff;
+      z-index: 1;
+    }
+
   }
   i {
     position: absolute;

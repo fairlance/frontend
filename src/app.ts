@@ -12,6 +12,7 @@ export class App {
       {route: ['info', 'info'], name: 'info', moduleId: 'pages/info/info', title: 'Additional info'},
       {route: ['application/:id', 'application/:id'], name: 'application', moduleId: 'pages/application/application', title: 'Apply for a job'},
       {route: ['applications', 'applications'], name: 'applications', moduleId: 'pages/applications/applications', title: 'Application overview'},
+      {route: ['notifications', 'notifications'], name: 'notifications', moduleId: 'pages/notifications/notifications', title: 'Notifications'},
       {route: ['jobs', 'jobs'], name: 'jobs', moduleId: 'pages/jobs/jobs', title: 'Jobs'},
       {route: ['projects', 'projects'], name: 'projects', moduleId: 'pages/projects/projects', title: 'Projects'},
       {route: ['login', 'login'], name: 'login', moduleId: 'pages/login/login', title: 'Login'},
