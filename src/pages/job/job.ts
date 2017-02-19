@@ -40,9 +40,9 @@ export class Job {
     this.auth = {'Authorization': 'Bearer ' + this.user.token};
   }
 
-  activate(params) {
+  async activate(params) {
     this.jobId = parseInt(params.id);
-    this.getJob();
+    await this.getJob();
     this.getFreelancer();
   }
 

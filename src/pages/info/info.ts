@@ -59,7 +59,7 @@ export class Info {
   }
 
   async addInfo(): Promise<void> {
-    var first = this;
+    let first = this;
     const response = await first.http.fetch(first.user.type + '/' + first.user.id, {
       method: 'post',
       body: first.gatherInfo()

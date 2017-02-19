@@ -1,0 +1,93 @@
+.application-overview {
+  margin-top: 50px;
+  height: 100%;
+  overflow-y: auto;
+  padding-bottom: 140px;
+  h3 {
+    text-align: center;
+  }
+  .job {
+    height: 150px;
+    padding: 0 15px;
+    border-bottom: 1px solid #90C2FB;
+    position: relative;
+    .job-header {
+      height: 30px;
+      font-size: 12px;
+      font-weight: 200;
+      line-height: 15px;
+      padding-top: 10px;
+      a {
+        color: #8CBFFA;
+        text-decoration: underline;
+        margin-right: 5px;
+      }
+      span {
+        color: #6D849D;
+        &.date {
+          float: right;
+        }
+        i {
+          font-size: 14px;
+          color: #FEDA9B;
+          line-height: 12px;
+          position: relative;
+          top: 2px;
+        }
+      }
+
+    }
+    h2 {
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 19px;
+      color: #6D849D;
+      margin: 0;
+    }
+    .job-description {
+      margin-top: 10px;
+      height: 45px;
+      font-size: 12px;
+      font-weight: 200;
+      line-height: 15px;
+      color: #6D849D;
+      overflow: hidden;
+      margin-bottom: 6px;
+      position: relative;
+      a {
+        padding-left: 5px;
+        text-decoration: underline;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background-color: #fff;
+      }
+
+    }
+    .job-footer {
+      height: 30px;
+      position: relative;
+      bottom: 0;
+      margin: 0;
+      padding-top: 5px;
+      font-size: 12px;
+      font-weight: 200;
+      line-height: 15px;
+      color: #6D849D;
+      span {
+        margin-right: 15px;
+      }
+      a {
+        color: inherit;
+        float: right;
+        position: relative;
+        i {
+          font-size: 16px;
+          position: absolute;
+          left: -20px;
+          top: -3px;
+        }
+      }
+    }
+  }
+}

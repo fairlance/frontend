@@ -3,14 +3,17 @@
         <a route-href="route:projects">
             Projects
         </a>
-        <a route-href="route:jobs">
+        <a route-href="route:jobs" if.bind="user.type === 'freelancer'">
             Jobs
         </a>
         <a route-href="route.bind: user.type;  params.bind:{id:user.id}">
             Profile
         </a>
-        <a >
-            Messages
+        <a route-href="route:application-overview" if.bind="user.type === 'client'">
+            Applications
+        </a>
+        <a>
+            Notifications
         </a>
         <i class="material-icons">more_vert</i>
     </div>

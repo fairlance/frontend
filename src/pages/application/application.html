@@ -1,0 +1,90 @@
+<template>
+    <require from="../../components/navigation/navigation.html"></require>
+
+    <navigation user.bind="user"></navigation>
+    <div class="apply container">
+        <div if.bind="!view">
+            <section>
+                <h3>Brief Introduction</h3>
+                <textarea placeholder="Describe yourself here..." value.bind="intro"></textarea>
+            </section>
+            <section class="attachments">
+                <h3>Attachments</h3>
+                <div class="row">
+                    <section class="col-xs-6" repeat.for="attachment of attachments">
+                        <img src="${uploadUrl + 'file/' + attachment.name}">
+                        <div class="review-desc">
+                            <div>
+                                <h4>${attachment.name}</h4>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <label class="btn btn-default btn-file">
+                    <i class="material-icons">attach_file</i><input type="file" class="hidden" change.delegate="uploadFile()" files.bind="files">
+                </label>
+            </section>
+            <section>
+                <h3>Examples on Web</h3>
+                <form class="example-form">
+                    <label>Link:</label>
+                    <input placeholder="https://www.behance.net" type="text" required value.bind="url">
+                    <label>Brief description:</label>
+                    <textarea required placeholder="That dance or sing to MTV-like commercials..." value.bind="desc"></textarea>
+                </form>
+                <button click.delegate="addExample()">
+                    <i class="material-icons">add</i>
+                </button>
+                <div class="link" repeat.for="example of links">
+                    <a>${example.link}</a>
+                    <p>
+                        <strong>Note about the link: </strong>
+                        ${example.description}
+                    </p>
+                </div>
+            </section>
+        </div>
+        <div if.bind="view">
+            <section>
+                <h3>Brief Introduction</h3>
+                <article>${intro}</article>
+            </section>
+            <section class="attachments">
+                <h3>Attachments</h3>
+                <div class="row">
+                    <section class="col-xs-6" repeat.for="attachment of attachments">
+                        <img src="${uploadUrl + 'file/' + attachment.name}">
+                        <div class="review-desc">
+                            <div>
+                                <h4>${attachment.name}</h4>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+            </section>
+            <section>
+                <h3>Examples on Web</h3>
+                <div class="link" repeat.for="example of links">
+                    <a>${example.link}</a>
+                    <p>
+                        <strong>Note about the link: </strong>
+                        ${example.description}
+                    </p>
+                </div>
+            </section>
+        </div>
+
+        <section class="clearfix button-container" if.bind="submitButton">
+            <button class="btn btn-default" click.delegate="preview()">Preview</button>
+            <button class="btn btn-default" click.delegate="submit()">Submit</button>
+            <button class="btn btn-info">Back</button>
+            <div class="background"></div>
+        </section>
+        <section class="clearfix button-container" if.bind="!submitButton">
+            <button class="btn btn-danger" >Dismiss</button>
+            <button class="btn btn-default" click.delegate="proceed()">Proceed</button>
+            <div class="background"></div>
+        </section>
+    </div>
+</template>

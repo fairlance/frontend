@@ -42,4 +42,8 @@ export class Helper {
     return restructuredArray;
   }
 
+  public sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
 }

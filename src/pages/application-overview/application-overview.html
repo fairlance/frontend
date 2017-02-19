@@ -1,0 +1,34 @@
+<template>
+    <require from="../../resources/value-converters/date-formatter/date-formatter"></require>
+    <require from="../../components/navigation/navigation"></require>
+
+    <navigation user.bind="user"></navigation>
+    <div class="filters">
+        <h3>to be continued</h3>
+    </div>
+    <main class="application-overview">
+        <div class="page-content">
+            <div repeat.for="job of jobs">
+                <h3>${job.name}</h3>
+                <div repeat.for="application of job.jobApplications" class="job">
+                    <p class="job-header">
+                        <a route-href="route:client;  params.bind:{id:user.id}">Freelancer name</a>
+                        <span>
+                            freelancer rating
+                            <i class="material-icons">star</i>
+                        </span>
+                        <span class="date">${application.createdAt | dateFormatter}</span>
+                    </p>
+                    <p class="job-description">
+                        ${application.message}
+                        <a click.delegate="goToApplication(application.id, job.id)">Read more</a>
+                    </p>
+                    <p class="job-footer clearfix">
+                        <span>${application.attachments.length} attachments</span>
+                        <a><i class="material-icons">delete</i> Dismiss</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+</template>
