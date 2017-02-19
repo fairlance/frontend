@@ -9,7 +9,7 @@
         <a route-href="route.bind: user.type;  params.bind:{id:user.id}">
             Profile
         </a>
-        <a route-href="route:application-overview" if.bind="user.type === 'client'">
+        <a route-href="route:applications" if.bind="user.type === 'client'">
             Applications
         </a>
         <a>
