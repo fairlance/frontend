@@ -28,7 +28,25 @@ export class Navigation {
     this.ea = eventAggregator;
   }
 
-  attached() {
+  private openConnection() {
+    let first = this;
+    this.websocket = new WebSocket(this.wsUri + '?token=' + first.user.token);
+    this.websocket.onopen = function () {
+      first.onOpen()
+    };
+    this.websocket.onclose = function () {
+      first.onClose()
+    };
+    this.websocket.onmessage = function (evt) {
+      first.onMessage(evt)
+    };
+    this.websocket.onerror = function (evt) {
+      first.onError(evt)
+    };
+  }
+
+  private onOpen(): void {
+    console.log('CONNECTED');
     this.messages = [
       {
         read: false,
@@ -68,27 +86,6 @@ export class Navigation {
     ];
     this.counter = this.messages.filter(item => item.read === false).length;
     this.ea.publish('notification', this.messages);
-  }
-
-  private openConnection() {
-    let first = this;
-    this.websocket = new WebSocket(this.wsUri + '?token=' + first.user.token);
-    this.websocket.onopen = function () {
-      first.onOpen()
-    };
-    this.websocket.onclose = function () {
-      first.onClose()
-    };
-    this.websocket.onmessage = function (evt) {
-      first.onMessage(evt)
-    };
-    this.websocket.onerror = function (evt) {
-      first.onError(evt)
-    };
-  }
-
-  private onOpen(): void {
-    console.log('CONNECTED');
   }
 
   private onClose() {
