@@ -1,9 +1,7 @@
 <template>
     <require from="../../resources/value-converters/date-formatter/date-formatter"></require>
     <require from="../../resources/value-converters/days-left/days-left"></require>
-    <require from="../../components/navigation/navigation"></require>
 
-    <navigation user.bind="user"></navigation>
     <div class="job-details container">
         <div class="client">
             <a route-href="route:client;  params.bind:{id:details.client.id}">${details.client.firstName} ${details.client.lastName}</a>

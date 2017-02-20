@@ -21,9 +21,11 @@ export class Navigation {
     this.user = user.getCurrentUser().data;
     this.router = router;
     this.app = app;
-    this.auth = {'Authorization': 'Bearer ' + this.user.token};
+    if (this.user) {
+      this.auth = {'Authorization': 'Bearer ' + this.user.token};
+      this.openConnection();
+    }
     this.ea = eventAggregator;
-    this.openConnection();
   }
 
   attached() {

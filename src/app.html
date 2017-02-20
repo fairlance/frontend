@@ -1,5 +1,8 @@
 <template>
-  <div class="page-host">
-    <router-view></router-view>
-  </div>
+    <require from="components/navigation/navigation"></require>
+
+    <navigation user.bind="user"></navigation>
+    <div class="page-host">
+        <router-view></router-view>
+    </div>
 </template>
