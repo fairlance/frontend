@@ -1,16 +1,17 @@
 <template>
     <require from="../../resources/value-converters/date-formatter/date-formatter"></require>
+    <require from="../../resources/value-converters/limitTo/limitTo"></require>
 
     <div class="notifications container">
-        <div repeat.for="message of messages" class="message" class.bind="message.read ? 'read' : ''">
-            <a class="clearfix" route-href="route:project; params.bind:{id:message.project}">
+        <div repeat.for="message of messages | limitTo:messages.length" class="message" class.bind="message.read ? '' : 'read'">
+            <a class="clearfix" click.delegate="goToNotification(message)">
                 <img src="../../assets/images/profile.png">
                 <h2 class="">
-                    <span>${message.sender}</span>
-                    <span class="date">${message.date | dateFormatter}</span>
+                    <span>${message.from.type}</span>
+                    <span class="date">${message.timestamp | dateFormatter}</span>
                 </h2>
                 <p class="job-description">
-                    ${message.content}
+                    ${message.data.text}
                 </p>
             </a>
         </div>

@@ -1,39 +1,40 @@
 import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
-import {json, HttpClient} from 'aurelia-fetch-client';
 import {User} from "../../services/user/user";
 import {EventAggregator} from "aurelia-event-aggregator";
+import {Notification} from "../../services/notification/notification";
 
 
-@inject('AppHttpClient', Router, User, Element, EventAggregator)
+@inject(Router, EventAggregator, Notification)
 export class Notifications {
   private router: Router;
+  private userService: any = User.getInstance();
   private user: any;
-  private app: HttpClient;
-  private auth: Object;
-  private element: Element;
   private messages: Array<any> = [];
   private ea: any;
   private subscriber: any;
+  private notificationService: Notification;
 
-  constructor(app, router, user, element,  eventAggregator) {
-    this.user = user.getCurrentUser().data;
+  constructor(router, eventAggregator, notification) {
+    this.user = this.userService.getCurrentUser().data;
     this.router = router;
-    this.app = app;
     this.ea = eventAggregator;
-    this.element = element;
-    this.auth = {'Authorization': 'Bearer ' + this.user.token};
+    this.notificationService = notification;
   }
 
   attached() {
     const first = this;
     this.subscriber = this.ea.subscribe('notification', response => {
       first.messages = response;
-      console.log('aaddadda', first.messages)
     });
   }
 
   detached() {
     this.subscriber.dispose();
+  }
+
+  private goToNotification(message: any) {
+    // console.log(message);
+    this.notificationService.doSend({"type":"read", "from":"freelancer.1", "to":["freelancer.1"], "data": {"timestamp":"1487627243358"}});
   }
 }
