@@ -4,26 +4,6 @@ import {json, HttpClient} from 'aurelia-fetch-client';
 import {User} from '../../services/user/user';
 import {Helper} from '../../services/helper/helper';
 
-interface IPeriod {
-  value: number,
-  name: string
-}
-
-interface IReference {
-  selected: boolean,
-  id: string
-}
-
-interface IWebExample {
-  link: string,
-  description: string
-}
-
-interface IAttachmnet {
-  name: string,
-  url: string
-}
-
 declare let uploadBaseUrl: string;
 
 @inject('AppHttpClient', 'UploadHttpClient', Router, User, Helper)

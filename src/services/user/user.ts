@@ -5,7 +5,7 @@ import {Router} from "aurelia-router";
 @inject(Cookie, Router)
 export class User {
   private static instance: User;
-  private currentUser: any = {};
+  private currentUser: IUser = {};
   private cookie: Cookie = new Cookie;
 
   constructor () {

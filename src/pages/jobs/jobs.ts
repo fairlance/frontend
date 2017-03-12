@@ -3,14 +3,7 @@ import {Router} from 'aurelia-router';
 import {json} from 'aurelia-fetch-client';
 import {User} from "../../services/user/user";
 
-interface IPeriod {
-  value: number,
-  name: string
-}
 
-interface ITag {
-  name: string
-}
 
 @inject('AppHttpClient', 'SearchHttpClient', Router, User, Element)
 export class Jobs {

@@ -15,10 +15,12 @@ export class Notification {
   constructor(eventAggregator) {
     this.ea = eventAggregator;
     this.user = this.userService.getCurrentUser().data;
-    this.openConnection();
+    if (this.user) {
+      this.openConnection();
+    }
   }
 
-  private openConnection() {
+  public openConnection() {
     let first = this;
     this.websocket = new WebSocket(this.wsUri + '?token=' + first.user.token);
     this.websocket.onopen = function () {

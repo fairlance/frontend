@@ -1,10 +1,4 @@
-interface IOptions {
-  secure?: boolean,
-  domain?: string,
-  path?: string,
-  expires?: number,
-  expiry?: number
-}
+
 
 export class Cookie {
 

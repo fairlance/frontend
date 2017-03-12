@@ -1,16 +1,4 @@
-interface IProduct {
-  data: Array<IData>
-}
-interface IMedia {
-  url?: string;
-  tag?: string
-}
-interface IData {
-  icon?: IMedia;
-  featuredImage?: IMedia,
-  media?: Array<IMedia>,
-  iata?: string
-}
+
 export class Helper {
   private counter: number = 0;
 

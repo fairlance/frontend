@@ -3,15 +3,6 @@ import {Router} from 'aurelia-router';
 import {json} from 'aurelia-fetch-client';
 import {User} from "../../services/user/user";
 
-interface IPeriod {
-  value: number,
-  name: string
-}
-
-interface IReference {
-  selected: boolean,
-  id: string
-}
 
 @inject('AppHttpClient', 'SearchHttpClient', Router, User)
 export class Job {

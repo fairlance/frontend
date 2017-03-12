@@ -3,20 +3,6 @@ import {Router} from 'aurelia-router';
 import {json} from 'aurelia-fetch-client';
 import {User} from "../../services/user/user";
 
-interface ISkills {
-  name: string
-}
-interface IUser {
-  id?: string,
-  type?: string,
-  skills?: Array<ISkills>,
-  isAvailable?: boolean,
-  hourlyRateFrom?: number,
-  hourlyRateTo?: number,
-  payment?: string,
-  industry?: string,
-  timezone?: string
-}
 
 @inject('AppHttpClient', Router, User)
 export class Info {
