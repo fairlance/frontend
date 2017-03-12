@@ -57,7 +57,6 @@ export class Application {
     let first = this;
     let form = new FormData();
     await this.helper.sleep(300);
-    console.log(this.files);
     form.append('uploadfile', this.files[0]);
     try {
       const response = await first.upload.fetch('upload', {
@@ -67,7 +66,6 @@ export class Application {
       });
       let data = await response.json();
       first.attachments.push(data.data);
-      console.log(first.attachments);
     } catch (error) {
       console.log(error);
     }
@@ -82,7 +80,6 @@ export class Application {
     }
     this.url = '';
     this.desc = '';
-    console.log(this.links);
   }
 
   async getJob(): Promise<void> {

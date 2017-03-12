@@ -1,26 +1,29 @@
-import {inject} from 'aurelia-framework';
 import {User} from "../user/user";
 import {EventAggregator} from "aurelia-event-aggregator";
+import {Container} from 'aurelia-dependency-injection';
 declare let wsNotificationUrl: string;
 
-@inject(EventAggregator)
 export class Notification {
-  private ea: any;
+  private static instance: Notification;
+  private ea: EventAggregator = Container.instance.get(EventAggregator);
   private userService: any = User.getInstance();
-  private user: any;
+  private user: IUser = this.userService.getCurrentUser().data;
   private wsUri: string = wsNotificationUrl;
   private websocket: any;
   private messageArray: Array<any> = [];
 
-  constructor(eventAggregator) {
-    this.ea = eventAggregator;
-    this.user = this.userService.getCurrentUser().data;
-    if (this.user) {
-      this.openConnection();
-    }
+  constructor() {
+    this.openConnection();
   }
 
-  public openConnection() {
+  static getInstance() {
+    if (!Notification.instance) {
+      Notification.instance = new Notification();
+    }
+    return Notification.instance;
+  }
+
+  private openConnection() {
     let first = this;
     this.websocket = new WebSocket(this.wsUri + '?token=' + first.user.token);
     this.websocket.onopen = function () {
@@ -39,6 +42,10 @@ export class Notification {
 
   private onOpen(): void {
     console.log('CONNECTED');
+  }
+
+  public getMessages(): Array<any> {
+    return this.messageArray;
   }
 
   private onClose() {

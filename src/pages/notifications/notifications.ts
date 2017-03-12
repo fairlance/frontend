@@ -5,21 +5,20 @@ import {EventAggregator} from "aurelia-event-aggregator";
 import {Notification} from "../../services/notification/notification";
 
 
-@inject(Router, EventAggregator, Notification)
+@inject(Router, EventAggregator)
 export class Notifications {
   private router: Router;
-  private userService: any = User.getInstance();
+  private userService: User = User.getInstance();
   private user: any;
   private messages: Array<any> = [];
   private ea: any;
   private subscriber: any;
-  private notificationService: Notification;
+  private notificationService: Notification = Notification.getInstance();
 
-  constructor(router, eventAggregator, notification) {
+  constructor(router, eventAggregator) {
     this.user = this.userService.getCurrentUser().data;
     this.router = router;
     this.ea = eventAggregator;
-    this.notificationService = notification;
   }
 
   attached() {
@@ -27,6 +26,7 @@ export class Notifications {
     this.subscriber = this.ea.subscribe('notification', response => {
       first.messages = response;
     });
+    this.messages = this.notificationService.getMessages();
   }
 
   detached() {
@@ -34,7 +34,20 @@ export class Notifications {
   }
 
   private goToNotification(message: any) {
-    // console.log(message);
-    this.notificationService.doSend({"type":"read", "from":"freelancer.1", "to":["freelancer.1"], "data": {"timestamp":"1487627243358"}});
+    message.read = true;
+    this.ea.publish('notification', this.messages);
+    this.notificationService.doSend(JSON.stringify({
+      "type": "read",
+      "from": {
+        "type": "freelancer",
+        "id": 1
+      }, "to": [{
+        "type": "freelancer",
+        "id": 1
+      }],
+      "data": {
+        "timestamp": message.timestamp
+      }
+    }));
   }
 }
