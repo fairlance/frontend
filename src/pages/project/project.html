@@ -39,7 +39,7 @@
                     ${project.status | projectStatus}
                     <i class="material-icons">chevron_left</i>
                 </h1>
-                <p>Deadline: ${project.dueDate | dateFormatter}</p>
+                <p>Deadline: ${project.deadline | dateFormatter}</p>
             </section>
             <section class="section">
                 <a click.delegate="toggleSection('showProposal')">
@@ -55,9 +55,34 @@
                     <i class="material-icons">chevron_right</i>
                     Contract
                 </a>
-                <article if.bind="showContract">
-                    genauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzi
-                    genauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzigenauzi genauzi genauzi genauzi
+                <!--if.bind="showContract"-->
+                <article  class="contract">
+                    <p>
+                        Initial Agreement
+                        <span>${project.createdAt | dateFormatter}</span>
+                    </p>
+                    <div>
+                        <label>Hours Asigned</label>
+                        <i click.delegate="approveContractArticle(1)" class="icon-check_empty-1"></i>
+                        <input value="5h">
+                    </div>
+                    <div >
+                        <label>Hourly Rate</label>
+                        <i click.delegate="approveContractArticle(1)" class="icon-check_empty-1"></i>
+                        <i class="material-icons">euro_symbol</i>
+                        <input value="9.5">
+                    </div>
+                    <div>
+                        <label>Deadline Agreed</label>
+                        <i click.delegate="approveContractArticle(1)" class="icon-check_empty-1"></i>
+                        <i class="material-icons deadline">date_range</i>
+                    </div>
+                    <div>
+                        <label>Deadline Flexibility</label>
+                        <i click.delegate="approveContractArticle(1)" class="icon-check_empty-1"></i>
+                        <input value="1-2 d">
+                    </div>
+
                 </article>
             </section>
             <section class="section">
