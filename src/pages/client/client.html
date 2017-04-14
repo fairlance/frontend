@@ -1,181 +1,57 @@
 <template>
+    <require from="../../resources/value-converters/date-formatter/date-formatter"></require>
 
     <div class="profile container">
-        <div class="row">
-            <div class="col-sm-12">
-
-                <div class="card hovercard">
-                    <div class="cardheader">
-
-                    </div>
-                    <div class="avatar">
-                        <img alt="" src="../../assets/images/profile.png">
-                    </div>
-                    <div class="info">
-                        <div class="title">
-                            <a target="_blank" href="">${clent.firstName} ${clent.lastName}</a>
-                        </div>
-                        <div class="desc">${clent.title}</div>
-                        <div class="desc">Timezone ${clent.timeZone}</div>
-                        <div class="desc">${clent.projects ? clent.projects.length : 0} Jobs</div>
-                        <div class="desc">Hourly rate ${clent.hourlyRateFrom} - ${clent.hourlyRateTo}</div>
-                        <div class="desc">Joined ${clent.createdAt}</div>
-                    </div>
-                    <div class="card-comments">
-                        <div class="review-header">
-                            Reviews (${clent.reviews.length})
-                        </div>
-                        <p class="review-title">
-                            ${clent.reviews[0].title}
-                            <span class="review-date">
-                            ${clent.reviews[0].created}
-                        </span>
-                        </p>
-                        <p class="review-content">${clent.reviews[0].content}</p>
-                        <span class="review-signature">${clent.reviews[0].client.name}</span>
-                    </div>
-                    <div class="bottom">
-                        <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
-                            <i class="fa fa-twitter"></i>
-                        </a>
-                        <a class="btn btn-danger btn-sm" rel="publisher"
-                           href="">
-                            <i class="fa fa-google-plus"></i>
-                        </a>
-                        <a class="btn btn-primary btn-sm" rel="publisher"
-                           href="">
-                            <i class="fa fa-facebook"></i>
-                        </a>
-                        <a class="btn btn-warning btn-sm" rel="publisher" href="">
-                            <i class="fa fa-behance"></i>
-                        </a>
-                    </div>
-                </div>
-
+        <div class="profile-header clearfix row">
+            <div class="container">
+                <img src="../../assets/images/client.jpg">
+                <section>
+                    <h3>${client.firstName} ${client.lastName}</h3>
+                    <p class="available"><i class="material-icons">fiber_manual_record</i>Available</p>
+                    <p>Timezone <span>${client.timezone}</span></p>
+                </section>
             </div>
-
         </div>
-    </div>
-    <div class="profile ">
-        <div mdl="layout" class="  ">
-
-            <div class=" ">
-                <div class="mdl-cell mdl-cell--12-col mdl-cell--top profile-picture">
-                    <span class="mdl-layout-title">${clent.firstName} ${clent.lastName} - clent</span>
-                    <img src="../../assets/images/profile.png">
-                    <div class="list-container">
-                        <ul class="">
-                            <li class="">
-                                <span class="">
-                                    <i class="material-icons">star</i>
-                                    <span>${clent.rating}</span>
-                                </span>
-                            </li>
-                            <li class="">
-                                <span class="">
-                                  Timezone ${clent.timeZone}
-                                </span>
-                            </li>
-                            <li class="">
-                                <span>
-                                  ${clent.projects ? clent.projects.length : 0} Jobs
-                                </span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="profile-details">
-                        <p class="profile-title">${clent.title}</p>
-                        <ul class="">
-                            <li class="">
-                                Currently Available
-                            </li>
-                            <li class="">
-                                Hourly rate ${clent.hourlyRateFrom} - ${clent.hourlyRateTo}
-                            </li>
-                            <li class="m">
-                                Joined ${clent.createdAt}
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="review-section ">
-                    <div class="review-header">
-                        Reviews (${clent.reviews.length})
-                    </div>
-                    <p class="review-title">
-                        ${clent.reviews[0].title}
-                        <span class="review-date">
-                            ${clent.reviews[0].created}
-                        </span>
-                    </p>
-                    <p class="review-content">${clent.reviews[0].content}</p>
-                    <span class="review-signature">${clent.reviews[0].client.name}</span>
-                </div>
-            </div>
-            <main class="mdl-layout__content">
-                <div class="page-content">
-                    <div class="mdl-grid">
-                        <div repeat.for="cell of clent.references" class="mdl-cell mdl-cell--3-col">
-                            <div class="cell-wrapper">
-                                <div class="mdl-card mdl-shadow--2dp">
-                                    <figure class="mdl-card__media">
-                                        <img if.bind="cell.media.image" src.bind="cell.media.image">
-                                        <iframe if.bind="cell.media.video" src.bind="cell.media.video" frameborder="0"
-                                                allowfullscreen></iframe>
-                                    </figure>
-                                    <div class="mdl-card__title">
-                                        <h2 class="mdl-card__title-text">${cell.title}</h2>
-                                    </div>
-                                    <div class="mdl-card__supporting-text">
-                                        ${cell.content}
-                                    </div>
-                                    <div class="mdl-card__actions mdl-card--border">
-                                        <a mdl="button"
-                                           class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                                            Read more
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <button click.delegate="showModal()" mdl="button" type="button" if.bind="user.id === profileId"
-                                class="mdl-button mdl-js-button show-modal mdl-button--fab">
-                            <i class="material-icons">add</i>
-                        </button>
-                    </div>
-                </div>
-            </main>
-
+        <div class="numbers">
+            <span>
+                4.7 <i class="material-icons">star</i>
+            </span>
+            <span>
+                ${client.projects.length} <a>Projects</a>
+            </span>
+            <span>
+                ${client.reviews.length} <a>Reviews</a>
+            </span>
         </div>
+        <ul class="">
+            <li>
+                <a href="#about">About</a>
+            </li>
+            <li>
+                <a href="#reviews">Reviews (${client.reviews.length})</a>
+            </li>
+        </ul>
+        <section class="about">
+            <h3><a name="about">About ${client.firstName}</a></h3>
+            <p>
+                It’s that time again when people start thinking about their New Years Resolutions. Usually they involve, losing weight, quitting smoking, and joining a gym, just to mention a few.
+            </p>
+        </section>
+        <section class="reviews">
+            <h3>
+                <a name="reviews">Reviews</a> (${client.reviews.length}) <span>4.7 <i class="material-icons">star</i></span>
+            </h3>
+            <section repeat.for="review of client.reviews">
+                <h3>
+                    Ora Montgomery
+                    <span class="rating">${review.rating} <i class="material-icons">star</i></span>
+                    <span class="date">${review.createdAt | dateFormatter}</span>
+                </h3>
+                <p>
+                    ${review.content}
+                </p>
+            </section>
+        </section>
+        <button class="add-reference"><i class="fa fa-plus" aria-hidden="true"></i></button>
     </div>
-    <dialog class="mdl-dialog">
-        <form role="form" submit.delegate="addJob()">
-            <div class="mdl-dialog__content">
-                <div>
-                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="name" value.bind="name">
-                        <label class="mdl-textfield__label" for="name">Job name:</label>
-                    </div>
-                    <div mdl="textfield" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <textarea class="mdl-textfield__input" type="text" id="desc" value.bind="description" rows="6" maxrows="6"></textarea>
-                        <label class="mdl-textfield__label" for="desc">Job description</label>
-                    </div>
-                    <div class="row mdl-grid">
-                        <span class="mdl-cell mdl-cell--2-col">Active</span>
-                        <p class="slider mdl-cell mdl-cell--2-col">
-                            <label mdl="switch" class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="active">
-                                <input type="checkbox" id="active" class="mdl-switch__input" checked.bind="active">
-                                <span class="mdl-switch__label"></span>
-                            </label>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="mdl-dialog__actions ">
-                <button mdl="button" type="submit" class="mdl-button">Submit</button>
-                <button mdl="button" type="button" class="mdl-button" click.delegate="hideModal()">Discard</button>
-            </div>
-        </form>
-
-    </dialog>
 </template>

@@ -160,6 +160,14 @@ export class Project {
     this.scrollBottom();
   }
 
+  private approveContractArticle(event) {
+    event.target.classList.toggle('icon-check_full');
+  }
+
+  private contractAgreed() {
+
+  }
+
   private toggleSection(section: string) {
     this[section] = !this[section];
   }

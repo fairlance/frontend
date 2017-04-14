@@ -28,10 +28,6 @@ export class Client {
     this.populateProfile();
   }
 
-  private readProfileData(data): void {
-    this.client = data.data;
-  }
-
   async populateProfile(): Promise<void> {
     let first = this;
     try {
@@ -40,7 +36,7 @@ export class Client {
         headers: this.auth
       });
       let data = await response.json();
-      first.readProfileData(data);
+      this.client = data.data;
     } catch (error) {
       let data = await error.json();
       if (data.error === "Not logged in.") {

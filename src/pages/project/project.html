@@ -30,12 +30,12 @@
 
         <div class="container">
             <h1 class="">
-                <i class="material-icons">fiber_manual_record</i>
+                <i class="material-icons ${project.status}">fiber_manual_record</i>
                 ${project.name}
             </h1>
             <a class="client-name" route-href="route:client;  params.bind:{id:project.client.id}">${project.client.firstName} ${project.client.lastName}</a>
             <section class="project-header">
-                <h1>
+                <h1 class="${project.status}">
                     ${project.status | projectStatus}
                     <i class="material-icons">chevron_left</i>
                 </h1>
@@ -56,32 +56,35 @@
                     Contract
                 </a>
                 <!--if.bind="showContract"-->
-                <article  class="contract">
+                <article if.bind="showContract" class="contract">
                     <p>
                         Initial Agreement
                         <span>${project.createdAt | dateFormatter}</span>
                     </p>
                     <div>
                         <label>Hours Asigned</label>
-                        <i click.delegate="approveContractArticle(1)" class="icon-check_empty-1"></i>
-                        <input value="5h">
+                        <i click.delegate="approveContractArticle($event)" class="icon-check_empty-1"></i>
+                        <input value="${project.hours}h">
                     </div>
                     <div >
                         <label>Hourly Rate</label>
-                        <i click.delegate="approveContractArticle(1)" class="icon-check_empty-1"></i>
+                        <i click.delegate="approveContractArticle($event)" class="icon-check_empty-1"></i>
                         <i class="material-icons">euro_symbol</i>
-                        <input value="9.5">
+                        <input value="${project.perHour}">
                     </div>
                     <div>
                         <label>Deadline Agreed</label>
-                        <i click.delegate="approveContractArticle(1)" class="icon-check_empty-1"></i>
-                        <i class="material-icons deadline">date_range</i>
+                        <i click.delegate="approveContractArticle($event)" class="icon-check_empty-1"></i>
+                        <span>${project.deadline | dateFormatter}</span>
+                        <!--<i class="material-icons deadline">date_range</i>-->
                     </div>
                     <div>
                         <label>Deadline Flexibility</label>
-                        <i click.delegate="approveContractArticle(1)" class="icon-check_empty-1"></i>
-                        <input value="1-2 d">
+                        <i click.delegate="approveContractArticle($event)" class="icon-check_empty-1"></i>
+                        <input value="${project.deadlineFlexibility} d">
                     </div>
+                    <button click.delegate="contractAgreed()">I Agree</button>
+                    <a class="full-contract">Read Full Contract</a>
 
                 </article>
             </section>
