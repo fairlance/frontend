@@ -5,16 +5,33 @@
         <h1>Create New Job</h1>
         <tag tags.bind="tags"></tag>
         <section class="clearfix">
+            <h2>Job Name:</h2>
+            <input placeholder="Logo design" type="text" value.bind="name">
+        </section>
+        <section class="clearfix">
             <h2>Brief Summary</h2>
-            <textarea class="small" placeholder="Tell Freelancers what you need in a few sentences..."></textarea>
+            <textarea class="small" value.bind="summary"
+                      placeholder="Tell Freelancers what you need in a few sentences..."></textarea>
         </section>
         <section class="clearfix">
             <h2>Full Brief</h2>
-            <textarea class="" placeholder="Here you should give us a bit more elaborated idea of what you want. Try going from general ideas to fine detail one step at the time."></textarea>
+            <textarea class="" value.bind="details"
+                      placeholder="Here you should give us a bit more elaborated idea of what you want. Try going from general ideas to fine detail one step at the time."></textarea>
         </section>
         <section class="clearfix">
             <h2 class="">Attach Files</h2>
-            <button class="button upload"><i class="material-icons">cloud_upload</i></button>
+            <label class="btn btn-default btn-file button upload">
+                <i class="material-icons">cloud_upload</i>
+                <input type="file" files.bind="files" change.delegate="uploadAttachment()" class="hidden">
+            </label>
+            <div class="row">
+                <section class="col-xs-6" repeat.for="attachment of attachments | limitTo:attachments.length">
+                    <img src="${uploadUrl + attachment.url}">
+                    <div class="review-desc">
+                        <h4>${attachment.name}</h4>
+                    </div>
+                </section>
+            </div>
         </section>
         <section class="clearfix">
             <h2>Examples on the web</h2>
@@ -23,10 +40,11 @@
                 <label>Link:</label>
                 <input placeholder="https://www.behance.net" type="text" required value.bind="url">
                 <label>Brief description:</label>
-                <textarea required placeholder="That dance or sing to MTV-like commercials..." value.bind="desc"></textarea>
+                <textarea required placeholder="That dance or sing to MTV-like commercials..."
+                          value.bind="desc"></textarea>
             </form>
             <div class="link clearfix" repeat.for="example of links  | limitTo:links.length">
-                <a href="${example.link}" target="_blank">${example.link}</a>
+                <a href="${example.url}" target="_blank">${example.url}</a>
                 <p>
                     <strong>Note about the link: </strong>
                     ${example.description}
@@ -35,7 +53,7 @@
 
         </section>
         <section class="clearfix">
-            <button class="button">Create</button>
+            <button class="button" click.delegate="addJob()">Create</button>
             <a class="button discard">Discard</a>
         </section>
     </div>

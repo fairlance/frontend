@@ -74,7 +74,7 @@ export class Application {
   private addExample(): void {
     if (this.url.length && this.desc.length) {
       this.links.push({
-        'link': this.url,
+        'url': this.url,
         'description': this.desc
       });
     }

@@ -75,7 +75,7 @@ export class Projects {
     this.dialog.close();
   }
 
-  async goToCreateJob(): void {
+  private goToCreateJob(): void {
     this.router.navigateToRoute('create-job');
   }
 }

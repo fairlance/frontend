@@ -10,8 +10,13 @@ interface IReference {
 }
 
 interface IWebExample {
-  link: string,
+  url: string,
   description: string
+}
+
+interface IAttachment {
+  url: string,
+  name: string
 }
 
 interface IAttachmnet {
