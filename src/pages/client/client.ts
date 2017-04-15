@@ -12,9 +12,6 @@ export class Client {
   private auth: Object;
   private profileId: number;
   private client: Object;
-  private dialog: any;
-  private name: string;
-  private description: string;
 
   constructor(http, router, user) {
     this.user = user.getCurrentUser().data;
@@ -45,36 +42,4 @@ export class Client {
     }
   }
 
-  private showModal(): void {
-    this.dialog = document.querySelector('dialog');
-    if (!this.dialog.showModal) {
-      //dialogPolyfill.registerDialog(this.dialog);
-    }
-    this.dialog.showModal();
-  }
-
-  private hideModal(): void {
-    this.dialog.close();
-  }
-
-  private prepareJob(): Object {
-    let job: Object = {
-      clientId: this.user.id,
-      name: this.name,
-      description: this.description,
-      isActive: this.active
-    };
-    return json(job);
-  }
-
-  async addJob(): Promise<void> {
-    let first = this;
-    const response = await first.http.fetch('job/new', {
-      method: 'put',
-      body: this.prepareJob(),
-      headers: this.auth
-    });
-    first.populateProfile();
-    first.dialog.close();
-  }
 }

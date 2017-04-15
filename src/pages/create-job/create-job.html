@@ -1,0 +1,42 @@
+<template>
+    <require from="../../resources/value-converters/limitTo/limitTo"></require>
+
+    <div class="create-job container">
+        <h1>Create New Job</h1>
+        <tag tags.bind="tags"></tag>
+        <section class="clearfix">
+            <h2>Brief Summary</h2>
+            <textarea class="small" placeholder="Tell Freelancers what you need in a few sentences..."></textarea>
+        </section>
+        <section class="clearfix">
+            <h2>Full Brief</h2>
+            <textarea class="" placeholder="Here you should give us a bit more elaborated idea of what you want. Try going from general ideas to fine detail one step at the time."></textarea>
+        </section>
+        <section class="clearfix">
+            <h2 class="">Attach Files</h2>
+            <button class="button upload"><i class="material-icons">cloud_upload</i></button>
+        </section>
+        <section class="clearfix">
+            <h2>Examples on the web</h2>
+            <button class="button upload" click.delegate="addExample()"><i class="material-icons">note_add</i></button>
+            <form class="clearfix">
+                <label>Link:</label>
+                <input placeholder="https://www.behance.net" type="text" required value.bind="url">
+                <label>Brief description:</label>
+                <textarea required placeholder="That dance or sing to MTV-like commercials..." value.bind="desc"></textarea>
+            </form>
+            <div class="link clearfix" repeat.for="example of links  | limitTo:links.length">
+                <a href="${example.link}" target="_blank">${example.link}</a>
+                <p>
+                    <strong>Note about the link: </strong>
+                    ${example.description}
+                </p>
+            </div>
+
+        </section>
+        <section class="clearfix">
+            <button class="button">Create</button>
+            <a class="button discard">Discard</a>
+        </section>
+    </div>
+</template>

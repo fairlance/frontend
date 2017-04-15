@@ -14,6 +14,9 @@ export class Projects {
   private search: any;
   private auth: Object;
   private selectFilter: string = '';
+  private dialog: any;
+  private name: string;
+  private description: string;
   private statusList: Array<any> = [
     {id: 'working', name: 'Working'},
     {id: 'finalizing_terms', name: 'Finalizing Terms'},
@@ -61,5 +64,18 @@ export class Projects {
         'id': status.id
       });
     });
+  }
+
+  private showModal(): void {
+    this.dialog = document.querySelector('dialog');
+    this.dialog.showModal();
+  }
+
+  private hideModal(): void {
+    this.dialog.close();
+  }
+
+  async goToCreateJob(): void {
+    this.router.navigateToRoute('create-job');
   }
 }
