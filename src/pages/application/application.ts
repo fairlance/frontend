@@ -114,6 +114,7 @@ export class Application {
     try {
       const response = await first.app.fetch('job/' + first.jobId + '/apply', {
         method: 'put',
+        headers: first.auth,
         body: first.prepareApplication()
       });
       let data = await response.json();
