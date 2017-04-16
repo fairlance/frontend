@@ -69,6 +69,7 @@ export class CreateJob {
     let first = this;
     const response = await first.app.fetch('job/new', {
       method: 'post',
+      headers: first.auth,
       body: first.prepareJob()
     });
     let data = await response.json();
