@@ -137,8 +137,7 @@ body {
           input {
             float: right;
             margin-top: 7px;
-            margin-right: 30px;
-            right: 55px;
+            right: 25px;
             height: 42px;
             border: 1px solid #CECECE;
             border-radius: 3px;
@@ -146,22 +145,17 @@ body {
             box-shadow: inset 0 1px 0 0 rgba(206, 206, 206, 0.3);
             font-size: 16px;
             padding-left: 16px;
+            position: absolute;
+            &.date {
+              width: 130px;
+            }
           }
           i {
             float: right;
             font-size: 22px;
             line-height: 56px;
-            color: #50E3C3;
-            &.material-icons {
-              position: absolute;
-              right: 36px;
-              font-size: 16px;
-              color: #CECECE;
-              &.deadline {
-                font-size: 44px;
-                right: 50px;
-              }
-            }
+            color: #CECECE;
+            font-style: normal;
           }
         }
         > button {
@@ -173,6 +167,9 @@ body {
           font-size: 18px;
           color: #fff;
           border: none;
+          &.changes {
+            background-color: #FF594C;
+          }
         }
         .full-contract {
           display: block;

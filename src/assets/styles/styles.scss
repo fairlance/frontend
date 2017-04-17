@@ -264,6 +264,11 @@ div.au-stagger {
   box-sizing: border-box;
 }
 
+input[type=date]::-webkit-clear-button,
+input[type=date]::-webkit-inner-spin-button {
+  display: none;
+}
+
 html {
   height: 100%;
   body {

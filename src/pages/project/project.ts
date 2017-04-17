@@ -26,6 +26,13 @@ export class Project {
   private showProposal: boolean = false;
   private showContract: boolean = false;
   private showFiles: boolean = false;
+  private contract: any;
+  private deadline: string;
+  private flexibility: string;
+  private contractAgree: boolean = true;
+  private contractChanges: boolean = false;
+  private contractUpdate: boolean = false;
+  private contractWaiting: boolean = false;
 
   constructor(app, upload, router, user, element) {
     this.user = user.getCurrentUser().data;
@@ -42,6 +49,10 @@ export class Project {
     this.openConnection();
   }
 
+  deactivate() {
+    this.websocket.close();
+  }
+
   async getProject(): Promise<void>  {
     let first = this;
     const response = await first.app.fetch('project/' + first.projectId, {
@@ -50,7 +61,8 @@ export class Project {
     });
     let data = await response.json();
     first.project = data.data;
-    console.log(first.project);
+    // console.log(first.project);
+    first.setContract(this.project.contract.proposal ? this.project.contract.proposal : this.project.contract);
   }
 
   private openConnection() {
@@ -87,7 +99,12 @@ export class Project {
       } else {
         message.side = 'left';
       }
-      first.messages.push(message);
+      if (message.userType) {
+        first.parseIncoming(message);
+      } else {
+        first.messages.push(message);
+      }
+
     });
     this.scrollBottom();
   }
@@ -160,12 +177,75 @@ export class Project {
     this.scrollBottom();
   }
 
-  private approveContractArticle(event) {
-    event.target.classList.toggle('icon-check_full');
+  private setContract(contract: any) {
+    this.contract = contract;
+    console.log(this.contract);
+    if (this.project.contract.proposal && this.contract.userId === this.user.id && this.contract.userType === this.user.type) {
+      this.contractAgree = false;
+      this.contractChanges = false;
+      this.contractUpdate = false;
+      this.contractWaiting = true;
+    }
+    let date = new Date(this.contract.deadline);
+    this.deadline = date.toISOString().substr(0, 10);
+    this.flexibility = this.contract.deadlineFlexibility.toString();
   }
 
-  private contractAgreed() {
+  private async contractAgreed() {
+    let first = this;
+    const response = await first.app.fetch('project/' + first.projectId + '/contract/agree', {
+      method: 'post',
+      headers: this.auth,
+    });
+    let data = await response.json();
+    first.project = data.data;
+  }
 
+  private parseIncoming(message) {
+    let data = JSON.parse(message.text);
+    this.setContract(data.proposal);
+    console.log(data);
+  }
+
+  private async loadChanges() {
+
+  }
+
+  private async newProposal() {
+    let first = this;
+    let body = {
+      userType: this.user.type,
+      userId: this.user.id,
+      deadline: new Date(this.deadline),
+      deadlineFlexibility: parseInt(this.flexibility),
+      hours: this.project.hours,
+      perHour: this.project.perHour
+    };
+    const response = await first.app.fetch('project/' + first.projectId + '/contract/proposal', {
+      method: 'post',
+      headers: this.auth,
+      body: json(body)
+    });
+    let data = await response.json();
+    this.contractAgree = false;
+    this.contractChanges = false;
+    this.contractUpdate = false;
+    this.contractWaiting = true;
+    console.log(data);
+  }
+
+  private changeContract() {
+    let date = new Date(this.project.deadline);
+    if (date.toISOString().substr(0, 10) !== this.deadline || this.project.deadlineFlexibility.toString() !== this.flexibility) {
+      this.contractAgree = false;
+      this.contractChanges = false;
+      this.contractUpdate = true;
+      this.contractWaiting = false;
+    } else {
+      this.contractAgree = true;
+      this.contractChanges = false;
+      this.contractUpdate = false;
+    }
   }
 
   private toggleSection(section: string) {

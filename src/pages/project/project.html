@@ -58,34 +58,34 @@
                 <!--if.bind="showContract"-->
                 <article if.bind="showContract" class="contract">
                     <p>
-                        Initial Agreement
+                        Proposal
                         <span>${project.createdAt | dateFormatter}</span>
                     </p>
                     <div>
-                        <label>Hours Asigned</label>
-                        <i click.delegate="approveContractArticle($event)" class="icon-check_empty-1"></i>
-                        <input value="${project.hours}h">
+                        <label>Hours Assigned</label>
+                        <i>h</i>
+                        <input value="${contract.hours}" disabled type="text">
                     </div>
                     <div >
                         <label>Hourly Rate</label>
-                        <i click.delegate="approveContractArticle($event)" class="icon-check_empty-1"></i>
                         <i class="material-icons">euro_symbol</i>
-                        <input value="${project.perHour}">
+                        <input value="${contract.perHour}" disabled type="text">
                     </div>
                     <div>
                         <label>Deadline Agreed</label>
-                        <i click.delegate="approveContractArticle($event)" class="icon-check_empty-1"></i>
-                        <span>${project.deadline | dateFormatter}</span>
-                        <!--<i class="material-icons deadline">date_range</i>-->
+                        <input class="date" value.bind="deadline" type="date" change.delegate="changeContract()" disabled.bind="project.status !== 'finalizing_terms'">
+                        <i class="material-icons deadline">date_range</i>
                     </div>
                     <div>
                         <label>Deadline Flexibility</label>
-                        <i click.delegate="approveContractArticle($event)" class="icon-check_empty-1"></i>
-                        <input value="${project.deadlineFlexibility} d">
+                        <i>d</i>
+                        <input type="text" change.delegate="changeContract()" value.bind="flexibility" disabled.bind="project.status !== 'finalizing_terms'">
                     </div>
-                    <button click.delegate="contractAgreed()">I Agree</button>
+                    <button click.delegate="contractAgreed()" if.bind="contractAgree && (project.status === 'finalizing_terms')">I Agree</button>
+                    <button click.delegate="loadChanges()" class="changes" if.bind="contractChanges && (project.status === 'finalizing_terms')">Load Changes</button>
+                    <button click.delegate="newProposal()" if.bind="contractUpdate && (project.status === 'finalizing_terms')">Propose Update</button>
+                    <button if.bind="contractWaiting" class="changes">Waiting ...</button>
                     <a class="full-contract">Read Full Contract</a>
-
                 </article>
             </section>
             <section class="section">
