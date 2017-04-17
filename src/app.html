@@ -1,7 +1,11 @@
 <template>
     <require from="components/navigation/navigation"></require>
 
-    <navigation if.bind="(router.currentInstruction.config.name !== 'login') && (router.currentInstruction.config.name !== 'registration')"></navigation>
+    <navigation if.bind="
+        (router.currentInstruction.config.name !== 'login') &&
+        (router.currentInstruction.config.name !== 'landing') &&
+        (router.currentInstruction.config.name !== 'registration')">
+    </navigation>
     <div class="page-host">
         <router-view></router-view>
     </div>
