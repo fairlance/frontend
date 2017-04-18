@@ -27,12 +27,14 @@ export class Project {
   private showContract: boolean = false;
   private showFiles: boolean = false;
   private contract: any;
+  private systemMessage: any;
   private deadline: string;
   private flexibility: string;
   private contractAgree: boolean = true;
   private contractChanges: boolean = false;
   private contractUpdate: boolean = false;
   private contractWaiting: boolean = false;
+  private disableFields: boolean = false;
 
   constructor(app, upload, router, user, element) {
     this.user = user.getCurrentUser().data;
@@ -51,18 +53,6 @@ export class Project {
 
   deactivate() {
     this.websocket.close();
-  }
-
-  async getProject(): Promise<void>  {
-    let first = this;
-    const response = await first.app.fetch('project/' + first.projectId, {
-      method: 'get',
-      headers: this.auth
-    });
-    let data = await response.json();
-    first.project = data.data;
-    // console.log(first.project);
-    first.setContract(this.project.contract.proposal ? this.project.contract.proposal : this.project.contract);
   }
 
   private openConnection() {
@@ -99,7 +89,7 @@ export class Project {
       } else {
         message.side = 'left';
       }
-      if (message.userType) {
+      if (message.userType === 'system') {
         first.parseIncoming(message);
       } else {
         first.messages.push(message);
@@ -177,15 +167,20 @@ export class Project {
     this.scrollBottom();
   }
 
+  private async getProject(): Promise<void>  {
+    let first = this;
+    const response = await first.app.fetch('project/' + first.projectId, {
+      method: 'get',
+      headers: this.auth
+    });
+    let data = await response.json();
+    first.project = data.data;
+    console.log(first.project);
+    first.setContract(this.project.contract.proposal ? this.project.contract.proposal : this.project.contract);
+  }
+
   private setContract(contract: any) {
     this.contract = contract;
-    console.log(this.contract);
-    if (this.project.contract.proposal && this.contract.userId === this.user.id && this.contract.userType === this.user.type) {
-      this.contractAgree = false;
-      this.contractChanges = false;
-      this.contractUpdate = false;
-      this.contractWaiting = true;
-    }
     let date = new Date(this.contract.deadline);
     this.deadline = date.toISOString().substr(0, 10);
     this.flexibility = this.contract.deadlineFlexibility.toString();
@@ -197,18 +192,39 @@ export class Project {
       method: 'post',
       headers: this.auth,
     });
-    let data = await response.json();
-    first.project = data.data;
   }
 
   private parseIncoming(message) {
-    let data = JSON.parse(message.text);
-    this.setContract(data.proposal);
-    console.log(data);
+    let data: any = JSON.parse(message.text);
+    this.systemMessage = data.proposal;
+    console.log(message);
+    if (data.new_status) {
+      message.text = 'New status of the project is ' + data.new_status;
+      this.messages.push(message);
+      this.getProject();
+    } else if (data.proposal.userId === this.user.id && data.proposal.userType === this.user.type) {
+      message.text = 'New proposal made by ' + data.proposal.userType;
+      this.messages.push(message);
+      this.contractAgree = false;
+      this.contractChanges = false;
+      this.contractUpdate = false;
+      this.contractWaiting = true;
+    } else {
+      this.contractAgree = false;
+      this.contractChanges = true;
+      this.contractUpdate = false;
+      this.contractWaiting = false;
+      this.disableFields = true;
+    }
   }
 
   private async loadChanges() {
-
+    this.setContract(this.systemMessage);
+    this.disableFields = false;
+    this.contractAgree = true;
+    this.contractChanges = false;
+    this.contractUpdate = false;
+    this.contractWaiting = false;
   }
 
   private async newProposal() {
@@ -231,7 +247,6 @@ export class Project {
     this.contractChanges = false;
     this.contractUpdate = false;
     this.contractWaiting = true;
-    console.log(data);
   }
 
   private changeContract() {

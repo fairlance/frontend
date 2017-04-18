@@ -73,18 +73,18 @@
                     </div>
                     <div>
                         <label>Deadline Agreed</label>
-                        <input class="date" value.bind="deadline" type="date" change.delegate="changeContract()" disabled.bind="project.status !== 'finalizing_terms'">
+                        <input class="date" value.bind="deadline" type="date" change.delegate="changeContract()" disabled.bind="(disableFields || project.status !== 'finalizing_terms')">
                         <i class="material-icons deadline">date_range</i>
                     </div>
                     <div>
                         <label>Deadline Flexibility</label>
                         <i>d</i>
-                        <input type="text" change.delegate="changeContract()" value.bind="flexibility" disabled.bind="project.status !== 'finalizing_terms'">
+                        <input type="text" change.delegate="changeContract()" value.bind="flexibility" disabled.bind="(disableFields || project.status !== 'finalizing_terms')">
                     </div>
                     <button click.delegate="contractAgreed()" if.bind="contractAgree && (project.status === 'finalizing_terms')">I Agree</button>
                     <button click.delegate="loadChanges()" class="changes" if.bind="contractChanges && (project.status === 'finalizing_terms')">Load Changes</button>
                     <button click.delegate="newProposal()" if.bind="contractUpdate && (project.status === 'finalizing_terms')">Propose Update</button>
-                    <button if.bind="contractWaiting" class="changes">Waiting ...</button>
+                    <button if.bind="contractWaiting && (project.status === 'finalizing_terms')" class="changes">Waiting ...</button>
                     <a class="full-contract">Read Full Contract</a>
                 </article>
             </section>

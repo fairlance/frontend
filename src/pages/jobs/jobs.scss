@@ -152,6 +152,9 @@
       line-height: 19px;
       color: #6D849D;
       margin: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
     .job-description {
       margin-top: 10px;
