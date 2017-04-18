@@ -198,10 +198,19 @@ export class Project {
     let data: any = JSON.parse(message.text);
     this.systemMessage = data.proposal;
     console.log(message);
-    if (data.new_status) {
-      message.text = 'New status of the project is ' + data.new_status;
+    if (data.status) {
+      message.text = 'New status of the project is ' + data.status;
       this.messages.push(message);
       this.getProject();
+    } else if (data.type === 'project_contract_accepted') {
+      message.text = 'Contract accepted by ' + data.user.firstName;
+      this.messages.push(message);
+      if (data.user.id === this.user.id && data.userType === this.user.type) {
+        this.contractAgree = false;
+        this.contractChanges = false;
+        this.contractUpdate = false;
+        this.contractWaiting = true;
+      }
     } else if (data.proposal.userId === this.user.id && data.proposal.userType === this.user.type) {
       message.text = 'New proposal made by ' + data.proposal.userType;
       this.messages.push(message);

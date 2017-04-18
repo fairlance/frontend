@@ -46,7 +46,7 @@ export class Notifications {
         "id": 1
       }],
       "data": {
-        "timestamp": message.timestamp
+        "timestamp": message.timestamp.toString()
       }
     }));
   }
