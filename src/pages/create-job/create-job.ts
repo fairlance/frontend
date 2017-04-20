@@ -73,33 +73,9 @@ export class CreateJob {
       body: first.prepareJob()
     });
     let data = await response.json();
-    console.log(data);
+    this.router.navigateToRoute('job', {id: data.data.id}, {replace: true});
   };
 
-  /**
-   body = {
-      Name        string       `json:"name" valid:"required"`
-      Summary     string       `json:"summary" valid:"required"`
-      Details     string       `json:"details" valid:"required"`
-      ClientID    uint         `json:"clientId" valid:"required"`
-      IsActive    bool         `json:"isActive"`
-      Tags        stringList   `json:"tags"`
-      Attachments []Attachment `json:"attachments"`
-      Examples    []Example    `json:"examples"`
-    }
-
-   type Attachment struct {
-     Model
-     Name      string `json:"name,omitempty"`
-     URL       string `json:"url,omitempty"`
-    }
-
-   type Example struct {
-     Model
-     URL         string `json:"url,omitempty"`
-     Description string `json:"description,omitempty"`
-    }
-   **/
   private prepareJob(): any {
     let body = {
       name:     this.name,

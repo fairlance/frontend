@@ -39,7 +39,7 @@
                     ${project.status | projectStatus}
                     <i class="material-icons">chevron_left</i>
                 </h1>
-                <p>Deadline: ${project.deadline | dateFormatter}</p>
+                <p>Deadline: ${project.contract.deadline | dateFormatter}</p>
             </section>
             <section class="section">
                 <a click.delegate="toggleSection('showProposal')">
