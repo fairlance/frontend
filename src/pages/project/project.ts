@@ -259,7 +259,7 @@ export class Project {
   }
 
   private changeContract() {
-    let date = new Date(this.project.deadline);
+    let date = new Date(this.project.contract.deadline);
     if (date.toISOString().substr(0, 10) !== this.deadline || this.project.deadlineFlexibility.toString() !== this.flexibility) {
       this.contractAgree = false;
       this.contractChanges = false;
