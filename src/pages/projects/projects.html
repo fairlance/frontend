@@ -12,7 +12,7 @@
             <h3 class="row">${item.status} (${item.list.length})</h3>
             <ul>
                 <li repeat.for="project of item.list">
-                    <span class="date">${project.contract.deadline | dateFormatter}</span>
+                    <span class="date">${project.createdAt | dateFormatter}</span>
                     <span class="name" click.delegate="goToProject(project.id)"><i class="material-icons">fiber_manual_record</i>${project.name}</span>
                     <a route-href="route:client;  params.bind:{id:project.client.id}">${project.client.firstName}
                         ${project.client.lastName}</a>

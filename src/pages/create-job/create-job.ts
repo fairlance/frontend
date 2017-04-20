@@ -17,6 +17,7 @@ export class CreateJob {
   private url: string;
   private desc: string;
   private name: string;
+  private price: string;
   private summary: string;
   private details: string;
   private attachments: Array<IAttachment> = [];
@@ -80,6 +81,7 @@ export class CreateJob {
     let body = {
       name:     this.name,
       summary:  this.summary,
+      price:  parseInt(this.price),
       details:  this.details,
       clientId: this.user.id,
       isActive: true,
