@@ -50,7 +50,7 @@ export class Notifications {
       }
     }));
     this.router.navigateToRoute('application', {
-      id: 2,
+      id: message.data.jobId,
       appId: message.data.jobApplication.id
     });
 
