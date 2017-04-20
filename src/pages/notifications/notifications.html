@@ -7,11 +7,11 @@
             <a class="clearfix" click.delegate="goToNotification(message)">
                 <img src="../../assets/images/profile.png">
                 <h2 class="">
-                    <span>${message.from.type}</span>
+                    <span>${message.data.jobApplication.freelancer.firstName} ${message.data.jobApplication.freelancer.lastName}</span>
                     <span class="date">${message.timestamp | dateFormatter}</span>
                 </h2>
                 <p class="job-description">
-                    ${message.data.text}
+                    Just applied to your job, click here to see his/hers application
                 </p>
             </a>
         </div>

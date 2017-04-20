@@ -49,5 +49,10 @@ export class Notifications {
         "timestamp": message.timestamp.toString()
       }
     }));
+    this.router.navigateToRoute('application', {
+      id: 2,
+      appId: message.data.jobApplication.id
+    });
+
   }
 }
