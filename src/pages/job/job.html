@@ -20,41 +20,30 @@
         </div>
         <section>
             <h3>Brief Summary</h3>
-            <article>From ads that dance or sing to MTV-like commercials, online advertisers are now using a new type of technology called “rich media” to attract consumers.</article>
+            <article>${details.summary}</article>
         </section>
         <section>
             <h3>Full Brief</h3>
             <article>
-                ${details.summary}
+                ${details.details}
             </article>
         </section>
         <section>
-            <h3><a name="portfolio">Attachments (2)</a></h3>
+            <h3><a name="portfolio">Attachments (${details.attachments.length})</a></h3>
             <div class="row image-container">
-                <a class="col-xs-6" >
-                    <img src="../../assets/images/cover.png">
-                    <label>Somerandomimage.jpg</label>
-                </a>
-                <a class="col-xs-6" >
-                    <img src="../../assets/images/cover.png">
-                    <label>Somerandomimage.jpg</label>
+                <a class="col-xs-6" repeat.for="attachment of details.attachments">
+                    <img src="${uploadUrl + attachment.url}">
+                    <label>${attachment.name}</label>
                 </a>
             </div>
         </section>
         <section>
             <h3>Examples on Web</h3>
-            <div class="link">
-                <a>https://www.behance.net/Flotation_device</a>
+            <div class="link" repeat.for="example of details.examples">
+                <a href="${example.url}" target="_blank">${example.url}</a>
                 <p>
                     <strong>Note about the link: </strong>
-                    That dance or sing to MTV-like commercials, online advertisers are now using a new type of technology called “rich media” to attract consumers.
-                </p>
-            </div>
-            <div class="link">
-                <a>https://www.behance.net/Flotation_device</a>
-                <p>
-                    <strong>Note about the link: </strong>
-                    That dance or sing to MTV-like commercials, online advertisers are now using a new type of technology called “rich media” to attract consumers.
+                    ${example.description}
                 </p>
             </div>
         </section>

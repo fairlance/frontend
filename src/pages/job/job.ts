@@ -3,6 +3,7 @@ import {Router} from 'aurelia-router';
 import {json} from 'aurelia-fetch-client';
 import {User} from "../../services/user/user";
 
+declare let uploadBaseUrl: string;
 
 @inject('AppHttpClient', 'SearchHttpClient', Router, User)
 export class Job {
@@ -20,6 +21,7 @@ export class Job {
     {value: 7, name: 'a week'}
   ];
   private period: IPeriod = this.periodOptions[3];
+  private uploadUrl: string = uploadBaseUrl;
   private jobId: number;
 
   constructor(app, search, router, user) {
@@ -69,7 +71,6 @@ export class Job {
     });
     let data = await response.json();
     first.details = data.data;
-    console.log(this.details);
   }
 
   private showApplication(): void {
