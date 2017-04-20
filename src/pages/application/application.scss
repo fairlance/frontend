@@ -6,10 +6,13 @@
   padding-bottom: 140px;
   > div {
     > section {
-      margin: 0;
+      margin: 0 0 10px;
       &.attachments {
+        .special {
+          width: 100%;
+        }
         section {
-          height: 140px;
+          height: 150px;
           position: relative;
           margin: 0 0 10px;
           &:nth-child(odd) {
@@ -19,8 +22,8 @@
             padding-left: 5px;
           }
           img {
-            height: 140px;
             width: 100%;
+            height: 100%;
             object-fit: cover;
           }
           .review-desc {
@@ -42,78 +45,114 @@
           }
         }
       }
-      h3 {
-        margin: 0;
-        height: 40px;
-        line-height: 40px;
-        font-size: 12px;
-        font-weight: bold;
+      h2 {
+        font-size: 16px;
+        float: left;
       }
       p, article {
         font-size: 12px;
         font-weight: 200;
         line-height: 15px;
       }
-      textarea {
-        resize: none;
+      >article {
         width: 100%;
-        height: 100px;
-        font-size: 12px;
-        border: 1px solid #6D849D;
+        float: left;
+      }
+      textarea {
+        border: 1px solid #30C0FF;
+        border-radius: 3px;
+        height: 112px;
+        font-size: 16px;
+        width: 100%;
+        resize: none;
+        padding: 8px;
+        &.small {
+          height: 56px;
+        }
       }
       form {
         label {
-          height: 30px;
-          line-height: 30px;
-          font-size: 12px;
+          display: block;
+          float: left;
           font-weight: normal;
-          margin-bottom: 0;
+          font-size: 16px;
+          width: 100%;
         }
         input {
+          font-size: 16px;
           width: 100%;
-          height: 30px;
-          line-height: 30px;
-          font-size: 12px;
-          border: 1px solid #6D849D;
-        }
-        button {
-
+          border: 1px solid #30C0FF;
+          border-radius: 3px;
+          padding: 8px;
+          margin-bottom: 20px;
         }
       }
       .link {
+        margin: 20px 0;
+        float: left;
+        width: 100%;
         a {
-          font-size: 12px;
-          margin-bottom: 5px;
+          font-size: 16px;
+          margin-bottom: 10px;
+          display: block;
         }
         p {
+          font-size: 16px;
           margin-top: 5px;
         }
       }
 
     }
   }
-  section.button-container {
-    height: 100px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+  button, .button {
+    display: block;
     text-align: center;
-    padding-top: 20px;
-    margin-left: -15px;
-    .background {
-      position: absolute;
-      z-index: 0;
-      background-color: #fff;
-      opacity: 0.6;
-      width: 100%;
-      height: 100%;
-      bottom: 0;
-      left: 0;
+    line-height: 32px;
+    margin: 20px auto 10px;
+    height: 32px;
+    width: 160px;
+    border-radius: 3px;
+    background-color: #30C0FF;
+    font-size: 18px;
+    color: #fff;
+    border: none;
+    padding: 0;
+    &.upload {
+      width: 95px;
+      float: left;
+      margin-top: 10px;
+      margin-left: 25px;
+      padding-top: 2px;
     }
-    button {
-      position: relative;
-      margin-bottom: 10px;
-      z-index: 1;
+    &.submit {
+      background-color: #d9534f;
+    }
+    &.discard {
+      background-color: #CECECE;
     }
   }
+  //section.button-container {
+  //  height: 100px;
+  //  position: fixed;
+  //  bottom: 0;
+  //  width: 100%;
+  //  text-align: center;
+  //  padding-top: 20px;
+  //  margin-left: -15px;
+  //  .background {
+  //    position: absolute;
+  //    z-index: 0;
+  //    background-color: #fff;
+  //    opacity: 0.6;
+  //    width: 100%;
+  //    height: 100%;
+  //    bottom: 0;
+  //    left: 0;
+  //  }
+  //  button {
+  //    position: relative;
+  //    margin-bottom: 10px;
+  //    z-index: 1;
+  //  }
+  //}
 }
