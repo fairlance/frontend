@@ -3,7 +3,7 @@ node_modules
 jspm_packages
 bin
 bower_components
-.idea
+.idea/
 .DS_STORE
 dist
 build/reports

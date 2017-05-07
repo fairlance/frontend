@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Fairlance - freelance done fair</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description"
-              content="Freelancing jobs but with fare trade approach - fairlance. Subscribe to our mailing list and get involved in revolutionizing freelancing!">
-        <base href="<%- htmlWebpackPlugin.options.metadata.baseUrl %>">
-        <!-- imported CSS are concatenated and added automatically -->
-        <!--<meta name="google-site-verification" content="KSbCutFwamMJoWCtmw41lINKfpW4TX_AcUCGIQCsVKg" />-->
-        <!--<script>-->
-            <!--(function (i, s, o, g, r, a, m) {-->
-                <!--i['GoogleAnalyticsObject'] = r;-->
-                <!--i[r] = i[r] || function () {-->
-                            <!--(i[r].q = i[r].q || []).push(arguments)-->
-                        <!--}, i[r].l = 1 * new Date();-->
-                <!--a = s.createElement(o),-->
-                        <!--m = s.getElementsByTagName(o)[0];-->
-                <!--a.async = 1;-->
-                <!--a.src = g;-->
-                <!--m.parentNode.insertBefore(a, m)-->
-            <!--})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');-->
-            <!--ga('create', 'UA-68671730-1', 'auto');-->
-            <!--ga('send', 'pageview');-->
-        <!--</script>-->
-    </head>
-    <body aurelia-app="main">
-        <div class="splash">
-            <img src="./src/assets/images/loading-1.gif">
-        </div>
-        <script replace="here">
-            var appBaseUrl = "http://local.fairlance.io:8080/api/app/";
-            var searchBaseUrl = "http://local.fairlance.io:8080/api/search/";
-            var registerBaseUrl = "http://local.fairlance.io:8080/api/reg/";
-            var wsBaseUrl = "ws://local.fairlance.io:3005/";
-            var wsNotificationUrl = "ws://local.fairlance.io:3007/";
-            var uploadBaseUrl = "http://local.fairlance.io:3006/";
-        </script>
-        <!--###REPLACE_HERE###-->
-        <% if (htmlWebpackPlugin.options.metadata.ENV === 'development') { %>
-        <!-- Webpack Dev Server reload -->
-        <script src="/webpack-dev-server.js"></script>
-        <% } %>
-    </body>
+<head>
+    <meta charset="utf-8">
+    <title>Fairlance - freelance done fair</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+          content="Freelancing jobs but with fare trade approach - fairlance. Subscribe to our mailing list and get involved in revolutionizing freelancing!">
+    <base href="<%- htmlWebpackPlugin.options.metadata.baseUrl %>">
+    <!-- imported CSS are concatenated and added automatically -->
+    <!--<meta name="google-site-verification" content="KSbCutFwamMJoWCtmw41lINKfpW4TX_AcUCGIQCsVKg" />-->
+    <!--<script>-->
+    <!--(function (i, s, o, g, r, a, m) {-->
+    <!--i['GoogleAnalyticsObject'] = r;-->
+    <!--i[r] = i[r] || function () {-->
+    <!--(i[r].q = i[r].q || []).push(arguments)-->
+    <!--}, i[r].l = 1 * new Date();-->
+    <!--a = s.createElement(o),-->
+    <!--m = s.getElementsByTagName(o)[0];-->
+    <!--a.async = 1;-->
+    <!--a.src = g;-->
+    <!--m.parentNode.insertBefore(a, m)-->
+    <!--})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');-->
+    <!--ga('create', 'UA-68671730-1', 'auto');-->
+    <!--ga('send', 'pageview');-->
+    <!--</script>-->
+</head>
+<body aurelia-app="main">
+<div class="splash">
+    <img src="./src/assets/images/loading-1.gif">
+</div>
+<script replace="here">
+  var appBaseUrl = "http://local.fairlance.io:8080/api/application/";
+  var searchBaseUrl = "http://local.fairlance.io:8080/api/search/";
+  var registerBaseUrl = "http://local.fairlance.io:8080/api/registration/";
+  var wsBaseUrl = "ws://local.fairlance.io:8080/api/messaging/";
+  var wsNotificationUrl = "ws://local.fairlance.io:8080/api/notification/";
+  var uploadBaseUrl = "http://local.fairlance.io:8080/fileserver/";
+</script>
+<!--###REPLACE_HERE###-->
+<% if (htmlWebpackPlugin.options.metadata.ENV === 'development') { %>
+<!-- Webpack Dev Server reload -->
+<script src="/webpack-dev-server.js"></script>
+<% } %>
+</body>
 </html>
