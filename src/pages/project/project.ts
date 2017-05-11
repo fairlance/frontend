@@ -2,6 +2,7 @@ import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 import {json, HttpClient} from 'aurelia-fetch-client';
 import {User} from "../../services/user/user";
+import {$} from "jQuery";
 
 declare let wsBaseUrl: string;
 declare let uploadBaseUrl: string;

@@ -4,20 +4,18 @@
     "module": "es2015",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "strictNullChecks": true,
     "moduleResolution": "node",
-    "sourceMap": true,
     "allowJs": true,
-    "skipLibCheck": true,
+    "sourceRoot": "src",
+    "baseUrl": "src",
+    "compileOnSave": false,
     "lib": [
       "es2017", "dom"
     ]
   },
-  "awesomeTypescriptLoaderOptions": {
-    "forkChecker": true
-  },
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "static"
   ]
 }

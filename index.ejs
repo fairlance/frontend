@@ -38,7 +38,7 @@
   var uploadBaseUrl = "http://local.fairlance.io:8080/fileserver/";
 </script>
 <!--###REPLACE_HERE###-->
-<% if (htmlWebpackPlugin.options.metadata.ENV === 'development') { %>
+<% if (htmlWebpackPlugin.options.metadata.server) { %>
 <!-- Webpack Dev Server reload -->
 <script src="/webpack-dev-server.js"></script>
 <% } %>
