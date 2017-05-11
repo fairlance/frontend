@@ -45,6 +45,7 @@ module.exports = ({production, server, extractCss, coverage} = {}) => ({
     // serve index.html for all 404 (required for push-state)
     historyApiFallback: true,
     host: "0.0.0.0",
+    port: 9000,
     disableHostCheck: true,
     watchOptions: {
       poll: true,

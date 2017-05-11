@@ -1,6 +1,8 @@
-﻿import {Aurelia} from 'aurelia-framework';
+﻿import './assets/styles/styles.scss';
+import {Aurelia} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
 import * as Bluebird from 'bluebird';
+import { PLATFORM } from 'aurelia-pal';
 
 declare let appBaseUrl: any;
 declare let registerBaseUrl: any;
@@ -46,6 +48,6 @@ export async function configure(aurelia: Aurelia) {
   container.registerInstance('SearchHttpClient', search);
   container.registerInstance('UploadHttpClient', upload);
   await aurelia.start();
-  aurelia.setRoot('app');
+  await aurelia.setRoot(PLATFORM.moduleName('app'));
 
 }

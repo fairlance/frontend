@@ -1,3 +1,25 @@
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+@import "partials/form";
+@import "partials/mixins";
+
+@import "../../components/navigation/navigation";
+
+@import "../../pages/landing/landing";
+@import "../../pages/application/application";
+@import "../../pages/applications/applications";
+@import "../../pages/client/client";
+@import "../../pages/create-job/create-job";
+@import "../../pages/freelancer/freelancer";
+@import "../../pages/info/info";
+@import "../../pages/job/job";
+@import "../../pages/jobs/jobs";
+@import "../../pages/login/login";
+@import "../../pages/notifications/notifications";
+@import "../../pages/project/project";
+@import "../../pages/projects/projects";
+@import "../../pages/registration/registration";
+
 body {
   margin: 0;
 }
