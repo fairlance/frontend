@@ -48,7 +48,7 @@ module.exports = ({production, server, extractCss, coverage} = {}) => ({
     port: 9000,
     disableHostCheck: true,
     watchOptions: {
-      poll: true,
+      poll: 100,
       ignored: "/node_modules/"
     }
   },
