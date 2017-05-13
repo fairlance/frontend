@@ -1,9 +1,9 @@
 machine:
   node:
-    version: 6.9.0
+    version: 7.10.0
 dependencies:
     post:
-        - npm run build:prod
+        - npm start -- build
 test:
     override:
         - tar -czf export.tar.gz dist
