@@ -8,6 +8,7 @@ declare let appBaseUrl: any;
 declare let registerBaseUrl: any;
 declare let searchBaseUrl: any;
 declare let uploadBaseUrl: any;
+declare let paymentBaseUrl: any;
 
 Bluebird.config({ warnings: false });
 
@@ -21,6 +22,7 @@ export async function configure(aurelia: Aurelia) {
   let register = new HttpClient();
   let search = new HttpClient();
   let upload = new HttpClient();
+  let payment = new HttpClient();
 
   app.configure(config => {
     config
@@ -42,11 +44,17 @@ export async function configure(aurelia: Aurelia) {
         .useStandardConfiguration()
         .withBaseUrl(uploadBaseUrl)
   });
+  payment.configure(config => {
+    config
+        .useStandardConfiguration()
+        .withBaseUrl(paymentBaseUrl)
+  });
 
   container.registerInstance('AppHttpClient', app);
   container.registerInstance('RegisterHttpClient', register);
   container.registerInstance('SearchHttpClient', search);
   container.registerInstance('UploadHttpClient', upload);
+  container.registerInstance('PaymentHttpClient', payment);
   await aurelia.start();
   await aurelia.setRoot(PLATFORM.moduleName('app'));
 

@@ -16,6 +16,7 @@ export class App {
       {route: ['notifications', 'notifications'], name: 'notifications', moduleId: PLATFORM.moduleName('pages/notifications/notifications'), title: 'Notifications'},
       {route: ['create-job', 'create-job'], name: 'create-job', moduleId: PLATFORM.moduleName('pages/create-job/create-job'), title: 'Job Creation'},
       {route: ['jobs', 'jobs'], name: 'jobs', moduleId: PLATFORM.moduleName('pages/jobs/jobs'), title: 'Jobs'},
+      {route: ['payment', 'payment'], name: 'payment', moduleId: PLATFORM.moduleName('pages/payment/payment'), title: 'Payment'},
       {route: ['projects', 'projects'], name: 'projects', moduleId: PLATFORM.moduleName('pages/projects/projects'), title: 'Projects'},
       {route: ['login', 'login'], name: 'login', moduleId: PLATFORM.moduleName('pages/login/login'), title: 'Login'},
       {route: ['client/:id', 'client/:id'], name: 'client', moduleId: PLATFORM.moduleName('pages/client/client'), title: 'Client'},
