@@ -3,8 +3,6 @@ import {Router} from 'aurelia-router';
 import {json} from 'aurelia-fetch-client';
 import {User} from "../../services/user/user";
 
-
-
 @inject('AppHttpClient', 'SearchHttpClient', Router, User, Element)
 export class Jobs {
   private jobs = [];

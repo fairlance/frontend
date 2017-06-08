@@ -26,7 +26,7 @@ export class Payment {
       headers: this.auth
     });
     let data = await response.json();
-    // window.location.href = data.data.RedirectURL;
+    window.location.href = data.data.RedirectURL;
     console.log(data);
   }
 
