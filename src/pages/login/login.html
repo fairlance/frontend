@@ -1,16 +1,17 @@
 <template>
     <div class="login container">
         <div class="col-xs-12">
+            <div if.bind="error" class="error-text">Wrong Email or Password</div>
             <form id="loginForm" role="form" submit.delegate="submit()" action="#">
                 <div class="form-group">
-                    <div class="input-group">
+                    <div class="input-group" class.bind="error ? 'error' : ''">
                         <div class="input-group-addon"><i class="material-icons">mail_outline</i></div>
                         <input type="text" class="form-control" id="login-email" placeholder="Email" value.bind="email"
                                name="email">
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="input-group">
+                    <div class="input-group" class.bind="error ? 'error' : ''">
                         <div class="input-group-addon"><i class="material-icons">lock_outline</i></div>
                         <input type="password" class="form-control" id="login-password" placeholder="Password"
                                value.bind="password" name="password">

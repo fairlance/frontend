@@ -14,6 +14,7 @@ export class Login {
   private passwordPlaceholder: string;
   private email: string;
   private password: string;
+  private error: boolean = false;
 
   constructor(http, router, user, cookie) {
     this.http = http;
@@ -45,13 +46,17 @@ export class Login {
 
   async submit(): Promise<void> {
     let first = this;
-    const response = await first.http.fetch('login', {
-      method: 'post',
-      body: json(first.getUser())
-    });
-    let data = await response.json();
-    first.user.currentUser = data;
-    first.setCookie(data);
-    first.router.navigateToRoute(data.data.type, {id: data.data.id}, {replace: true});
+    try {
+      const response = await first.http.fetch('login', {
+        method: 'post',
+        body: json(first.getUser())
+      });
+      let data = await response.json();
+      first.user.currentUser = data;
+      first.setCookie(data);
+      first.router.navigateToRoute(data.data.type, {id: data.data.id}, {replace: true});
+    } catch (error) {
+      first.error = true;
+    }
   }
 }
