@@ -20,11 +20,11 @@
             </ul>
         </section>
         <button class="add-project" if.bind="user.type === 'client'" click.delegate="showModal()">
-            <i class="fa fa-plus" aria-hidden="true"></i>
+            <i class="material-icons">add</i>
         </button>
     </div>
     <dialog class="dialog" click.delegate="hideModal()">
         <span>Create New Job</span>
-        <button class="add-project" click.delegate="goToCreateJob()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+        <button class="add-project" click.delegate="goToCreateJob()"><i class="material-icons">add</i></button>
     </dialog>
 </template>

@@ -1,53 +1,30 @@
 <template>
-    <div class="registration">
-        <div class="col-xs-12">
-            <div class="well">
-                <form submit.delegate="submit()" id="fileForm" role="form">
-                    <fieldset>
-                        <legend class="text-center">Register Fairlance</legend>
-
-                        <div class="form-group">
-                            <label for="firstName"><span class="req">* </span> First name: </label>
-                            <input class="form-control" type="text" id="firstName" value.bind="firstName" required/>
-                            <div id="errFirst"></div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="lastName"><span class="req">* </span> Last name: </label>
-                            <input class="form-control" value.bind="lastName" type="text" id="lastName" placeholder="hyphen or single quote OK" required/>
-                            <div id="errLast"></div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email"><span class="req">* </span> Email: <small>This will be your login user name</small></label>
-                            <input class="form-control" type="email" name="email" id="email" value.bind="email" placeholder="someone@mail.com" required/>
-                            <div id="errEmail"></div>
-                        </div>
-
-                        <div class="form-group">
-                            <label ><span class="req">* </span> Password: </label>
-                            <input required name="password" type="password" value.bind="password" class="form-control inputpass" minlength="4" id="pass1"/> </p>
-
-                            <label ><span class="req">* </span> Password Confirm: </label>
-                            <input required name="password" type="password" value.bind="repeatPassword" class="form-control inputpass" minlength="4" placeholder="Enter again to validate" id="pass2" />
-                            <span id="confirmMessage" class="confirmMessage"></span>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="checkbox" required name="terms" id="field_terms">  
-                            <label>I agree with the <a href="">terms and conditions</a> for Registration.</label>
-                            <span class="req">* </span>
-                        </div>
-
-                        <div class="form-group">
-                            <input class="btn btn-success" type="submit" name="submit_reg" value="Register" disabled.bind="(password === undefined) || (repeatPassword !== password)">
-                        </div>
-                        <h5>You will receive an email to complete the registration and validation process. </h5>
-                        <h5>Be sure to check your spam folders. </h5>
-                    </fieldset>
-                </form>
+    <div class="registration container">
+        <h2><span>Signup</span>  as:</h2>
+        <form id="registrationForm" role="form" submit.delegate="submit()" action="#">
+            <div class="form-group">
+                <div class="input-group" class.bind="error ? 'error' : ''">
+                    <div class="input-group-addon"><i class="material-icons">mail_outline</i></div>
+                    <input type="text" class="form-control" id="login-email" placeholder="Email" value.bind="email"
+                           name="email">
+                </div>
             </div>
-        </div>
+            <div class="form-group">
+                <div class="input-group" class.bind="error ? 'error' : ''">
+                    <div class="input-group-addon"><i class="material-icons">lock_outline</i></div>
+                    <input type="password" class="form-control" id="login-password" placeholder="Password"
+                           value.bind="password" name="password">
+                </div>
+            </div>
+            <div id="loginErrorMsg" class="alert alert-error hide">Wrong username or password</div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="remember" id="remember"> Remember me
+                </label>
+            </div>
+            <button type="submit" class="btn btn-block">Login</button>
+            <a href="/forgot/" class="btn btn-block">Help to login</a>
+        </form>
     </div>
 
 </template>
