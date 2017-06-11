@@ -4,12 +4,13 @@ import {json} from 'aurelia-fetch-client';
 import {User} from "../../services/user/user";
 import {Helper} from "../../services/helper/helper";
 
-@inject('AppHttpClient', 'SearchHttpClient', Router, User, Element, Helper)
+@inject('AppHttpClient', 'SearchHttpClient', Router, Element, Helper)
 export class Projects {
   private projects: Array<any> = [];
   private router: Router;
   private helper: Helper;
-  private user: any;
+  private user: IUser;
+  private userService: User = User.getInstance();
   private app: any;
   private search: any;
   private auth: Object;
@@ -26,16 +27,18 @@ export class Projects {
   ];
   private projectList: Array<any> = [];
 
-  constructor(app, search, router, user, helper) {
-
-    this.user = user.getCurrentUser().data;
+  constructor(app, search, router, helper) {
     this.router = router;
     this.app = app;
     this.helper = helper;
     this.search = search;
-    this.auth = {'Authorization': 'Bearer ' + this.user.token};
-
-    this.getProjects();
+    if (this.userService.getCurrentUser()) {
+      this.user = this.userService.getCurrentUser();
+      this.auth = {'Authorization': 'Bearer ' + this.user.token};
+      this.getProjects();
+    } else {
+      return;
+    }
   }
 
   private goToProject(id: string) {

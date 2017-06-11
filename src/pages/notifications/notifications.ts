@@ -1,6 +1,5 @@
 import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
-import {User} from "../../services/user/user";
 import {EventAggregator} from "aurelia-event-aggregator";
 import {Notification} from "../../services/notification/notification";
 
@@ -8,19 +7,12 @@ import {Notification} from "../../services/notification/notification";
 @inject(Router, EventAggregator)
 export class Notifications {
   private router: Router;
-  private userService: User = User.getInstance();
-  private user: any;
   private messages: Array<any> = [];
   private ea: any;
   private subscriber: any;
   private notificationService: Notification = Notification.getInstance();
 
   constructor(router, eventAggregator) {
-    if (this.userService.getCurrentUser()) {
-      this.user = this.userService.getCurrentUser();
-    } else {
-      return;
-    }
     this.router = router;
     this.ea = eventAggregator;
   }

@@ -4,11 +4,10 @@ import {json} from 'aurelia-fetch-client';
 import {User} from "../../services/user/user";
 import {Cookie} from "../../services/cookie/cookie";
 
-@inject('AppHttpClient', Router, User, Cookie)
+@inject('AppHttpClient', Router, Cookie)
 export class Login {
   private http: any;
   private router: Router;
-  private user: any;
   private cookie: Cookie;
   private emailPlaceholder: string;
   private passwordPlaceholder: string;
@@ -16,10 +15,9 @@ export class Login {
   private password: string;
   private error: boolean = false;
 
-  constructor(http, router, user, cookie) {
+  constructor(http, router, cookie) {
     this.http = http;
     this.router = router;
-    this.user = user;
     this.cookie = cookie;
     this.setDefaultFields();
   }
@@ -49,7 +47,6 @@ export class Login {
         body: json(first.getUser())
       });
       let data = await response.json();
-      first.user.currentUser = data;
       first.setCookie(data);
       first.router.navigateToRoute(data.data.type, {id: data.data.id}, {replace: true});
     } catch (error) {

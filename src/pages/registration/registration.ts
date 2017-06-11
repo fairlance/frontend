@@ -3,21 +3,19 @@ import {Router} from 'aurelia-router';
 import {json} from 'aurelia-fetch-client';
 import {User} from "../../services/user/user";
 
-@inject('AppHttpClient', Router, User)
+@inject('AppHttpClient', Router)
 export class Registration {
   private http: any;
   private router: Router;
-  private user: any;
   private firstName: string;
   private lastName: string;
   private email: string;
   private password: string;
   private clientType: string = 'freelancer';
 
-  constructor(http, router, user) {
+  constructor(http, router) {
     this.http = http;
     this.router = router;
-    this.user = user;
   }
 
   private createUser = function () {
@@ -37,7 +35,6 @@ export class Registration {
       method: 'put',
       body: first.createUser()
     });
-    first.user.currentUser = await response.json();
     first.router.navigate('info');
   }
 }

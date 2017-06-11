@@ -7,10 +7,11 @@ import * as $ from 'jquery';
 declare let wsBaseUrl: string;
 declare let uploadBaseUrl: string;
 
-@inject('AppHttpClient', 'UploadHttpClient', Router, User, Element)
+@inject('AppHttpClient', 'UploadHttpClient', Router, Element)
 export class Project {
   private router: Router;
-  private user: any;
+  private user: IUser;
+  private userService: User = User.getInstance();
   private app: HttpClient;
   private upload: HttpClient;
   private project: any;
@@ -37,19 +38,23 @@ export class Project {
   private contractWaiting: boolean = false;
   private disableFields: boolean = false;
 
-  constructor(app, upload, router, user, element) {
-    this.user = user.getCurrentUser().data;
+  constructor(app, upload, router, element) {
     this.router = router;
     this.app = app;
     this.upload = upload;
     this.element = element;
-    this.auth = {'Authorization': 'Bearer ' + this.user.token};
   }
 
   async activate(params) {
     this.projectId = params.id;
-    await this.getProject();
-    this.openConnection();
+    if (this.userService.getCurrentUser()) {
+      this.user = this.userService.getCurrentUser();
+      this.auth = {'Authorization': 'Bearer ' + this.user.token};
+      await this.getProject();
+      this.openConnection();
+    } else {
+      return;
+    }
   }
 
   deactivate() {

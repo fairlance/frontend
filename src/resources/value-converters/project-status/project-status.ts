@@ -7,7 +7,6 @@ export class ProjectStatusValueConverter {
       {id: 'archived', name: 'Archived'},
       {id: 'canceled', name: 'Canceled'}
     ];
-    // debugger;
     let result = statusList.filter(item => item.id === value);
     if (result.length) {
       return statusList.filter(item => item.id === value)[0].name;

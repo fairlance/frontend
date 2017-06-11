@@ -3,20 +3,25 @@ import {Router} from 'aurelia-router';
 import {User} from "../../services/user/user";
 import {Cookie} from "../../services/cookie/cookie";
 
-@inject('PaymentHttpClient', Router, User, Cookie)
+@inject('PaymentHttpClient', Router, Cookie)
 export class Payment {
   private api: any;
   private router: Router;
-  private user: any;
+  private user: IUser;
+  private userService: User = User.getInstance();
   private cookie: Cookie;
   private auth: Object;
 
-  constructor(deposit, router, user, cookie) {
+  constructor(deposit, router, cookie) {
     this.api = deposit;
     this.router = router;
-    this.user = user;
     this.cookie = cookie;
-    this.auth = {'Authorization': 'Bearer ' + this.user.token};
+    if (this.userService.getCurrentUser()) {
+      this.user = this.userService.getCurrentUser();
+      this.auth = {'Authorization': 'Bearer ' + this.user.token};
+    } else {
+      return;
+    }
   }
 
   async deposit(): Promise<void> {

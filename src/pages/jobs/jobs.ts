@@ -3,12 +3,13 @@ import {Router} from 'aurelia-router';
 import {json} from 'aurelia-fetch-client';
 import {User} from "../../services/user/user";
 
-@inject('AppHttpClient', 'SearchHttpClient', Router, User, Element)
+@inject('AppHttpClient', 'SearchHttpClient', Router, Element)
 export class Jobs {
   private jobs = [];
   private filters = '';
   private router: Router;
-  private user: any;
+  private user: IUser;
+  private userService: User = User.getInstance();
   private app: any;
   private search: any;
   private element: Element;
@@ -31,19 +32,20 @@ export class Jobs {
   private newTag: string;
 
 
-  constructor(app, search, router, user, element) {
-
-    this.user = user.getCurrentUser().data;
+  constructor(app, search, router, element) {
     this.router = router;
     this.app = app;
     this.search = search;
     this.element = element;
-    this.auth = {'Authorization': 'Bearer ' + this.user.token};
-
-    this.getJobs();
-    this.getAllTags();
-    this.typeAhead = e => this.filterTags();
-
+    if (this.userService.getCurrentUser()) {
+      this.user = this.userService.getCurrentUser();
+      this.auth = {'Authorization': 'Bearer ' + this.user.token};
+      this.getJobs();
+      this.getAllTags();
+      this.typeAhead = e => this.filterTags();
+    } else {
+      return;
+    }
   }
 
   attached() {
@@ -116,6 +118,5 @@ export class Jobs {
     });
     let data = await response.json();
     first.jobs = data.data.items;
-    console.log(first.jobs);
   }
 }
