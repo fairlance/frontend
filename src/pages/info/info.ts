@@ -4,10 +4,11 @@ import {json} from 'aurelia-fetch-client';
 import {User} from "../../services/user/user";
 
 
-@inject('AppHttpClient', Router, User)
+@inject('AppHttpClient', Router)
 export class Info {
   private router: Router;
   private user: IUser;
+  private userService: User = User.getInstance();
   private http: any;
   private scrollTop: number = 0;
   private skills: Array<ISkills> = [];
@@ -21,13 +22,15 @@ export class Info {
   private payment: string;
   private industry: string;
 
-  constructor(http, router, user) {
+  constructor(http, router) {
     let first = this;
     this.http = http;
     this.router = router;
-    this.user = user.getCurrentUser().data.user;
-    this.user.type = user.getCurrentUser().data.type;
-
+    if (this.userService.getCurrentUser()) {
+      this.user = this.userService.getCurrentUser();
+    } else {
+      return;
+    }
     this.handleScrollEvent = e => {
       setTimeout(() => {
         first.screen = true

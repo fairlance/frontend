@@ -31,20 +31,13 @@ export class ApplicationOverview {
     });
   }
 
-  async getApplications(): Promise<void>  {
+  async getApplications(): Promise<void> {
     let first = this;
-    try {
-      const response = await first.app.fetch('job', {
-        method: 'get',
-        headers: this.auth
-      });
-      let data = await response.json();
-      first.jobs = data.data;
-    } catch (error) {
-      if (error.status === 400) {
-        this.router.navigateBack();
-      }
-    }
-
+    const response = await first.app.fetch('job', {
+      method: 'get',
+      headers: this.auth
+    });
+    let data = await response.json();
+    first.jobs = data.data;
   }
 }
