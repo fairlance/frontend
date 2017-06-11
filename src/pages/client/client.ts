@@ -1,28 +1,32 @@
 import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
-import {json} from 'aurelia-fetch-client';
 import {User} from "../../services/user/user";
 
-@inject('AppHttpClient', Router, User)
+@inject('AppHttpClient', Router)
 export class Client {
   private active: boolean = true;
-  private user: any;
+  private user: IUser;
+  private userService: User = User.getInstance();
   private router: Router;
   private http: any;
   private auth: Object;
   private profileId: number;
   private client: Object;
 
-  constructor(http, router, user) {
-    this.user = user.getCurrentUser().data;
+  constructor(http, router) {
     this.router = router;
     this.http = http;
-    this.auth = {'Authorization': 'Bearer ' + this.user.token};
   }
 
   activate(params): void {
     this.profileId = parseInt(params.id);
-    this.populateProfile();
+    if (this.userService.getCurrentUser()) {
+      this.user = this.userService.getCurrentUser();
+      this.auth = {'Authorization': 'Bearer ' + this.user.token};
+      this.populateProfile();
+    } else {
+      return;
+    }
   }
 
   async populateProfile(): Promise<void> {

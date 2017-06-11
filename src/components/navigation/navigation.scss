@@ -60,11 +60,20 @@
     }
 
   }
-  i {
-    position: absolute;
-    right: 5px;
-    color: #ffffff;
-    top: 14px;
+  .dropdown {
+    float: right;
+    margin-right: -30px;
+    margin-top: -5px;
+    a {
+      i {
+        color: #ffffff;
+        top: 14px;
+      }
+    }
+    ul {
+      left: auto;
+      right: 20px;
+    }
   }
 }
 

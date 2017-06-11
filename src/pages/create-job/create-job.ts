@@ -6,10 +6,11 @@ import {Helper} from "../../services/helper/helper";
 
 declare let uploadBaseUrl: string;
 
-@inject('AppHttpClient', 'UploadHttpClient', Router, User, Helper)
+@inject('AppHttpClient', 'UploadHttpClient', Router, Helper)
 export class CreateJob {
   private router: Router;
-  private user: any;
+  private user: IUser;
+  private userService: User = User.getInstance();
   private app: any;
   private upload: any;
   private auth: Object;
@@ -26,13 +27,17 @@ export class CreateJob {
   private uploadUrl: string = uploadBaseUrl;
 
 
-  constructor(app, upload, router, user, helper) {
-    this.user = user.getCurrentUser().data;
+  constructor(app, upload, router, helper) {
     this.router = router;
     this.app = app;
     this.upload = upload;
     this.helper = helper;
-    this.auth = {'Authorization': 'Bearer ' + this.user.token};
+    if (this.userService.getCurrentUser()) {
+      this.user = this.userService.getCurrentUser();
+      this.auth = {'Authorization': 'Bearer ' + this.user.token};
+    } else {
+      return;
+    }
   }
 
   private addExample(): void {

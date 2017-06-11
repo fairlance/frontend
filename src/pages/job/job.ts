@@ -5,10 +5,11 @@ import {User} from "../../services/user/user";
 
 declare let uploadBaseUrl: string;
 
-@inject('AppHttpClient', 'SearchHttpClient', Router, User)
+@inject('AppHttpClient', 'SearchHttpClient', Router)
 export class Job {
   private router: Router;
-  private user: any;
+  private user: IUser;
+  private userService: User = User.getInstance();
   private app: any;
   private search: any;
   private auth: Object;
@@ -24,19 +25,22 @@ export class Job {
   private uploadUrl: string = uploadBaseUrl;
   private jobId: number;
 
-  constructor(app, search, router, user) {
-
-    this.user = user.getCurrentUser().data;
+  constructor(app, search, router) {
     this.router = router;
     this.app = app;
     this.search = search;
-    this.auth = {'Authorization': 'Bearer ' + this.user.token};
   }
 
   async activate(params) {
     this.jobId = parseInt(params.id);
-    await this.getJob();
-    this.getFreelancer();
+    if (this.userService.getCurrentUser()) {
+      this.user = this.userService.getCurrentUser();
+      this.auth = {'Authorization': 'Bearer ' + this.user.token};
+      await this.getJob();
+      this.getFreelancer();
+    } else {
+      return;
+    }
   }
 
   private selectReference(reference: IReference): void {
@@ -54,7 +58,7 @@ export class Job {
         headers: first.auth
       });
       let data = await response.json();
-      first.user.data = data.data;
+      first.user = data.data;
     } catch (error) {
       let data = await error.json();
       if (data.error === "Not logged in.") {
@@ -65,12 +69,19 @@ export class Job {
 
   async getJob(): Promise<void> {
     let first = this;
-    const response = await first.app.fetch('job/' + first.jobId, {
-      method: 'get',
-      headers: this.auth
-    });
-    let data = await response.json();
-    first.details = data.data;
+    try {
+      const response = await first.app.fetch('job/' + first.jobId, {
+        method: 'get',
+        headers: this.auth
+      });
+      let data = await response.json();
+      first.details = data.data;
+    } catch (error) {
+      if (error.status === 404) {
+        this.router.navigateBack();
+      }
+    }
+
   }
 
   private showApplication(): void {

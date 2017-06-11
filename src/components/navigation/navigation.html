@@ -16,6 +16,17 @@
             Notifications
             <span if.bind="counter > 0">${counter}</span>
         </a>
-        <i class="material-icons">more_vert</i>
+
+        <div class="dropdown">
+            <a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <i class="material-icons">more_vert</i>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a >Account Info</a></li>
+                <li><a route-href="route:transactions">My transactions</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a click.delegate="logout()">Logout</a></li>
+            </ul>
+        </div>
     </div>
 </template>

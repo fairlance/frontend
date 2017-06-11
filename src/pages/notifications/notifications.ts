@@ -16,7 +16,11 @@ export class Notifications {
   private notificationService: Notification = Notification.getInstance();
 
   constructor(router, eventAggregator) {
-    this.user = this.userService.getCurrentUser().data;
+    if (this.userService.getCurrentUser()) {
+      this.user = this.userService.getCurrentUser();
+    } else {
+      return;
+    }
     this.router = router;
     this.ea = eventAggregator;
   }

@@ -7,12 +7,17 @@ export class Notification {
   private static instance: Notification;
   private ea: EventAggregator = Container.instance.get(EventAggregator);
   private userService: any = User.getInstance();
-  private user: IUser = this.userService.getCurrentUser().data;
+  private user: IUser;
   private wsUri: string = wsNotificationUrl;
   private websocket: any;
   private messageArray: Array<any> = [];
 
   constructor() {
+    if (this.userService.getCurrentUser()) {
+      this.user = this.userService.getCurrentUser();
+    } else {
+      return;
+    }
     this.openConnection();
   }
 

@@ -6,10 +6,11 @@ import {Helper} from '../../services/helper/helper';
 
 declare let uploadBaseUrl: string;
 
-@inject('AppHttpClient', 'UploadHttpClient', Router, User, Helper)
+@inject('AppHttpClient', 'UploadHttpClient', Router, Helper)
 export class Application {
   private router: Router;
-  private user: any;
+  private user: IUser;
+  private userService: User = User.getInstance();
   private helper: Helper;
   private upload: HttpClient;
   private app: any;
@@ -27,16 +28,20 @@ export class Application {
   private submitButton: boolean = true;
   private appId: number;
 
-  constructor(app, upload, router, user, helper) {
+  constructor(app, upload, router, helper) {
     this.upload = upload;
-    this.user = user.getCurrentUser().data;
     this.router = router;
     this.app = app;
     this.helper = helper;
-    this.auth = {'Authorization': 'Bearer ' + this.user.token};
   }
 
   activate(params) {
+    if (this.userService.getCurrentUser()) {
+      this.user = this.userService.getCurrentUser();
+      this.auth = {'Authorization': 'Bearer ' + this.user.token};
+    } else {
+      return;
+    }
     this.jobId = parseInt(params.id);
     this.appId = parseInt(params.appId);
     if (this.appId) {this.getApplication();}

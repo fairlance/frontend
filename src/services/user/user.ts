@@ -1,15 +1,11 @@
-import {inject} from 'aurelia-framework';
 import {Cookie} from "../cookie/cookie";
-import {Router} from "aurelia-router";
 
-@inject(Cookie, Router)
 export class User {
   private static instance: User;
   private currentUser: IUser = {};
   private cookie: Cookie = new Cookie;
 
-  constructor () {
-  }
+  constructor () {}
 
   static getInstance() {
     if (!User.instance) {
@@ -19,13 +15,13 @@ export class User {
   }
 
 
-  public getCurrentUser () {
+  public getCurrentUser (): any {
     if (!this.currentUser || !Object.keys(this.currentUser).length) {
       if (this.cookie.get('fairlance')) {
-        return this.cookie.get('fairlance');
+        this.currentUser = this.cookie.get('fairlance').data;
+      } else {
+          return;
       }
-      // this.router.navigate('login');
-      return {};
     }
     return this.currentUser;
   }
