@@ -4,7 +4,8 @@ machine:
 dependencies:
     post:
         - npm start -- build
+        - make create
 test:
     override:
-        - tar -czf export.tar.gz dist
-        - sudo cp export.tar.gz $CIRCLE_ARTIFACTS
+        - docker save -o frontend_image fairlance/frontend
+        - sudo cp frontend_image $CIRCLE_ARTIFACTS
