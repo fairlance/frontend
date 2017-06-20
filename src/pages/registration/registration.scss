@@ -1,3 +1,43 @@
 .registration {
   margin-top: 50px;
+  h2 {
+    color: #47E4C3;
+    font-size: 24px;
+    line-height: 29px;
+    span {
+      color: #000000;
+    }
+  }
+  form {
+    .form-group {
+      .radio {
+        margin-bottom: 24px;
+        label {
+          line-height: 22px;
+          input {
+            height: 16px;
+            width: 16px;
+            margin-top: 2px;
+          }
+        }
+
+      }
+      .input-group {
+        input {
+          height: 42px;
+        }
+      }
+      select {
+        height: 42px;
+      }
+    }
+    button {
+      height: 40px;
+      border-radius: 5px;
+      background-color: #47E4C3;
+      color: #FFFFFF;
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
 }

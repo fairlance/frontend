@@ -1,29 +1,58 @@
 <template>
     <div class="registration container">
-        <h2><span>Signup</span>  as:</h2>
+        <h2><span>Signup</span> as:</h2>
         <form id="registrationForm" role="form" submit.delegate="submit()" action="#">
+            <div class="form-group">
+                <div class="radio">
+                    <label><input type="radio" name="type" value="client" checked.bind="$parent.clientType">Client</label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" name="type" value="freelancer" checked.bind="$parent.clientType">Freelancer</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <select class="form-control" value.bind="gender">
+                    <option value="male">Mr</option>
+                    <option value="female">Mrs</option>
+                    <option value="neutral">Mx</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="input-group" class.bind="error ? 'error' : ''">
+                    <div class="input-group-addon"><i class="material-icons">perm_identity</i></div>
+                    <input type="text" class="form-control" placeholder="First Name"
+                           value.bind="firstName" name="firstName">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group" class.bind="error ? 'error' : ''">
+                    <div class="input-group-addon"><i class="material-icons">perm_identity</i></div>
+                    <input type="text" class="form-control"  placeholder="Last Name"
+                           value.bind="lastName" name="lastName">
+                </div>
+            </div>
             <div class="form-group">
                 <div class="input-group" class.bind="error ? 'error' : ''">
                     <div class="input-group-addon"><i class="material-icons">mail_outline</i></div>
-                    <input type="text" class="form-control" id="login-email" placeholder="Email" value.bind="email"
-                           name="email">
+                    <input type="email" class="form-control"  placeholder="Email"
+                           value.bind="email" name="email">
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group" class.bind="error ? 'error' : ''">
                     <div class="input-group-addon"><i class="material-icons">lock_outline</i></div>
-                    <input type="password" class="form-control" id="login-password" placeholder="Password"
+                    <input type="password" class="form-control" placeholder="Password"
                            value.bind="password" name="password">
                 </div>
             </div>
-            <div id="loginErrorMsg" class="alert alert-error hide">Wrong username or password</div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="remember" id="remember"> Remember me
-                </label>
+            <div class="form-group">
+                <div class="input-group" class.bind="error ? 'error' : ''">
+                    <div class="input-group-addon"><i class="material-icons">lock_outline</i></div>
+                    <input type="password" class="form-control" placeholder="Repeat Password"
+                           value.bind="repeatPassword" name="repeatPassword">
+                </div>
             </div>
-            <button type="submit" class="btn btn-block">Login</button>
-            <a href="/forgot/" class="btn btn-block">Help to login</a>
+            <button type="submit" class="btn btn-block">Register</button>
         </form>
     </div>
 

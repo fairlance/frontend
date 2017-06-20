@@ -11,7 +11,7 @@ export class Registration {
   private lastName: string;
   private email: string;
   private password: string;
-  private clientType: string = 'freelancer';
+  private clientType: string;
 
   constructor(http, router) {
     this.http = http;
@@ -23,9 +23,11 @@ export class Registration {
       firstName: this.firstName,
       lastName: this.lastName,
       email: this.email,
+      gender: this.gender,
+      clientType: this.clientType,
       password: this.password
     };
-
+    console.log(user);
     return json(user);
   };
 
