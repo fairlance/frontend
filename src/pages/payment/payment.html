@@ -1,11 +1,6 @@
 <template>
-    <div class="payment">
-        <p>
-            Some info....
-        </p>
-        <p>
-            Total: ${amount}
-        </p>
-        <button click.delegate="deposit()" class="btn-default btn">Deposit</button>
+    <div class="payment container">
+        <div id="dropin-container"></div>
+        <button show.bind="showRelease" id="submit-button" class="btn-success btn">Release funds</button>
     </div>
 </template>
