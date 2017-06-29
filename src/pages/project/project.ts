@@ -32,11 +32,37 @@ export class Project {
   private systemMessage: any;
   private deadline: string;
   private flexibility: string;
+
   private contractAgree: boolean = true;
   private contractChanges: boolean = false;
   private contractUpdate: boolean = false;
   private contractWaiting: boolean = false;
   private disableFields: boolean = false;
+
+  private temp: any = {
+    pending_funds: {
+      'freelancer': 'Pending Funds',
+      'class': 'pending_funds',
+      'client': 'Pending Funding',
+      'call_to_action': 'Fund the Project'
+    },
+    in_progress: {
+      'freelancer': 'Working',
+      'client': 'Working',
+      'class': 'in_progress'
+    },
+    pending_finished: {
+      'freelancer_status': 'Pending Finish Conformation',
+      'class': 'pending_finished',
+      'client_status': 'Marked as Finished',
+      'call_to_action': 'Accept as Finished'
+    },
+    done: {
+      'freelancer': 'Done, Congratulations!',
+      'client': 'Done, Congratulations!',
+      'class': 'done'
+    }
+  };
 
   constructor(app, upload, router, element) {
     this.router = router;
@@ -110,7 +136,7 @@ export class Project {
   }
 
   private doSend(message) {
-    if(message) {
+    if (message) {
       this.websocket.send(message);
       this.message = '';
     }
@@ -173,7 +199,7 @@ export class Project {
     this.scrollBottom();
   }
 
-  private async getProject(): Promise<void>  {
+  private async getProject(): Promise<void> {
     let first = this;
     const response = await first.app.fetch('project/' + first.projectId, {
       method: 'get',
@@ -276,6 +302,10 @@ export class Project {
       this.contractChanges = false;
       this.contractUpdate = false;
     }
+  }
+
+  private changeStatus() {
+    console.log('asdasdasd');
   }
 
   private toggleSection(section: string) {

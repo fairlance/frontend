@@ -1,4 +1,3 @@
-
 export class Helper {
   private counter: number = 0;
 

@@ -333,10 +333,15 @@ html {
     position: relative;
     height: 100%;
     .splash {
-      height: 100%;
-      margin-top: 150px;
-      img {
-        margin: 0 auto;
+      text-align: center;
+      margin: 10% 0 0 0;
+      box-sizing: border-box;
+      .fa-spinner {
+        color: #EC7253;
+        text-align: center;
+        display: inline-block;
+        font-size: 72px;
+        margin-top: 50px;
       }
     }
     .page-host {
@@ -347,7 +352,7 @@ html {
       padding-left: 0;
     }
     a {
-      color: #8CBFFA;
+      color: #3BC1FC;
       text-decoration: none;
       cursor: pointer;
       &:hover {

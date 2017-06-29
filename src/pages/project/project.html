@@ -25,21 +25,21 @@
             </div>
         </div>
     </div>
-    <!--wrap the page content do not style this-->
-    <div id="page-content">
 
+    <div id="page-content">
         <div class="container">
-            <h1 class="">
-                <i class="material-icons ${project.status}">fiber_manual_record</i>
+            <a class="client-name" route-href="route:client;  params.bind:{id:project.client.id}">${project.client.firstName} ${project.client.lastName}</a>
+
+            <h1 class="${temp.done.class}">
+                <i class="material-icons">fiber_manual_record</i>
                 ${project.name}
             </h1>
-            <a class="client-name" route-href="route:client;  params.bind:{id:project.client.id}">${project.client.firstName} ${project.client.lastName}</a>
             <section class="project-header">
-                <h1 class="${project.status}">
-                    ${project.status | projectStatus}
-                    <i class="material-icons">chevron_left</i>
+                <p class="${temp.done.class}">${temp.done[user.type]}</p>
+                <!--<p>Deadline: ${project.contract.deadline | dateFormatter}</p>-->
+                <h1 class="${temp.done.class}" click.delegate="changeStatus()" show.bind="temp.done.call_to_action && user.type==='client'">
+                    ${temp.done.call_to_action}
                 </h1>
-                <p>Deadline: ${project.contract.deadline | dateFormatter}</p>
             </section>
             <section class="section">
                 <a click.delegate="toggleSection('showProposal')">
@@ -101,13 +101,16 @@
                 </article>
             </section>
             <div class="row function-buttons">
-                <button click.delegate="toggleMenu()">Toggle</button>
-                <label class="btn btn-default btn-file">
-                    Upload file <input type="file" class="hidden" change.delegate="uploadFile()" files.bind="files">
+                <a click.delegate="toggleMenu()">
+                    <i class="material-icons">email</i>
+                    Message
+                </a>
+                <label>
+                    <i class="material-icons">cloud_upload</i>
+                    Upload <input type="file" class="hidden" change.delegate="uploadFile()" files.bind="files">
                 </label>
-                <button cilck. class="btn btn-default">Payment</button>
+                <a class="more"><i class="material-icons">more_horiz</i></a>
             </div>
         </div>
     </div>
-    <!-- /#page-content -->
 </template>

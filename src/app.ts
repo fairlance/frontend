@@ -4,8 +4,8 @@ import {PLATFORM} from 'aurelia-pal';
 import {User} from "./services/user/user";
 
 export class App {
-  private userService: User = User.getInstance();
-  private user: IUser = <IUser>{};
+  public userService: User = User.getInstance();
+  public user: IUser = <IUser>{};
   router: Router;
 
   configureRouter(config: RouterConfiguration, router: Router) {
@@ -92,11 +92,11 @@ export class App {
         settings: {roles: ['freelancer', 'client']}
       },
       {
-        route: ['payment', 'payment'],
+        route: ['payment/:id', 'payment/:id'],
         name: 'payment',
         moduleId: PLATFORM.moduleName('pages/payment/payment'),
         title: 'Payment',
-        settings: {roles: ['freelancer', 'client']}
+        settings: {roles: ['client']}
       },
       {
         route: ['transactions', 'transactions'],

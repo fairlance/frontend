@@ -1,4 +1,5 @@
-﻿import './assets/styles/styles.scss';
+﻿import 'font-awesome/scss/font-awesome.scss';
+import './assets/styles/styles.scss';
 import {Aurelia} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
 import * as Bluebird from 'bluebird';
@@ -47,7 +48,7 @@ export async function configure(aurelia: Aurelia) {
   payment.configure(config => {
     config
         .useStandardConfiguration()
-        .withBaseUrl(paymentBaseUrl)
+        .withBaseUrl('http://e8aab10a.ngrok.io/')
   });
 
   container.registerInstance('AppHttpClient', app);
