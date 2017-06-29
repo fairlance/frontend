@@ -109,7 +109,16 @@
                     <i class="material-icons">cloud_upload</i>
                     Upload <input type="file" class="hidden" change.delegate="uploadFile()" files.bind="files">
                 </label>
-                <a class="more"><i class="material-icons">more_horiz</i></a>
+                <div class="dropup">
+                    <a class="more dropdown-toggle" type="button" id="moreMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons">more_horiz</i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="moreMenu">
+                        <li if.bind="project.status === 'in_progress' && user.type === 'freelancer'" class="finish"><a href="#"><i class="material-icons">fiber_manual_record</i>Mark as Finished</a></li>
+                        <li><a href="#"><i class="material-icons">fiber_manual_record</i>Cancel Project</a></li>
+                        <li><a href="#"><i class="material-icons">fiber_manual_record</i>Despute Project</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

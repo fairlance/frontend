@@ -208,6 +208,30 @@ body {
       color: #3BC1FC;
     }
   }
+  .dropup {
+    float: right;
+    .dropdown-menu {
+      left: auto;
+      right: 0;
+      padding: 16px;
+      li {
+        &.finish {
+          color: #FFDE05;
+        }
+        a {
+          margin: 0;
+          padding: 0 0 8px;
+          line-height: 24px;
+          i {
+            font-size: 10px;
+            margin-right: 16px;
+            top: -2px;
+            color: #CECECE;
+          }
+        }
+      }
+    }
+  }
   a {
     color: #2D353D;
     font-size: 16px;
