@@ -19,11 +19,11 @@ export class Projects {
   private name: string;
   private description: string;
   private statusList: Array<any> = [
-    {id: 'working', name: 'Working'},
+    {id: 'in_progress', name: 'Working'},
     {id: 'finalizing_terms', name: 'Finalizing Terms'},
-    {id: 'pending', name: 'Pending'},
-    {id: 'archived', name: 'Archived'},
-    {id: 'canceled', name: 'Canceled'}
+    {id: 'pending_funds', name: 'Pending Funds'},
+    {id: 'pending_finished', name: 'Pending Finished'},
+    {id: 'done', name: 'Done'}
   ];
   private projectList: Array<any> = [];
 

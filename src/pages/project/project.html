@@ -30,15 +30,15 @@
         <div class="container">
             <a class="client-name" route-href="route:client;  params.bind:{id:project.client.id}">${project.client.firstName} ${project.client.lastName}</a>
 
-            <h1 class="${temp.done.class}">
+            <h1 class="${status[project.status].class}">
                 <i class="material-icons">fiber_manual_record</i>
                 ${project.name}
             </h1>
             <section class="project-header">
-                <p class="${temp.done.class}">${temp.done[user.type]}</p>
+                <p class="${status[project.status].class}">${status[project.status][user.type]}</p>
                 <!--<p>Deadline: ${project.contract.deadline | dateFormatter}</p>-->
-                <h1 class="${temp.done.class}" click.delegate="changeStatus()" show.bind="temp.done.call_to_action && user.type==='client'">
-                    ${temp.done.call_to_action}
+                <h1 class="${status[project.status].class}" click.delegate="changeStatus()" show.bind="status[project.status].call_to_action && user.type==='client'">
+                    ${status[project.status].call_to_action}
                 </h1>
             </section>
             <section class="section">

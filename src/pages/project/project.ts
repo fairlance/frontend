@@ -39,7 +39,7 @@ export class Project {
   private contractWaiting: boolean = false;
   private disableFields: boolean = false;
 
-  private temp: any = {
+  private status: any = {
     pending_funds: {
       'freelancer': 'Pending Funds',
       'class': 'pending_funds',
@@ -278,6 +278,7 @@ export class Project {
       hours: this.project.hours,
       perHour: this.project.perHour
     };
+    console.log(body);
     const response = await first.app.fetch('project/' + first.projectId + '/contract/proposal', {
       method: 'post',
       headers: this.auth,
@@ -292,7 +293,7 @@ export class Project {
 
   private changeContract() {
     let date = new Date(this.project.contract.deadline);
-    if (date.toISOString().substr(0, 10) !== this.deadline || this.project.deadlineFlexibility.toString() !== this.flexibility) {
+    if (date.toISOString().substr(0, 10) !== this.deadline || this.project.contract.deadlineFlexibility.toString() !== this.flexibility) {
       this.contractAgree = false;
       this.contractChanges = false;
       this.contractUpdate = true;
