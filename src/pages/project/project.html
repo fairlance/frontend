@@ -111,7 +111,7 @@
                         <i class="material-icons">more_horiz</i>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="moreMenu">
-                        <li if.bind="project.status === 'in_progress' && user.type === 'freelancer'" class="finish"><a href="#"><i class="material-icons">fiber_manual_record</i>Mark as Finished</a></li>
+                        <li if.bind="project.status === 'in_progress' && user.type === 'freelancer'" click.delegate="markFinished()" class="finish"><a href="#"><i class="material-icons">fiber_manual_record</i>Mark as Finished</a></li>
                         <li><a href="#"><i class="material-icons">fiber_manual_record</i>Cancel Project</a></li>
                         <li><a href="#"><i class="material-icons">fiber_manual_record</i>Despute Project</a></li>
                     </ul>

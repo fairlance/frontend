@@ -54,9 +54,9 @@ export class Project {
       'class': 'in_progress'
     },
     pending_finished: {
-      'freelancer_status': 'Pending Finish Conformation',
+      'freelancer': 'Pending Finish Conformation',
       'class': 'pending_finished',
-      'client_status': 'Marked as Finished',
+      'client': 'Marked as Finished',
       'call_to_action': 'Accept as Finished'
     },
     done: {
@@ -117,10 +117,11 @@ export class Project {
   async onMessage(evt) {
     let first = this;
     let messageArray: Array<any> = JSON.parse(evt.data);
-    console.log(messageArray);
+    let refresh: boolean = false;
     await messageArray.forEach(function (message) {
       if (message.from.type === 'system') {
         first.parseIncoming(message);
+        refresh = true;
       } else {
         if (first.user.id === message.from.id) {
           message.side = 'right';
@@ -130,6 +131,9 @@ export class Project {
         first.messages.push(message);
       }
     });
+    if (refresh && this.project.status === 'finalizing_terms') {
+      this.getProject();
+    }
     this.scrollBottom();
   }
 
@@ -232,6 +236,7 @@ export class Project {
     switch (message.data.type) {
       case 'project_contract_proposal':
         this.writeToScreen('New proposal from ' + message.data.user.firstName);
+        this.loadChanges();
         break;
       case 'project_contract_extension_proposal':
         break;
@@ -245,14 +250,12 @@ export class Project {
         this.writeToScreen('Project status is now: ' + message.data.status);
         break;
       case 'project_contract_accepted':
-        this.writeToScreen('Project accepted by ' +  message.data.user.firstName);
+        this.writeToScreen('Project accepted by ' + message.data.user.firstName);
         break;
     }
-    this.getProject();
   }
 
-  private async loadChanges() {
-    this.setContract(this.systemMessage);
+  private loadChanges() {
     this.disableFields = false;
     this.contractAgree = true;
     this.contractChanges = false;
@@ -296,10 +299,27 @@ export class Project {
     }
   }
 
-  private changeStatus() {
-    switch(this.project.status) {
+  private async markFinished() {
+    let first = this;
+    await first.app.fetch('project/' + first.projectId + '/finish', {
+      method: 'post',
+      headers: this.auth,
+    });
+    this.getProject();
+  }
+
+  private async changeStatus() {
+    switch (this.project.status) {
       case 'pending_funds':
         this.router.navigateToRoute('payment', {id: this.projectId});
+        break;
+      case 'pending_finished':
+        let first = this;
+        await first.app.fetch('project/' + first.projectId + '/done', {
+        method: 'post',
+        headers: this.auth,
+      });
+        this.getProject();
         break;
     }
   }

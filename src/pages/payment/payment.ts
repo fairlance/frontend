@@ -31,7 +31,7 @@ export class Payment {
     const first = this;
     this.disabled = true;
     const response = await first.http.fetch('project/' + this.projectId + '/funded', {
-      method: 'get',
+      method: 'post',
       headers: this.auth
     });
     this.router.navigateToRoute('project', {id: this.projectId});

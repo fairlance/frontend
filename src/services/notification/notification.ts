@@ -55,6 +55,7 @@ export class Notification {
 
   private onClose() {
     console.log('DISCONNECTED');
+    this.openConnection();
   }
 
   private async onMessage(evt) {
