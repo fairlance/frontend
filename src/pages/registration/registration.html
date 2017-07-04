@@ -3,18 +3,14 @@
         <h2><span>Signup</span> as:</h2>
         <form id="registrationForm" role="form" submit.delegate="submit()" action="#">
             <div class="form-group">
-                <div class="radio">
-                    <label><input type="radio" name="type" value="client" checked.bind="$parent.clientType">Client</label>
+                <div class="radio" repeat.for="userType of types">
+                    <label><input type="radio" name="type" model.bind="userType" checked.bind="$parent.userType">${userType.name}</label>
                 </div>
-                <div class="radio">
-                    <label><input type="radio" name="type" value="freelancer" checked.bind="$parent.clientType">Freelancer</label>
-                </div>
+
             </div>
             <div class="form-group">
-                <select class="form-control" value.bind="gender">
-                    <option value="male">Mr</option>
-                    <option value="female">Mrs</option>
-                    <option value="neutral">Mx</option>
+                <select class="form-control" value.bind="salutation">
+                    <option repeat.for="option of salutations" value.bind="option.value">${option.name}</option>
                 </select>
             </div>
             <div class="form-group">

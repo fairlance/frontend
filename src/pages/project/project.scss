@@ -12,9 +12,19 @@ body {
   height: 100%;
   color: #6D849D;
   overflow: scroll;
-  &.slide-active {
-    padding-top: 50px;
-    overflow: hidden;
+  .overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 3;
+    position: absolute;
+  }
+  #slidemenu {
+    position: absolute;
+    right: -100%;
+    background-color: #fff;
+    z-index: 4;
+    height: 100%;
   }
   .client-name {
     margin-left: 25px;
@@ -102,12 +112,15 @@ body {
         position: relative;
         top: 3px;
         font-size: 14px;
-
       }
     }
     > article {
       padding-left: 20px;
       font-size: 12px;
+      display: none;
+      @media screen and (min-width: 1170px) {
+        display: block;
+      }
       &.contract {
         text-align: center;
         > p {
@@ -193,7 +206,8 @@ body {
     background-color: #F5F5F5;
     width: 100%;
     height: 50px;
-    padding: 10px;
+    z-index: 5;
+    padding-top: 8px;
   }
   i {
     color: #3BC1FC;
@@ -209,10 +223,9 @@ body {
     }
   }
   .dropup {
-    float: right;
     .dropdown-menu {
-      left: auto;
-      right: 0;
+      right: auto;
+      left: 0;
       padding: 16px;
       li {
         &.finish {
@@ -236,9 +249,8 @@ body {
     color: #2D353D;
     font-size: 16px;
     line-height: 24px;
-    margin-right: 24px;
     &.more {
-      float: right;
+      float: left;
       margin-right: 0;
       i {
         top: -7px;
@@ -255,79 +267,82 @@ body {
   }
 }
 
-#slidemenu {
-  left: -100%;
-  width: 80%;
-  min-width: 0;
-  position: absolute;
-  padding-left: 0;
-  z-index: 2;
-  top: 50px;
-  margin: 0;
-  height: 100%;
-  overflow: scroll;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  .panel-body {
-    height: 100%;
-    .chat {
-      padding: 0;
-      margin: 0 0 100px;
-      .message {
-        &.right {
-          p {
-            .content {
-              background-color: #D9EDF7;
-              float: right;
-            }
-          }
-          .date {
-            text-align: right;
-            margin-top: 0;
-          }
-        }
-        p {
-          .content {
-            background-color: #DFF0D8;
-            border: 0.5px solid #D6EAC5;
-            border-radius: 2px;
-            font-size: 9px;
-            line-height: 11px;
-            color: #000000;
-            padding: 10px;
-          }
-        }
-        .date {
-          font-size: 8px;
-          line-height: 10px;
-          color: #BFBFBF;
-          margin-top: 18px;
-        }
-      }
-    }
-  }
-  .panel-footer {
-    position: fixed;
-    bottom: 0;
-    width: 80%;
-    form {
-      display: flex;
-    }
-  }
-  ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    background-color: #F5F5F5;
-  }
 
-  ::-webkit-scrollbar {
-    width: 12px;
-    background-color: #F5F5F5;
-  }
 
-  ::-webkit-scrollbar-thumb {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
-    background-color: #555;
-  }
-}
+
+//#slidemenu {
+//  left: -100%;
+//  width: 80%;
+//  min-width: 0;
+//  position: absolute;
+//  padding-left: 0;
+//  z-index: 2;
+//  top: 50px;
+//  margin: 0;
+//  height: 100%;
+//  overflow: scroll;
+//  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+//  .panel-body {
+//    height: 100%;
+//    .chat {
+//      padding: 0;
+//      margin: 0 0 100px;
+//      .message {
+//        &.right {
+//          p {
+//            .content {
+//              background-color: #D9EDF7;
+//              float: right;
+//            }
+//          }
+//          .date {
+//            text-align: right;
+//            margin-top: 0;
+//          }
+//        }
+//        p {
+//          .content {
+//            background-color: #DFF0D8;
+//            border: 0.5px solid #D6EAC5;
+//            border-radius: 2px;
+//            font-size: 9px;
+//            line-height: 11px;
+//            color: #000000;
+//            padding: 10px;
+//          }
+//        }
+//        .date {
+//          font-size: 8px;
+//          line-height: 10px;
+//          color: #BFBFBF;
+//          margin-top: 18px;
+//        }
+//      }
+//    }
+//  }
+//  .panel-footer {
+//    position: fixed;
+//    bottom: 0;
+//    width: 80%;
+//    form {
+//      display: flex;
+//    }
+//  }
+//  ::-webkit-scrollbar-track {
+//    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+//    background-color: #F5F5F5;
+//  }
+//
+//  ::-webkit-scrollbar {
+//    width: 12px;
+//    background-color: #F5F5F5;
+//  }
+//
+//  ::-webkit-scrollbar-thumb {
+//    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+//    background-color: #555;
+//  }
+//}
 
 /* put toggle bars on the left :: not using button */
 

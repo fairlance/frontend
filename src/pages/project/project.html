@@ -3,113 +3,110 @@
     <require from="../../resources/value-converters/project-status/project-status"></require>
     <require from="../../resources/value-converters/date-formatter/date-formatter"></require>
 
-    <div id="slidemenu">
-        <div class="panel-body">
-            <div class="chat">
-                <message repeat.for="i of messages.length" content="${messages[i].text}"
-                         username="${messages[i].username}" side="${messages[i].side}"
-                         avatar="${messages[i].avatar}"></message>
-            </div>
-        </div>
-        <div class="panel-footer">
-            <div class="input-group">
-                <form submit.delegate="doSend(message)" autocomplete="off">
-                    <input id="btn-input" type="text" value.bind="message" class="form-control input-sm"
-                           placeholder="Type your message here..."/>
-                    <div class="input-group-btn">
-                        <button class="btn btn-warning btn-sm" id="btn-chat">
-                            Send
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
     <div id="page-content">
+        <!--<div class="overlay col-xs-12"></div>-->
         <div class="container">
-            <a class="client-name" route-href="route:client;  params.bind:{id:project.client.id}">${project.client.firstName} ${project.client.lastName}</a>
+            <div id="slidemenu" class="col-xs-10 col-lg-4">
+                <div class="col-xs-8 col-lg-12">
+                    <div class="panel-body">
+                        <div class="chat">
+                            <message repeat.for="i of messages.length" content="${messages[i].data.text}"
+                                     username="${messages[i].from.username}" side="${messages[i].side}"
+                                     time="${messages[i].timestamp}"></message>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="input-group">
+                            <form submit.delegate="doSend(message)" autocomplete="off">
+                                <input id="btn-input" type="text" value.bind="message" class="form-control input-sm"
+                                       placeholder="Type your message here..."/>
+                                <div class="input-group-btn">
+                                    <button class="btn btn-warning btn-sm" id="btn-chat">
+                                        Send
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-lg-8">
+                <a class="client-name" route-href="route:client;  params.bind:{id:project.client.id}">${project.client.firstName} ${project.client.lastName}</a>
 
-            <h1 class="${status[project.status].class}">
-                <i class="material-icons">fiber_manual_record</i>
-                ${project.name}
-            </h1>
-            <section class="project-header">
-                <p class="${status[project.status].class}">${status[project.status][user.type]}</p>
-                <!--<p>Deadline: ${project.contract.deadline | dateFormatter}</p>-->
-                <h1 class="${status[project.status].class}" click.delegate="changeStatus()" show.bind="status[project.status].call_to_action && user.type==='client'">
-                    ${status[project.status].call_to_action}
+                <h1 class="${status[project.status].class}">
+                    <i class="material-icons">fiber_manual_record</i>
+                    ${project.name}
                 </h1>
-            </section>
-            <section class="section">
-                <a click.delegate="toggleSection('showProposal')">
-                    <i class="material-icons">chevron_right</i>
-                    Brief/Proposal
-                </a>
-                <article if.bind="showProposal">
-                    ${project.description}
-                </article>
-            </section>
-            <section class="section">
-                <a click.delegate="toggleSection('showContract')">
-                    <i class="material-icons">chevron_right</i>
-                    Contract
-                </a>
-                <!--if.bind="showContract"-->
-                <article if.bind="showContract" class="contract">
-                    <p>
-                        Proposal
-                        <span>${project.createdAt | dateFormatter}</span>
-                    </p>
-                    <div>
-                        <label>Hours Assigned</label>
-                        <i>h</i>
-                        <input value="${contract.hours}" disabled type="text">
-                    </div>
-                    <div >
-                        <label>Hourly Rate</label>
-                        <i class="material-icons">euro_symbol</i>
-                        <input value="${contract.perHour}" disabled type="text">
-                    </div>
-                    <div>
-                        <label>Deadline Agreed</label>
-                        <input class="date" value.bind="deadline" type="date" change.delegate="changeContract()" disabled.bind="(disableFields || project.status !== 'finalizing_terms')">
-                        <i class="material-icons deadline">date_range</i>
-                    </div>
-                    <div>
-                        <label>Deadline Flexibility</label>
-                        <i>d</i>
-                        <input type="text" change.delegate="changeContract()" value.bind="flexibility" disabled.bind="(disableFields || project.status !== 'finalizing_terms')">
-                    </div>
-                    <button click.delegate="contractAgreed()" if.bind="contractAgree && (project.status === 'finalizing_terms')">I Agree</button>
-                    <button click.delegate="loadChanges()" class="changes" if.bind="contractChanges && (project.status === 'finalizing_terms')">Load Changes</button>
-                    <button click.delegate="newProposal()" if.bind="contractUpdate && (project.status === 'finalizing_terms')">Propose Update</button>
-                    <button if.bind="contractWaiting && (project.status === 'finalizing_terms')" class="changes">Waiting ...</button>
-                    <a class="full-contract">Read Full Contract</a>
-                </article>
-            </section>
-            <section class="section">
-                <a click.delegate="toggleSection('showFiles')">
-                    <i class="material-icons">chevron_right</i>
-                    Files
-                </a>
-                <article if.bind="showFiles">
-                    <p class="image-upload" if.bind="files.length">
-                        <img src="${uploadUrl}/file/${files[0].name}">
-                        <span>${files[0].name}</span>
-                    </p>
-                </article>
-            </section>
+                <section class="project-header">
+                    <p class="${status[project.status].class}">${status[project.status][user.type]}</p>
+                    <p>Deadline: ${project.contract.deadline | dateFormatter}</p>
+                    <h1 class="${status[project.status].class}" click.delegate="changeStatus()" show.bind="status[project.status].call_to_action && user.type==='client'">
+                        ${status[project.status].call_to_action}
+                    </h1>
+                </section>
+                <section class="section">
+                    <a click.delegate="toggleSection('proposal')">
+                        <i class="material-icons">chevron_right</i>
+                        Brief/Proposal
+                    </a>
+                    <article class="proposal">
+                        ${project.description}
+                    </article>
+                </section>
+                <section class="section">
+                    <a click.delegate="toggleSection('contract')">
+                        <i class="material-icons">chevron_right</i>
+                        Contract
+                    </a>
+                    <!--if.bind="showContract"-->
+                    <article class="contract">
+                        <p>
+                            Proposal
+                            <span>${project.createdAt | dateFormatter}</span>
+                        </p>
+                        <div>
+                            <label>Hours Assigned</label>
+                            <i>h</i>
+                            <input value="${contract.hours}" disabled type="text">
+                        </div>
+                        <div >
+                            <label>Hourly Rate</label>
+                            <i class="material-icons">euro_symbol</i>
+                            <input value="${contract.perHour}" disabled type="text">
+                        </div>
+                        <div>
+                            <label>Deadline Agreed</label>
+                            <input class="date" value.bind="deadline" type="date" change.delegate="changeContract()" disabled.bind="(disableFields || project.status !== 'finalizing_terms')">
+                            <i class="material-icons deadline">date_range</i>
+                        </div>
+                        <div>
+                            <label>Deadline Flexibility</label>
+                            <i>d</i>
+                            <input type="text" change.delegate="changeContract()" value.bind="flexibility" disabled.bind="(disableFields || project.status !== 'finalizing_terms')">
+                        </div>
+                        <button click.delegate="contractAgreed()" if.bind="contractAgree && (project.status === 'finalizing_terms')">I Agree</button>
+                        <button click.delegate="loadChanges()" class="changes" if.bind="contractChanges && (project.status === 'finalizing_terms')">Load Changes</button>
+                        <button click.delegate="newProposal()" if.bind="contractUpdate && (project.status === 'finalizing_terms')">Propose Update</button>
+                        <button if.bind="contractWaiting && (project.status === 'finalizing_terms')" class="changes">Waiting ...</button>
+                        <a class="full-contract">Read Full Contract</a>
+                    </article>
+                </section>
+                <section class="section">
+                    <a click.delegate="toggleSection('files')">
+                        <i class="material-icons">chevron_right</i>
+                        Files
+                    </a>
+                    <article class="files">
+                        <p class="image-upload" if.bind="files.length">
+                            <img src="${uploadUrl}/file/${files[0].name}">
+                            <span>${files[0].name}</span>
+                        </p>
+                    </article>
+                </section>
+            </div>
+
             <div class="row function-buttons">
-                <a click.delegate="toggleMenu()">
-                    <i class="material-icons">email</i>
-                    Message
-                </a>
-                <label>
-                    <i class="material-icons">cloud_upload</i>
-                    Upload <input type="file" class="hidden" change.delegate="uploadFile()" files.bind="files">
-                </label>
-                <div class="dropup">
+                <div class="dropup col-xs-4">
                     <a class="more dropdown-toggle" type="button" id="moreMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="material-icons">more_horiz</i>
                     </a>
@@ -119,6 +116,15 @@
                         <li><a href="#"><i class="material-icons">fiber_manual_record</i>Despute Project</a></li>
                     </ul>
                 </div>
+                <label class="col-xs-4">
+                    <i class="material-icons">cloud_upload</i>
+                    Upload <input type="file" class="hidden" change.delegate="uploadFile()" files.bind="files">
+                </label>
+                <a click.delegate="toggleMenu()" class="col-xs-4">
+                    <i class="material-icons">email</i>
+                    Message
+                </a>
+
             </div>
         </div>
     </div>

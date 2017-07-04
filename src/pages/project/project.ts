@@ -25,9 +25,6 @@ export class Project {
   private slideMenu: any;
   private files: any;
   private uploadUrl: string = uploadBaseUrl;
-  private showProposal: boolean = false;
-  private showContract: boolean = false;
-  private showFiles: boolean = false;
   private contract: any;
   private systemMessage: any;
   private deadline: string;
@@ -40,6 +37,11 @@ export class Project {
   private disableFields: boolean = false;
 
   private status: any = {
+    finalizing_terms: {
+      'freelancer': 'Finalizing Terms',
+      'class': 'finalizing_terms',
+      'client': 'Finalizing Terms'
+    },
     pending_funds: {
       'freelancer': 'Pending Funds',
       'class': 'pending_funds',
@@ -83,7 +85,7 @@ export class Project {
     }
   }
 
-  deactivate() {
+  detached() {
     this.websocket.close();
   }
 
@@ -115,18 +117,18 @@ export class Project {
   async onMessage(evt) {
     let first = this;
     let messageArray: Array<any> = JSON.parse(evt.data);
+    console.log(messageArray);
     await messageArray.forEach(function (message) {
-      if (first.user.id === message.userId) {
-        message.side = 'right';
-      } else {
-        message.side = 'left';
-      }
-      if (message.userType === 'system') {
+      if (message.from.type === 'system') {
         first.parseIncoming(message);
       } else {
+        if (first.user.id === message.from.id) {
+          message.side = 'right';
+        } else {
+          message.side = 'left';
+        }
         first.messages.push(message);
       }
-
     });
     this.scrollBottom();
   }
@@ -143,10 +145,10 @@ export class Project {
   }
 
   private writeToScreen(message: string) {
-    let pre: any = {};
-    pre.text = message;
-    pre.username = 'System';
-    pre.side = 'left';
+    let pre: any = {data: {}, from: {}};
+    pre.data.text = message;
+    pre.from.username = 'System';
+    pre.side = 'center';
     this.messages.push(pre);
   }
 
@@ -176,25 +178,25 @@ export class Project {
     let selected = this.element.querySelector('.slide-active');
 
     $('#slidemenu').stop().animate({
-      left: selected ? '-100%' : '0px'
+      right: selected ? '-100%' : '0px'
     });
-
-    $('#navbar-height-col').stop().animate({
-      left: selected ? '-80%' : '0px'
-    });
-
-    $('#page-content').stop().animate({
-      left: selected ? '0px' : '80%'
-    });
-
-    $('.navbar-header').stop().animate({
-      left: selected ? '0px' : '80%'
-    });
-
-    $(this).toggleClass('slide-active', !selected);
-    $('#slidemenu').toggleClass('slide-active');
-
-    $('#page-content, .navbar, body, .navbar-header').toggleClass('slide-active');
+    //
+    // $('#navbar-height-col').stop().animate({
+    //   left: selected ? '-80%' : '0px'
+    // });
+    //
+    // $('#page-content').stop().animate({
+    //   left: selected ? '0px' : '80%'
+    // });
+    //
+    // $('.navbar-header').stop().animate({
+    //   left: selected ? '0px' : '80%'
+    // });
+    //
+    // $(this).toggleClass('slide-active', !selected);
+    // $('#slidemenu').toggleClass('slide-active');
+    //
+    // $('#page-content, .navbar, body, .navbar-header').toggleClass('slide-active');
 
     this.scrollBottom();
   }
@@ -227,36 +229,26 @@ export class Project {
   }
 
   private parseIncoming(message) {
-    let data: any = JSON.parse(message.text);
-    this.systemMessage = data.proposal;
-    console.log(message);
-    if (data.status) {
-      message.text = 'New status of the project is ' + data.status;
-      this.messages.push(message);
-      this.getProject();
-    } else if (data.type === 'project_contract_accepted') {
-      message.text = 'Contract accepted by ' + data.user.firstName;
-      this.messages.push(message);
-      if (data.user.id === this.user.id && data.userType === this.user.type) {
-        this.contractAgree = false;
-        this.contractChanges = false;
-        this.contractUpdate = false;
-        this.contractWaiting = true;
-      }
-    } else if (data.proposal.userId === this.user.id && data.proposal.userType === this.user.type) {
-      message.text = 'New proposal made by ' + data.proposal.userType;
-      this.messages.push(message);
-      this.contractAgree = false;
-      this.contractChanges = false;
-      this.contractUpdate = false;
-      this.contractWaiting = true;
-    } else {
-      this.contractAgree = false;
-      this.contractChanges = true;
-      this.contractUpdate = false;
-      this.contractWaiting = false;
-      this.disableFields = true;
+    switch (message.data.type) {
+      case 'project_contract_proposal':
+        this.writeToScreen('New proposal from ' + message.data.user.firstName);
+        break;
+      case 'project_contract_extension_proposal':
+        break;
+      case 'project_finished_by_freelancer':
+        this.writeToScreen(message.data.user.firstName + ' has finished working on project');
+        break;
+      case 'project_done':
+        this.writeToScreen('Project done!');
+        break;
+      case 'project_status_changed':
+        this.writeToScreen('Project status is now: ' + message.data.status);
+        break;
+      case 'project_contract_accepted':
+        this.writeToScreen('Project accepted by ' +  message.data.user.firstName);
+        break;
     }
+    this.getProject();
   }
 
   private async loadChanges() {
@@ -278,7 +270,6 @@ export class Project {
       hours: this.project.hours,
       perHour: this.project.perHour
     };
-    console.log(body);
     const response = await first.app.fetch('project/' + first.projectId + '/contract/proposal', {
       method: 'post',
       headers: this.auth,
@@ -306,10 +297,14 @@ export class Project {
   }
 
   private changeStatus() {
-    console.log('asdasdasd');
+    switch(this.project.status) {
+      case 'pending_funds':
+        this.router.navigateToRoute('payment', {id: this.projectId});
+        break;
+    }
   }
 
   private toggleSection(section: string) {
-    this[section] = !this[section];
+    $('.' + section).toggle();
   }
 }

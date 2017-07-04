@@ -1,0 +1,18 @@
+<template>
+    <div class="payment container">
+        <article>
+            <h1>Money transfer</h1>
+            <p>
+                Direct bank transfer is currently the only payment method we offer. We are working on implementing more
+                payment options in the near future. After you transfer the money, please press the button <strong>"Money
+                transferred"</strong>. This will notify the Fairlance team about your payment right away. As soon as we
+                confirm the transfer the project status will be updated. This can take up to several hours.
+            </p>
+            <div class="alert alert-success" role="alert">
+                <p><strong>IBAN:</strong> DE97100701240200378800</p>
+                <p><strong>BIC:</strong> DEUTDEDB101</p>
+            </div>
+            <button class="btn btn-default btn-info center-block" class.bind="disabled ? 'disabled' : ''" click.delegate="moneyTransferred()">Money transferred</button>
+        </article>
+    </div>
+</template>

@@ -11,7 +11,17 @@ export class Registration {
   private lastName: string;
   private email: string;
   private password: string;
-  private clientType: string;
+  private salutations: any = [
+    {name: 'Mr', value: 'Mr'},
+    {name: 'Mrs', value: 'Mrs'},
+    {name: 'Mx', value: 'Mx'},
+  ];
+  private types: any = [
+    {name: 'Freelancer', type: 'freelancer'},
+    {name: 'Client', type: 'client'}
+  ];
+  private userType: any = this.types[0];
+  private salutation: any = this.salutations[0];
 
   constructor(http, router) {
     this.http = http;
@@ -23,8 +33,8 @@ export class Registration {
       firstName: this.firstName,
       lastName: this.lastName,
       email: this.email,
-      gender: this.gender,
-      clientType: this.clientType,
+      salutation: this.salutation,
+      clientType: this.userType.type,
       password: this.password
     };
     console.log(user);
@@ -33,7 +43,7 @@ export class Registration {
 
   async submit(): Promise<void> {
     let first = this;
-    const response = await first.http.fetch(first.clientType + '/new', {
+    const response = await first.http.fetch(first.userType.type + '/new', {
       method: 'put',
       body: first.createUser()
     });
