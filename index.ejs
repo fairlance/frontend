@@ -29,14 +29,15 @@
     <div class="splash">
         <i class="fa fa-spinner fa-spin"></i>
     </div>
-    <script replace="here">
-      var appBaseUrl = "http://08c07d5a.ngrok.io/api/application/";
-      var searchBaseUrl = "http://08c07d5a.ngrok.io/api/search/";
-      var registerBaseUrl = "http://08c07d5a.ngrok.io/api/registration/";
-      var wsBaseUrl = "ws://08c07d5a.ngrok.io/api/messaging/";
-      var wsNotificationUrl = "ws://08c07d5a.ngrok.io/api/notification/";
-      var uploadBaseUrl = "http://08c07d5a.ngrok.io/api/fileserver/";
-      var paymentBaseUrl = "http://08c07d5a.ngrok.io/api/payment/";
+    <script >
+      var placeholder = "local.fairlance.io:8000";
+      var appBaseUrl = "//" + placeholder + "/api/application/";
+      var searchBaseUrl = "//" + placeholder + "/api/search/";
+      var registerBaseUrl = "//" + placeholder + "/api/registration/";
+      var wsBaseUrl = "ws://" + placeholder + "/api/messaging/";
+      var wsNotificationUrl = "ws://" + placeholder + "/api/notification/";
+      var uploadBaseUrl = "//" + placeholder + "/api/fileserver/";
+      var paymentBaseUrl = "//" + placeholder + "/api/payment/";
     </script>
     <!--###REPLACE_HERE###-->
     <% if (htmlWebpackPlugin.options.metadata.server) { %>

@@ -48,7 +48,7 @@ export async function configure(aurelia: Aurelia) {
   payment.configure(config => {
     config
         .useStandardConfiguration()
-        .withBaseUrl('http://e8aab10a.ngrok.io/')
+        .withBaseUrl(paymentBaseUrl)
   });
 
   container.registerInstance('AppHttpClient', app);
