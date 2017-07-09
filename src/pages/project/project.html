@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-lg-8">
+            <div class="main col-xs-12 col-lg-8">
                 <a class="client-name" route-href="route:client;  params.bind:{id:project.client.id}">${project.client.firstName} ${project.client.lastName}</a>
 
                 <h1 class="${status[project.status].class}">
@@ -116,15 +116,18 @@
                         <li><a href="#"><i class="material-icons">fiber_manual_record</i>Despute Project</a></li>
                     </ul>
                 </div>
-                <label class="col-xs-4">
-                    <i class="material-icons">cloud_upload</i>
-                    Upload <input type="file" class="hidden" change.delegate="uploadFile()" files.bind="files">
-                </label>
-                <a click.delegate="toggleMenu()" class="col-xs-4">
-                    <i class="material-icons">email</i>
-                    Message
-                </a>
-
+                <div class="col-xs-4">
+                    <label >
+                        <i class="material-icons">cloud_upload</i>
+                        Upload <input type="file" class="hidden" change.delegate="uploadFile()" files.bind="files">
+                    </label>
+                </div>
+                <div class="col-xs-4">
+                    <a click.delegate="toggleMenu()" >
+                        <i class="material-icons">email</i>
+                        Message
+                    </a>
+                </div>
             </div>
         </div>
     </div>

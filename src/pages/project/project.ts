@@ -180,27 +180,11 @@ export class Project {
 
   private toggleMenu() {
     let selected = this.element.querySelector('.slide-active');
-
-    $('#slidemenu').stop().animate({
+    let menu = $('#slidemenu');
+    menu.stop().animate({
       right: selected ? '-100%' : '0px'
     });
-    //
-    // $('#navbar-height-col').stop().animate({
-    //   left: selected ? '-80%' : '0px'
-    // });
-    //
-    // $('#page-content').stop().animate({
-    //   left: selected ? '0px' : '80%'
-    // });
-    //
-    // $('.navbar-header').stop().animate({
-    //   left: selected ? '0px' : '80%'
-    // });
-    //
-    // $(this).toggleClass('slide-active', !selected);
-    // $('#slidemenu').toggleClass('slide-active');
-    //
-    // $('#page-content, .navbar, body, .navbar-header').toggleClass('slide-active');
+    menu.toggleClass('slide-active');
 
     this.scrollBottom();
   }
