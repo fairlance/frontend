@@ -5,7 +5,11 @@
   left: 0;
   height: 100%;
   color: #6D849D;
-  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
+  &.open {
+    overflow: hidden;
+  }
   .overlay {
     width: 100%;
     height: 100%;
@@ -20,6 +24,8 @@
     background-color: #fff;
     z-index: 4;
     height: 100%;
+    margin-bottom: 100px;
+    overflow: auto;
     .panel-body {
       .chat {
         .message {
@@ -82,14 +88,15 @@
         textarea {
           width: 80%;
           resize: none;
-          padding-left: 16px;
-          font-size: 12px;
+          padding-left: 24px;
+          font-size: 16px;
           line-height: 16px;
         }
       }
 
     }
   }
+
   .main {
     .client-name {
       margin-left: 25px;
@@ -277,12 +284,15 @@
     i {
       color: #3BC1FC;
       top: 4px;
-      position: relative;
+      position: absolute;
+      left: 0;
     }
     label {
       color: #2D353D;
       font-size: 16px;
       font-weight: normal;
+      margin-top: 8px;
+      padding-left: 16px;
       i {
         color: #3BC1FC;
       }
@@ -291,16 +301,21 @@
       color: #2D353D;
       font-size: 16px;
       line-height: 24px;
-      &.more {
-        text-align: center;
-        display: block;
-        i {
-          top: -7px;
-          font-size: 50px;
-        }
-      }
+      margin-top: 4px;
+      padding-left: 16px;
+      display: block;
     }
     .dropup {
+      a {
+        &.more {
+          text-align: center;
+          display: block;
+          i {
+            top: -7px;
+            font-size: 50px;
+          }
+        }
+      }
       .dropdown-menu {
         right: auto;
         left: 0;
@@ -321,13 +336,6 @@
             }
           }
         }
-      }
-    }
-    .image-upload {
-      img {
-        height: 50px;
-        width: 50px;
-        float: left;
       }
     }
   }

@@ -186,6 +186,7 @@ export class Project {
     });
     menu.toggleClass('slide-active');
     $('.overlay').toggle();
+    $('#page-content').toggleClass('open')
 
     this.scrollBottom();
   }
