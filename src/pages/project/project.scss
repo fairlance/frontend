@@ -28,6 +28,7 @@
     overflow: auto;
     .panel-body {
       .chat {
+        margin-bottom: 150px;
         .message {
           font-size: 12px;
           line-height: 16px;
@@ -84,6 +85,9 @@
           font-size: 16px;
           margin-top: 8px;
           color: #30C0FF;
+          background: none;
+          border: none;
+          outline: none;
         }
         textarea {
           width: 80%;
@@ -91,6 +95,7 @@
           padding-left: 24px;
           font-size: 16px;
           line-height: 16px;
+          outline: none;
         }
       }
 
