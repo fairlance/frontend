@@ -123,7 +123,7 @@ export class Project {
         first.parseIncoming(message);
         refresh = true;
       } else {
-        if (first.user.id === message.from.id) {
+        if (first.user.id === message.from.id && first.user.type === message.from.type) {
           message.side = 'right';
         } else {
           message.side = 'left';
@@ -185,6 +185,7 @@ export class Project {
       right: selected ? '-100%' : '0px'
     });
     menu.toggleClass('slide-active');
+    $('.overlay').toggle();
 
     this.scrollBottom();
   }

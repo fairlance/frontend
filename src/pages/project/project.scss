@@ -12,6 +12,7 @@
     background-color: rgba(0, 0, 0, 0.3);
     z-index: 3;
     position: absolute;
+    display: none;
   }
   #slidemenu {
     position: absolute;
@@ -19,6 +20,75 @@
     background-color: #fff;
     z-index: 4;
     height: 100%;
+    .panel-body {
+      .chat {
+        .message {
+          font-size: 12px;
+          line-height: 16px;
+          width: 100%;
+          &.center {
+            span {
+              border: 0.5px solid #FC4529;
+              border-radius: 2px;
+              background-color: #FFFDE6;
+              width: 100%;
+              text-align: center;
+            }
+            .date {
+              display: none;
+            }
+          }
+          &.left {
+            text-align: left;
+            span {
+              border: 0.5px solid #7CBFD3;
+              border-radius: 2px;
+              background-color: #E1F6FF;
+            }
+          }
+          &.right {
+            text-align: right;
+            span {
+              border: 0.5px solid #5CAD9D;
+              border-radius: 2px;
+              background-color: #B8FDEE;
+              text-align: left;
+            }
+          }
+          span {
+            padding: 8px;
+            display: inline-block;
+            color: #2D353D;
+          }
+          .date {
+            color: #2D353D;
+          }
+        }
+      }
+    }
+    .panel-footer {
+      background-color: #FFFFFF;
+      box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);
+      position: fixed;
+      bottom: 50px;
+      form {
+        button {
+          float: right;
+          width: 20%;
+          font-size: 16px;
+          margin-top: 8px;
+          color: #30C0FF;
+        }
+        textarea {
+          width: 80%;
+          resize: none;
+          padding-left: 16px;
+          font-size: 12px;
+          line-height: 16px;
+        }
+      }
+
+    }
   }
   .main {
     .client-name {
@@ -209,7 +279,7 @@
       top: 4px;
       position: relative;
     }
-    label{
+    label {
       color: #2D353D;
       font-size: 16px;
       font-weight: normal;
@@ -262,3 +332,7 @@
     }
   }
 }
+
+
+
+

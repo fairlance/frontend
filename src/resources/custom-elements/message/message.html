@@ -1,10 +1,10 @@
-<template bindable="content,username,side,avatar">
+<template bindable="content,username,side,time">
+    <require from="../../value-converters/timestamp-formatter/timestamp-formatter"></require>
+
     <div class="message" class.bind="side">
-        <p class="clearfix">
-            <span class="content">
-                ${content}
-            </span>
-        </p>
-        <p class="date">8:56:14 AM</p>
+        <span class="clearfix" >
+            ${content}
+        </span>
+        <p class="date">${time | timestampFormatter}</p>
     </div>
 </template>
