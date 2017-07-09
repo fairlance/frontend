@@ -47,6 +47,6 @@ export class Registration {
       method: 'put',
       body: first.createUser()
     });
-    first.router.navigate('info');
+    first.router.navigate('complete-profile');
   }
 }

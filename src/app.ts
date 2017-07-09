@@ -50,11 +50,11 @@ export class App {
         settings: {roles: []}
       },
       {
-        route: ['info', 'info'],
-        name: 'info',
-        moduleId: PLATFORM.moduleName('pages/info/info'),
-        title: 'Additional info',
-        settings: {roles: ['freelancer']}
+        route: ['complete-profile', 'complete-profile'],
+        name: 'complete-profile',
+        moduleId: PLATFORM.moduleName('pages/complete-profile/complete-profile'),
+        title: 'Complete registration',
+        settings: {roles: []}
       },
       {
         route: ['application/:id', 'application/:id'],

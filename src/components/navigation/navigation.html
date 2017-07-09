@@ -1,22 +1,23 @@
 <template>
     <div class="main-menu" if.bind="user">
-        <a route-href="route:projects">
-            Projects
-        </a>
-        <a route-href="route:jobs" if.bind="user.type === 'freelancer'">
-            Jobs
-        </a>
-        <a route-href="route.bind: user.type;  params.bind:{id:user.id}">
-            Profile
-        </a>
-        <a route-href="route:applications" if.bind="user.type === 'client'">
-            Applications
-        </a>
-        <a class="fairlance-badge" route-href="route:notifications">
-            Notifications
-            <span if.bind="counter > 0">${counter}</span>
-        </a>
-
+        <div class="links">
+            <a route-href="route:projects">
+                Projects
+            </a>
+            <a route-href="route:jobs" if.bind="user.type === 'freelancer'">
+                Jobs
+            </a>
+            <a route-href="route.bind: user.type;  params.bind:{id:user.id}">
+                Profile
+            </a>
+            <a route-href="route:applications" if.bind="user.type === 'client'">
+                Applications
+            </a>
+            <a class="fairlance-badge" route-href="route:notifications">
+                Notifications
+                <span if.bind="counter > 0">${counter}</span>
+            </a>
+        </div>
         <div class="dropdown">
             <a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 <i class="material-icons">more_vert</i>
