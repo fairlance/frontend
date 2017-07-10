@@ -33,14 +33,7 @@ export class Job {
 
   async activate(params) {
     this.jobId = parseInt(params.id);
-    if (this.userService.getCurrentUser()) {
-      this.user = this.userService.getCurrentUser();
-      this.auth = {'Authorization': 'Bearer ' + this.user.token};
-      await this.getJob();
-      this.getFreelancer();
-    } else {
-      return;
-    }
+    ``
   }
 
   private selectReference(reference: IReference): void {

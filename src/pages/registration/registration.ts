@@ -16,6 +16,9 @@ export class Registration {
     {name: 'Mrs', value: 'Mrs'},
     {name: 'Mx', value: 'Mx'},
   ];
+  private companyCheckbox: any = [{value: 1}];
+  private isCompany: boolean = false;
+  private companyName: string;
   private types: any = [
     {name: 'Freelancer', type: 'freelancer'},
     {name: 'Client', type: 'client'}
@@ -34,6 +37,7 @@ export class Registration {
       lastName: this.lastName,
       email: this.email,
       salutation: this.salutation,
+      companyName: this.companyName,
       clientType: this.userType.type,
       password: this.password
     };
@@ -47,6 +51,6 @@ export class Registration {
       method: 'put',
       body: first.createUser()
     });
-    first.router.navigate('complete-profile');
+    first.router.navigate('login');
   }
 }

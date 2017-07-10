@@ -1,6 +1,7 @@
 ﻿import 'font-awesome/scss/font-awesome.scss';
 import './assets/styles/styles.scss';
 import {Aurelia} from 'aurelia-framework';
+import 'whatwg-fetch';
 import {HttpClient} from 'aurelia-fetch-client';
 import * as Bluebird from 'bluebird';
 import { PLATFORM } from 'aurelia-pal';

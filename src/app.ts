@@ -50,7 +50,7 @@ export class App {
         settings: {roles: []}
       },
       {
-        route: ['complete-profile', 'complete-profile'],
+        route: ['complete-profile/:type/:id', 'complete-profile/:type/:id'],
         name: 'complete-profile',
         moduleId: PLATFORM.moduleName('pages/complete-profile/complete-profile'),
         title: 'Complete registration',

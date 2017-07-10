@@ -48,7 +48,12 @@ export class Login {
       });
       let data = await response.json();
       first.setCookie(data);
-      first.router.navigateToRoute(data.data.type, {id: data.data.id}, {replace: true});
+      console.log(data);
+      if(data.data.user.profileCompleted) {
+        first.router.navigateToRoute(data.data.type, {id: data.data.id}, {replace: true});
+      } else {
+        first.router.navigateToRoute('complete-profile', {type: data.data.type, id: data.data.id})
+      }
     } catch (error) {
       first.error = true;
     }

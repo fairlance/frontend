@@ -1,5 +1,161 @@
 <template>
     <div class="complete-profile">
-
+        <div class="form-inline clearfix">
+            <article class="col-xs-12">
+                <h2>Complete Profile</h2>
+                <div class="form-group" >
+                    <img class="profile-picture" src="${uploadUrl + 'file/' + profilePicture.name}" if.bind="profilePicture">
+                    <img class="profile-picture" src="../../assets/images/profile-placeholder.png" if.bind="!profilePicture">
+                </div>
+                <div class="form-group row">
+                    <label for="inputPicture" class="col-xs-12">Add Profile Picture*</label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control" id="inputPicture" placeholder="Attach Picture"
+                               readonly="readonly" value.bind="profilePicture.name">
+                    </div>
+                    <div class="col-xs-4">
+                        <label class="btn btn-default btn-file button upload">
+                            Browse
+                            <input type="file" class="hidden" change.delegate="uploadProfilePicture()" files.bind="files">
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-xs-12">About You*</label>
+                    <div class="col-xs-12">
+                        <textarea rows="4" placeholder="Present yourself, let everyone know who you are and what are you about." value.bind="description"></textarea>
+                    </div>
+                </div>
+                <div class="form-group row" if.bind="!user.isCompany">
+                    <label class="col-xs-12">Birthday</label>
+                    <div class="col-xs-12 birthday">
+                        <select value.bind="selectedDay" class="form-control day">
+                            <option repeat.for="day of days" value.bind="day">${day}</option>
+                        </select>
+                        <select value.bind="selectedMonth" class="form-control">
+                            <option repeat.for="month of months" value.bind="$index + 1">${month}</option>
+                        </select>
+                        <select value.bind="selectedYear" class="form-control">
+                            <option repeat.for="year of years" value.bind="year">${year}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-xs-12">Time Zone*</label>
+                    <div class="col-xs-12">
+                        <select value.bind="timezone" class="form-control">
+                            <option disabled selected style='display:none;'>Time Zone...</option>
+                            <option value="-12.0">(GMT -12:00) Eniwetok, Kwajalein</option>
+                            <option value="-11.0">(GMT -11:00) Midway Island, Samoa</option>
+                            <option value="-10.0">(GMT -10:00) Hawaii</option>
+                            <option value="-9.0">(GMT -9:00) Alaska</option>
+                            <option value="-8.0">(GMT -8:00) Pacific Time (US &amp; Canada)</option>
+                            <option value="-7.0">(GMT -7:00) Mountain Time (US &amp; Canada)</option>
+                            <option value="-6.0">(GMT -6:00) Central Time (US &amp; Canada), Mexico City</option>
+                            <option value="-5.0">(GMT -5:00) Eastern Time (US &amp; Canada), Bogota, Lima</option>
+                            <option value="-4.0">(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz</option>
+                            <option value="-3.5">(GMT -3:30) Newfoundland</option>
+                            <option value="-3.0">(GMT -3:00) Brazil, Buenos Aires, Georgetown</option>
+                            <option value="-2.0">(GMT -2:00) Mid-Atlantic</option>
+                            <option value="-1.0">(GMT -1:00 hour) Azores, Cape Verde Islands</option>
+                            <option value="0.0">(GMT) Western Europe Time, London, Lisbon, Casablanca</option>
+                            <option value="1.0">(GMT +1:00 hour) Brussels, Copenhagen, Madrid, Paris</option>
+                            <option value="2.0">(GMT +2:00) Kaliningrad, South Africa</option>
+                            <option value="3.0">(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg</option>
+                            <option value="3.5">(GMT +3:30) Tehran</option>
+                            <option value="4.0">(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi</option>
+                            <option value="4.5">(GMT +4:30) Kabul</option>
+                            <option value="5.0">(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent</option>
+                            <option value="5.5">(GMT +5:30) Bombay, Calcutta, Madras, New Delhi</option>
+                            <option value="5.75">(GMT +5:45) Kathmandu</option>
+                            <option value="6.0">(GMT +6:00) Almaty, Dhaka, Colombo</option>
+                            <option value="7.0">(GMT +7:00) Bangkok, Hanoi, Jakarta</option>
+                            <option value="8.0">(GMT +8:00) Beijing, Perth, Singapore, Hong Kong</option>
+                            <option value="9.0">(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk</option>
+                            <option value="9.5">(GMT +9:30) Adelaide, Darwin</option>
+                            <option value="10.0">(GMT +10:00) Eastern Australia, Guam, Vladivostok</option>
+                            <option value="11.0">(GMT +11:00) Magadan, Solomon Islands, New Caledonia</option>
+                            <option value="12.0">(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-xs-12">PayPal*</label>
+                    <div class="col-xs-12">
+                        <input type="email" class="form-control" value.bind="payPal" placeholder="Enter your PayPal email">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-xs-12">Phone number</label>
+                    <div class="col-xs-12">
+                        <input type="tel" class="form-control" value.bind="phone" placeholder="Enter your phone number">
+                    </div>
+                </div>
+                <!--<div class="form-group row">-->
+                    <!--<label class="col-xs-12">Additional Files</label>-->
+                    <!--<div class="col-xs-8">-->
+                        <!--<input type="text" class="form-control" placeholder="Certificates, References..."-->
+                               <!--readonly="readonly">-->
+                    <!--</div>-->
+                    <!--<div class="col-xs-4">-->
+                        <!--<label class="btn btn-default btn-file button upload">-->
+                            <!--Browse-->
+                            <!--<input type="file" class="hidden" change.delegate="uploadCertificate()" files.bind="files">-->
+                        <!--</label>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </article>
+            <article class="col-xs-12">
+                <h2>Skills</h2>
+                <form class="tags" submit.delegate="addSkill()">
+                    <input placeholder="Write Skill_" value.bind="newSkill">
+                    <span repeat.for="skill of skills" class="tag">${skill}<i class="material-icons" click.delegate="deleteTag($index)">close</i></span>
+                </form>
+            </article>
+            <article class="col-xs-12">
+                <h2>Portfolio</h2>
+                <div class="form-group row">
+                    <div repeat.for="item of portfolioItems">
+                        <label class="col-xs-12">Your previous work</label>
+                        <div class="col-xs-8">
+                            <input value.bind="portfolioItems[$index].name" type="text" class="form-control" placeholder="Upload Files" readonly="readonly">
+                        </div>
+                        <div class="col-xs-4">
+                            <label class="btn btn-default btn-file button upload">
+                                Browse
+                                <input type="file" class="hidden" change.delegate="uploadPortfolioItem($index)" files.bind="files">
+                            </label>
+                        </div>
+                        <label class="col-xs-12 description">Description</label>
+                        <div class="col-xs-12">
+                        <textarea rows="4" value.bind="portfolioItems[$index].description"
+                                  placeholder="Description of uploaded file..."></textarea>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-xs-offset-6">
+                        <a class="add-more" click.delegate="addPortfolioItem()">Add Another Field</a>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div repeat.for="item of portfolioLinks">
+                        <label class="col-xs-12">Your work from the web</label>
+                        <div class="col-xs-12">
+                            <input value.bind="portfolioLinks[$index].url" type="text" class="form-control" placeholder="http://...">
+                        </div>
+                        <label class="col-xs-12 description">Description</label>
+                        <div class="col-xs-12">
+                        <textarea rows="4" value.bind="portfolioLinks[$index].description"
+                                  placeholder="Description of provided link..."></textarea>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-xs-offset-6">
+                        <a class="add-more" click.delegate="addPortfolioLink()">Add Another Field</a>
+                    </div>
+                </div>
+            </article>
+            <div class="col-xs-12">
+                <button class="btn btn-main" click.delegate="saveProfile()">Save</button>
+            </div>
+        </div>
     </div>
 </template>

@@ -6,7 +6,19 @@
                 <div class="radio" repeat.for="userType of types">
                     <label><input type="radio" name="type" model.bind="userType" checked.bind="$parent.userType">${userType.name}</label>
                 </div>
-
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input repeat.for="option of companyCheckbox" type="checkbox" checked.bind="$parent.isCompany"
+                               model.bind="option"> I am a legal entity (e.g. limited, Corporation)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Company Name"
+                       value.bind="companyName" name="companyName" class.bind="error ? 'error' : ''"
+                       if.bind="isCompany">
             </div>
             <div class="form-group">
                 <select class="form-control" value.bind="salutation">
@@ -23,14 +35,14 @@
             <div class="form-group">
                 <div class="input-group" class.bind="error ? 'error' : ''">
                     <div class="input-group-addon"><i class="material-icons">perm_identity</i></div>
-                    <input type="text" class="form-control"  placeholder="Last Name"
+                    <input type="text" class="form-control" placeholder="Last Name"
                            value.bind="lastName" name="lastName">
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group" class.bind="error ? 'error' : ''">
                     <div class="input-group-addon"><i class="material-icons">mail_outline</i></div>
-                    <input type="email" class="form-control"  placeholder="Email"
+                    <input type="email" class="form-control" placeholder="Email"
                            value.bind="email" name="email">
                 </div>
             </div>
