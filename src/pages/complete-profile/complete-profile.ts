@@ -46,7 +46,7 @@ export class CompleteProfile {
     this.app = app;
     this.helper = helper;
     for (let i: number = 0; i < (toYear - fromYear); i++) {
-      this.years.push(fromYear + i);
+      this.years.push(toYear - i);
     }
     this.selectedYear = this.years[0];
   }
@@ -164,7 +164,7 @@ export class CompleteProfile {
 
   private async saveProfile() {
     const first = this;
-    const response = await first.app.fetch(this.user.type + '/' + this.user.id + '/complete_profile', {
+    const response = await first.app.fetch(first.user.type + '/' + first.user.id + '/complete_profile', {
       method: 'post',
       headers: this.auth,
       body: first.completeProfile()

@@ -5,7 +5,7 @@ import {Router} from "aurelia-router";
 import {Notification} from "../../services/notification/notification";
 import {Cookie} from "../../services/cookie/cookie";
 
-@inject(EventAggregator, Router, Cookie)
+@inject('AppHttpClient', EventAggregator, Router, Cookie)
 export class Navigation {
   private user: IUser;
   private userService: User = User.getInstance();
@@ -15,12 +15,15 @@ export class Navigation {
   private ea: EventAggregator;
   private subscriber: any;
   private messages: Array<any> = [];
+  private auth: Object;
   private cookie: Cookie;
+  private http: any;
 
-  constructor(eventAggregator, router, cookie) {
+  constructor(http, eventAggregator, router, cookie) {
     this.ea = eventAggregator;
     this.router = router;
     this.cookie = cookie;
+    this.http = http;
   }
 
   attached() {
@@ -32,9 +35,24 @@ export class Navigation {
     });
     if (this.userService.getCurrentUser()) {
       this.user = this.userService.getCurrentUser();
+      this.auth = {'Authorization': 'Bearer ' + this.user.token};
     } else {
       this.router.navigate('login');
       return;
+    }
+  }
+
+  private async deleteProfile(): Promise<void> {
+    let first = this;
+    try {
+      const response = await first.http.fetch('freelancer/4', {
+        method: 'delete',
+        headers: this.auth
+      });
+      let data = await response.json();
+      console.log(data);
+    } catch (error) {
+      // console.log(error);
     }
   }
 

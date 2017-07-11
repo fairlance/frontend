@@ -22,6 +22,7 @@
         display: block;
         border-radius: 50%;
         height: 100px;
+        width: 100px;
       }
       .birthday {
         input {
@@ -63,6 +64,7 @@
         resize: none;
         width: 100%;
         padding: 8px;
+        color: #000;
       }
       .button {
         background-color: #3BC1FC;
@@ -73,6 +75,7 @@
         font-size: 16px;
         line-height: 20px;
         padding-top: 10px;
+        width: 100%;
       }
     }
     button.btn-main {
