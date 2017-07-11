@@ -23,7 +23,7 @@
                 <div class="form-group row">
                     <label class="col-xs-12">About You*</label>
                     <div class="col-xs-12">
-                        <textarea class="form-control" rows="4" placeholder="Present yourself, let everyone know who you are and what are you about." value.bind="description"></textarea>
+                        <textarea class="form-control" rows="3" placeholder="Present yourself, let everyone know who you are and what are you about." value.bind="description"></textarea>
                     </div>
                 </div>
                 <div class="form-group row" if.bind="!user.isCompany">
@@ -128,7 +128,7 @@
                         </div>
                         <label class="col-xs-12 description">Description</label>
                         <div class="col-xs-12">
-                        <textarea class="form-control" rows="4" value.bind="portfolioItems[$index].description"
+                        <textarea class="form-control" rows="3" value.bind="portfolioItems[$index].description"
                                   placeholder="Description of uploaded file..."></textarea>
                         </div>
                     </div>
@@ -144,7 +144,7 @@
                         </div>
                         <label class="col-xs-12 description">Description</label>
                         <div class="col-xs-12">
-                        <textarea rows="4" value.bind="portfolioLinks[$index].description"
+                        <textarea rows="3" value.bind="portfolioLinks[$index].description"
                                   placeholder="Description of provided link..."></textarea>
                         </div>
                     </div>
