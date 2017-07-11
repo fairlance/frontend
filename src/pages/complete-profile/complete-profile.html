@@ -79,13 +79,13 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row" if.bind="user.type === 'freelancer'">
                     <label class="col-xs-12">PayPal*</label>
                     <div class="col-xs-12">
                         <input type="email" class="form-control" value.bind="payPal" placeholder="Enter your PayPal email">
                     </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row" if.bind="user.type === 'freelancer'">
                     <label class="col-xs-12">Phone number</label>
                     <div class="col-xs-12">
                         <input type="tel" class="form-control" value.bind="phone" placeholder="Enter your phone number">
@@ -105,14 +105,14 @@
                     <!--</div>-->
                 <!--</div>-->
             </article>
-            <article class="col-xs-12">
+            <article class="col-xs-12" if.bind="user.type === 'freelancer'">
                 <h2>Skills</h2>
                 <form class="tags" submit.delegate="addSkill()">
                     <input placeholder="Write Skill_" value.bind="newSkill">
                     <span repeat.for="skill of skills" class="tag">${skill}<i class="material-icons" click.delegate="deleteTag($index)">close</i></span>
                 </form>
             </article>
-            <article class="col-xs-12">
+            <article class="col-xs-12" if.bind="user.type === 'freelancer'">
                 <h2>Portfolio</h2>
                 <div class="form-group row">
                     <div repeat.for="item of portfolioItems">
