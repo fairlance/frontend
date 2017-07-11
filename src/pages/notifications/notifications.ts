@@ -2,6 +2,7 @@ import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 import {EventAggregator} from "aurelia-event-aggregator";
 import {Notification} from "../../services/notification/notification";
+import {User} from "../../services/user/user";
 
 
 @inject(Router, EventAggregator)
@@ -11,10 +12,17 @@ export class Notifications {
   private ea: any;
   private subscriber: any;
   private notificationService: Notification = Notification.getInstance();
+  private userService: User = User.getInstance();
+  private user: IUser;
 
   constructor(router, eventAggregator) {
     this.router = router;
     this.ea = eventAggregator;
+    if (this.userService.getCurrentUser()) {
+      this.user = this.userService.getCurrentUser();
+    } else {
+      return;
+    }
   }
 
   attached() {
@@ -29,26 +37,35 @@ export class Notifications {
     this.subscriber.dispose();
   }
 
-  private goToNotification(message: any) {
-    message.read = true;
+  private readMessage(timestamp: number) {
+    const first = this;
     this.ea.publish('notification', this.messages);
     this.notificationService.doSend(JSON.stringify({
       "type": "read",
       "from": {
-        "type": "freelancer",
-        "id": 1
-      }, "to": [{
-        "type": "freelancer",
-        "id": 1
+        "type": first.user.type,
+        "id": first.user.id
+      },
+      "to": [{
+        "type": first.user.type,
+        "id": first.user.id
       }],
       "data": {
-        "timestamp": message.timestamp.toString()
+        "timestamp": timestamp.toString()
       }
     }));
-    this.router.navigateToRoute('application', {
-      id: message.data.jobId,
-      appId: message.data.jobApplication.id
-    });
+  }
+
+  private goToNotification(message: any, type: string) {
+    switch (type) {
+      case 'application':
+        break;
+      case 'project':
+        break;
+      case 'message':
+        break;
+    }
+    this.readMessage(message.timestamp);
 
   }
 }

@@ -37,7 +37,6 @@ export class Job {
       this.user = this.userService.getCurrentUser();
       this.auth = {'Authorization': 'Bearer ' + this.user.token};
       await this.getJob();
-      this.getFreelancer();
     } else {
       return;
     }
@@ -47,23 +46,6 @@ export class Job {
     if (!reference.selected) {
       this.references.push(reference.id);
       reference.selected = true;
-    }
-  }
-
-  async getFreelancer(): Promise<void> {
-    let first = this;
-    try {
-      const response = await first.app.fetch('freelancer/' + first.user.id, {
-        method: 'get',
-        headers: first.auth
-      });
-      let data = await response.json();
-      first.user = data.data;
-    } catch (error) {
-      let data = await error.json();
-      if (data.error === "Not logged in.") {
-        first.router.navigate('login');
-      }
     }
   }
 

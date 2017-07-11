@@ -1,19 +1,43 @@
 <template>
     <require from="../../resources/value-converters/date-formatter/date-formatter"></require>
+    <require from="../../resources/value-converters/timestamp-formatter/timestamp-formatter"></require>
     <require from="../../resources/value-converters/limitTo/limitTo"></require>
 
     <div class="notifications container">
-        <div repeat.for="message of messages | limitTo:messages.length" class="message" class.bind="message.read ? '' : 'read'">
-            <a class="clearfix" click.delegate="goToNotification(message)">
-                <img src="../../assets/images/profile.png">
-                <h2 class="">
-                    <span>${message.data.jobApplication.freelancer.firstName} ${message.data.jobApplication.freelancer.lastName}</span>
-                    <span class="date">${message.timestamp | dateFormatter}</span>
-                </h2>
-                <p class="job-description">
-                    Just applied to your job, click here to see his/hers application
-                </p>
+        <article class="row job-applications" if.bind="messages.applications.length">
+            <h2 class="">Proposals (${messages.applications.length})</h2>
+            <a click.delegate="goToNotification(message, 'application')" class="notification col-xs-12" repeat.for="message of messages.applications" >
+                <span class="title">
+                    <i class="material-icons">fiber_manual_record</i>
+                    ${message.data.jobApplication.message}
+                </span>
+                <span class="from">${message.data.jobApplication.freelancer.firstName} ${message.data.jobApplication.freelancer.lastName}</span>
+                <span class="details price">Price Est. ${message.data.jobApplication.hourPrice * message.data.jobApplication.hours}</span>
+                <span class="details delivery">Deliver in XY days</span>
             </a>
-        </div>
+        </article>
+        <article class="row project" if.bind="messages.project.length">
+            <h2 class="">Jobs (${messages.project.length})</h2>
+            <a click.delegate="goToNotification(message, 'project')"  class="notification col-xs-12" repeat.for="message of messages.project" >
+                <span class="from">Nancy Lawson</span>
+                <span class="title">
+                    <i class="material-icons">fiber_manual_record</i>
+                    Advertise Advertise Advertise
+                </span>
+                <span class="details price">Price Est. $245</span>
+                <span class="details delivery">Deliver in 14 days</span>
+            </a>
+        </article>
+        <article class="row messages" if.bind="messages.messages.length">
+            <h2 class="">Messages (${messages.messages.length})</h2>
+            <a  click.delegate="goToNotification(message, 'message')" class="notification col-xs-12" repeat.for="message of messages.messages" >
+                <span class="title">
+                    <i class="material-icons">fiber_manual_record</i>
+                    ${message.data.message.data.text}
+                </span>
+                <span class="from">${message.data.message.from.username}</span>
+                <span class="details date">${message.data.timestamp | timestampFormatter}</span>
+            </a>
+        </article>
     </div>
 </template>

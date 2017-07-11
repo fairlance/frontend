@@ -3,56 +3,57 @@
   height: 100%;
   overflow-y: auto;
   padding-bottom: 140px;
-  .message {
-    &.read {
-      a {
-        font-weight: bold;
-        h2 {
-          font-weight: bold;
-          .date {
-            color: #0084ff;
-            font-weight: normal;
+  article {
+    &.job-applications {
+      .notification {
+        .title {
+          i {
+            color: #30C0FF;
           }
-        }
-        p {
-          color: #000;
         }
       }
     }
-    a {
-      font-weight: normal;
-      height: 64px;
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #30C0FF;
+      margin: 15px 15px 0;
+    }
+    .notification {
+      color: #2D353D;
       display: block;
-      padding: 7px 0;
-      &:hover {
-        background-color: rgba(0, 0, 0, .05);
-      }
-      img {
-        width: 50px;
-        border-radius: 50%;
-        float: left;
-        margin-right: 10px;
-      }
-      h2 {
-        font-size: 15px;
-        width: 100%;
-        color: #000;
-        margin: 10px 0 0;
-        line-height: 15px;
-        .date {
-          font-size: 13px;
-          color: rgba(0, 0, 0, .40);
-          float: right;
+      margin-top: 16px;
+      span {
+        display: block;
+        font-size: 16px;
+        line-height: 24px;
+        padding-left: 25px;
+        &.from {
+          width: 100%;
+          color: #999999;
         }
-      }
-      p {
-        color: rgba(0, 0, 0, .40);
-        font-size: 13px;
-        line-height: 13px;
-        height: 13px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        margin-top: 5px;
+        &.title {
+          width: 100%;
+          position: relative;
+          height: 24px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          i {
+            position: absolute;
+            left: 0;
+            top: 4px;
+            font-size: 16px;
+            color: #47E4C3;
+          }
+        }
+        &.details {
+          display: inline-block;
+          font-size: 12px;
+          line-height: 16px;
+        }
       }
     }
   }

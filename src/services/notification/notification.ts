@@ -10,7 +10,11 @@ export class Notification {
   private user: IUser;
   private wsUri: string = wsNotificationUrl;
   private websocket: any;
-  private messageArray: Array<any> = [];
+  private messageArray: any = {
+    applications: [],
+    project: [],
+    messages: []
+  };
 
   constructor() {
     if (this.userService.getCurrentUser()) {
@@ -59,9 +63,38 @@ export class Notification {
   }
 
   private async onMessage(evt) {
+    const first = this;
     let message: Array<any> = JSON.parse(evt.data);
     await message;
-    this.messageArray.push(message[0]);
+    switch (message[0].type) {
+      case 'project_contract_proposal':
+        first.messageArray.project.push(message[0]);
+        break;
+      case 'project_contract_extension_proposal':
+        first.messageArray.project.push(message[0]);
+        break;
+      case 'project_finished_by_freelancer':
+        first.messageArray.project.push(message[0]);
+        break;
+      case 'project_done':
+        first.messageArray.project.push(message[0]);
+        break;
+      case 'project_status_changed':
+        first.messageArray.project.push(message[0]);
+        break;
+      case 'project_contract_accepted':
+        first.messageArray.project.push(message[0]);
+        break;
+      case 'job_application_added':
+        first.messageArray.applications.push(message[0]);
+        break;
+      case 'job_application_accepted':
+        first.messageArray.applications.push(message[0]);
+        break;
+      case 'new_message':
+        first.messageArray.messages.push(message[0]);
+        break;
+    }
     this.ea.publish('notification', this.messageArray);
   }
 

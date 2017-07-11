@@ -14,7 +14,7 @@ export class Navigation {
   private router: Router;
   private ea: EventAggregator;
   private subscriber: any;
-  private messages: Array<any> = [];
+  private messages: any = {};
   private auth: Object;
   private cookie: Cookie;
   private http: any;
@@ -31,7 +31,7 @@ export class Navigation {
     this.notificationService = Notification.getInstance();
     this.subscriber = this.ea.subscribe('notification', response => {
       first.messages = response;
-      first.counter = first.messages.filter(item => item.read === false).length;
+      first.counter = first.messages.project.length + first.messages.applications.length + first.messages.messages.length;
     });
     if (this.userService.getCurrentUser()) {
       this.user = this.userService.getCurrentUser();
