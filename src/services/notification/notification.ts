@@ -89,7 +89,7 @@ export class Notification {
         first.messageArray.applications.push(message[0]);
         break;
       case 'job_application_accepted':
-        first.messageArray.applications.push(message[0]);
+        first.messageArray.project.push(message[0]);
         break;
       case 'new_message':
         first.messageArray.messages.push(message[0]);

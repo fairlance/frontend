@@ -2,10 +2,11 @@ export class ProjectStatusValueConverter {
   toView(value) {
 
     let statusList: Array<any> = [
-      {id: 'working', name: 'Working'},
+      {id: 'in_progress', name: 'Working'},
       {id: 'finalizing_terms', name: 'Finalizing Terms'},
-      {id: 'pending', name: 'Pending'},
-      {id: 'canceled', name: 'Canceled'}
+      {id: 'pending_funds', name: 'Pending Funds'},
+      {id: 'done', name: 'Done'},
+      {id: 'pending_finished', name: 'Pending Finish Conformation'}
     ];
     let result = statusList.filter(item => item.id === value);
     if (result.length) {

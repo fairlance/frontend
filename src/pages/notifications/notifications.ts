@@ -37,8 +37,11 @@ export class Notifications {
     this.subscriber.dispose();
   }
 
-  private readMessage(timestamp: number) {
+  private readMessage(message: any, type: string) {
     const first = this;
+    this.messages[type] = this.messages[type].filter(function( obj ) {
+      return obj.timestamp !== message.timestamp;
+    });
     this.ea.publish('notification', this.messages);
     this.notificationService.doSend(JSON.stringify({
       "type": "read",
@@ -51,21 +54,31 @@ export class Notifications {
         "id": first.user.id
       }],
       "data": {
-        "timestamp": timestamp.toString()
+        "timestamp": message.timestamp.toString()
       }
     }));
+    this.goToNotification(message, type);
   }
 
   private goToNotification(message: any, type: string) {
     switch (type) {
       case 'application':
+        this.router.navigateToRoute('application', {
+          id: message.data.jobId,
+          appId: message.data.jobApplication.id
+        });
         break;
       case 'project':
+        this.router.navigateToRoute('project', {
+          id: message.data.project.id
+        });
         break;
       case 'message':
+        this.router.navigateToRoute('project', {
+          id: message.data.projectId
+        });
         break;
     }
-    this.readMessage(message.timestamp);
 
   }
 }

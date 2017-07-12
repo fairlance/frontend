@@ -2,11 +2,12 @@
     <require from="../../resources/value-converters/date-formatter/date-formatter"></require>
     <require from="../../resources/value-converters/timestamp-formatter/timestamp-formatter"></require>
     <require from="../../resources/value-converters/limitTo/limitTo"></require>
+    <!--<require from="../../resources/value-converters/project-status/project-status"></require>-->
 
     <div class="notifications container">
         <article class="row job-applications" if.bind="messages.applications.length">
             <h2 class="">Proposals (${messages.applications.length})</h2>
-            <a click.delegate="goToNotification(message, 'application')" class="notification col-xs-12" repeat.for="message of messages.applications" >
+            <a click.delegate="readMessage(message, 'applications')" class="notification col-xs-12" repeat.for="message of messages.applications" >
                 <span class="title">
                     <i class="material-icons">fiber_manual_record</i>
                     ${message.data.jobApplication.message}
@@ -17,20 +18,21 @@
             </a>
         </article>
         <article class="row project" if.bind="messages.project.length">
-            <h2 class="">Jobs (${messages.project.length})</h2>
-            <a click.delegate="goToNotification(message, 'project')"  class="notification col-xs-12" repeat.for="message of messages.project" >
-                <span class="from">Nancy Lawson</span>
+            <h2 class="">Projects (${messages.project.length})</h2>
+            <a click.delegate="readMessage(message, 'project')"  class="notification col-xs-12" repeat.for="message of messages.project" >
                 <span class="title">
                     <i class="material-icons">fiber_manual_record</i>
-                    Advertise Advertise Advertise
+                    ${message.data.project.name}
                 </span>
-                <span class="details price">Price Est. $245</span>
-                <span class="details delivery">Deliver in 14 days</span>
+                <!--<span class="from">Status: ${message.type | projectStatus}</span>-->
+                <h2 class="status green" if.bind="message.type === 'job_application_accepted'">ACCEPTED</h2>
+                <h2 class="status red" if.bind="message.type === 'project_canceled'">CANCELED</h2>
+                <h2 class="status red" if.bind="message.type === 'project_disputed'">DISPUTED</h2>
             </a>
         </article>
         <article class="row messages" if.bind="messages.messages.length">
             <h2 class="">Messages (${messages.messages.length})</h2>
-            <a  click.delegate="goToNotification(message, 'message')" class="notification col-xs-12" repeat.for="message of messages.messages" >
+            <a  click.delegate="readMessage(message, 'messages')" class="notification col-xs-12" repeat.for="message of messages.messages" >
                 <span class="title">
                     <i class="material-icons">fiber_manual_record</i>
                     ${message.data.message.data.text}
