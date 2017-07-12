@@ -2,6 +2,7 @@ import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 import {json} from 'aurelia-fetch-client';
 import {User} from "../../services/user/user";
+declare let uploadBaseUrl: string;
 
 @inject('AppHttpClient', Router)
 export class Freelancer {
@@ -17,6 +18,7 @@ export class Freelancer {
   private referenceContent: string;
   private imageUrl: string;
   private videoUrl: string;
+  private uploadUrl: string = uploadBaseUrl;
 
   constructor(http, router) {
     this.router = router;
