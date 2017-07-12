@@ -107,11 +107,11 @@ export class Project {
   }
 
   private onOpen(): void {
-    this.writeToScreen('CONNECTED');
+    console.log('CONNECTED');
   }
 
   private onClose() {
-    this.writeToScreen('DISCONNECTED');
+    console.log('DISCONNECTED');
   }
 
   async onMessage(evt) {

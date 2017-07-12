@@ -28,8 +28,12 @@
             </div>
             <div class="main col-xs-12 col-lg-8">
                 <div class="row">
-                    <a class="client-name" route-href="route:client;  params.bind:{id:project.client.id}">${project.client.firstName}
-                        ${project.client.lastName}</a>
+                    <a if.bind="user.type === 'freelancer'" class="client-name" route-href="route:client;  params.bind:{id:project.client.id}">
+                        ${project.client.firstName} ${project.client.lastName}
+                    </a>
+                    <a if.bind="user.type === 'client'" class="client-name" route-href="route:freelancer;  params.bind:{id:project.freelancers[0].id}">
+                        ${project.freelancers[0].firstName} ${project.freelancers[0].lastName}
+                    </a>
 
                     <h1 class="${status[project.status].class}">
                         <i class="material-icons">fiber_manual_record</i>

@@ -40,9 +40,13 @@
               background-color: #FFFDE6;
               width: 100%;
               text-align: center;
+              &.from {
+                display: none;
+              }
             }
             .date {
-              display: none;
+              margin: 0 auto;
+              text-align: center;
             }
           }
           &.left {
@@ -60,12 +64,23 @@
               border-radius: 2px;
               background-color: #B8FDEE;
               text-align: left;
+              &.from {
+                text-align: right;
+              }
             }
           }
           span {
             padding: 8px;
             display: inline-block;
             color: #2D353D;
+            &.from {
+              background: none;
+              display: block;
+              border: none;
+              font-size: 8px;
+              margin: 0;
+              padding: 0;
+            }
           }
           .date {
             color: #2D353D;
@@ -199,6 +214,7 @@
         @media screen and (min-width: 1170px) {
           display: block;
         }
+        z-index: 2;
         &.contract {
           text-align: center;
           margin-left: -20px;
