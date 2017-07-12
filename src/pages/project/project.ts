@@ -148,11 +148,12 @@ export class Project {
     }
   }
 
-  private writeToScreen(message: string) {
+  private writeToScreen(message: string, timestamp?: number) {
     let pre: any = {data: {}, from: {}};
     pre.data.text = message;
     pre.from.username = 'System';
     pre.side = 'center';
+    pre.timestamp = timestamp;
     this.messages.push(pre);
   }
 
@@ -221,22 +222,22 @@ export class Project {
   private parseIncoming(message) {
     switch (message.data.type) {
       case 'project_contract_proposal':
-        this.writeToScreen('New proposal from ' + message.data.user.firstName);
+        this.writeToScreen('New proposal from ' + message.data.user.firstName, message.timestamp);
         this.loadChanges();
         break;
       case 'project_contract_extension_proposal':
         break;
       case 'project_finished_by_freelancer':
-        this.writeToScreen(message.data.user.firstName + ' has finished working on project');
+        this.writeToScreen(message.data.user.firstName + ' has finished working on project', message.timestamp);
         break;
       case 'project_done':
-        this.writeToScreen('Project done!');
+        this.writeToScreen('Project done!', message.timestamp);
         break;
       case 'project_status_changed':
-        this.writeToScreen('Project status is now: ' + message.data.status);
+        this.writeToScreen('Project status is now: ' + message.data.status, message.timestamp);
         break;
       case 'project_contract_accepted':
-        this.writeToScreen('Project accepted by ' + message.data.user.firstName);
+        this.writeToScreen('Project accepted by ' + message.data.user.firstName, message.timestamp);
         break;
     }
   }
