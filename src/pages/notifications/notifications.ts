@@ -61,20 +61,21 @@ export class Notifications {
   }
 
   private goToNotification(message: any, type: string) {
+    const first = this;
     switch (type) {
-      case 'application':
-        this.router.navigateToRoute('application', {
+      case 'applications':
+        first.router.navigateToRoute('application', {
           id: message.data.jobId,
           appId: message.data.jobApplication.id
         });
         break;
       case 'project':
-        this.router.navigateToRoute('project', {
+        first.router.navigateToRoute('project', {
           id: message.data.project.id
         });
         break;
-      case 'message':
-        this.router.navigateToRoute('project', {
+      case 'messages':
+        first.router.navigateToRoute('project', {
           id: message.data.projectId
         });
         break;
