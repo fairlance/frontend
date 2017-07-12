@@ -3,6 +3,7 @@ import {Router} from 'aurelia-router';
 import {json, HttpClient} from 'aurelia-fetch-client';
 import {User} from '../../services/user/user';
 import {Helper} from "../../services/helper/helper";
+import * as $ from 'jquery';
 
 declare let uploadBaseUrl: string;
 
@@ -147,7 +148,7 @@ export class CompleteProfile {
 
   private completeProfile() {
     let profile = {
-      image: this.profilePicture.url,
+      image: this.profilePicture ? this.profilePicture.url : '',
       about: this.description,
       timezone: this.timezone,
       birthdate: this.selectedDay + '-' + this.selectedMonth + '-' + this.selectedYear,
@@ -158,18 +159,25 @@ export class CompleteProfile {
       portfolioItems: this.portfolioItems,
       portfolioLinks: this.portfolioLinks
     };
-    console.log(profile);
     return json(profile);
   }
 
   private async saveProfile() {
+    $('.btn-main').addClass('disabled');
     const first = this;
-    const response = await first.app.fetch(first.user.type + '/' + first.user.id + '/complete_profile', {
-      method: 'post',
-      headers: this.auth,
-      body: first.completeProfile()
-    });
-    let data = await response.json();
-    console.log(data);
+    try {
+      const response = await first.app.fetch(first.user.type + '/' + first.user.id + '/complete_profile', {
+        method: 'post',
+        headers: this.auth,
+        body: first.completeProfile()
+      });
+      let data = await response.json();
+      $('.btn-main').removeClass('disabled');
+      this.router.navigateToRoute(this.user.type, {id: this.user.id});
+    } catch (error) {
+      $('.form-inline').addClass('error');
+      $('.btn-main').removeClass('disabled');
+      console.log(error);
+    }
   }
 }

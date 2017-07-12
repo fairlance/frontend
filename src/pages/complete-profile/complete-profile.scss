@@ -2,6 +2,19 @@
   margin-top: 50px;
   .form-inline {
     margin-bottom: 50px;
+    &.error {
+      .form-group {
+        &.required {
+          label.col-xs-12 {
+            color: #FF594C;
+          }
+          input, textarea, select {
+            border: 1px solid #FF594C;
+            background-color: #FFDBDB;
+          }
+        }
+      }
+    }
     .form-group {
       color: #B3B5B3;
       .col-xs-8 {

@@ -7,7 +7,7 @@
                     <img class="profile-picture" src="${uploadUrl + 'file/' + profilePicture.name}" if.bind="profilePicture">
                     <img class="profile-picture" src="../../assets/images/profile-placeholder.png" if.bind="!profilePicture">
                 </div>
-                <div class="form-group row">
+                <div class="form-group row required">
                     <label for="inputPicture" class="col-xs-12">Add Profile Picture*</label>
                     <div class="col-xs-8">
                         <input type="text" class="form-control" id="inputPicture" placeholder="Attach Picture"
@@ -20,7 +20,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row required">
                     <label class="col-xs-12">About You*</label>
                     <div class="col-xs-12">
                         <textarea class="form-control" rows="3" placeholder="Present yourself, let everyone know who you are and what are you about." value.bind="description"></textarea>
@@ -40,7 +40,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row required">
                     <label class="col-xs-12">Time Zone*</label>
                     <div class="col-xs-12">
                         <select value.bind="timezone" class="form-control">
@@ -79,7 +79,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group row" if.bind="user.type === 'freelancer'">
+                <div class="form-group row required" if.bind="user.type === 'freelancer'">
                     <label class="col-xs-12">PayPal*</label>
                     <div class="col-xs-12">
                         <input type="email" class="form-control" value.bind="payPal" placeholder="Enter your PayPal email">
