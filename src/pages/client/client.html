@@ -56,14 +56,14 @@
             </span>
         </div>
         <section class="about">
-            <h3><a name="about">About ${client.firstName}</a></h3>
+            <h3>About ${client.firstName}</h3>
             <p>
                 ${client.about}
             </p>
         </section>
         <section class="reviews">
             <h3>
-                <a name="reviews">Reviews</a> (${client.reviews.length}) <span>4.7 <i class="material-icons">star</i></span>
+                Reviews (${client.reviews.length}) <span>4.7 <i class="material-icons">star</i></span>
             </h3>
             <section repeat.for="review of client.reviews">
                 <h3>
