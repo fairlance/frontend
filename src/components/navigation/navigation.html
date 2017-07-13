@@ -10,9 +10,6 @@
             <a route-href="route.bind: user.type;  params.bind:{id:user.id}">
                 Profile
             </a>
-            <a route-href="route:applications" if.bind="user.type === 'client'">
-                Applications
-            </a>
             <a class="fairlance-badge" route-href="route:notifications">
                 Notifications
                 <span if.bind="counter > 0">${counter}</span>
