@@ -1,6 +1,7 @@
 import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 import {User} from "../../services/user/user";
+declare let uploadBaseUrl: string;
 
 @inject('AppHttpClient', Router)
 export class Client {
@@ -12,6 +13,7 @@ export class Client {
   private auth: Object;
   private profileId: number;
   private client: Object;
+  private uploadUrl: string = uploadBaseUrl;
 
   constructor(http, router) {
     this.router = router;
