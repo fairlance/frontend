@@ -64,7 +64,7 @@ export class App {
         settings: {roles: ['freelancer', 'client']}
       },
       {
-        route: ['applications', 'applications'],
+        route: ['applications/:id', 'applications/:id'],
         name: 'applications',
         moduleId: PLATFORM.moduleName('pages/applications/applications'),
         title: 'Application overview',

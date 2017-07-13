@@ -37,6 +37,7 @@ export class Projects {
       this.user = this.userService.getCurrentUser();
       this.auth = {'Authorization': 'Bearer ' + this.user.token};
       this.getProjects();
+      this.getJobs();
     } else {
       return;
     }
@@ -73,12 +74,13 @@ export class Projects {
   private async getJobs(): Promise<void> {
     let first = this;
     try {
-      const response = await first.app.fetch('project', {
+      const response = await first.app.fetch('job', {
         method: 'get',
         headers: this.auth
       });
       let data = await response.json();
       first.jobs = data.data;
+      console.log(first.jobs);
     } catch (error) {
       let data = await error.json();
       if (data.error === "Not logged in.") {

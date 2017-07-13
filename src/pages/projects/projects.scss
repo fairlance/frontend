@@ -35,6 +35,18 @@
         }
       }
     }
+    &.job-list {
+      h2 {
+        border-bottom-color: #30C0FF;
+      }
+      a {
+        span {
+          i {
+            color: #30C0FF;
+          }
+        }
+      }
+    }
     h2 {
       font-size: 20px;
       font-weight: 600;

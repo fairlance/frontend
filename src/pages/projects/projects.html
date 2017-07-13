@@ -3,6 +3,16 @@
     <require from="../../resources/value-converters/limitTo/limitTo"></require>
 
     <div class="projects-list col-xs-12">
+        <section class="job-list" if.bind="jobs.length">
+            <h2>Jobs (${jobs.length})</h2>
+            <a route-href="route:applications; params.bind:{id:job.id}" repeat.for="job of jobs">
+                <span class="title" click.delegate="goToApplications(job.id)">
+                    <i class="material-icons">fiber_manual_record</i>
+                    ${job.name}
+                </span>
+                <span class="details">${job.jobApplications.length} Applications</span>
+            </a>
+        </section>
         <section repeat.for="item of projectList | limitTo:projectList.length " class="${item.id}"
                  if.bind="item.list.length">
             <h2>${item.status} (${item.list.length})</h2>

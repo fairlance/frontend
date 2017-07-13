@@ -9,6 +9,7 @@ export class ApplicationOverview {
   private router: Router;
   private user: IUser;
   private userService: User = User.getInstance();
+  private jobId: string;
   private app: HttpClient;
   private auth: Object;
 
@@ -18,10 +19,14 @@ export class ApplicationOverview {
     if (this.userService.getCurrentUser()) {
       this.user = this.userService.getCurrentUser();
       this.auth = {'Authorization': 'Bearer ' + this.user.token};
-      this.getApplications();
     } else {
       return;
     }
+  }
+
+  async activate(params) {
+    this.jobId = params.id;
+    this.getApplications();
   }
 
   private goToApplication(appId: string, jobId: string) {
@@ -33,7 +38,7 @@ export class ApplicationOverview {
 
   async getApplications(): Promise<void> {
     let first = this;
-    const response = await first.app.fetch('job', {
+    const response = await first.app.fetch('job/' + first.jobId, {
       method: 'get',
       headers: this.auth
     });
