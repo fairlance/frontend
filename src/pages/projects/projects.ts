@@ -89,15 +89,6 @@ export class Projects {
     }
   }
 
-  private showModal(): void {
-    this.dialog = document.querySelector('dialog');
-    this.dialog.showModal();
-  }
-
-  private hideModal(): void {
-    this.dialog.close();
-  }
-
   private goToCreateJob(): void {
     this.router.navigateToRoute('create-job');
   }

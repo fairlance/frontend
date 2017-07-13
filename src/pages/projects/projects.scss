@@ -82,33 +82,11 @@
   }
 }
 
-.dialog {
-  border: none;
-  background: transparent;
-  height: 100%;
-  width: 100%;
-  &::backdrop {
-    background: rgba(0, 0, 0, 0.5)
-  }
-  span {
-    position: absolute;
-    bottom: 80px;
-    right: 20px;
-    color: #FFFFFF;
-    font-size: 18px;
-    font-weight: bold;
-  }
-  .add-project {
-    bottom: 10px;
-    background-color: #30C0FF;
-  }
-}
-
 .add-project {
   position: absolute;
   width: 56px;
   height: 56px;
-  background-color: #EC7253;
+  background-color: #FC4529;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.12), 0 6px 6px 0 rgba(0, 0, 0, 0.24), 0 0 12px 0 rgba(0, 0, 0, 0.12), 0 12px 12px 0 rgba(0, 0, 0, 0.24);
   border-radius: 50%;
   bottom: 60px;
@@ -116,5 +94,4 @@
   z-index: 2;
   color: #fff;
   border: none;
-  line-height: 56px;
 }

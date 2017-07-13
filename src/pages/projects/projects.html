@@ -25,12 +25,8 @@
                 <span class="details date">${project.createdAt | dateFormatter}</span>
             </a>
         </section>
-        <button class="add-project" if.bind="user.type === 'client'" click.delegate="showModal()">
+        <button class="add-project" if.bind="user.type === 'client'" click.delegate="goToCreateJob()">
             <i class="material-icons">add</i>
         </button>
     </div>
-    <dialog class="dialog" click.delegate="hideModal()">
-        <span>Create New Job</span>
-        <button class="add-project" click.delegate="goToCreateJob()"><i class="material-icons">add</i></button>
-    </dialog>
 </template>
