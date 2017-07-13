@@ -25,4 +25,8 @@ export class User {
     }
     return this.currentUser;
   }
+
+  public deleteUser(): void {
+    this.currentUser = {};
+  }
 }

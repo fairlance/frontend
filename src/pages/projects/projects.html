@@ -3,21 +3,17 @@
     <require from="../../resources/value-converters/limitTo/limitTo"></require>
 
     <div class="projects-list col-xs-12">
-        <select class="form-control" value.bind="selectFilter">
-            <option value="">All</option>
-            <option repeat.for="status of statusList" value="${status.id}">${status.name}</option>
-        </select>
         <section repeat.for="item of projectList | limitTo:projectList.length " class="${item.id}"
-                 if.bind="((selectFilter === '' || item.id === selectFilter) && item.list.length)">
-            <h3 class="row">${item.status} (${item.list.length})</h3>
-            <ul>
-                <li repeat.for="project of item.list">
-                    <span class="date">${project.createdAt | dateFormatter}</span>
-                    <span class="name" click.delegate="goToProject(project.id)"><i class="material-icons">fiber_manual_record</i>${project.name}</span>
-                    <a route-href="route:client;  params.bind:{id:project.client.id}">${project.client.firstName}
-                        ${project.client.lastName}</a>
-                </li>
-            </ul>
+                 if.bind="item.list.length">
+            <h2>${item.status} (${item.list.length})</h2>
+            <a repeat.for="project of item.list">
+                <span class="title" click.delegate="goToProject(project.id)">
+                    <i class="material-icons">fiber_manual_record</i>
+                    ${project.name}
+                </span>
+                <span class="from">${project.client.firstName} ${project.client.lastName}</span>
+                <span class="details date">${project.createdAt | dateFormatter}</span>
+            </a>
         </section>
         <button class="add-project" if.bind="user.type === 'client'" click.delegate="showModal()">
             <i class="material-icons">add</i>

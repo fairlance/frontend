@@ -7,6 +7,7 @@ import {Helper} from "../../services/helper/helper";
 @inject('AppHttpClient', 'SearchHttpClient', Router, Element, Helper)
 export class Projects {
   private projects: Array<any> = [];
+  private jobs: Array<any> = [];
   private router: Router;
   private helper: Helper;
   private user: IUser;
@@ -45,7 +46,7 @@ export class Projects {
     this.router.navigateToRoute('project', {id: id}, {replace: true});
   }
 
-  async getProjects(): Promise<void> {
+  private async getProjects(): Promise<void> {
     let first = this;
     try {
       const response = await first.app.fetch('project', {
@@ -67,6 +68,23 @@ export class Projects {
         'id': status.id
       });
     });
+  }
+
+  private async getJobs(): Promise<void> {
+    let first = this;
+    try {
+      const response = await first.app.fetch('project', {
+        method: 'get',
+        headers: this.auth
+      });
+      let data = await response.json();
+      first.jobs = data.data;
+    } catch (error) {
+      let data = await error.json();
+      if (data.error === "Not logged in.") {
+        first.router.navigate('login');
+      }
+    }
   }
 
   private showModal(): void {

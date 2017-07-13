@@ -42,21 +42,22 @@ export class Navigation {
     }
   }
 
-  private async deleteProfile(): Promise<void> {
-    let first = this;
-    try {
-      const response = await first.http.fetch('freelancer/4', {
-        method: 'delete',
-        headers: this.auth
-      });
-      let data = await response.json();
-      console.log(data);
-    } catch (error) {
-      // console.log(error);
-    }
-  }
+  // private async deleteProfile(): Promise<void> {
+  //   let first = this;
+  //   try {
+  //     const response = await first.http.fetch('freelancer/4', {
+  //       method: 'delete',
+  //       headers: this.auth
+  //     });
+  //     let data = await response.json();
+  //     console.log(data);
+  //   } catch (error) {
+  //     // console.log(error);
+  //   }
+  // }
 
   logout() {
+    this.userService.deleteUser();
     this.cookie.remove('fairlance');
     this.router.navigate('login');
   }
