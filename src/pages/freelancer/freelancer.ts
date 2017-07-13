@@ -45,7 +45,7 @@ export class Freelancer {
       });
       let data = await response.json();
       this.freelancer = data.data;
-      console.log(this.freelancer, location);
+      this.freelancer.image = this.uploadUrl + this.freelancer.image;
     } catch (error) {
       let data = await error.json();
       if (data.error === "Not logged in.") {

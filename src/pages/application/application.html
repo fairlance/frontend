@@ -17,7 +17,7 @@
                 </label>
                 <div class="row">
                     <section class="col-xs-6" repeat.for="attachment of attachments  | limitTo:attachments.length">
-                        <img src="${uploadUrl + 'file/' + attachment.name}">
+                        <img src.bind="uploadUrl + 'file/' + attachment.name">
                         <div class="review-desc">
                             <div>
                                 <h4>${attachment.name}</h4>

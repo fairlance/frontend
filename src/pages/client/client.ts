@@ -12,7 +12,7 @@ export class Client {
   private http: any;
   private auth: Object;
   private profileId: number;
-  private client: Object;
+  private client: any;
   private uploadUrl: string = uploadBaseUrl;
 
   constructor(http, router) {
@@ -40,6 +40,7 @@ export class Client {
       });
       let data = await response.json();
       this.client = data.data;
+      this.client.image = this.uploadUrl + this.client.image;
     } catch (error) {
       let data = await error.json();
       if (data.error === "Not logged in.") {
