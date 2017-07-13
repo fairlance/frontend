@@ -4,37 +4,61 @@
     <div class="profile container">
         <div class="profile-header clearfix row">
             <div class="container">
-                <img src="../../assets/images/client.jpg">
+                <img src="${uploadUrl + client.image}">
                 <section>
                     <h3>${client.firstName} ${client.lastName}</h3>
                     <p class="available"><i class="material-icons">fiber_manual_record</i>Available</p>
-                    <p>Timezone <span>${client.timezone}</span></p>
+                    <p class="timezone">Timezone  <select value.bind="client.timezone" disabled="disabled" class="">
+                        <option value="-12.0">(GMT -12:00)</option>
+                        <option value="-11.0">(GMT -11:00)</option>
+                        <option value="-10.0">(GMT -10:00)</option>
+                        <option value="-9.0">(GMT -9:00)</option>
+                        <option value="-8.0">(GMT -8:00)</option>
+                        <option value="-7.0">(GMT -7:00)</option>
+                        <option value="-6.0">(GMT -6:00)</option>
+                        <option value="-5.0">(GMT -5:00)</option>
+                        <option value="-4.0">(GMT -4:00)</option>
+                        <option value="-3.5">(GMT -3:30)</option>
+                        <option value="-3.0">(GMT -3:00)</option>
+                        <option value="-2.0">(GMT -2:00)</option>
+                        <option value="-1.0">(GMT -1:00)</option>
+                        <option value="0.0">(GMT +0:00)</option>
+                        <option value="1.0">(GMT +1:00)</option>
+                        <option value="2.0">(GMT +2:00)</option>
+                        <option value="3.0">(GMT +3:00)</option>
+                        <option value="3.5">(GMT +3:30)</option>
+                        <option value="4.0">(GMT +4:00)</option>
+                        <option value="4.5">(GMT +4:30)</option>
+                        <option value="5.0">(GMT +5:00)</option>
+                        <option value="5.5">(GMT +5:30)</option>
+                        <option value="5.75">(GMT +5:45)</option>
+                        <option value="6.0">(GMT +6:00)</option>
+                        <option value="7.0">(GMT +7:00)</option>
+                        <option value="8.0">(GMT +8:00)</option>
+                        <option value="9.0">(GMT +9:00)</option>
+                        <option value="9.5">(GMT +9:30)</option>
+                        <option value="10.0">(GMT +10:00)</option>
+                        <option value="11.0">(GMT +11:00)</option>
+                        <option value="12.0">(GMT +12:00)</option>
+                    </select></p>
                 </section>
             </div>
         </div>
         <div class="numbers">
             <span>
-                4.7 <i class="material-icons">star</i>
+                ${client.rating} <i class="material-icons">star</i>
             </span>
             <span>
-                ${client.projects.length} <a>Projects</a>
+                ${client.projects.length} Projects
             </span>
             <span>
-                ${client.reviews.length} <a>Reviews</a>
+                ${client.reviews.length} Reviews
             </span>
         </div>
-        <ul class="">
-            <li>
-                <a href="#about">About</a>
-            </li>
-            <li>
-                <a href="#reviews">Reviews (${client.reviews.length})</a>
-            </li>
-        </ul>
         <section class="about">
             <h3><a name="about">About ${client.firstName}</a></h3>
             <p>
-                It’s that time again when people start thinking about their New Years Resolutions. Usually they involve, losing weight, quitting smoking, and joining a gym, just to mention a few.
+                ${client.about}
             </p>
         </section>
         <section class="reviews">

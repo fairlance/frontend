@@ -8,7 +8,7 @@
                 <section>
                     <h3>${freelancer.firstName} ${freelancer.lastName}</h3>
                     <p class="available"><i class="material-icons">fiber_manual_record</i>Available</p>
-                    <p>Timezone  <select value.bind="freelancer.timezone" disabled="disabled" class="">
+                    <p class="timezone">Timezone  <select value.bind="freelancer.timezone" disabled="disabled" class="">
                         <option value="-12.0">(GMT -12:00)</option>
                         <option value="-11.0">(GMT -11:00)</option>
                         <option value="-10.0">(GMT -10:00)</option>
@@ -41,7 +41,6 @@
                         <option value="11.0">(GMT +11:00)</option>
                         <option value="12.0">(GMT +12:00)</option>
                     </select></p>
-
                 </section>
             </div>
         </div>
@@ -50,38 +49,33 @@
                 ${freelancer.rating} <i class="material-icons">star</i>
             </span>
             <span>
-                ${freelancer.projects.length} <a>Projects</a>
+                ${freelancer.projects.length} Projects
             </span>
             <span>
-                ${freelancer.reviews.length} <a>Reviews</a>
+                ${freelancer.reviews.length} Reviews
             </span>
         </div>
         <section class="about">
-            <h3><a name="about">About ${freelancer.firstName}</a></h3>
+            <h3>About ${freelancer.firstName}</h3>
             <p>
                 ${freelancer.about}
             </p>
         </section>
         <section class="portfolio">
-            <h3><a name="portfolio">Portfolio (${freelancer.projects.length})</a></h3>
+            <h3>Portfolio (${freelancer.projects.length})</h3>
             <div class="row">
-                <section class="col-xs-6" repeat.for="project of freelancer.portfolioItems">
+                <section class="col-xs-6" repeat.for="project of freelancer.portfolioItems" if.bind="project.url">
                     <img src="${uploadUrl + project.url}">
-                    <div class="review-desc">
-                        <div>
-                            <h4>${project.name}</h4>
-                        </div>
-                    </div>
                 </section>
             </div>
         </section>
         <section class="reviews">
             <h3>
-                <a name="reviews">Reviews</a> (${freelancer.reviews.length}) <span>4.7 <i class="material-icons">star</i></span>
+                Reviews (${freelancer.reviews.length}) <span>${freelancer.rating} <i class="material-icons">star</i></span>
             </h3>
             <section repeat.for="review of freelancer.reviews">
                 <h3>
-                    Ora Montgomery
+                    ${review.name}
                     <span class="rating">${review.rating} <i class="material-icons">star</i></span>
                     <span class="date">${review.createdAt | dateFormatter}</span>
                 </h3>
@@ -90,6 +84,5 @@
                 </p>
             </section>
         </section>
-        <button class="add-reference"><i class="material-icons">add</i></button>
     </div>
 </template>

@@ -40,8 +40,9 @@ export class CompleteProfile {
 
 
   constructor(app, upload, router, helper) {
+    let date = new Date();
     const fromYear: number = 1901;
-    const toYear: number = 2000;
+    const toYear: number = date.getFullYear() - 16;
     this.router = router;
     this.upload = upload;
     this.app = app;

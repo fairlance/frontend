@@ -5,42 +5,42 @@
   height: 100%;
   color: #6D849D;
   .profile-header {
-    background-color: #F0F0F0;
-    height: 130px;
+    height: 112px;
     img {
-      width: 90px;
-      height: 90px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
       float: left;
-      margin-right: 30px;
       margin-top: 15px;
       object-fit: cover;
     }
     section {
       float: left;
       margin-top: 15px;
+      color: #2D353D;
       h3 {
-        font-size: 18px;
-        font-weight: bold;
-        line-height: 23px;
-        color: #2D353D;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 24px;
         margin: 0;
       }
       p {
         &.available {
-          margin-top: 10px;
-          color: #8CBFFA;
+          margin-top: 8px;
+          font-size: 16px;
+          line-height: 24px;
+          margin-bottom: 0;
           i {
             color: #50E3C3;
-            font-size: 20px;
+            font-size: 12px;
             float: left;
-            margin-top: -4px;
+            margin-top: 5px;
+            margin-right: 8px;
           }
         }
-        &.rate {
-          span {
-            color: #8CBFFA;
-          }
+        &.timezone {
+          font-size: 12px;
+          line-height: 16px;
         }
         select {
           border: none;
@@ -50,50 +50,35 @@
     }
   }
   .numbers {
-    background-color: #FBFAFA;
-    height: 40px;
+    height: 32px;
+    border-bottom: 1px solid #D7DCE1;
     span {
       color: #2D353D;
-      text-transform: uppercase;
-      line-height: 40px;
       float: left;
-      &:first-child {
-        margin-right: 55px;
-      }
-      &:last-child {
-        float: right;
-        margin-right: 10px;
-      }
+      display: inline-block;
+      margin-right: 8px;
+      font-size: 16px;
+      line-height: 24px;
       i {
         color: #FDC228;
         font-size: 20px;
         position: relative;
-        top: 5px;
-      }
-    }
-  }
-  ul {
-    li {
-      height: 50px;
-      border-bottom: 1px solid #D7DCE1;
-      a {
-        line-height: 50px;
-        font-size: 15px;
-        color: inherit;
+        top: 4px;
       }
     }
   }
   > section {
     margin: 0;
+    color: #2D353D;
     h3 {
-      a {
-        color: inherit;
-      }
-      font-size: 18px;
-      font-weight: bold;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 24px;
+      color: #2D353D;
     }
     p {
-      font-style: italic;
+      font-size: 12px;
+      line-height: 16px;
     }
     &.portfolio {
       section {
@@ -183,7 +168,7 @@
     width: 56px;
     height: 56px;
     background-color: #EC7253;
-    box-shadow: 0 0 6px 0 rgba(0,0,0,0.12), 0 6px 6px 0 rgba(0,0,0,0.24), 0 0 12px 0 rgba(0,0,0,0.12), 0 12px 12px 0 rgba(0,0,0,0.24);
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.12), 0 6px 6px 0 rgba(0, 0, 0, 0.24), 0 0 12px 0 rgba(0, 0, 0, 0.12), 0 12px 12px 0 rgba(0, 0, 0, 0.24);
     border-radius: 50%;
     bottom: 15px;
     right: 15px;

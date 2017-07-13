@@ -35,6 +35,7 @@ export class Project {
   private contractUpdate: boolean = false;
   private contractWaiting: boolean = false;
   private disableFields: boolean = false;
+  private deliverables: Array<any>;
 
   private status: any = {
     finalizing_terms: {
@@ -173,6 +174,7 @@ export class Project {
         body: form
       });
       let data = await response.json();
+      first.deliverables.push(data.data);
       console.log(data);
     } catch (error) {
       console.log(error);
