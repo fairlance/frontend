@@ -48,15 +48,6 @@ export class Jobs {
     }
   }
 
-  attached() {
-    this.tagInput = this.element.querySelector('#add_tag');
-    this.tagInput.addEventListener('keyup', this.typeAhead);
-  }
-
-  detached() {
-    this.tagInput.removeEventListener('keyup', this.typeAhead);
-  }
-
   private addTag(name: string): void {
     if (this.selectedTags.length < 5) {
       this.selectedTags.push({

@@ -1,84 +1,31 @@
 <template>
     <require from="../../resources/value-converters/date-formatter/date-formatter"></require>
 
-    <div class="filters">
-        <h3>to be continued</h3>
-    </div>
     <main class="jobs">
-        <div class="search-init clearfix" click.delegate="toggleSearch()" show.bind="!visibleSearch">
-            <span>Search setup</span>
-            <i class="material-icons">search</i>
-        </div>
-        <div class="search-dropdown clearfix" show.bind="visibleSearch">
-            <p class="header">
-                Search setup
-                <i class="material-icons" click.delegate="toggleSearch()">close</i>
-            </p>
-            <section class="tags clearfix">
-                <form class="" role="form">
-                    <div>
-                        <input type="text" id="add_tag" value.bind="newTag" autocomplete="off">
-                        <label for="add_tag">Add tag_</label>
-                        <ul for="add_tag">
-                            <li repeat.for="tag of visibleTags" click.delegate="addTag(tag)">${tag}</li>
-                        </ul>
-                    </div>
-
-                </form>
-                <span repeat.for="tag of selectedTags" class="tag">
-                            #${tag.name}
-                            <i class="material-icons" click.delegate="deleteTag($index)">close</i>
-                        </span>
-            </section>
-            <section class="budget clearfix">
-                <span>BUDGET</span>
-                <div>
-                    <input type="text" id="price_from" value.bind="priceFrom"
-                           autocomplete="off">
-                    <label for="price_from">Price from</label>
-                </div>
-                <span>to</span>
-                <div>
-                    <input type="text" id="price_to" value.bind="priceTo" autocomplete="off">
-                    <label for="price_to">Price to</label>
-                </div>
-            </section>
-            <section class="time-frame clearfix">
-                <span>Starts:</span>
-                <label repeat.for="period of periodOptions" for="radio + ${period.value}">
-                    <input checked id="radio + ${period.value}" name="flash" type="radio" model.bind="period"
-                           checked.bind="$parent.period">
-                    <span>${period.name}</span>
-                </label>
-            </section>
-            <button click.delegate="applyFilters()">
-                Apply
-            </button>
-        </div>
-        <div class="page-content">
+        <div class="page-content container">
             <div repeat.for="job of jobs" class="job">
                 <p class="job-header">
-                    <a route-href="route:client;  params.bind:{id:job['client.id']}">${job['client.firstName']} ${job['client.lastName']}</a>
+                    <a route-href="route:client;  params.bind:{id:job['client.id']}">
+                        ${job['client.firstName']} ${job['client.lastName']}
+                    </a>
                     <span>
                         ${job['client.rating']}
                         <i class="material-icons">star</i>
                     </span>
-                    <span class="date">${job.createdAt | dateFormatter}</span>
                 </p>
-                <h2 class="">
-                    <a route-href="route:job; params.bind:{id:job.id}">
+                <a route-href="route:job; params.bind:{id:job.id}" >
+                    <h2 class="">
+                        <span class="date">${job.createdAt | dateFormatter}</span>
                         <strong>${job.price}€</strong> ${job.name}
-                    </a>
-                </h2>
-                <p class="job-description">
+                    </h2>
+                    <span class="job-description">
                     ${job.summary}
-                    <a route-href="route:job; params.bind:{id:job.id}">Read more</a>
-                </p>
-                <p class="job-footer clearfix">
-                    <span>17 proposals</span>
-                    <span>2 days left</span>
-                    <a><i class="material-icons">visibility</i> Watch Project</a>
-                </p>
+                </span>
+                    <p class="job-footer clearfix">
+                        <span>Deadline: ${job.deadline | dateFormatter}</span>
+                    </p>
+                </a>
+
             </div>
         </div>
     </main>

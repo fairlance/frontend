@@ -69,7 +69,7 @@
                     <div class="desc">${project.description}</div>
                 </section>
                 <section class="col-xs-6" repeat.for="project of freelancer.portfolioLinks" if.bind="project.url">
-                    <a target="_blank" href="${project.link}" class="placeholder"><i class="material-icons">link</i></a>
+                    <a target="_blank" href="${project.url}" class="placeholder"><i class="material-icons">link</i></a>
                     <div class="desc">${project.description}</div>
                 </section>
             </div>
