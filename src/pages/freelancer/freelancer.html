@@ -62,10 +62,15 @@
             </p>
         </section>
         <section class="portfolio">
-            <h3>Portfolio (${freelancer.projects.length})</h3>
+            <h3>Portfolio (${freelancer.portfolioItems.length + freelancer.portfolioLinks.length})</h3>
             <div class="row">
                 <section class="col-xs-6" repeat.for="project of freelancer.portfolioItems" if.bind="project.url">
                     <img src="${uploadUrl + project.url}">
+                    <div class="desc">${project.description}</div>
+                </section>
+                <section class="col-xs-6" repeat.for="project of freelancer.portfolioLinks" if.bind="project.url">
+                    <a target="_blank" href="${project.link}" class="placeholder"><i class="material-icons">link</i></a>
+                    <div class="desc">${project.description}</div>
                 </section>
             </div>
         </section>

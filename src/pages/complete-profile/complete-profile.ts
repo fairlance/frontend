@@ -148,6 +148,12 @@ export class CompleteProfile {
   }
 
   private completeProfile() {
+    this.portfolioLinks = this.portfolioLinks.filter(function( obj ) {
+      return obj.url !=='';
+    });
+    this.portfolioItems = this.portfolioItems.filter(function( obj ) {
+      return obj.url !=='';
+    });
     let profile = {
       image: this.profilePicture ? this.profilePicture.url : '',
       about: this.description,

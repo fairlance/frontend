@@ -81,7 +81,6 @@
     }
     &.portfolio {
       section {
-        height: 140px;
         position: relative;
         margin: 0 0 10px;
         &:nth-child(odd) {
@@ -94,6 +93,31 @@
           height: 140px;
           width: 100%;
           object-fit: cover;
+        }
+        .desc {
+          border: 1px solid #CECECE;
+          border-radius: 3px;
+          margin-top: 8px;
+          padding: 4px;
+        }
+        .placeholder {
+          height: 140px;
+          width: 100%;
+          background-color: #B3B5B3;
+          position: relative;
+          display: block;
+          color: #fff;
+          i {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            font-size: 80px;
+            margin: auto;
+          }
         }
         .review-desc {
           position: relative;

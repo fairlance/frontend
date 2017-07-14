@@ -57,9 +57,9 @@ export class Navigation {
   // }
 
   logout() {
-    this.user = {};
     this.userService.deleteUser();
     this.cookie.remove('fairlance');
+    this.user = {};
     this.router.navigate('login');
   }
 
