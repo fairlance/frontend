@@ -45,6 +45,8 @@ export class Client {
       let data = await error.json();
       if (data.error === "Not logged in.") {
         first.router.navigate('login');
+      } else {
+        first.router.navigateToRoute('client', {id: first.user.id})
       }
     }
   }

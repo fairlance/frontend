@@ -50,6 +50,8 @@ export class Freelancer {
       let data = await error.json();
       if (data.error === "Not logged in.") {
         first.router.navigate('login');
+      } else {
+        first.router.navigateToRoute('freelancer', {id: first.user.id})
       }
     }
   }
