@@ -44,6 +44,11 @@
         select {
           border: none;
           background: none;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          &::-ms-expand {
+            display: none;
+          }
         }
       }
     }
