@@ -22,7 +22,7 @@
                     ${job.summary}
                 </span>
                     <p class="job-footer clearfix">
-                        <span>Deadline: ${job.deadline | dateFormatter}</span>
+                        <span>${job.deadline | daysLeft} Days Left</span>
                     </p>
                 </a>
 
