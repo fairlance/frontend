@@ -5,7 +5,7 @@ import {User} from '../../services/user/user';
 
 @inject('AppHttpClient', Router)
 export class ApplicationOverview {
-  private jobs = [];
+  private job: any;
   private router: Router;
   private user: IUser;
   private userService: User = User.getInstance();
@@ -29,13 +29,6 @@ export class ApplicationOverview {
     this.getApplications();
   }
 
-  private goToApplication(appId: string, jobId: string) {
-    this.router.navigateToRoute('application', {
-      id: jobId,
-      appId: appId
-    });
-  }
-
   async getApplications(): Promise<void> {
     let first = this;
     const response = await first.app.fetch('job/' + first.jobId, {
@@ -43,6 +36,8 @@ export class ApplicationOverview {
       headers: this.auth
     });
     let data = await response.json();
-    first.jobs = data.data;
+    first.job = data.data;
+    console.log(first.job);
+
   }
 }

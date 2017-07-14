@@ -3,32 +3,24 @@
     <require from="../../components/navigation/navigation"></require>
 
     <navigation user.bind="user"></navigation>
-    <div class="filters">
-        <h3>to be continued</h3>
-    </div>
-    <main class="applications">
+    <main class="applications container">
         <div class="page-content">
-            <div repeat.for="job of jobs">
-                <h3>${job.name}</h3>
-                <div repeat.for="application of job.jobApplications" class="job">
-                    <p class="job-header">
-                        <a route-href="route:client;  params.bind:{id:user.id}">Freelancer name</a>
-                        <span>
-                            freelancer rating
-                            <i class="material-icons">star</i>
-                        </span>
-                        <span class="date">${application.createdAt | dateFormatter}</span>
-                    </p>
-                    <p class="job-description">
-                        ${application.message}
-                        <a click.delegate="goToApplication(application.id, job.id)">Read more</a>
-                    </p>
-                    <p class="job-footer clearfix">
-                        <span>${application.attachments.length} attachments</span>
-                        <a><i class="material-icons">delete</i> Dismiss</a>
-                    </p>
+            <h2>
+                <i class="material-icons">fiber_manual_record</i>
+                ${job.name}
+                <span>(${job.jobApplications.length})</span>
+            </h2>
+            <a route-href="route:application; params.bind:{id: job.id, appId: application.id}" repeat.for="application of job.jobApplications" class="job">
+                <div class="row">
+                    <div class="col-xs-12">${application.title}Advertise Advertise Advertise</div>
+                    <div class="body col-xs-3">${application.hours * application.hourPrice}€</div>
+                    <div class="body col-xs-9">${application.freelancer.firstName} ${application.freelancer.lastName}</div>
+                    <div class="details col-xs-3">${application.hours} hours</div>
+                    <div class="details col-xs-4">delivery in XY days</div>
+                    <div class="details col-xs-2">${application.freelancer.rating}<i class="material-icons">star</i></div>
+                    <div class="details col-xs-3">${application.freelancer_num_projects} jobs</div>
                 </div>
-            </div>
+            </a>
         </div>
     </main>
 </template>

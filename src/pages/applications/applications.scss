@@ -2,92 +2,55 @@
   margin-top: 50px;
   height: 100%;
   overflow-y: auto;
-  padding-bottom: 140px;
-  h3 {
-    text-align: center;
+  position: relative;
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    border-bottom: 1px solid #30C0FF;
+    padding-left: 20px;
+    padding-bottom: 8px;
+    position: relative;
+    i {
+      font-size: 12px;
+      position: absolute;
+      left: 0;
+      top: 6px;
+      color: #30C0FF;
+    }
+    span {
+      font-size: 12px;
+      line-height: 16px;
+    }
   }
   .job {
-    height: 150px;
-    padding: 0 15px;
-    border-bottom: 1px solid #90C2FB;
+    border-bottom: 1px solid #D7DCE1;
     position: relative;
-    .job-header {
-      height: 30px;
-      font-size: 12px;
-      font-weight: 200;
-      line-height: 15px;
-      padding-top: 10px;
-      a {
-        color: #8CBFFA;
-        text-decoration: underline;
-        margin-right: 5px;
+    text-decoration: none;
+    color: #2D353D;
+    display: block;
+    padding-bottom: 16px;
+    div {
+      font-size: 16px;
+      line-height: 24px;
+      &.body {
+        margin-top: 8px;
       }
-      span {
-        color: #6D849D;
-        &.date {
-          float: right;
-        }
+      &.details {
+        margin-top: 8px;
+        font-size: 12px;
+        line-height: 16px;
+        position: relative;
+        padding-right: 0;
         i {
           font-size: 14px;
-          color: #FEDA9B;
-          line-height: 12px;
+          color: #FDC228;
           position: relative;
           top: 2px;
-        }
-      }
-
-    }
-    h2 {
-      font-size: 15px;
-      font-weight: 500;
-      line-height: 19px;
-      color: #6D849D;
-      margin: 0;
-    }
-    .job-description {
-      margin-top: 10px;
-      height: 45px;
-      font-size: 12px;
-      font-weight: 200;
-      line-height: 15px;
-      color: #6D849D;
-      overflow: hidden;
-      margin-bottom: 6px;
-      position: relative;
-      a {
-        padding-left: 5px;
-        text-decoration: underline;
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        background-color: #fff;
-      }
-
-    }
-    .job-footer {
-      height: 30px;
-      position: relative;
-      bottom: 0;
-      margin: 0;
-      padding-top: 5px;
-      font-size: 12px;
-      font-weight: 200;
-      line-height: 15px;
-      color: #6D849D;
-      span {
-        margin-right: 15px;
-      }
-      a {
-        color: inherit;
-        float: right;
-        position: relative;
-        i {
-          font-size: 16px;
-          position: absolute;
-          left: -20px;
-          top: -3px;
+          line-height: 8px;
         }
       }
     }
+
   }
 }

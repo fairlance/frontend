@@ -15,10 +15,6 @@ export class Projects {
   private app: any;
   private search: any;
   private auth: Object;
-  private selectFilter: string = '';
-  private dialog: any;
-  private name: string;
-  private description: string;
   private statusList: Array<any> = [
     {id: 'in_progress', name: 'Working'},
     {id: 'finalizing_terms', name: 'Finalizing Terms'},
@@ -37,7 +33,9 @@ export class Projects {
       this.user = this.userService.getCurrentUser();
       this.auth = {'Authorization': 'Bearer ' + this.user.token};
       this.getProjects();
-      this.getJobs();
+      if (this.user.type === 'client') {
+        this.getJobs();
+      }
     } else {
       return;
     }

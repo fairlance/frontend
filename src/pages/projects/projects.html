@@ -6,7 +6,7 @@
         <section class="job-list" if.bind="jobs.length">
             <h2>Jobs (${jobs.length})</h2>
             <a route-href="route:applications; params.bind:{id:job.id}" repeat.for="job of jobs">
-                <span class="title" click.delegate="goToApplications(job.id)">
+                <span class="title">
                     <i class="material-icons">fiber_manual_record</i>
                     ${job.name}
                 </span>
