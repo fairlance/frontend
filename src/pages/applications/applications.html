@@ -10,7 +10,7 @@
                 ${job.name}
                 <span>(${job.jobApplications.length})</span>
             </h2>
-            <a route-href="route:application; params.bind:{id: job.id, appId: application.id}" repeat.for="application of job.jobApplications" class="job">
+            <a route-href="route:application-preview; params.bind:{id: job.id, appId: application.id}" repeat.for="application of job.jobApplications" class="job">
                 <div class="row">
                     <div class="col-xs-12">${application.title}Advertise Advertise Advertise</div>
                     <div class="body col-xs-3">${application.hours * application.hourPrice}€</div>

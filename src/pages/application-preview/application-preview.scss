@@ -1,0 +1,77 @@
+.application-preview {
+  margin-top: 50px;
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    border-bottom: 1px solid #30C0FF;
+    padding-left: 20px;
+    padding-bottom: 8px;
+    position: relative;
+    i {
+      font-size: 12px;
+      position: absolute;
+      left: 0;
+      top: 6px;
+      color: #30C0FF;
+    }
+    span {
+      font-size: 12px;
+      line-height: 16px;
+    }
+  }
+  .job {
+    border-bottom: 1px solid #D7DCE1;
+    position: relative;
+    text-decoration: none;
+    color: #2D353D;
+    display: block;
+    padding-bottom: 16px;
+    div {
+      font-size: 16px;
+      line-height: 24px;
+      &.body {
+        margin-top: 8px;
+      }
+      &.details {
+        margin-top: 8px;
+        font-size: 12px;
+        line-height: 16px;
+        position: relative;
+        padding-right: 0;
+        i {
+          font-size: 14px;
+          color: #FDC228;
+          position: relative;
+          top: 2px;
+          line-height: 8px;
+        }
+      }
+    }
+  }
+  article {
+    h1 {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 24px;
+    }
+    p {
+      font-size: 12px;
+      line-height: 16px;
+    }
+  }
+  button.btn {
+    text-align: center;
+    margin: 0 auto 20px;
+    width: 192px;
+    clear: both;
+    color: #ffffff;
+    border: none;
+    background-color: #30C0FF;
+    display: block;
+    &.discard {
+      background-color: #FC4529;
+    }
+  }
+
+}

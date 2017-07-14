@@ -1,0 +1,46 @@
+<template>
+    <require from="../../components/navigation/navigation"></require>
+    <navigation user.bind="user"></navigation>
+    <div class="application-preview container">
+        <h2>
+            <i class="material-icons">fiber_manual_record</i>
+            ${job.name}
+            <span>(${job.jobApplications.length})</span>
+        </h2>
+        <a class="job">
+            <div class="row">
+                <div class="col-xs-12">${application.title}Advertise Advertise Advertise</div>
+                <div class="body col-xs-3">${application.hours * application.hourPrice}€</div>
+                <div class="body col-xs-9">${application.freelancer.firstName} ${application.freelancer.lastName}</div>
+                <div class="details col-xs-3">${application.hours} hours</div>
+                <div class="details col-xs-4">delivery in XY days</div>
+                <div class="details col-xs-2">${application.freelancer.rating}<i class="material-icons">star</i></div>
+                <div class="details col-xs-3">${application.freelancer_num_projects} jobs</div>
+            </div>
+        </a>
+        <article>
+            <h1>
+                Why Me
+            </h1>
+            <p>
+                ${application.message}
+            </p>
+        </article>
+        <article>
+            <h1>
+                My Solution
+            </h1>
+            <p>
+                ${application.solution}
+            </p>
+        </article>
+        <article>
+            <h1>
+                Work Samples
+            </h1>
+
+        </article>
+        <button class="btn btn-default" click.delegate="proceed()">Proceed</button>
+        <button class="btn btn-default discard">Discard</button>
+    </div>
+</template>
