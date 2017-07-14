@@ -153,6 +153,9 @@
         height: 60px;
         line-height: 60px;
         margin: 0;
+        &.gray {
+          color: #D7DCE1;
+        }
         > span {
           font-size: 14px;
           font-weight: normal;
