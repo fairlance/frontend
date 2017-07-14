@@ -15,7 +15,7 @@
     }
     section {
       float: left;
-      margin-top: 15px;
+      margin-top: 16px;
       color: #2D353D;
       h3 {
         font-size: 20px;
@@ -74,6 +74,10 @@
   > section {
     margin: 0;
     color: #2D353D;
+    border-bottom: 1px solid #D7DCE1;
+    &:last-child {
+      border: none;
+    }
     h3 {
       font-size: 20px;
       font-weight: 600;
