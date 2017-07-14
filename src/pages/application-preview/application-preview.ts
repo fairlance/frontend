@@ -63,19 +63,4 @@ export class ApplicationPreview {
     }
   }
 
-  private async proceed(): Promise<void> {
-    let first = this;
-    try {
-      const response = await first.app.fetch('/project/create_from_job_application/' + first.appId, {
-        method: 'post',
-        headers: first.auth
-      });
-      let data = await response.json();
-      this.router.navigateToRoute('project', {id: data.data.id}, {replace: true});
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
 }
