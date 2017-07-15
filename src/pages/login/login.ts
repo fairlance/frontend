@@ -35,7 +35,7 @@ export class Login {
   }
 
   private setCookie(data: any): void {
-    this.cookie.set('fairlance', data, 1);
+    this.cookie.set('fairlance', data, 8);
 
   }
 

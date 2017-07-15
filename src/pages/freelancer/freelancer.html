@@ -75,7 +75,7 @@
             </div>
         </section>
         <section class="reviews">
-            <h3>
+            <h3 class.bind="freelancer.reviews.length ? '' : 'gray'">
                 Reviews (${freelancer.reviews.length}) <span>${freelancer.rating} <i class="material-icons">star</i></span>
             </h3>
             <section repeat.for="review of freelancer.reviews">

@@ -8,11 +8,11 @@ export class Cookie {
     return Cookie.instance;
   }
 
-  public set(name: string, value: any, days: number): void {
+  public set(name: string, value: any, hours: number): void {
     let expires = "";
-    if (days) {
+    if (hours) {
       var date = new Date();
-      date.setTime(date.getTime() + (days*24*60*60*1000));
+      date.setTime(date.getTime() + (hours*60*60*1000));
       expires = "; expires=" + date.toUTCString();
     }
     document.cookie = name + "=" + JSON.stringify(value) + expires + "; path=/";
