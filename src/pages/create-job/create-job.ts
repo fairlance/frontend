@@ -27,7 +27,7 @@ export class CreateJob {
   private uploadUrl: string = uploadBaseUrl;
   private attachedItems: Array<any> = [{url: '', description: '', name: ''}];
   private attachedLinks: Array<any> = [{url: '', description: '', name: ''}];
-  private flexibility: number = 0;
+  private flexibility: string = '0';
   private deadline: string;
 
 
@@ -122,12 +122,13 @@ export class CreateJob {
       priceFrom: parseInt(this.priceFrom),
       priceTo: parseInt(this.priceTo),
       deadline: new Date(this.deadline),
-      flexibility: this.flexibility,
+      flexibility: parseInt(this.flexibility),
       summary: this.summary,
       details: this.details,
       attachments: this.attachedItems,
       examples: this.attachedLinks
     };
+    console.log(body);
     return json(body);
   }
 }
