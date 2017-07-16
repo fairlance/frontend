@@ -108,7 +108,7 @@
             <article class="col-xs-12" if.bind="user.type === 'freelancer'">
                 <h2>Skills</h2>
                 <form class="tags" submit.delegate="addSkill()">
-                    <input placeholder="Enter Your Skills" value.bind="newSkill">
+                    <input class="tag-entry" placeholder="Enter Your Skills" value.bind="newSkill">
                     <span repeat.for="skill of skills" class="tag">${skill}<i class="material-icons" click.delegate="deleteTag($index)">close</i></span>
                 </form>
             </article>

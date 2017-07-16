@@ -3,62 +3,83 @@
 
     <div class="create-job container">
         <h1>Create New Job</h1>
-        <tag tags.bind="tags"></tag>
-        <section class="clearfix">
-            <h2>Job Name:</h2>
-            <input placeholder="Logo design" type="text" value.bind="name">
-        </section>
-        <section class="clearfix">
-            <h2>Budget:</h2>
-            <input placeholder="Estimated budget for this project" type="number" value.bind="price">
-        </section>
-        <section class="clearfix">
-            <h2>Brief Summary</h2>
-            <textarea class="small" value.bind="summary"
-                      placeholder="Tell Freelancers what you need in a few sentences..."></textarea>
-        </section>
-        <section class="clearfix">
-            <h2>Full Brief</h2>
-            <textarea class="" value.bind="details"
-                      placeholder="Here you should give us a bit more elaborated idea of what you want. Try going from general ideas to fine detail one step at the time."></textarea>
-        </section>
-        <section class="clearfix">
-            <h2 class="">Attach Files</h2>
-            <label class="btn btn-default btn-file button upload">
-                <i class="material-icons">cloud_upload</i>
-                <input type="file" files.bind="files" change.delegate="uploadAttachment()" class="hidden">
-            </label>
-            <div class="row">
-                <section class="col-xs-6" repeat.for="attachment of attachments | limitTo:attachments.length">
-                    <img src="${uploadUrl + attachment.url}">
-                    <div class="review-desc">
-                        <h4>${attachment.name}</h4>
-                    </div>
-                </section>
+        <div class="row">
+            <div class="form-group col-xs-12 required">
+                <label>Job Name:</label>
+                <input type="text" placeholder="Start off with a good name." class="form-control" value.bind="name">
             </div>
-        </section>
-        <section class="clearfix">
-            <h2>Examples on the web</h2>
-            <button class="button upload" click.delegate="addExample()"><i class="material-icons">note_add</i></button>
-            <form class="clearfix">
-                <label>Link:</label>
-                <input placeholder="https://www.behance.net" type="text" required value.bind="url">
-                <label>Brief description:</label>
-                <textarea required placeholder="That dance or sing to MTV-like commercials..."
-                          value.bind="desc"></textarea>
-            </form>
-            <div class="link clearfix" repeat.for="example of links  | limitTo:links.length">
-                <a href="${example.url}" target="_blank">${example.url}</a>
-                <p>
-                    <strong>Note about the link: </strong>
-                    ${example.description}
-                </p>
+            <div class="form-group col-xs-12 required">
+                <form class="tags" submit.delegate="addSkill()">
+                    <input class="tag-entry" placeholder="Enter Job Tags" value.bind="newSkill">
+                    <span repeat.for="skill of skills" class="tag">${skill}<i class="material-icons"
+                                                                              click.delegate="deleteTag($index)">close</i></span>
+                </form>
             </div>
+            <div class="form-group col-xs-12 inline required">
+                <label>Budget:</label>
+                <input type="number" placeholder="€From" class="form-control" value.bind="priceFrom">
+                <span>-</span>
+                <input type="number" placeholder="€To" class="form-control" value.bind="priceTo">
+            </div>
+            <div class="form-group col-xs-6 required">
+                <label>Deadline:</label>
+                <input type="date" placeholder="Select a date" class="form-control" value.bind="deadline">
+            </div>
+            <div class="form-group col-xs-6 required">
+                <label>Flexibility:</label>
+                <input type="number" placeholder="Up to 10 days" class="form-control" value.bind="flexibility" max="10">
+            </div>
+            <div class="form-group col-xs-12 required">
+                <label>Brief Summary:</label>
+                <textarea rows="4" type="text" placeholder="Tell Freelancers what you need in a few sentences..."
+                          class="form-control" value.bind="summary"></textarea>
+            </div>
+            <div class="form-group col-xs-12 required">
+                <label>Full Brief:</label>
+                <textarea rows="4" type="text" placeholder="Describe the project, in as many details." class="form-control"
+                          value.bind="details"></textarea>
+            </div>
+        </div>
 
-        </section>
-        <section class="clearfix">
-            <button class="button" click.delegate="addJob()">Create</button>
-            <a class="button discard" route-href="route:projects">Discard</a>
-        </section>
+        <div class="form-group row">
+            <div repeat.for="item of attachedItems">
+                <label class="col-xs-12">Additional files</label>
+                <div class="col-xs-8">
+                    <input value.bind="attachedItems[$index].name" type="text" class="form-control" placeholder="Upload Files" readonly="readonly">
+                </div>
+                <div class="col-xs-4">
+                    <label class="btn btn-default btn-file button upload">
+                        Browse
+                        <input type="file" class="hidden" change.delegate="uploadItem($index)" files.bind="files">
+                    </label>
+                </div>
+                <label class="col-xs-12 description">Description</label>
+                <div class="col-xs-12">
+                        <textarea class="form-control" rows="3" value.bind="attachedItems[$index].description"
+                                  placeholder="Description of uploaded file..."></textarea>
+                </div>
+            </div>
+            <div class="col-xs-6 col-xs-offset-6">
+                <a class="add-more" click.delegate="addItem()">Add Another Field</a>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div repeat.for="item of attachedLinks">
+                <label class="col-xs-12">Examples from the web</label>
+                <div class="col-xs-12">
+                    <input value.bind="attachedLinks[$index].url" type="text" class="form-control" placeholder="http://...">
+                </div>
+                <label class="col-xs-12 description">Description</label>
+                <div class="col-xs-12">
+                        <textarea rows="3" value.bind="attachedLinks[$index].description"
+                                  placeholder="Description of provided link..."></textarea>
+                </div>
+            </div>
+            <div class="col-xs-6 col-xs-offset-6">
+                <a class="add-more" click.delegate="addLink()">Add Another Field</a>
+            </div>
+        </div>
+        <button class="btn btn-main" click.delegate="addJob()">Create</button>
+        <a class="btn btn-main" route-href="route:projects">Discard</a>
     </div>
 </template>

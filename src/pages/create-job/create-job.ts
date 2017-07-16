@@ -3,6 +3,7 @@ import {Router} from 'aurelia-router';
 import {json} from 'aurelia-fetch-client';
 import {User} from "../../services/user/user";
 import {Helper} from "../../services/helper/helper";
+import * as $ from 'jquery';
 
 declare let uploadBaseUrl: string;
 
@@ -14,17 +15,20 @@ export class CreateJob {
   private app: any;
   private upload: any;
   private auth: Object;
-  private links: Array<IWebExample> = [];
-  private url: string;
-  private desc: string;
   private name: string;
-  private price: string;
+  private priceFrom: string;
+  private priceTo: string;
   private summary: string;
   private details: string;
-  private attachments: Array<IAttachment> = [];
-  private files: any;
+  private files: Array<any> = [];
   private helper: Helper;
+  private newSkill: string;
+  private skills: Array<string> = [];
   private uploadUrl: string = uploadBaseUrl;
+  private attachedItems: Array<any> = [{url: '', description: '', name: ''}];
+  private attachedLinks: Array<any> = [{url: '', description: '', name: ''}];
+  private flexibility: number = 0;
+  private deadline: string;
 
 
   constructor(app, upload, router, helper) {
@@ -40,22 +44,10 @@ export class CreateJob {
     }
   }
 
-  private addExample(): void {
-    if (this.url && this.url.length && this.desc.length) {
-      this.links.push({
-        'url': this.url,
-        'description': this.desc
-      });
-      this.url = '';
-      this.desc = '';
-    }
-  }
-
-  private async uploadAttachment(): Promise<void> {
+  private async uploadItem(item: number) {
     let first = this;
     let form = new FormData();
     await this.helper.sleep(300);
-    console.log(this.files);
     form.append('uploadfile', this.files[0]);
     try {
       const response = await first.upload.fetch('upload', {
@@ -64,34 +56,77 @@ export class CreateJob {
         body: form
       });
       let data = await response.json();
-      console.log(data);
-      first.attachments.push(data.data);
+      let temp = first.attachedItems.slice();
+      temp[item] = data.data;
+      first.attachedItems = temp;
     } catch (error) {
       console.log(error);
     }
   }
 
+  private addSkill() {
+    if (this.newSkill) {
+      this.skills.push(this.newSkill);
+      this.newSkill = '';
+    }
+  }
+
+  private addItem() {
+    if (this.attachedItems.length < 5) {
+      this.attachedItems.push({
+        url: '',
+        description: ''
+      });
+    }
+  }
+
+  private addLink() {
+    if (this.attachedLinks.length < 5) {
+      this.attachedLinks.push({
+        url: '',
+        description: ''
+      });
+    }
+  }
+
+  private deleteTag(count: number) {
+    this.skills.splice(count, 1);
+  }
+
   async addJob(): Promise<void> {
     let first = this;
-    const response = await first.app.fetch('job/new', {
-      method: 'post',
-      headers: first.auth,
-      body: first.prepareJob()
-    });
-    let data = await response.json();
-    this.router.navigateToRoute('job', {id: data.data.id}, {replace: true});
+    try {
+      const response = await first.app.fetch('job/new', {
+        method: 'post',
+        headers: first.auth,
+        body: first.prepareJob()
+      });
+      let data = await response.json();
+      this.router.navigateToRoute('job', {id: data.data.id}, {replace: true});
+
+    } catch (error) {
+      $('.create-job').addClass('error');
+    }
   };
 
   private prepareJob(): any {
+    this.attachedLinks = this.attachedLinks.filter(function (obj) {
+      return obj.url !== '';
+    });
+    this.attachedItems = this.attachedItems.filter(function (obj) {
+      return obj.url !== '';
+    });
     let body = {
-      name:     this.name,
-      summary:  this.summary,
-      price:  parseInt(this.price),
-      details:  this.details,
-      clientId: this.user.id,
-      isActive: true,
-      attachments: this.attachments,
-      examples: this.links
+      name: this.name,
+      tags: this.skills,
+      priceFrom: parseInt(this.priceFrom),
+      priceTo: parseInt(this.priceTo),
+      deadline: new Date(this.deadline),
+      flexibility: this.flexibility,
+      summary: this.summary,
+      details: this.details,
+      attachments: this.attachedItems,
+      examples: this.attachedLinks
     };
     return json(body);
   }
