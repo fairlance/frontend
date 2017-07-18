@@ -1,80 +1,88 @@
 .job-details {
-  height: 100%;
-  overflow-y: auto;
   margin-top: 50px;
   padding-bottom: 140px;
-  color: #6D849D;
-  .client {
-    font-size: 12px;
-    > a {
-      text-decoration: underline;
-
-    }
-    > span {
-      margin-left: 5px;
-      i {
-        color: #FDC228;
-        font-size: 20px;
-        position: relative;
-        top: 5px;
-      }
-    }
-  }
-  h1 {
-    font-size: 15px;
-    margin-top: 20px;
-  }
-  .about-job {
-    span {
-      font-size: 12px;
-      margin-right: 15px;
-      &.date {
-        float: right;
-        margin-right: 0;
-      }
-    }
-  }
-  > section {
-    margin: 0;
-    h3 {
+  .job {
+    position: relative;
+    margin-top: 16px;
+    text-decoration: none;
+    display: block;
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 24px;
       margin: 0;
-      height: 40px;
-      line-height: 40px;
-      font-size: 12px;
-      font-weight: bold;
-    }
-    p, article {
-      font-size: 12px;
-      font-weight: 200;
-      line-height: 15px;
-    }
-    .link {
-      a {
-        font-size: 12px;
-        margin-bottom: 5px;
-      }
-      p {
-        margin-top: 5px;
+      position: relative;
+      &.gray {
+        color: #D7DCE1;
       }
     }
-    .image-container {
+    .job-header {
+      height: 24px;
+      font-size: 16px;
+      line-height: 24px;
       a {
-        &:nth-child(odd) {
-          padding-right: 5px;
+        text-decoration: underline;
+        color: #30C0FF;
+      }
+      span {
+        display: inline-block;
+        margin-left: 8px;
+        i {
+          font-size: 16px;
+          color: #FEDA9B;
+          line-height: 12px;
+          position: relative;
+          top: 2px;
         }
-        &:nth-child(even) {
-          padding-left: 5px;
-        }
-        img {
-          width: 100%;
-          height: 140px;
-          object-fit: cover;
-        }
-        label {
-          font-size: 10px;
-          font-weight: normal;
-          margin-top: 10px;
+      }
 
+    }
+    > div {
+      color: #2D353D;
+      h2 {
+        strong {
+          width: 100%;
+          display: block;
+        }
+        span {
+          position: absolute;
+          top: 0;
+          right: 0;
+          font-size: 12px;
+          line-height: 16px;
+        }
+      }
+      .job-description {
+        font-size: 12px;
+        line-height: 16px;
+        max-height: 48px;
+        overflow: hidden;
+      }
+      .job-footer {
+        font-size: 12px;
+        line-height: 16px;
+        margin-top: 8px;
+        span {
+          margin-right: 16px;
+        }
+      }
+    }
+    section {
+      font-size: 12px;
+      line-height: 16px;
+      margin: 0 0 16px;
+      h2 {
+        margin-bottom: 16px;
+      }
+      .link {
+        a {
+          font-size: 16px;
+          line-height: 24px;
+        }
+        p {
+          margin-top: 8px;
+          font-size: 12px;
+          line-height: 16px;
         }
       }
     }
@@ -105,16 +113,16 @@
       line-height: 15px;
       color: #6D849D;
       &.button {
-        display: inline-block;
         height: 32px;
-        background-color: #5BC0DE;
-        border: 1px solid #46B8DA;
+        width: 192px;
         border-radius: 3px;
-        font-size: 18px;
+        border: none;
+        background-color: #30C0FF;
+        display: inline-block;
+        font-size: 16px;
         text-align: center;
         line-height: 32px;
         color: #FFFFFF;
-        padding: 0 30px;
       }
       i {
         position: relative;

@@ -3,51 +3,58 @@
     <require from="../../resources/value-converters/days-left/days-left"></require>
 
     <div class="job-details container">
-        <div class="client">
-            <a route-href="route:client;  params.bind:{id:details.client.id}">${details.client.firstName} ${details.client.lastName}</a>
-            <span class="">
-                <span>${details.client.rating}</span>
-                <i class="material-icons">star</i>
-            </span>
-        </div>
-        <h1>
-            <strong>${details.price}€</strong> ${details.name}
-        </h1>
-        <div class="about-job">
-            <span>${details.jobApplications.length} Proposals</span>
-            <span>${"1/4/2017" | daysLeft} Days Left</span>
-            <span class="date">${details.createdAt | dateFormatter}</span>
-        </div>
-        <section>
-            <h3>Brief Summary</h3>
-            <article>${details.summary}</article>
-        </section>
-        <section>
-            <h3>Full Brief</h3>
-            <article>
-                ${details.details}
-            </article>
-        </section>
-        <section>
-            <h3><a name="portfolio">Attachments (${details.attachments.length})</a></h3>
-            <div class="row image-container">
-                <a class="col-xs-6" repeat.for="attachment of details.attachments">
-                    <img src="${uploadUrl + attachment.url}">
-                    <label>${attachment.name}</label>
+        <div class="job row">
+            <p class="job-header col-xs-12">
+                <a route-href="route:client;  params.bind:{id:details.client.id}">${details.client.firstName}
+                    ${details.client.lastName}
                 </a>
-            </div>
-        </section>
-        <section>
-            <h3>Examples on Web</h3>
-            <div class="link" repeat.for="example of details.examples">
-                <a href="${example.url}" target="_blank">${example.url}</a>
-                <p>
-                    <strong>Note about the link: </strong>
-                    ${example.description}
+                <span>
+                <span>${details.client.rating}</span>
+                    <i class="material-icons">star</i>
+                </span>
+            </p>
+            <div class="col-xs-12">
+                <h2 class="">
+                    <strong>${job.priceFrom}400 - ${job.priceTo}700€</strong>
+                    ${details.name}
+                </h2>
+                <p class="job-footer clearfix">
+                    <span>${details.deadline | daysLeft} Days Left</span>
+                    <span>${details.client.projects ? details.client.projects.length : 0} Jobs</span>
                 </p>
             </div>
-        </section>
-        <form class="apply-button row" >
+            <section class="col-xs-12">
+                <h2>Brief Summary</h2>
+                <article>${details.summary}</article>
+            </section>
+            <section class="col-xs-12">
+                <h2>Full Brief</h2>
+                <article>
+                    ${details.details}
+                </article>
+            </section>
+            <section class="col-xs-12">
+                <h2 class.bind="details.attachments.length ? '' : 'gray'">Attachments (${details.attachments.length})</h2>
+                <div class="row image-container">
+                    <a class="col-xs-6" repeat.for="attachment of details.attachments">
+                        <img src="${uploadUrl + attachment.url}">
+                        <label>${attachment.name}</label>
+                    </a>
+                </div>
+            </section>
+            <section class="col-xs-12">
+                <h2 class.bind="details.examples.length ? '' : 'gray'">Examples on Web</h2>
+                <div class="link" repeat.for="example of details.examples">
+                    <a href="${example.url}" target="_blank">${example.url}</a>
+                    <p>
+                        <strong>Note about the link: </strong>
+                        ${example.description}
+                    </p>
+                </div>
+            </section>
+        </div>
+
+        <form class="apply-button row" if.bind="user.type === 'freelancer'">
             <a route-href="route:application; params.bind:{id:details.id}" class="button">Apply Now</a>
             <a><i class="material-icons">visibility</i> Watch Project</a>
             <div class="background"></div>
