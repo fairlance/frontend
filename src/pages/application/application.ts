@@ -17,16 +17,15 @@ export class Application {
   private auth: Object;
   private details: any;
   private jobId: number;
-  private links: Array<IWebExample> = [];
-  private url: string;
-  private desc: string;
-  private intro: string;
-  private files: Array<any> = [];
-  private attachments: Array<IAttachmnet> = [];
-  private uploadUrl: string = uploadBaseUrl;
   private view: boolean = false;
-  private submitButton: boolean = true;
-  private appId: number;
+  //application
+  private solution: string;
+  private summary: string;
+  private flexibility: string;
+  private deadline: string;
+  private hourPrice: string;
+  private hours: string;
+  private name: string;
 
   constructor(app, upload, router, helper) {
     this.upload = upload;
@@ -35,59 +34,26 @@ export class Application {
     this.helper = helper;
   }
 
-  activate(params) {
+  async activate(params) {
+    const first = this;
     if (this.userService.getCurrentUser()) {
       this.user = this.userService.getCurrentUser();
       this.auth = {'Authorization': 'Bearer ' + this.user.token};
+      const response = await first.app.fetch('freelancer/' + this.user.id, {
+        method: 'get',
+        headers: this.auth
+      });
+      let data = await response.json();
+      this.user = data.data;
+      console.log(this.user);
     } else {
       return;
     }
     this.jobId = parseInt(params.id);
-    this.appId = parseInt(params.appId);
-    if (this.appId) {this.getApplication();}
+    this.getJob();
   }
 
-  private async getApplication() {
-    this.preview();
-    this.submitButton = false;
-    await this.getJob();
-    let application = this.details.jobApplications.filter(item => item.id === this.appId)[0];
-    this.intro = application.message;
-    this.links = application.examples;
-    this.attachments = application.attachments;
-
-  }
-
-  private async uploadFile() {
-    let first = this;
-    let form = new FormData();
-    await this.helper.sleep(300);
-    form.append('uploadfile', this.files[0]);
-    try {
-      const response = await first.upload.fetch('upload', {
-        method: 'post',
-        headers: first.auth,
-        body: form
-      });
-      let data = await response.json();
-      first.attachments.push(data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  private addExample(): void {
-    if (this.url.length && this.desc.length) {
-      this.links.push({
-        'url': this.url,
-        'description': this.desc
-      });
-    }
-    this.url = '';
-    this.desc = '';
-  }
-
-  async getJob(): Promise<void> {
+  private async getJob(): Promise<void> {
     let first = this;
     const response = await first.app.fetch('job/' + first.jobId, {
       method: 'get',
@@ -95,21 +61,26 @@ export class Application {
     });
     let data = await response.json();
     first.details = data.data;
-    console.log(this.details);
   }
 
   private preview(): void {
     this.view = !this.view;
   }
-  
+
+  private cancel(): void {
+    this.router.navigateToRoute('projects');
+  }
+
   private prepareApplication(): Object {
     let result = {
-      'message': this.intro,
+      'summary': this.summary,
+      'solution': this.solution,
+      'deadline': new Date(this.deadline),
+      'title': this.name,
+      'flexibility': parseInt(this.flexibility),
       'freelancerId': this.user.id,
-      'hours': 1,
-      'hourPrice': 1.1,
-      'examples': this.links,
-      'attachments': this.attachments
+      'hours': parseInt(this.hours),
+      'hourPrice': parseInt(this.hourPrice)
     };
     return json(result);
   }
@@ -128,21 +99,6 @@ export class Application {
       console.log(error);
     }
     first.router.navigate('job/' + first.jobId);
-  }
-
-  private async proceed(): Promise<void> {
-    let first = this;
-    try {
-      const response = await first.app.fetch('/project/create_from_job_application/' + first.appId, {
-        method: 'post',
-        headers: first.auth
-      });
-      let data = await response.json();
-      this.router.navigateToRoute('project', {id: data.data.id}, {replace: true});
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
   }
 
 }

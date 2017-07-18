@@ -62,7 +62,7 @@
             </p>
         </section>
         <section class="portfolio">
-            <h3>Portfolio (${freelancer.portfolioItems.length + freelancer.portfolioLinks.length})</h3>
+            <h3 class.bind="(freelancer.portfolioItems.length + freelancer.portfolioLinks.length) ? '' : 'gray'">Portfolio (${freelancer.portfolioItems.length + freelancer.portfolioLinks.length})</h3>
             <div class="row">
                 <section class="col-xs-6" repeat.for="project of freelancer.portfolioItems" if.bind="project.url">
                     <img src="${uploadUrl + project.url}">

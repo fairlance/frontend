@@ -83,6 +83,9 @@
       font-weight: 600;
       line-height: 24px;
       color: #2D353D;
+      &.gray {
+        color: #D7DCE1;
+      }
     }
     p {
       font-size: 12px;
@@ -153,9 +156,7 @@
         height: 60px;
         line-height: 60px;
         margin: 0;
-        &.gray {
-          color: #D7DCE1;
-        }
+
         > span {
           font-size: 14px;
           font-weight: normal;

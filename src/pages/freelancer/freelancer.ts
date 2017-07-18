@@ -37,7 +37,7 @@ export class Freelancer {
   }
 
   private async populateProfile(): Promise<void> {
-    let first = this;
+    const first = this;
     try {
       const response = await first.http.fetch('freelancer/' + this.profileId, {
         method: 'get',

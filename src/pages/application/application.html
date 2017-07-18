@@ -1,92 +1,93 @@
 <template>
     <require from="../../components/navigation/navigation"></require>
     <require from="../../resources/value-converters/limitTo/limitTo"></require>
+    <require from="../../resources/value-converters/days-left/days-left"></require>
+    <require from="../../resources/value-converters/date-formatter/date-formatter"></require>
 
     <navigation user.bind="user"></navigation>
     <div class="apply container">
-        <div if.bind="!view">
-            <section>
-                <h2>Brief Introduction</h2>
-                <textarea placeholder="Describe yourself here..." value.bind="intro"></textarea>
-            </section>
-            <section class="attachments">
-                <h2>Attach Files</h2>
-                <label class="btn btn-default btn-file button upload">
-                    <i class="material-icons">cloud_upload</i>
-                    <input type="file" class="hidden" change.delegate="uploadFile()" files.bind="files">
-                </label>
-                <div class="row">
-                    <section class="col-xs-6" repeat.for="attachment of attachments  | limitTo:attachments.length">
-                        <img src.bind="uploadUrl + 'file/' + attachment.name">
-                        <div class="review-desc">
-                            <div>
-                                <h4>${attachment.name}</h4>
-                            </div>
-                        </div>
-                    </section>
-                </div>
 
-            </section>
-            <section>
-                <h2>Examples on Web</h2>
-                <button class="button upload"  click.delegate="addExample()"><i class="material-icons">note_add</i></button>
-                <form class="example-form">
-                    <label>Link:</label>
-                    <input placeholder="https://www.behance.net" type="text" required value.bind="url">
-                    <label>Brief description:</label>
-                    <textarea required placeholder="That dance or sing to MTV-like commercials..." value.bind="desc"></textarea>
-                </form>
-
-                <div class="link clearfix" repeat.for="example of links  | limitTo:links.length">
-                    <a href="${example.url}" target="_blank">${example.url}</a>
-                    <p>
-                        <strong>Note about the link: </strong>
-                        ${example.description}
+        <div if.bind="!view" class="row">
+            <div class="job clearfix">
+                <p class="job-header col-xs-12">
+                    <a route-href="route:client;  params.bind:{id:details.client.id}">${details.client.firstName}
+                        ${details.client.lastName}
+                    </a>
+                    <span>
+                <span>${details.client.rating}</span>
+                    <i class="material-icons">star</i>
+                </span>
+                </p>
+                <div class="col-xs-12">
+                    <h2 class="">
+                        <strong>${job.priceFrom}400 - ${job.priceTo}700€</strong>
+                        ${details.name}
+                    </h2>
+                    <p class="job-footer clearfix" show.bind="view">
+                        <span>${details.deadline | daysLeft} Days Left</span>
+                        <span>${details.client.projects ? details.client.projects.length : 0} Jobs</span>
                     </p>
                 </div>
-            </section>
-        </div>
-        <div if.bind="view">
-            <section>
-                <h2>Brief Introduction</h2>
-                <article>${intro}</article>
-            </section>
-            <section class="attachments">
-                <h2 class="special">Attachments</h2>
-                <div class="row">
-                    <section class="col-xs-6" repeat.for="attachment of attachments">
-                        <img src="${uploadUrl + 'file/' + attachment.name}">
-                        <div class="review-desc">
-                            <div>
-                                <h4>${attachment.name}</h4>
-                            </div>
-                        </div>
-                    </section>
+            </div>
+            <div class="form-group col-xs-12 required">
+                <label>Proposal title:</label>
+                <input type="text" placeholder="Start off with a good title." value.bind="name">
+            </div>
+            <div class="contract col-xs-12 ">
+                <div>
+                    <label>Hours Assigned</label>
+                    <i>h</i>
+                    <input value.bind="hours" type="text">
                 </div>
-
-            </section>
-            <section>
-                <h2>Examples on Web</h2>
-                <div class="link" repeat.for="example of links | limitTo:links.length">
-                    <a href="${example.url}" target="_blank">${example.url}</a>
-                    <p>
-                        <strong>Note about the link: </strong>
-                        ${example.description}
-                    </p>
+                <div>
+                    <label>Hourly Rate</label>
+                    <i class="material-icons">euro_symbol</i>
+                    <input value.bind="hourPrice" type="text">
                 </div>
-            </section>
+                <div>
+                    <label>Deadline Agreed</label>
+                    <input class="date" value.bind="deadline" type="date">
+                    <i class="material-icons deadline">date_range</i>
+                </div>
+                <div>
+                    <label>Deadline Flexibility</label>
+                    <i>d</i>
+                    <input type="number" max="10" value.bind="flexibility" placeholder="max 10">
+                </div>
+            </div>
+            <div class="form-group col-xs-12 required">
+                <label>Why Me:</label>
+                <textarea rows="4" type="text" placeholder="Tell the client what you offer in a nutshell"
+                          class="form-control" value.bind="summary"></textarea>
+            </div>
+            <div class="form-group col-xs-12 required">
+                <label>My Solution:</label>
+                <textarea rows="4" type="text" placeholder="Provide more detail about your solution"
+                          class="form-control" value.bind="solution"></textarea>
+            </div>
+        </div>
+        <div if.bind="view" class="row">
+            <div class="application-header clearfix">
+                <div class="col-xs-12">${name}</div>
+                <div class="body col-xs-3">${hours * hourPrice}€</div>
+                <div class="body col-xs-9">${user.firstName} ${user.lastName}</div>
+                <div class="details col-xs-3">${hours} hours</div>
+                <div class="details col-xs-4">delivery in ${deadline | daysLeft} days</div>
+                <div class="details col-xs-2">${user.rating}<i class="material-icons">star</i></div>
+                <div class="details col-xs-3">${user.projects.length} jobs</div>
+            </div>
+            <article class="col-xs-12">
+                <h2>Why Me</h2>
+                <p>${summary}</p>
+            </article>
+            <article class="col-xs-12">
+                <h2>My Solution</h2>
+                <p>${solution}</p>
+            </article>
         </div>
 
-        <section class="clearfix button-container" if.bind="submitButton">
-            <button class="btn btn-default" click.delegate="preview()">Preview</button>
-            <button class="btn btn-default submit" click.delegate="submit()">Submit</button>
-            <button class="btn btn-info discard">Back</button>
-            <div class="background"></div>
-        </section>
-        <section class="clearfix button-container" if.bind="!submitButton">
-            <button class="btn btn-default discard" >Dismiss</button>
-            <button class="btn btn-default" click.delegate="proceed()">Proceed</button>
-            <div class="background"></div>
-        </section>
+        <button class="" click.delegate="preview()">${view ? 'Back' : 'Preview'}</button>
+        <button class="" click.delegate="submit()">Submit</button>
+        <button class="" click.delegate="cancel()">Cancel</button>
     </div>
 </template>
