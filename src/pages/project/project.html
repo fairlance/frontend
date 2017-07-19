@@ -49,7 +49,7 @@
                     </section>
                     <section class="section">
                         <a click.delegate="toggleSection('proposal')">
-                            <i class="material-icons">chevron_right</i>
+                            <i class="fa fa-caret-right" aria-hidden="true"></i>
                             Brief/Proposal
                         </a>
                         <article class="proposal">
@@ -58,15 +58,14 @@
                     </section>
                     <section class="section">
                         <a click.delegate="toggleSection('contract')">
-                            <i class="material-icons">chevron_right</i>
+                            <i class="fa fa-caret-right" aria-hidden="true"></i>
                             Contract
                         </a>
-                        <!--if.bind="showContract"-->
                         <article class="contract">
-                            <p>
-                                Proposal
+                            <h2>
+                                Initial Agreement
                                 <span>${project.createdAt | dateFormatter}</span>
-                            </p>
+                            </h2>
                             <div>
                                 <label>Hours Assigned</label>
                                 <i>h</i>
@@ -78,13 +77,13 @@
                                 <input value="${contract.perHour}" disabled type="text">
                             </div>
                             <div>
-                                <label>Deadline Agreed</label>
+                                <label>Deadline</label>
                                 <input class="date" value.bind="deadline" type="date" change.delegate="changeContract()"
                                        disabled.bind="(disableFields || project.status !== 'finalizing_terms')">
                                 <i class="material-icons deadline">date_range</i>
                             </div>
                             <div>
-                                <label>Deadline Flexibility</label>
+                                <label>Flexibility (Days)</label>
                                 <i>d</i>
                                 <input type="text" change.delegate="changeContract()" value.bind="flexibility"
                                        disabled.bind="(disableFields || project.status !== 'finalizing_terms')">
@@ -105,9 +104,9 @@
                         </article>
                     </section>
                     <section class="section">
-                        <a click.delegate="toggleSection('files')">
-                            <i class="material-icons">chevron_right</i>
-                            Files
+                        <a click.delegate="toggleSection('files')" class.bind="files.length ? '' : 'gray'">
+                            <i class="fa fa-caret-right" aria-hidden="true"></i>
+                            Deliverables
                         </a>
                         <article class="files">
                             <p class="image-upload" if.bind="files.length">

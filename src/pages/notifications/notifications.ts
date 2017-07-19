@@ -64,7 +64,7 @@ export class Notifications {
     const first = this;
     switch (type) {
       case 'applications':
-        first.router.navigateToRoute('application', {
+        first.router.navigateToRoute('application-preview', {
           id: message.data.jobId,
           appId: message.data.jobApplication.id
         });

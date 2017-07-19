@@ -23,7 +23,7 @@ export class Project {
   private websocket: any;
   private messages: Array<any> = [];
   private slideMenu: any;
-  private files: any;
+  private files: Array<any> = [];
   private uploadUrl: string = uploadBaseUrl;
   private contract: any;
   private systemMessage: any;

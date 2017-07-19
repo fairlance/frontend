@@ -17,7 +17,7 @@
                 <a route-href="route:job; params.bind:{id:job.id}" >
                     <h2 class="">
                         <span class="date">${job.createdAt | dateFormatter}</span>
-                        <strong>${job.price}€</strong> ${job.name}
+                        <strong>${job.priceFrom} - ${job.priceTo}€</strong> ${job.name}
                     </h2>
                     <span class="job-description">
                     ${job.summary}

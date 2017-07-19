@@ -4,7 +4,6 @@
   padding: 50px 0;
   left: 0;
   height: 100%;
-  color: #6D849D;
   overflow-y: auto;
   overflow-x: hidden;
   &.open {
@@ -125,12 +124,14 @@
         margin-left: 25px;
         text-decoration: underline;
         font-size: 16px;
+        line-height: 24px;
         color: #30C0FF;
         margin-top: 16px;
         display: block;
       }
       h1 {
         font-size: 20px;
+        font-weight: 600;
         line-height: 24px;
         margin-top: 8px;
         &.in_progress,
@@ -139,7 +140,8 @@
             color: #47E4C3;
           }
         }
-        &.pending_funds {
+        &.pending_funds,
+        &.finalizing_terms {
           i {
             color: #30C0FF;
           }
@@ -150,24 +152,25 @@
           }
         }
         i {
-          font-size: 20px;
+          font-size: 10px;
           position: relative;
-          top: 3px;
+          top: -2px;
+          margin-right: 10px;
         }
       }
       .project-header {
         p {
-          margin-top: 8px;
+          margin: 8px 0 0 6px;
           font-weight: bold;
           line-height: 24px;
           font-size: 16px;
           text-align: left;
-          margin-bottom: 0;
           &.in_progress,
           &.pending_finished {
             color: #47E4C3;
           }
-          &.pending_funds {
+          &.pending_funds,
+          &.finalizing_terms {
             color: #30C0FF;
           }
           &.done {
@@ -188,7 +191,8 @@
           &.pending_finished {
             background-color: #47E4C3;
           }
-          &.pending_funds {
+          &.pending_funds,
+          &.finalizing_terms {
             background-color: #30C0FF;
           }
           &.done {
@@ -199,18 +203,22 @@
       .section {
         margin: 0;
         > a {
-          color: #6D849D;
-          font-size: 15px;
-          height: 60px;
-          line-height: 60px;
+          font-size: 16px;
+          margin: 16px 0;
+          display: block;
+          color: #2D353D;
+          border-bottom: 1px solid #D7DCE1;
+          padding-bottom: 16px;
+          &.gray {
+            color: #CECECE;
+          }
           i {
             position: relative;
-            top: 3px;
             font-size: 14px;
+            margin-right: 18px;
           }
         }
         > article {
-          padding-left: 20px;
           font-size: 12px;
           display: none;
           @media screen and (min-width: 1170px) {
@@ -219,19 +227,18 @@
           z-index: 2;
           &.contract {
             text-align: center;
-            margin-left: -20px;
-            > p {
-              height: 32px;
+            > h2 {
               width: 100%;
-              background-color: #F0F0F0;
-              line-height: 32px;
-              font-size: 16px;
-              color: #30C0FF;
-              padding-left: 16px;
-              margin: 0;
+              line-height: 24px;
+              font-size: 20px;
+              margin: 0 0 8px;
+              color: #2D353D;
+              text-align: left;
               span {
-                color: #2C353D;
-                margin-left: 10px;
+                font-size: 12px;
+                line-height: 16px;
+                display: inline-block;
+                margin-left: 24px;
               }
             }
             > div {
@@ -239,7 +246,6 @@
               height: 56px;
               border-bottom: 1px solid #D7DCE1;
               line-height: 56px;
-              margin: 0 16px;
               color: #2C353D;
               position: relative;
               span {
@@ -338,6 +344,7 @@
             i {
               top: -7px;
               font-size: 50px;
+              left: 25px;
             }
           }
         }
