@@ -4,37 +4,37 @@
     <div class="create-job container">
         <h1>Create New Job</h1>
         <div class="row">
-            <div class="form-group col-xs-12 required">
+            <div class="form-group col-xs-12" class.bind="name ? '' : 'required'">
                 <label>Job Name:</label>
                 <input type="text" placeholder="Start off with a good name." class="form-control" value.bind="name">
             </div>
-            <div class="form-group col-xs-12 required">
+            <div class="form-group col-xs-12" class.bind="skills.length ? '' : 'required'">
                 <form class="tags" submit.delegate="addSkill()">
                     <input class="tag-entry" placeholder="Enter Job Tags" value.bind="newSkill">
                     <span repeat.for="skill of skills" class="tag">${skill}<i class="material-icons"
                                                                               click.delegate="deleteTag($index)">close</i></span>
                 </form>
             </div>
-            <div class="form-group col-xs-12 inline required">
+            <div class="form-group col-xs-12 inline" class.bind="(priceFrom && priceTo) ? '' : 'required'">
                 <label>Budget:</label>
                 <input type="number" placeholder="€From" class="form-control" value.bind="priceFrom">
                 <span>-</span>
                 <input type="number" placeholder="€To" class="form-control" value.bind="priceTo">
             </div>
-            <div class="form-group col-xs-6 required">
+            <div class="form-group col-xs-6" class.bind="deadline ? '' : 'required'">
                 <label>Deadline:</label>
                 <input type="date" placeholder="Select a date" class="form-control" value.bind="deadline">
             </div>
-            <div class="form-group col-xs-6 required">
+            <div class="form-group col-xs-6" class.bind="flexibility ? '' : 'required'">
                 <label>Flexibility (Days):</label>
                 <input type="number" placeholder="Up to 10 days" class="form-control" value.bind="flexibility" max="10">
             </div>
-            <div class="form-group col-xs-12 required">
+            <div class="form-group col-xs-12" class.bind="summary ? '' : 'required'">
                 <label>Brief Summary:</label>
                 <textarea rows="4" type="text" placeholder="Tell Freelancers what you need in a few sentences..."
                           class="form-control" value.bind="summary"></textarea>
             </div>
-            <div class="form-group col-xs-12 required">
+            <div class="form-group col-xs-12" class.bind="details ? '' : 'required'">
                 <label>Full Brief:</label>
                 <textarea rows="4" type="text" placeholder="Describe the project, in as many details." class="form-control"
                           value.bind="details"></textarea>

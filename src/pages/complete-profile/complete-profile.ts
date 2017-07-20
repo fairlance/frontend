@@ -148,11 +148,11 @@ export class CompleteProfile {
   }
 
   private completeProfile() {
-    this.portfolioLinks = this.portfolioLinks.filter(function( obj ) {
-      return obj.url !=='';
+    this.portfolioLinks = this.portfolioLinks.filter(function (obj) {
+      return obj.url !== '';
     });
-    this.portfolioItems = this.portfolioItems.filter(function( obj ) {
-      return obj.url !=='';
+    this.portfolioItems = this.portfolioItems.filter(function (obj) {
+      return obj.url !== '';
     });
     let profile = {
       image: this.profilePicture ? this.profilePicture.url : '',
@@ -170,7 +170,6 @@ export class CompleteProfile {
   }
 
   private async saveProfile() {
-    $('.btn-main').addClass('disabled');
     const first = this;
     try {
       const response = await first.app.fetch(first.user.type + '/' + first.user.id + '/complete_profile', {
@@ -183,7 +182,6 @@ export class CompleteProfile {
       this.router.navigateToRoute(this.user.type, {id: this.user.id});
     } catch (error) {
       $('.form-inline').addClass('error');
-      $('.btn-main').removeClass('disabled');
       console.log(error);
     }
   }

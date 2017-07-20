@@ -95,18 +95,23 @@ export class CreateJob {
 
   async addJob(): Promise<void> {
     let first = this;
-    try {
-      const response = await first.app.fetch('job/new', {
-        method: 'post',
-        headers: first.auth,
-        body: first.prepareJob()
-      });
-      let data = await response.json();
-      this.router.navigateToRoute('job', {id: data.data.id}, {replace: true});
+    if (this.name && this.skills.length && this.priceFrom && this.priceTo && this.deadline && this.flexibility && this.summary && this.details) {
+      try {
+        const response = await first.app.fetch('job/new', {
+          method: 'post',
+          headers: first.auth,
+          body: first.prepareJob()
+        });
+        let data = await response.json();
+        this.router.navigateToRoute('job', {id: data.data.id}, {replace: true});
 
-    } catch (error) {
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
       $('.create-job').addClass('error');
     }
+
   };
 
   private prepareJob(): any {

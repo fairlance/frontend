@@ -1,6 +1,17 @@
 .apply {
   margin-top: 66px;
   margin-bottom: 100px;
+  &.error {
+    .required {
+      label.col-xs-12 {
+        color: #FF594C;
+      }
+      input, textarea, select {
+        border: 1px solid #FF594C;
+        background-color: #FFDBDB;
+      }
+    }
+  }
   .job {
     position: relative;
     margin-bottom: 8px;

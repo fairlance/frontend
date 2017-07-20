@@ -29,22 +29,22 @@
                     </p>
                 </div>
             </div>
-            <div class="form-group col-xs-12 required">
+            <div class="form-group col-xs-12" class.bind="name ? '' : 'required'">
                 <label>Proposal title:</label>
                 <input type="text" placeholder="Start off with a good title." value.bind="name">
             </div>
-            <div class="contract col-xs-12 ">
-                <div>
+            <div class="contract col-xs-12">
+                <div class.bind="hours ? '' : 'required'">
                     <label>Hours Estimated</label>
                     <i>h</i>
-                    <input value.bind="hours" type="text">
+                    <input value.bind="hours" type="number">
                 </div>
-                <div>
+                <div class.bind="hourPrice ? '' : 'required'">
                     <label>Hourly Rate</label>
                     <i class="material-icons">euro_symbol</i>
-                    <input value.bind="hourPrice" type="text">
+                    <input value.bind="hourPrice" type="number">
                 </div>
-                <div>
+                <div class.bind="deadline ? '' : 'required'">
                     <label>Deadline</label>
                     <input class="date" value.bind="deadline" type="date">
                     <i class="material-icons deadline">date_range</i>
@@ -55,12 +55,12 @@
                     <input type="number" max="10" value.bind="flexibility" placeholder="max 10">
                 </div>
             </div>
-            <div class="form-group col-xs-12 required">
+            <div class="form-group col-xs-12 " class.bind="summary ? '' : 'required'">
                 <label>Why Me:</label>
                 <textarea rows="4" type="text" placeholder="Tell the client what you offer in a nutshell"
                           class="form-control" value.bind="summary"></textarea>
             </div>
-            <div class="form-group col-xs-12 required">
+            <div class="form-group col-xs-12 " class.bind="solution ? '' : 'required'">
                 <label>My Solution:</label>
                 <textarea rows="4" type="text" placeholder="Provide more detail about your solution"
                           class="form-control" value.bind="solution"></textarea>

@@ -3,6 +3,7 @@ import {Router} from 'aurelia-router';
 import {json, HttpClient} from 'aurelia-fetch-client';
 import {User} from '../../services/user/user';
 import {Helper} from '../../services/helper/helper';
+import * as $ from 'jquery';
 
 declare let uploadBaseUrl: string;
 
@@ -39,18 +40,17 @@ export class Application {
     if (this.userService.getCurrentUser()) {
       this.user = this.userService.getCurrentUser();
       this.auth = {'Authorization': 'Bearer ' + this.user.token};
+      this.jobId = parseInt(params.id);
+      this.getJob();
       const response = await first.app.fetch('freelancer/' + this.user.id, {
         method: 'get',
         headers: this.auth
       });
       let data = await response.json();
       this.user = data.data;
-      console.log(this.user);
     } else {
       return;
     }
-    this.jobId = parseInt(params.id);
-    this.getJob();
   }
 
   private async getJob(): Promise<void> {
@@ -87,18 +87,21 @@ export class Application {
 
   private async submit(): Promise<void> {
     let first = this;
-    try {
-      const response = await first.app.fetch('job/' + first.jobId + '/apply', {
-        method: 'put',
-        headers: first.auth,
-        body: first.prepareApplication()
-      });
-      let data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.log(error);
+    if (this.summary && this.solution && this.deadline && this.name && this.hourPrice && this.hours) {
+      try {
+        const response = await first.app.fetch('job/' + first.jobId + '/apply', {
+          method: 'put',
+          headers: first.auth,
+          body: first.prepareApplication()
+        });
+        await response.json();
+        first.router.navigateToRoute('jobs/');
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      $('.apply').addClass('error');
+      return;
     }
-    first.router.navigate('jobs/');
   }
-
 }
