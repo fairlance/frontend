@@ -313,7 +313,9 @@ export class Project {
     }
   }
 
-  private toggleSection(section: string) {
-    $('.' + section).toggle();
+  private toggleSection(label: string) {
+    let section = $('.' + label);
+    section.toggle();
+    section.parent().toggleClass('opened');
   }
 }

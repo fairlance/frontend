@@ -16,8 +16,8 @@
         <section repeat.for="item of projectList | limitTo:projectList.length " class="${item.id}"
                  if.bind="item.list.length">
             <h2>${item.status} (${item.list.length})</h2>
-            <a repeat.for="project of item.list">
-                <span class="title" click.delegate="goToProject(project.id)">
+            <a repeat.for="project of item.list" click.delegate="goToProject(project.id)">
+                <span class="title" >
                     <i class="material-icons">fiber_manual_record</i>
                     ${project.name}
                 </span>

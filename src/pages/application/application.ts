@@ -98,7 +98,7 @@ export class Application {
     } catch (error) {
       console.log(error);
     }
-    first.router.navigate('job/' + first.jobId);
+    first.router.navigate('jobs/');
   }
 
 }

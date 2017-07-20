@@ -67,7 +67,7 @@
                                 <span>${project.createdAt | dateFormatter}</span>
                             </h2>
                             <div>
-                                <label>Hours Assigned</label>
+                                <label>Hours Estimated</label>
                                 <i>h</i>
                                 <input value="${contract.hours}" disabled type="text">
                             </div>
@@ -85,7 +85,7 @@
                             <div>
                                 <label>Flexibility (Days)</label>
                                 <i>d</i>
-                                <input type="text" change.delegate="changeContract()" value.bind="flexibility"
+                                <input type="number" max="10" change.delegate="changeContract()" value.bind="flexibility"
                                        disabled.bind="(disableFields || project.status !== 'finalizing_terms')">
                             </div>
                             <button click.delegate="contractAgreed()"
@@ -110,7 +110,7 @@
                         </a>
                         <article class="files">
                             <p class="image-upload" if.bind="files.length">
-                                <img src="${uploadUrl}/file/${files[0].name}">
+                                <img src="${uploadUrl}file/${files[0].name}">
                                 <span>${files[0].name}</span>
                             </p>
                         </article>

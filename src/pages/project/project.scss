@@ -14,19 +14,19 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.3);
     z-index: 3;
-    position: absolute;
+    position: fixed;
     display: none;
   }
   .container {
-    position: relative;
     height: 100%;
     #slidemenu {
-      position: absolute;
+      position: fixed;
       right: -100%;
       background-color: #fff;
       z-index: 4;
       height: 100%;
       overflow: auto;
+      padding-bottom: 100px;
       .panel-body {
         .chat {
           margin-bottom: 50px;
@@ -202,6 +202,15 @@
       }
       .section {
         margin: 0;
+        &.opened {
+          > a {
+            i {
+              &:before {
+                content: "\f0d7";
+              }
+            }
+          }
+        }
         > a {
           font-size: 16px;
           margin: 16px 0;

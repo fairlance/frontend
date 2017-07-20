@@ -11,7 +11,9 @@
   }
   section {
     margin: 0;
-    &.in_progress {
+    &.in_progress,
+    &.done,
+    &.pending_finished {
       h2 {
         border-bottom-color: #50E3C3;
       }
@@ -23,6 +25,7 @@
         }
       }
     }
+    &.pending_funds,
     &.finalizing_terms {
       h2 {
         border-bottom-color: #ffcb33;

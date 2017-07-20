@@ -10,7 +10,7 @@
         <div if.bind="!view" class="row">
             <div class="job clearfix">
                 <p class="job-header col-xs-12">
-                    <a route-href="route:client;  params.bind:{id:details.client.id}">${details.client.firstName}
+                    <a route-href="route:client; params.bind:{id:details.client.id}">${details.client.firstName}
                         ${details.client.lastName}
                     </a>
                     <span>
@@ -20,7 +20,7 @@
                 </p>
                 <div class="col-xs-12">
                     <h2 class="">
-                        <strong>${job.priceFrom}400 - ${job.priceTo}700€</strong>
+                        <strong>${job.priceFrom} - ${job.priceTo}€</strong>
                         ${details.name}
                     </h2>
                     <p class="job-footer clearfix" show.bind="view">
@@ -35,7 +35,7 @@
             </div>
             <div class="contract col-xs-12 ">
                 <div>
-                    <label>Hours Assigned</label>
+                    <label>Hours Estimated</label>
                     <i>h</i>
                     <input value.bind="hours" type="text">
                 </div>
