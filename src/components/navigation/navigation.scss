@@ -1,3 +1,5 @@
+@import "../../assets/styles/partials/variables";
+
 .mdl-layout {
   .mdl-layout__drawer-button {
     left: inherit;
@@ -6,6 +8,7 @@
   }
 
 }
+
 .main-menu {
   width: 100%;
   background-color: #FC4529;
@@ -13,69 +16,139 @@
   height: 50px;
   position: fixed;
   z-index: 5;
-  padding: 16px 14px 0;
-  .links {
-    padding-right: 10px;
-    a {
-      color: #ffffff;
-      font-size: 15px;
-      line-height: 19px;
-      font-weight: 500;
-      padding-right: 14px;
-      position: relative;
-      &:hover {
-        color: #FFDB97;
-      }
+  padding: 16px 0 0 16px;
+  @media screen and (min-width: $screen-md-min) {
+    padding: 0;
+    height: 128px;
+  }
+
+  .container {
+    position: relative;
+    padding: 0;
+    @media screen and (min-width: $screen-md-min) {
+      padding: 0 15px;
     }
-    .fairlance-badge {
-      >span {
-        right: 0;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-flex-direction: row;
-        -ms-flex-direction: row;
-        flex-direction: row;
-        -webkit-flex-wrap: wrap;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        -webkit-justify-content: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        -webkit-align-content: center;
-        -ms-flex-line-pack: center;
-        align-content: center;
-        -webkit-align-items: center;
-        -ms-flex-align: center;
-        align-items: center;
+    .white-background {
+      display: none;
+      @media screen and (min-width: 960px) {
+        display: block;
         position: absolute;
-        top: -11px;
-        font-family: "Roboto","Helvetica","Arial",sans-serif;
-        font-weight: 600;
-        font-size: 12px;
-        width: 22px;
-        height: 22px;
-        border-radius: 50%;
-        background: #8CBFFA;
-        color: #fff;
-        z-index: 1;
+        right: 1280px;
+        width: 800px;
+        height: 128px;
+        background-color: #fff;
       }
 
     }
-  }
-  .dropdown {
-    position: absolute;
-    right: 5px;
-    top: 12px;
-    a {
-      i {
+    .links {
+      padding-right: 10px;
+      @media screen and (min-width: 960px) {
+        display: inline-block;
+        height: 128px;
+        padding-top: 88px;
+      }
+      a {
         color: #ffffff;
-        top: 14px;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 500;
+        padding-right: 14px;
+        position: relative;
+        @media screen and (min-width: 960px) {
+          font-size: 24px;
+          letter-spacing: 1px;
+          line-height: 24px;
+        }
+        &:hover {
+          color: #FFDB97;
+        }
+        &.fairlance-badge {
+          > span {
+            right: 0;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-align-content: center;
+            -ms-flex-line-pack: center;
+            align-content: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            position: absolute;
+            top: -11px;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 600;
+            font-size: 12px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #8CBFFA;
+            color: #fff;
+            z-index: 1;
+          }
+
+        }
+      }
+
+    }
+    .dropdown {
+      position: absolute;
+      right: 0;
+      top: 0;
+      @media screen and (min-width: $screen-md-min) {
+        position: relative;
+        float: right;
+      }
+      > a {
+        @media screen and (min-width: $screen-md-min) {
+          display: none;
+        }
+        i {
+          color: #ffffff;
+          top: 14px;
+        }
+      }
+      ul {
+        left: auto;
+        right: 5px;
+        @media screen and (min-width: 960px) {
+          display: inline-block;
+          border: none;
+          box-shadow: none;
+          background-color: transparent;
+          padding-top: 72px;
+          li {
+            a {
+              font-size: 24px;
+              letter-spacing: 1px;
+              line-height: 24px;
+              color: #fff;
+              &:hover {
+                background-color: transparent;
+              }
+            }
+          }
+        }
       }
     }
-    ul {
-      left: auto;
-      right: 5px;
+    .logo {
+      display: none;
+      @media screen and (min-width: 960px) {
+        display: block;
+        position: absolute;
+        left: -130px;
+        z-index: 2;
+      }
+
     }
   }
 }

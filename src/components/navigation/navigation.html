@@ -1,30 +1,33 @@
 <template>
     <div class="main-menu" if.bind="user">
-        <div class="links">
-            <a route-href="route:projects">
-                Projects
+        <div class="container">
+            <div class="white-background"></div>
+            <a class="logo" href="/">
+                <img src="../../assets/images/logo.svg">
             </a>
-            <a route-href="route:jobs" if.bind="user.type === 'freelancer'">
-                Jobs
-            </a>
-            <a route-href="route.bind: user.type;  params.bind:{id:user.id}">
-                Profile
-            </a>
-            <a class="fairlance-badge" route-href="route:notifications">
-                Notifications
-                <span if.bind="counter > 0">${counter}</span>
-            </a>
-        </div>
-        <div class="dropdown">
-            <a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                <i class="material-icons">more_vert</i>
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a >Account Info</a></li>
-                <li><a route-href="route:transactions">My transactions</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a click.delegate="logout()">Logout</a></li>
-            </ul>
+            <div class="links">
+                <a route-href="route:projects">
+                    Projects
+                </a>
+                <a route-href="route:jobs" if.bind="user.type === 'freelancer'">
+                    Jobs
+                </a>
+                <a route-href="route.bind: user.type;  params.bind:{id:user.id}">
+                    Profile
+                </a>
+                <a class="fairlance-badge" route-href="route:notifications">
+                    Notifications
+                    <span if.bind="counter > 0">${counter}</span>
+                </a>
+            </div>
+            <div class="dropdown">
+                <a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <i class="material-icons">more_vert</i>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a click.delegate="logout()">Logout</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </template>

@@ -27,7 +27,7 @@ export class CreateJob {
   private uploadUrl: string = uploadBaseUrl;
   private attachedItems: Array<any> = [{url: '', description: '', name: ''}];
   private attachedLinks: Array<any> = [{url: '', description: '', name: ''}];
-  private flexibility: string = '0';
+  private flexibility: string;
   private deadline: string;
 
 

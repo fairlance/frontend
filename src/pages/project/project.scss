@@ -312,6 +312,15 @@
               font-size: 14px;
             }
           }
+          &.files {
+            .image-upload {
+              img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+              }
+            }
+          }
         }
       }
     }
