@@ -35,7 +35,7 @@ export class Project {
   private contractUpdate: boolean = false;
   private contractWaiting: boolean = false;
   private disableFields: boolean = false;
-  private deliverables: Array<any>;
+  private deliverables: Array<any> = [];
 
   private status: any = {
     finalizing_terms: {
@@ -83,6 +83,12 @@ export class Project {
       this.openConnection();
     } else {
       return;
+    }
+  }
+
+  attached() {
+    if (this.project.status === 'finalizing_terms') {
+      document.getElementById('page-content').scrollTop = $('.contract').offset().top - 50;
     }
   }
 
