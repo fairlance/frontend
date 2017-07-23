@@ -1,5 +1,8 @@
 .complete-profile {
   margin-top: 50px;
+  @media screen and (min-width: $screen-md-min) {
+    margin-top: 128px;
+  }
   .form-inline {
     margin-bottom: 50px;
     &.error {

@@ -1,67 +1,70 @@
 <template>
     <div class="registration container">
-        <h2><span>Signup</span> as:</h2>
-        <form id="registrationForm" role="form" submit.delegate="submit()" action="#">
-            <div class="form-group">
-                <div class="radio" repeat.for="userType of types">
-                    <label><input type="radio" name="type" model.bind="userType" checked.bind="$parent.userType">${userType.name}</label>
+        <div class="col-xs-12 col-md-4 col-md-offset-4">
+            <h2><span>Signup</span> as:</h2>
+            <form id="registrationForm" role="form" submit.delegate="submit()" action="#">
+                <div class="form-group">
+                    <div class="radio" repeat.for="userType of types">
+                        <label><input type="radio" name="type" model.bind="userType" checked.bind="$parent.userType">${userType.name}</label>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input repeat.for="option of companyCheckbox" type="checkbox" checked.bind="$parent.isCompany"
-                               model.bind="option"> I am a legal entity (e.g. limited, Corporation)
-                    </label>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input repeat.for="option of companyCheckbox" type="checkbox" checked.bind="$parent.isCompany"
+                                   model.bind="option"> I am a legal entity (e.g. limited, Corporation)
+                        </label>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Company Name"
-                       value.bind="companyName" name="companyName" class.bind="error ? 'error' : ''"
-                       if.bind="isCompany">
-            </div>
-            <div class="form-group">
-                <select class="form-control" value.bind="salutation">
-                    <option repeat.for="option of salutations" value.bind="option.value">${option.name}</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <div class="input-group" class.bind="error ? 'error' : ''">
-                    <div class="input-group-addon"><i class="material-icons">perm_identity</i></div>
-                    <input type="text" class="form-control" placeholder="First Name"
-                           value.bind="firstName" name="firstName">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Company Name"
+                           value.bind="companyName" name="companyName" class.bind="error ? 'error' : ''"
+                           if.bind="isCompany">
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group" class.bind="error ? 'error' : ''">
-                    <div class="input-group-addon"><i class="material-icons">perm_identity</i></div>
-                    <input type="text" class="form-control" placeholder="Last Name"
-                           value.bind="lastName" name="lastName">
+                <div class="form-group">
+                    <select class="form-control" value.bind="salutation">
+                        <option repeat.for="option of salutations" value.bind="option.value">${option.name}</option>
+                    </select>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group" class.bind="error ? 'error' : ''">
-                    <div class="input-group-addon"><i class="material-icons">mail_outline</i></div>
-                    <input type="email" class="form-control" placeholder="Email"
-                           value.bind="email" name="email">
+                <div class="form-group">
+                    <div class="input-group" class.bind="error ? 'error' : ''">
+                        <div class="input-group-addon"><i class="material-icons">perm_identity</i></div>
+                        <input type="text" class="form-control" placeholder="First Name"
+                               value.bind="firstName" name="firstName">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group" class.bind="error ? 'error' : ''">
-                    <div class="input-group-addon"><i class="material-icons">lock_outline</i></div>
-                    <input type="password" class="form-control" placeholder="Password"
-                           value.bind="password" name="password">
+                <div class="form-group">
+                    <div class="input-group" class.bind="error ? 'error' : ''">
+                        <div class="input-group-addon"><i class="material-icons">perm_identity</i></div>
+                        <input type="text" class="form-control" placeholder="Last Name"
+                               value.bind="lastName" name="lastName">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group" class.bind="error ? 'error' : ''">
-                    <div class="input-group-addon"><i class="material-icons">lock_outline</i></div>
-                    <input type="password" class="form-control" placeholder="Repeat Password"
-                           value.bind="repeatPassword" name="repeatPassword">
+                <div class="form-group">
+                    <div class="input-group" class.bind="error ? 'error' : ''">
+                        <div class="input-group-addon"><i class="material-icons">mail_outline</i></div>
+                        <input type="email" class="form-control" placeholder="Email"
+                               value.bind="email" name="email">
+                    </div>
                 </div>
-            </div>
-            <button type="submit" class="btn btn-block">Register</button>
-        </form>
+                <div class="form-group">
+                    <div class="input-group" class.bind="error ? 'error' : ''">
+                        <div class="input-group-addon"><i class="material-icons">lock_outline</i></div>
+                        <input type="password" class="form-control" placeholder="Password"
+                               value.bind="password" name="password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group" class.bind="error ? 'error' : ''">
+                        <div class="input-group-addon"><i class="material-icons">lock_outline</i></div>
+                        <input type="password" class="form-control" placeholder="Repeat Password"
+                               value.bind="repeatPassword" name="repeatPassword">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-block">Register</button>
+            </form>
+        </div>
+
     </div>
 
 </template>
