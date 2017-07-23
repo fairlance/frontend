@@ -2,79 +2,88 @@
     <require from="../../resources/value-converters/date-formatter/date-formatter"></require>
 
     <div class="profile container">
-        <div class="profile-header clearfix row">
-            <div class="container">
-                <img src="${client.image}">
-                <section>
-                    <h3>${client.firstName} ${client.lastName}</h3>
-                    <p class="available"><i class="material-icons">fiber_manual_record</i>Available</p>
-                    <p class="timezone">Timezone  <select value.bind="client.timezone" disabled="disabled" class="">
-                        <option value="-12.0">(GMT -12:00)</option>
-                        <option value="-11.0">(GMT -11:00)</option>
-                        <option value="-10.0">(GMT -10:00)</option>
-                        <option value="-9.0">(GMT -9:00)</option>
-                        <option value="-8.0">(GMT -8:00)</option>
-                        <option value="-7.0">(GMT -7:00)</option>
-                        <option value="-6.0">(GMT -6:00)</option>
-                        <option value="-5.0">(GMT -5:00)</option>
-                        <option value="-4.0">(GMT -4:00)</option>
-                        <option value="-3.5">(GMT -3:30)</option>
-                        <option value="-3.0">(GMT -3:00)</option>
-                        <option value="-2.0">(GMT -2:00)</option>
-                        <option value="-1.0">(GMT -1:00)</option>
-                        <option value="0.0">(GMT +0:00)</option>
-                        <option value="1.0">(GMT +1:00)</option>
-                        <option value="2.0">(GMT +2:00)</option>
-                        <option value="3.0">(GMT +3:00)</option>
-                        <option value="3.5">(GMT +3:30)</option>
-                        <option value="4.0">(GMT +4:00)</option>
-                        <option value="4.5">(GMT +4:30)</option>
-                        <option value="5.0">(GMT +5:00)</option>
-                        <option value="5.5">(GMT +5:30)</option>
-                        <option value="5.75">(GMT +5:45)</option>
-                        <option value="6.0">(GMT +6:00)</option>
-                        <option value="7.0">(GMT +7:00)</option>
-                        <option value="8.0">(GMT +8:00)</option>
-                        <option value="9.0">(GMT +9:00)</option>
-                        <option value="9.5">(GMT +9:30)</option>
-                        <option value="10.0">(GMT +10:00)</option>
-                        <option value="11.0">(GMT +11:00)</option>
-                        <option value="12.0">(GMT +12:00)</option>
-                    </select></p>
-                </section>
+        <div class="col-md-8 row">
+            <div class="profile-header clearfix">
+                <div class="">
+                    <img src="${client.image}">
+                    <section>
+                        <h3>${client.firstName} ${client.lastName}</h3>
+                        <p class="available"><i class="material-icons">fiber_manual_record</i>Available</p>
+                        <p class="timezone">Timezone  <select value.bind="client.timezone" disabled="disabled" class="">
+                            <option value="-12.0">(GMT -12:00)</option>
+                            <option value="-11.0">(GMT -11:00)</option>
+                            <option value="-10.0">(GMT -10:00)</option>
+                            <option value="-9.0">(GMT -9:00)</option>
+                            <option value="-8.0">(GMT -8:00)</option>
+                            <option value="-7.0">(GMT -7:00)</option>
+                            <option value="-6.0">(GMT -6:00)</option>
+                            <option value="-5.0">(GMT -5:00)</option>
+                            <option value="-4.0">(GMT -4:00)</option>
+                            <option value="-3.5">(GMT -3:30)</option>
+                            <option value="-3.0">(GMT -3:00)</option>
+                            <option value="-2.0">(GMT -2:00)</option>
+                            <option value="-1.0">(GMT -1:00)</option>
+                            <option value="0.0">(GMT +0:00)</option>
+                            <option value="1.0">(GMT +1:00)</option>
+                            <option value="2.0">(GMT +2:00)</option>
+                            <option value="3.0">(GMT +3:00)</option>
+                            <option value="3.5">(GMT +3:30)</option>
+                            <option value="4.0">(GMT +4:00)</option>
+                            <option value="4.5">(GMT +4:30)</option>
+                            <option value="5.0">(GMT +5:00)</option>
+                            <option value="5.5">(GMT +5:30)</option>
+                            <option value="5.75">(GMT +5:45)</option>
+                            <option value="6.0">(GMT +6:00)</option>
+                            <option value="7.0">(GMT +7:00)</option>
+                            <option value="8.0">(GMT +8:00)</option>
+                            <option value="9.0">(GMT +9:00)</option>
+                            <option value="9.5">(GMT +9:30)</option>
+                            <option value="10.0">(GMT +10:00)</option>
+                            <option value="11.0">(GMT +11:00)</option>
+                            <option value="12.0">(GMT +12:00)</option>
+                        </select></p>
+                    </section>
+                </div>
             </div>
-        </div>
-        <div class="numbers">
+
+            <div class="numbers">
             <span>
                 ${client.rating} <i class="material-icons">star</i>
             </span>
-            <span>
+                <span>
                 ${client.projects.length} Projects
             </span>
-            <span>
+                <span>
                 ${client.reviews.length} Reviews
             </span>
+            </div>
         </div>
-        <section class="about">
-            <h3>About ${client.firstName}</h3>
-            <p>
-                ${client.about}
-            </p>
-        </section>
-        <section class="reviews">
-            <h3 class.bind="client.reviews.length ? '' : 'gray'">
-                Reviews (${client.reviews.length}) <span>${client.rating} <i class="material-icons">star</i></span>
-            </h3>
-            <section repeat.for="review of client.reviews">
-                <h3>
-                    Ora Montgomery
-                    <span class="rating">${review.rating} <i class="material-icons">star</i></span>
-                    <span class="date">${review.createdAt | dateFormatter}</span>
-                </h3>
+        <div class="section about col-xs-12 col-md-7 col-md-offset-1">
+            <div class="row">
+                <h3>About ${client.firstName}</h3>
                 <p>
-                    ${review.content}
+                    ${client.about}
                 </p>
-            </section>
-        </section>
+            </div>
+        </div>
+        <div class="section reviews col-xs-12 col-md-4">
+            <div class="row">
+                <h3 class="review-title" class.bind="client.reviews.length ? '' : 'gray'">
+                    Reviews (${client.reviews.length}) <span>${client.rating} <i class="material-icons">star</i></span>
+                </h3>
+                <div class="row">
+                    <section class="col-md-12" repeat.for="review of client.reviews">
+                        <h3 class="clearfix">
+                            ${review.freelancer.firstName} ${review.freelancer.lastName}
+                            <span class="rating">${review.rating} <i class="material-icons">star</i></span>
+                            <span class="date">${review.createdAt | dateFormatter}</span>
+                        </h3>
+                        <p>
+                            ${review.content}
+                        </p>
+                    </section>
+                </div>
+            </div>
+        </div>
     </div>
 </template>

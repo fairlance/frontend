@@ -67,9 +67,29 @@
             </div>
 
         </div>
-        <div class="section portfolio col-xs-12 col-md-4">
+        <div class="section reviews col-xs-12 col-md-4">
             <div class="row">
-                <h3 class.bind="(freelancer.portfolioItems.length + freelancer.portfolioLinks.length) ? '' : 'gray'">
+                <h3 class="review-title" class.bind="freelancer.reviews.length ? '' : 'gray'">
+                    Reviews (${freelancer.reviews.length}) <span>${freelancer.rating} <i
+                        class="material-icons">star</i></span>
+                </h3>
+                <div class="row">
+                    <section class="col-md-12" repeat.for="review of freelancer.reviews">
+                        <h3 class="clearfix">
+                            ${review.client.firstName} ${review.client.lastName}
+                            <span class="rating">${review.rating} <i class="material-icons">star</i></span>
+                            <span class="date">${review.createdAt | dateFormatter}</span>
+                        </h3>
+                        <p>
+                            ${review.content}
+                        </p>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <div class="section portfolio col-xs-12 col-md-7 col-md-offset-1">
+            <div class="row">
+                <h3 class="portfolio-title" class.bind="(freelancer.portfolioItems.length + freelancer.portfolioLinks.length) ? '' : 'gray'">
                     Portfolio (${freelancer.portfolioItems.length + freelancer.portfolioLinks.length})</h3>
                 <div class="row">
                     <section class="col-xs-6" repeat.for="project of freelancer.portfolioItems" if.bind="project.url">
@@ -82,28 +102,6 @@
                     </section>
                 </div>
             </div>
-
         </div>
-        <div class="section reviews col-xs-12 col-md-7 col-md-offset-1">
-            <div class="row">
-                <h3 class="review-title" class.bind="freelancer.reviews.length ? '' : 'gray'">
-                    Reviews (${freelancer.reviews.length}) <span>${freelancer.rating} <i
-                        class="material-icons">star</i></span>
-                </h3>
-                <div class="row">
-                    <section repeat.for="review of freelancer.reviews">
-                        <h3 class="clearfix">
-                            ${review.name}
-                            <span class="rating">${review.rating} <i class="material-icons">star</i></span>
-                            <span class="date">${review.createdAt | dateFormatter}</span>
-                        </h3>
-                        <p>
-                            ${review.content}
-                        </p>
-                    </section>
-                </div>
-            </div>
-        </div>
-
     </div>
 </template>

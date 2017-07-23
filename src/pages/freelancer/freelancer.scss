@@ -134,14 +134,9 @@
       }
     }
     &.portfolio {
-      @media screen and (min-width: $screen-md-min) {
-        margin-top: -176px;
-      }
-      h3 {
+      .portfolio-title {
         @media screen and (min-width: $screen-md-min) {
-          font-size: 24px;
-          font-weight: 600;
-          line-height: 24px;
+          border-top: 1px solid #D7DCE1;
         }
       }
       section {
@@ -203,10 +198,14 @@
       }
     }
     &.reviews {
-      margin-bottom: 50px;
+      @media screen and (min-width: $screen-md-min) {
+        margin-top: -176px;
+      }
       .review-title {
         @media screen and (min-width: $screen-md-min) {
-          border-top: 1px solid #D7DCE1;
+          font-size: 24px;
+          font-weight: 600;
+          line-height: 24px;
         }
         > span {
           font-size: 14px;
