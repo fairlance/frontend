@@ -2,6 +2,9 @@
   margin-top: 50px;
   overflow: scroll;
   height: 100%;
+  @media screen and (min-width: $screen-md-min) {
+    margin-top: 128px;
+  }
   select {
     border-color: #6D849D;
     width: 127px;

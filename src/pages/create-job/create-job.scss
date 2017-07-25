@@ -1,6 +1,9 @@
 .create-job {
   margin-top: 50px;
   margin-bottom: 40px;
+  @media screen and (min-width: $screen-md-min) {
+    margin-top: 128px;
+  }
   &.error {
     .form-group {
       &.required {

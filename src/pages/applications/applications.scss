@@ -3,6 +3,9 @@
   height: 100%;
   overflow-y: auto;
   position: relative;
+  @media screen and (min-width: $screen-md-min) {
+    margin-top: 128px;
+  }
   h2 {
     font-size: 20px;
     font-weight: 600;

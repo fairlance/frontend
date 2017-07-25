@@ -1,6 +1,9 @@
 .apply {
   margin-top: 66px;
   margin-bottom: 100px;
+  @media screen and (min-width: $screen-md-min) {
+    margin-top: 128px;
+  }
   &.error {
     .required {
       label.col-xs-12 {

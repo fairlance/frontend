@@ -6,6 +6,9 @@
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
+  @media screen and (min-width: $screen-md-min) {
+    padding-top: 128px;
+  }
   &.open {
     overflow: hidden;
   }

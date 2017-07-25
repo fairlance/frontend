@@ -58,6 +58,7 @@ export class Job {
       });
       let data = await response.json();
       first.details = data.data;
+      console.log(first.details);
     } catch (error) {
       if (error.status === 404) {
         this.router.navigateBack();
